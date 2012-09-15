@@ -7,9 +7,15 @@ import com.pathfindersdk.races.Race;
 import com.pathfindersdk.races.Size;
 import com.pathfindersdk.races.Vision;
 
+/**
+ * A factory for creating the Core Rulebook.
+ */
 public class CoreBookFactory extends BookFactory
 {
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addRaces(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addRaces(Book book)
   {
@@ -129,6 +135,9 @@ public class CoreBookFactory extends BookFactory
     book.addRace(human);
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addClasses(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addClasses(Book book)
   {
@@ -136,6 +145,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addClassExtensions(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addClassExtensions(Book book)
   {
@@ -143,6 +155,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addArchetypes(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addArchetypes(Book book)
   {
@@ -150,6 +165,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addPrestigeClasses(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addPrestigeClasses(Book book)
   {
@@ -157,6 +175,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addFeats(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addFeats(Book book)
   {
@@ -164,6 +185,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addEquipment(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addEquipment(Book book)
   {
@@ -171,6 +195,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addActions(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addActions(Book book)
   {
@@ -178,6 +205,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addSpells(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addSpells(Book book)
   {
@@ -185,6 +215,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addMonsters(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addMonsters(Book book)
   {

@@ -9,22 +9,42 @@ import com.pathfindersdk.books.Book;
 import com.pathfindersdk.books.BookFactory;
 import com.pathfindersdk.books.CoreBookFactory;
 
+/**
+ * The Class TestApp.
+ */
 public class TestApp
 {
+  
+  /**
+   * The main method.
+   *
+   * @param args the arguments
+   */
   public static void main (String[] args)
   {
     buildCoreBook("core_rulebook.json");
   }
   
+  /**
+   * Builds the core book.
+   *
+   * @param path book file path
+   */
   private static void buildCoreBook(String path)
   {
     BookFactory factory = new CoreBookFactory();
     Book coreBook = factory.createBook("Core Rulebook");
     
-    printJson(coreBook, "core_rulebook.json");
+    writeJson(coreBook, "core_rulebook.json");
   }
   
-  private static void printJson(Book book, String path)
+  /**
+   * Writes the book using json.
+   *
+   * @param book the book
+   * @param path the path
+   */
+  private static void writeJson(Book book, String path)
   {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
