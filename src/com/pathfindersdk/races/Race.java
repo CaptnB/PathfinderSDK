@@ -2,7 +2,7 @@ package com.pathfindersdk.races;
 
 import java.util.ArrayList;
 
-import com.pathfindersdk.general.AbilityScore;
+import com.pathfindersdk.creatures.AbilityScore;
 
 /**
  * The Class Race.

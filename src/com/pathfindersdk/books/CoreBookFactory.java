@@ -1,7 +1,7 @@
 package com.pathfindersdk.books;
 
-import com.pathfindersdk.general.Ability;
-import com.pathfindersdk.general.AbilityScore;
+import com.pathfindersdk.creatures.Ability;
+import com.pathfindersdk.creatures.AbilityScore;
 import com.pathfindersdk.races.Language;
 import com.pathfindersdk.races.Race;
 import com.pathfindersdk.races.Size;
@@ -223,6 +223,13 @@ public class CoreBookFactory extends BookFactory
   {
     // TODO Auto-generated method stub
 
+  }
+
+  @Override
+  protected void addSkills(Book book)
+  {
+    // TODO Auto-generated method stub
+    
   }
 
 }

@@ -1,4 +1,4 @@
-package com.pathfindersdk.general;
+package com.pathfindersdk.creatures;
 
 /**
  * The Class AbilityScore.

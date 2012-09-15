@@ -3,6 +3,7 @@ package com.pathfindersdk.feats;
 import java.util.ArrayList;
 
 import com.pathfindersdk.general.Bonus;
+import com.pathfindersdk.general.Prerequisite;
 
 /**
  * The Class Feat. 
@@ -17,7 +18,7 @@ public class Feat
   private FeatType type;
   
   /** Feat's prerequisites. */
-  private ArrayList<FeatPrerequisite> prerequisites = new ArrayList<FeatPrerequisite>();
+  private ArrayList<Prerequisite> prerequisites = new ArrayList<Prerequisite>();
   
   /** Feat's benefits. */
   private ArrayList<Bonus> benefits = new ArrayList<Bonus>();
