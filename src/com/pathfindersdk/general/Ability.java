@@ -1,4 +1,4 @@
-package com.pathfindersdk.core;
+package com.pathfindersdk.general;
 
 public enum Ability
 {

@@ -1,14 +1,14 @@
-package com.pathfindersdk.core;
+package com.pathfindersdk.general;
 
 public class AbilityScore
 {
-  private Ability ability;
   private Integer score;
+  private Ability ability;
   
-  public AbilityScore(Ability ability, int score)
+  public AbilityScore(int score, Ability ability)
   {
+    this.score = score;
     this.ability = ability;
-    setScore(score);
   }
   
   public Ability getAbility()
@@ -21,17 +21,9 @@ public class AbilityScore
     return score;
   }
 
-  void setScore(Integer score)
-  {
-    if(score < 0)
-      this.score = 0;
-    else
-      this.score = score;
-  }
-  
   public void add(int add)
   {
-    setScore(score + add);
+    score += add;
   }
 
   public Integer getModifier()

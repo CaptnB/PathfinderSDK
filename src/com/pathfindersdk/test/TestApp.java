@@ -5,10 +5,9 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.pathfindersdk.core.Ability;
-import com.pathfindersdk.core.Book;
-import com.pathfindersdk.core.Skill;
-import com.pathfindersdk.core.SkillType;
+import com.pathfindersdk.books.Book;
+import com.pathfindersdk.books.BookFactory;
+import com.pathfindersdk.books.CoreBookFactory;
 
 public class TestApp
 {
@@ -19,12 +18,10 @@ public class TestApp
   
   private static void buildCoreBook(String path)
   {
-    Book book = new Book("Core Rulebook");
+    BookFactory factory = new CoreBookFactory();
+    Book coreBook = factory.createBook("Core Rulebook");
     
-    addCoreSkills(book);
-    addCoreFeats(book);
-    
-    printJson(book, path);
+    printJson(coreBook, "core_rulebook.json");
   }
   
   private static void printJson(Book book, String path)
@@ -41,49 +38,8 @@ public class TestApp
     {
       e.printStackTrace();
     }
+    
+    System.out.println(book.getName() + " has been written into [" + path + "]");
   }
-  
-  private static void addCoreSkills(Book book)
-  {
-    book.addSkill(new Skill(SkillType.ACROBATICS,               Ability.DEX, true,  true));
-    book.addSkill(new Skill(SkillType.APPRAISE,                 Ability.INT, true,  false));
-    book.addSkill(new Skill(SkillType.BLUFF,                    Ability.CHA, true,  false));
-    book.addSkill(new Skill(SkillType.CLIMB,                    Ability.STR, true,  true));
-    book.addSkill(new Skill(SkillType.CRAFT,                    Ability.INT, true,  false));
-    book.addSkill(new Skill(SkillType.DIPLOMACY,                Ability.CHA, true,  false));
-    book.addSkill(new Skill(SkillType.DISABLE_DEVICE,           Ability.DEX, false, true));
-    book.addSkill(new Skill(SkillType.DISGUISE,                 Ability.CHA, true,  false));
-    book.addSkill(new Skill(SkillType.ESCAPE_ARTIST,            Ability.DEX, true,  true));
-    book.addSkill(new Skill(SkillType.FLY,                      Ability.DEX, true,  true));
-    book.addSkill(new Skill(SkillType.HANDLE_ANIMAL,            Ability.CHA, false, false));
-    book.addSkill(new Skill(SkillType.HEAL,                     Ability.WIS, true,  false));
-    book.addSkill(new Skill(SkillType.INTIMIDATE,               Ability.CHA, true,  false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_ARCANA,         Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_DUNGEONNEERING, Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_ENGINEERING,    Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_GEOGRAPHY,      Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_HISTORY,        Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_LOCAL,          Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_NATURE,         Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_NOBILITY,       Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_PLANES,         Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.KNOWLEDGE_RELIGION,       Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.LINGUISTICS,              Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.PERCEPTION,               Ability.WIS, true,  false));
-    book.addSkill(new Skill(SkillType.PERFORM,                  Ability.CHA, true,  false));
-    book.addSkill(new Skill(SkillType.PROFESSION,               Ability.WIS, false, false));
-    book.addSkill(new Skill(SkillType.RIDE,                     Ability.DEX, true,  true));
-    book.addSkill(new Skill(SkillType.SENSE_MOTIVE,             Ability.WIS, true,  false));
-    book.addSkill(new Skill(SkillType.SLEIGHT_OF_HAND,          Ability.DEX, false, true));
-    book.addSkill(new Skill(SkillType.SPELLCRAFT,               Ability.INT, false, false));
-    book.addSkill(new Skill(SkillType.STEALTH,                  Ability.DEX, true,  true));
-    book.addSkill(new Skill(SkillType.SURVIVAL,                 Ability.WIS, true,  false));
-    book.addSkill(new Skill(SkillType.SWIM,                     Ability.STR, true,  true));
-    book.addSkill(new Skill(SkillType.USE_MAGIC_DEVICE,         Ability.CHA, false, false));
-  }
-  
-  private static void addCoreFeats(Book book)
-  {
-    //book.addFeat();
-  }
+
 }

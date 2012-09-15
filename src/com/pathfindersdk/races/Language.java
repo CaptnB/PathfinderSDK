@@ -1,4 +1,4 @@
-package com.pathfindersdk.core;
+package com.pathfindersdk.races;
 
 public enum Language
 {

@@ -1,215 +1,221 @@
 {
   "name": "Core Rulebook",
-  "skills": {
-    "Acrobatics": {
-      "type": "ACROBATICS",
-      "keyAbility": "DEX",
-      "untrained": true,
-      "armorCheckPenalty": true
+  "races": {
+    "Dwarf": {
+      "name": "Dwarf",
+      "abilityModifiers": [
+        {
+          "score": 2,
+          "ability": "CON"
+        },
+        {
+          "score": 2,
+          "ability": "WIS"
+        },
+        {
+          "score": -2,
+          "ability": "CHA"
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "DARKVISION",
+      "baseLanguages": [
+        "COMMON",
+        "DWARVEN"
+      ],
+      "optionalLanguages": [
+        "GIANT",
+        "GNOME",
+        "GOBLIN",
+        "ORC",
+        "TERRAN",
+        "UNDERCOMMON"
+      ]
     },
-    "Appraise": {
-      "type": "APPRAISE",
-      "keyAbility": "INT",
-      "untrained": true,
-      "armorCheckPenalty": false
+    "Elf": {
+      "name": "Elf",
+      "abilityModifiers": [
+        {
+          "score": 2,
+          "ability": "DEX"
+        },
+        {
+          "score": 2,
+          "ability": "INT"
+        },
+        {
+          "score": -2,
+          "ability": "CON"
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "LOW_LIGHT",
+      "baseLanguages": [
+        "COMMON",
+        "ELVEN"
+      ],
+      "optionalLanguages": [
+        "CELESTIAL",
+        "DRACONIC",
+        "GNOLL",
+        "GNOME",
+        "GOBLIN",
+        "ORC",
+        "SYLVAN"
+      ]
     },
-    "Bluff": {
-      "type": "BLUFF",
-      "keyAbility": "CHA",
-      "untrained": true,
-      "armorCheckPenalty": false
+    "Gnome": {
+      "name": "Gnome",
+      "abilityModifiers": [
+        {
+          "score": 2,
+          "ability": "CON"
+        },
+        {
+          "score": 2,
+          "ability": "CHA"
+        },
+        {
+          "score": -2,
+          "ability": "STR"
+        }
+      ],
+      "size": "SMALL",
+      "vision": "LOW_LIGHT",
+      "baseLanguages": [
+        "COMMON",
+        "GNOME",
+        "SYLVAN"
+      ],
+      "optionalLanguages": [
+        "DRACONIC",
+        "DWARVEN",
+        "ELVEN",
+        "GIANT",
+        "GOBLIN",
+        "ORC"
+      ]
     },
-    "Climb": {
-      "type": "CLIMB",
-      "keyAbility": "STR",
-      "untrained": true,
-      "armorCheckPenalty": true
+    "Half-Elf": {
+      "name": "Half-Elf",
+      "abilityModifiers": [
+        {
+          "score": 2,
+          "ability": "ANY"
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "LOW_LIGHT",
+      "baseLanguages": [
+        "COMMON",
+        "ELVEN"
+      ],
+      "optionalLanguages": [
+        "ABYSSAL",
+        "AKLO",
+        "AQUAN",
+        "AURAN",
+        "CELESTIAL",
+        "DRACONIC",
+        "DWARVEN",
+        "GIANT",
+        "GNOLL",
+        "GNOME",
+        "GOBLIN",
+        "HALFLING",
+        "IGNAN",
+        "INFERNAL",
+        "ORC",
+        "SYLVAN",
+        "TERRAN",
+        "UNDERCOMMON"
+      ]
     },
-    "Craft": {
-      "type": "CRAFT",
-      "keyAbility": "INT",
-      "untrained": true,
-      "armorCheckPenalty": false
+    "Half-Orc": {
+      "name": "Half-Orc",
+      "abilityModifiers": [
+        {
+          "score": 2,
+          "ability": "ANY"
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "DARKVISION",
+      "baseLanguages": [
+        "COMMON",
+        "ORC"
+      ],
+      "optionalLanguages": [
+        "ABYSSAL",
+        "DRACONIC",
+        "GIANT",
+        "GNOLL",
+        "GOBLIN"
+      ]
     },
-    "Diplomacy": {
-      "type": "DIPLOMACY",
-      "keyAbility": "CHA",
-      "untrained": true,
-      "armorCheckPenalty": false
+    "Halfling": {
+      "name": "Halfling",
+      "abilityModifiers": [
+        {
+          "score": 2,
+          "ability": "DEX"
+        },
+        {
+          "score": 2,
+          "ability": "CHA"
+        },
+        {
+          "score": -2,
+          "ability": "STR"
+        }
+      ],
+      "size": "SMALL",
+      "vision": "NORMAL",
+      "baseLanguages": [
+        "COMMON",
+        "HALFLING"
+      ],
+      "optionalLanguages": [
+        "DWARVEN",
+        "ELVEN",
+        "GNOME",
+        "GOBLIN"
+      ]
     },
-    "Disable Device": {
-      "type": "DISABLE_DEVICE",
-      "keyAbility": "DEX",
-      "untrained": false,
-      "armorCheckPenalty": true
-    },
-    "Disguise": {
-      "type": "DISGUISE",
-      "keyAbility": "CHA",
-      "untrained": true,
-      "armorCheckPenalty": false
-    },
-    "Escape Artist": {
-      "type": "ESCAPE_ARTIST",
-      "keyAbility": "DEX",
-      "untrained": true,
-      "armorCheckPenalty": true
-    },
-    "Fly": {
-      "type": "FLY",
-      "keyAbility": "DEX",
-      "untrained": true,
-      "armorCheckPenalty": true
-    },
-    "Handle Animal": {
-      "type": "HANDLE_ANIMAL",
-      "keyAbility": "CHA",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Heal": {
-      "type": "HEAL",
-      "keyAbility": "WIS",
-      "untrained": true,
-      "armorCheckPenalty": false
-    },
-    "Intimidate": {
-      "type": "INTIMIDATE",
-      "keyAbility": "CHA",
-      "untrained": true,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (arcana)": {
-      "type": "KNOWLEDGE_ARCANA",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (dungeoneering)": {
-      "type": "KNOWLEDGE_DUNGEONNEERING",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (engineering)": {
-      "type": "KNOWLEDGE_ENGINEERING",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (geography)": {
-      "type": "KNOWLEDGE_GEOGRAPHY",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (history)": {
-      "type": "KNOWLEDGE_HISTORY",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (local)": {
-      "type": "KNOWLEDGE_LOCAL",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (nature)": {
-      "type": "KNOWLEDGE_NATURE",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (nobility)": {
-      "type": "KNOWLEDGE_NOBILITY",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (planes)": {
-      "type": "KNOWLEDGE_PLANES",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Knowledge (religion)": {
-      "type": "KNOWLEDGE_RELIGION",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Linguistics": {
-      "type": "LINGUISTICS",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Perception": {
-      "type": "PERCEPTION",
-      "keyAbility": "WIS",
-      "untrained": true,
-      "armorCheckPenalty": false
-    },
-    "Perform": {
-      "type": "PERFORM",
-      "keyAbility": "CHA",
-      "untrained": true,
-      "armorCheckPenalty": false
-    },
-    "Profession": {
-      "type": "PROFESSION",
-      "keyAbility": "WIS",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Ride": {
-      "type": "RIDE",
-      "keyAbility": "DEX",
-      "untrained": true,
-      "armorCheckPenalty": true
-    },
-    "Sense Motive": {
-      "type": "SENSE_MOTIVE",
-      "keyAbility": "WIS",
-      "untrained": true,
-      "armorCheckPenalty": false
-    },
-    "Sleight of Hand": {
-      "type": "SLEIGHT_OF_HAND",
-      "keyAbility": "DEX",
-      "untrained": false,
-      "armorCheckPenalty": true
-    },
-    "Spellcraft": {
-      "type": "SPELLCRAFT",
-      "keyAbility": "INT",
-      "untrained": false,
-      "armorCheckPenalty": false
-    },
-    "Stealth": {
-      "type": "STEALTH",
-      "keyAbility": "DEX",
-      "untrained": true,
-      "armorCheckPenalty": true
-    },
-    "Survival": {
-      "type": "SURVIVAL",
-      "keyAbility": "WIS",
-      "untrained": true,
-      "armorCheckPenalty": false
-    },
-    "Swim": {
-      "type": "SWIM",
-      "keyAbility": "STR",
-      "untrained": true,
-      "armorCheckPenalty": true
-    },
-    "Use Magic Device": {
-      "type": "USE_MAGIC_DEVICE",
-      "keyAbility": "CHA",
-      "untrained": false,
-      "armorCheckPenalty": false
+    "Human": {
+      "name": "Human",
+      "abilityModifiers": [
+        {
+          "score": 2,
+          "ability": "ANY"
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "NORMAL",
+      "baseLanguages": [
+        "COMMON"
+      ],
+      "optionalLanguages": [
+        "ABYSSAL",
+        "AKLO",
+        "AQUAN",
+        "AURAN",
+        "CELESTIAL",
+        "DRACONIC",
+        "DWARVEN",
+        "ELVEN",
+        "GIANT",
+        "GNOLL",
+        "GNOME",
+        "GOBLIN",
+        "HALFLING",
+        "IGNAN",
+        "INFERNAL",
+        "ORC",
+        "SYLVAN",
+        "TERRAN",
+        "UNDERCOMMON"
+      ]
     }
   },
   "feats": {}
