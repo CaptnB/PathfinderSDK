@@ -14,7 +14,7 @@ public enum FeatType
   
   private final String name;
   
-  FeatType(String name)
+  private FeatType(String name)
   {
     this.name = name;
   }

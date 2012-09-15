@@ -21,7 +21,7 @@ public enum Size
   private final Double space;
   private final Double reach;
   
-  Size(String name, int bonus, double space, double reach)
+  private Size(String name, int bonus, double space, double reach)
   {
     this.name = name;
     this.bonus = bonus;

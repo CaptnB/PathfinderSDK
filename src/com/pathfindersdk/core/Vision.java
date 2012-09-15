@@ -7,7 +7,8 @@ public enum Vision
   DARKVISION ("Darkvision");
   
   private final String name;
-  Vision(String name)
+  
+  private Vision(String name)
   {
     this.name = name;
   }

@@ -5,7 +5,7 @@ public class AbilityScore
   private Ability ability;
   private Integer score;
   
-  AbilityScore(Ability ability, int score)
+  public AbilityScore(Ability ability, int score)
   {
     this.ability = ability;
     setScore(score);

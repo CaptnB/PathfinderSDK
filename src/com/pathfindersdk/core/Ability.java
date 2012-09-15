@@ -11,7 +11,8 @@ public enum Ability
   ANY ("Any");
   
   private final String name;
-  Ability(String name)
+  
+  private Ability(String name)
   {
     this.name = name;
   }
