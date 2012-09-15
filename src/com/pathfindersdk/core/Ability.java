@@ -7,7 +7,8 @@ public enum Ability
   CON ("Constitution"),
   INT ("Intelligence"),
   WIS ("Wisdom"),
-  CHA ("Charisma");
+  CHA ("Charisma"),
+  ANY ("Any");
   
   private final String name;
   Ability(String name)
