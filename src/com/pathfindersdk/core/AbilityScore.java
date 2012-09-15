@@ -38,4 +38,12 @@ public class AbilityScore
   {
     return (int)Math.floor((getScore() - 10) / 2f);
   }
+  
+  @Override public String toString()
+  {
+    if(score < 10)
+      return ability.toString() + " " + score + " (" + getModifier() + ")";
+    else
+      return ability.toString() + " " + score + " (+" + getModifier() + ")";
+  }
 }

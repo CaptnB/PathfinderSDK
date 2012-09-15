@@ -1,0 +1,216 @@
+{
+  "name": "Core Rulebook",
+  "skills": {
+    "Acrobatics": {
+      "type": "ACROBATICS",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Appraise": {
+      "type": "APPRAISE",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Bluff": {
+      "type": "BLUFF",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Climb": {
+      "type": "CLIMB",
+      "keyAbility": "STR",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Craft": {
+      "type": "CRAFT",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Diplomacy": {
+      "type": "DIPLOMACY",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Disable Device": {
+      "type": "DISABLE_DEVICE",
+      "keyAbility": "DEX",
+      "untrained": false,
+      "armorCheckPenalty": true
+    },
+    "Disguise": {
+      "type": "DISGUISE",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Escape Artist": {
+      "type": "ESCAPE_ARTIST",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Fly": {
+      "type": "FLY",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Handle Animal": {
+      "type": "HANDLE_ANIMAL",
+      "keyAbility": "CHA",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Heal": {
+      "type": "HEAL",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Intimidate": {
+      "type": "INTIMIDATE",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (arcana)": {
+      "type": "KNOWLEDGE_ARCANA",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (dungeoneering)": {
+      "type": "KNOWLEDGE_DUNGEONNEERING",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (engineering)": {
+      "type": "KNOWLEDGE_ENGINEERING",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (geography)": {
+      "type": "KNOWLEDGE_GEOGRAPHY",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (history)": {
+      "type": "KNOWLEDGE_HISTORY",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (local)": {
+      "type": "KNOWLEDGE_LOCAL",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (nature)": {
+      "type": "KNOWLEDGE_NATURE",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (nobility)": {
+      "type": "KNOWLEDGE_NOBILITY",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (planes)": {
+      "type": "KNOWLEDGE_PLANES",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (religion)": {
+      "type": "KNOWLEDGE_RELIGION",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Linguistics": {
+      "type": "LINGUISTICS",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Perception": {
+      "type": "PERCEPTION",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform": {
+      "type": "PERFORM",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Profession": {
+      "type": "PROFESSION",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Ride": {
+      "type": "RIDE",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Sense Motive": {
+      "type": "SENSE_MOTIVE",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Sleight of Hand": {
+      "type": "SLEIGHT_OF_HAND",
+      "keyAbility": "DEX",
+      "untrained": false,
+      "armorCheckPenalty": true
+    },
+    "Spellcraft": {
+      "type": "SPELLCRAFT",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Stealth": {
+      "type": "STEALTH",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Survival": {
+      "type": "SURVIVAL",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Swim": {
+      "type": "SWIM",
+      "keyAbility": "STR",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Use Magic Device": {
+      "type": "USE_MAGIC_DEVICE",
+      "keyAbility": "CHA",
+      "untrained": false,
+      "armorCheckPenalty": false
+    }
+  },
+  "feats": {}
+}

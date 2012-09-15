@@ -6,6 +6,7 @@ public class Book
 {
   private String name;
   private TreeMap<String, Skill> skills = new TreeMap<String, Skill>();
+  private TreeMap<String, Feat> feats = new TreeMap<String, Feat>();
   
   public Book(String name)
   {
@@ -25,5 +26,10 @@ public class Book
   public void addSkill(Skill skill)
   {
     skills.put(skill.getType().toString(), skill);
+  }
+  
+  public void addFeat(Feat feat)
+  {
+    feats.put(feat.getName(), feat);
   }
 }

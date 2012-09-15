@@ -4,17 +4,15 @@ package com.pathfindersdk.core;
 public class Skill
 {
   private SkillType type;
-	private String description;
-	private Ability keyAbility;
-	private Boolean trainedOnly;
+  private Ability keyAbility;
+	private Boolean untrained;
 	private Boolean armorCheckPenalty;
 	
-	public Skill(SkillType type, String description, Ability keyAbility, Boolean trainedOnly, Boolean armorCheckPenalty)
+	public Skill(SkillType type, Ability keyAbility, Boolean untrained, Boolean armorCheckPenalty)
 	{
     this.type = type;
-    this.description = description;
     this.keyAbility = keyAbility;
-    this.trainedOnly = trainedOnly;
+    this.untrained = untrained;
     this.armorCheckPenalty = armorCheckPenalty;
 	}
 	
@@ -23,19 +21,14 @@ public class Skill
     return type;
   }
   
-  public String getDescription()
-  {
-    return description;
-  }
-  
   public Ability getKeyAbility()
   {
     return keyAbility;
   }
   
-  public Boolean isTrainedOnly()
+  public Boolean isUnTrained()
   {
-    return trainedOnly;
+    return untrained;
   }
   
   public Boolean isArmorCheckPenalty()
