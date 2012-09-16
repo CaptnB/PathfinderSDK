@@ -26,6 +26,12 @@ public class Feat
   /** Feat's benefits. */
   private ArrayList<Bonus> benefits = new ArrayList<Bonus>();
   
+  /**
+   * Instantiates a new feat.
+   *
+   * @param name the name
+   * @param type the type
+   */
   public Feat(String name, FeatType type)
   {
     this.name = name;
@@ -43,11 +49,21 @@ public class Feat
     return type;
   }
   
+  /**
+   * Adds the prerequisite.
+   *
+   * @param prereq the prereq
+   */
   public void addPrerequisite(Prerequisite prereq)
   {
     prereqs.add(prereq);    
   }
   
+  /**
+   * Adds the benefits.
+   *
+   * @param benefit the benefit
+   */
   public void addBenefits(Bonus benefit)
   {
     benefits.add(benefit);    

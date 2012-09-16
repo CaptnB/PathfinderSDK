@@ -20,6 +20,8 @@ import com.pathfindersdk.general.PrerequisiteAdapter;
  */
 public class TestApp
 {
+  
+  /** The gson. */
   private static Gson gson;
   
   /**
@@ -78,6 +80,12 @@ public class TestApp
     System.out.println(book.getName() + " has been written into [" + path + "]");
   }
   
+  /**
+   * Read json.
+   *
+   * @param path the path
+   * @return the book
+   */
   private static Book readJson(String path)
   {
     Book book = null;

@@ -22,6 +22,7 @@ public abstract class Bonus
    *
    * @param bonus bonus
    * @param type type
+   * @param circumstantial the circumstantial
    */
   public Bonus(int bonus, BonusType type, Boolean circumstantial)
   {
@@ -30,5 +31,10 @@ public abstract class Bonus
     this.circumstantial = circumstantial;
   }
   
+  /**
+   * Apply.
+   *
+   * @param character the character
+   */
   public abstract void apply(Character character);
 }

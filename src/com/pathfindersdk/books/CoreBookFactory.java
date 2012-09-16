@@ -240,6 +240,9 @@ public class CoreBookFactory extends BookFactory
 
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addSkills(com.pathfindersdk.books.Book)
+   */
   @Override
   protected void addSkills(Book book)
   {

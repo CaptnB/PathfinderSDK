@@ -1,5 +1,9 @@
 com.pathfindersdk.books
+com.pathfindersdk.classes
+com.pathfindersdk.creatures
+com.pathfindersdk.creatures.characters
 com.pathfindersdk.feats
 com.pathfindersdk.general
 com.pathfindersdk.races
+com.pathfindersdk.skills
 com.pathfindersdk.test

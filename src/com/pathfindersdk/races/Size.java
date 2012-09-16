@@ -61,7 +61,7 @@ public enum Size
    * Instantiates a new size.
    *
    * @param name the name
-   * @param bonus the bonus
+   * @param modifier the modifier
    * @param space the space
    * @param reach the reach
    */

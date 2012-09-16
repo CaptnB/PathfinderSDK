@@ -11,10 +11,16 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
+/**
+ * The Class PrerequisiteAdapter.
+ */
 public class PrerequisiteAdapter implements JsonDeserializer<Prerequisite>,
     JsonSerializer<Prerequisite>
 {
 
+  /* (non-Javadoc)
+   * @see com.google.gson.JsonSerializer#serialize(java.lang.Object, java.lang.reflect.Type, com.google.gson.JsonSerializationContext)
+   */
   @Override
   public JsonElement serialize(Prerequisite prereq, Type type,
       JsonSerializationContext context)
@@ -27,6 +33,9 @@ public class PrerequisiteAdapter implements JsonDeserializer<Prerequisite>,
     return retValue;
   }
 
+  /* (non-Javadoc)
+   * @see com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement, java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
+   */
   @Override
   public Prerequisite deserialize(JsonElement element, Type type,
       JsonDeserializationContext context) throws JsonParseException

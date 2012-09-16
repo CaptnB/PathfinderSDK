@@ -11,10 +11,16 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
+/**
+ * The Class BonusAdapter.
+ */
 public class BonusAdapter implements JsonSerializer<Bonus>,
     JsonDeserializer<Bonus>
 {
 
+  /* (non-Javadoc)
+   * @see com.google.gson.JsonSerializer#serialize(java.lang.Object, java.lang.reflect.Type, com.google.gson.JsonSerializationContext)
+   */
   @Override
   public JsonElement serialize(Bonus bonus, Type type,
       JsonSerializationContext context)
@@ -27,6 +33,9 @@ public class BonusAdapter implements JsonSerializer<Bonus>,
     return retValue;
   }
 
+  /* (non-Javadoc)
+   * @see com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement, java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
+   */
   @Override
   public Bonus deserialize(JsonElement element, Type type,
       JsonDeserializationContext context) throws JsonParseException

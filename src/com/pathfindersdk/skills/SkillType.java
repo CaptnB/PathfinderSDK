@@ -1,7 +1,5 @@
 package com.pathfindersdk.skills;
 
-
-
 /**
  * The Enum Skill.
  */
