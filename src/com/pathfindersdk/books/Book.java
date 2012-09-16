@@ -4,6 +4,7 @@ import java.util.TreeMap;
 
 import com.pathfindersdk.feats.Feat;
 import com.pathfindersdk.races.Race;
+import com.pathfindersdk.skills.Skill;
 
 /**
  * The Class Book. It basically contains everything contained in a Pathfinder book. 
@@ -20,6 +21,9 @@ public class Book
   //private TreeMap<String, ClassExtension> classExtensions = new TreeMap<String, ClassExtension>();
   //private TreeMap<String, Archetype> archetypes = new TreeMap<String, Archetype>();
   //private TreeMap<String, PrestigeClass> prestigeClasses = new TreeMap<String, PrestigeClass>();
+  
+  /** Included skills in book. */
+  private TreeMap<String, Skill> skills = new TreeMap<String, Skill>();
   
   /** Included feats in book. */
   private TreeMap<String, Feat> feats = new TreeMap<String, Feat>();
@@ -54,9 +58,19 @@ public class Book
   }
   
   /**
+   * Adds a skill to the book.
+   *
+   * @param skill Skill to be added
+   */
+  public void addSkill(Skill skill)
+  {
+    skills.put(skill.getName(), skill);
+  }
+  
+  /**
    * Adds a feat to the book.
    *
-   * @param feat Feat to ba added
+   * @param feat Feat to be added
    */
   public void addFeat(Feat feat)
   {

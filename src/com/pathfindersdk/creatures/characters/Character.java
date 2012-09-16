@@ -3,12 +3,12 @@ package com.pathfindersdk.creatures.characters;
 import java.util.ArrayList;
 
 import com.pathfindersdk.classes.Class;
-import com.pathfindersdk.skills.Skill;
+import com.pathfindersdk.skills.SkillRank;
 import com.pathfindersdk.skills.SkillType;
 
 public class Character
 {
-  private ArrayList<Skill> skills = new ArrayList<Skill>();
+  private ArrayList<SkillRank> skillRanks = new ArrayList<SkillRank>();
   private ArrayList<Class> classes = new ArrayList<Class>();
   
   public Integer getLevel()
@@ -26,12 +26,12 @@ public class Character
     classes.get(classes.size() - 1).remove(this);
   }
   
-  public Skill getSkill(SkillType skillType)
+  public SkillRank getSkill(SkillType skillType)
   {
-    for(Skill skill : skills)
+    for(SkillRank skillRank : skillRanks)
     {
-      if(skill.getType() == skillType)
-        return skill;
+      if(skillRank.getSkill().getType() == skillType)
+        return skillRank;
     }
     
     return null;

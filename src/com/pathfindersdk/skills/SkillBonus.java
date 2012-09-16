@@ -2,6 +2,7 @@ package com.pathfindersdk.skills;
 
 import com.pathfindersdk.general.Bonus;
 import com.pathfindersdk.general.BonusType;
+import com.pathfindersdk.creatures.characters.Character;
 
 public class SkillBonus extends Bonus
 {
@@ -15,9 +16,7 @@ public class SkillBonus extends Bonus
   }
 
   @Override
-  public void apply(com.pathfindersdk.creatures.characters.Character character)
+  public void apply(Character character)
   {
-    Skill skill = character.getSkill(skillType);
-    //skill.addBonus(this);
   }
 }

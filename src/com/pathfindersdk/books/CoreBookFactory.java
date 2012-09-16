@@ -6,6 +6,8 @@ import com.pathfindersdk.races.Language;
 import com.pathfindersdk.races.Race;
 import com.pathfindersdk.races.Size;
 import com.pathfindersdk.races.Vision;
+import com.pathfindersdk.skills.Skill;
+import com.pathfindersdk.skills.SkillType;
 
 /**
  * A factory for creating the Core Rulebook.
@@ -228,8 +230,97 @@ public class CoreBookFactory extends BookFactory
   @Override
   protected void addSkills(Book book)
   {
-    // TODO Auto-generated method stub
-    
+    book.addSkill(new Skill(SkillType.ACROBATICS,               Ability.DEX, true, true));
+    book.addSkill(new Skill(SkillType.APPRAISE,                 Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.BLUFF,                    Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.CLIMB,                    Ability.STR, true, true));
+    book.addSkill(new Skill(SkillType.CRAFT_ALCHEMY,            Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_ARMOR,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_BASKETS,            Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_BOOKS,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_BOWS,               Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_CALLIGRAPHY,        Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_CARPENTRY,          Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_CLOTH,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_CLOTHING,           Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_GLASS,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_JEWELRY,            Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_LEATHER,            Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_LOCKS,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_PAINTINGS,          Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_POTTERY,            Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_SCULPTURES,         Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_SHIPS,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_SHOES,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_STONEMASONRY,       Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_TRAPS,              Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.CRAFT_WEAPONS,            Ability.INT, true, false));
+    book.addSkill(new Skill(SkillType.DIPLOMACY,                Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.DISABLE_DEVICE,           Ability.DEX, false, true));
+    book.addSkill(new Skill(SkillType.DISGUISE,                 Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.ESCAPE_ARTIST,            Ability.DEX, true, true));
+    book.addSkill(new Skill(SkillType.FLY,                      Ability.DEX, true, true));
+    book.addSkill(new Skill(SkillType.HANDLE_ANIMAL,            Ability.CHA, false, false));
+    book.addSkill(new Skill(SkillType.HEAL,                     Ability.WIS, true, false));
+    book.addSkill(new Skill(SkillType.INTIMIDATE,               Ability.CHA, true, true));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_ARCANA,         Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_DUNGEONNEERING, Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_ENGINEERING,    Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_GEOGRAPHY,      Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_HISTORY,        Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_LOCAL,          Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_NATURE,         Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_NOBILITY,       Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_PLANES,         Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.KNOWLEDGE_RELIGION,       Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.LINGUISTICS,              Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.PERCEPTION,               Ability.WIS, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_ACT,              Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_COMEDY,           Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_DANCE,            Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_KEYBOARD,         Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_ORATORY,          Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_PERCUSSION,       Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_SING,             Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_STRING,           Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PERFORM_WIND,             Ability.CHA, true, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_ARCHITECT,     Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_BAKER,         Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_BARRISTER,     Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_BREWER,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_BUTCHER,       Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_CLERK,         Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_COOK,          Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_COURTESAN,     Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_DRIVER,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_ENGINEER,      Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_FARMER,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_FISHERMAN,     Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_GAMBLER,       Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_HERBALIST,     Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_INNKEEPER,     Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_LIBRARIAN,     Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_MERCHANT,      Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_MIDWIFE,       Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_MILLER,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_MINER,         Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_PORTER,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_SAILOR,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_SCRIBE,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_SHEPHERD,      Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_SOLDIER,       Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_STABLE_MASTER, Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_TANNER,        Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_TRAPPER,       Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.PROFESSION_WOODCUTTER,    Ability.WIS, false, false));
+    book.addSkill(new Skill(SkillType.RIDE,                     Ability.DEX, true, true));
+    book.addSkill(new Skill(SkillType.SENSE_MOTIVE,             Ability.WIS, true, false));
+    book.addSkill(new Skill(SkillType.SLEIGHT_OF_HAND,          Ability.DEX, false, true));
+    book.addSkill(new Skill(SkillType.SPELLCRAFT,               Ability.INT, false, false));
+    book.addSkill(new Skill(SkillType.STEALTH,                  Ability.DEX, true, true));
+    book.addSkill(new Skill(SkillType.SURVIVAL,                 Ability.WIS, true, false));
+    book.addSkill(new Skill(SkillType.SWIM,                     Ability.STR, true, true));
+    book.addSkill(new Skill(SkillType.USE_MAGIC_DEVICE,         Ability.CHA, false, false));
   }
 
 }

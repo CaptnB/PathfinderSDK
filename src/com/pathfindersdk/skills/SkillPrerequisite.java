@@ -17,8 +17,8 @@ public class SkillPrerequisite extends Prerequisite
   @Override
   public Boolean check(Character character)
   {
-    Skill skill = character.getSkill(skillType);
-    if(skill != null && skill.getRanks() >= ranks)
+    SkillRank skillRank = character.getSkill(skillType);
+    if(skillRank != null && skillRank.getRanks() >= ranks)
       return true;
     else
       return false;

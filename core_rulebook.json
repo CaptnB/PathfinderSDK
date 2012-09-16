@@ -218,5 +218,553 @@
       ]
     }
   },
+  "skills": {
+    "Acrobatics": {
+      "type": "ACROBATICS",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Appraise": {
+      "type": "APPRAISE",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Bluff": {
+      "type": "BLUFF",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Climb": {
+      "type": "CLIMB",
+      "keyAbility": "STR",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Craft (alchemy)": {
+      "type": "CRAFT_ALCHEMY",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (armor)": {
+      "type": "CRAFT_ARMOR",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (baskets)": {
+      "type": "CRAFT_BASKETS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (books)": {
+      "type": "CRAFT_BOOKS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (bows)": {
+      "type": "CRAFT_BOWS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (calligraphy)": {
+      "type": "CRAFT_CALLIGRAPHY",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (carpentry)": {
+      "type": "CRAFT_CARPENTRY",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (cloth)": {
+      "type": "CRAFT_CLOTH",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (clothing)": {
+      "type": "CRAFT_CLOTHING",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (glass)": {
+      "type": "CRAFT_GLASS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (jewelry)": {
+      "type": "CRAFT_JEWELRY",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (leather)": {
+      "type": "CRAFT_LEATHER",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (locks)": {
+      "type": "CRAFT_LOCKS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (paintings)": {
+      "type": "CRAFT_PAINTINGS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (pottery)": {
+      "type": "CRAFT_POTTERY",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (sculptures)": {
+      "type": "CRAFT_SCULPTURES",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (ships)": {
+      "type": "CRAFT_SHIPS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (shoes)": {
+      "type": "CRAFT_SHOES",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (stonemasonry)": {
+      "type": "CRAFT_STONEMASONRY",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (traps)": {
+      "type": "CRAFT_TRAPS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Craft (weapons)": {
+      "type": "CRAFT_WEAPONS",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Diplomacy": {
+      "type": "DIPLOMACY",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Disable Device": {
+      "type": "DISABLE_DEVICE",
+      "keyAbility": "DEX",
+      "untrained": false,
+      "armorCheckPenalty": true
+    },
+    "Disguise": {
+      "type": "DISGUISE",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Escape Artist": {
+      "type": "ESCAPE_ARTIST",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Fly": {
+      "type": "FLY",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Handle Animal": {
+      "type": "HANDLE_ANIMAL",
+      "keyAbility": "CHA",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Heal": {
+      "type": "HEAL",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Intimidate": {
+      "type": "INTIMIDATE",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Knowledge (arcana)": {
+      "type": "KNOWLEDGE_ARCANA",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (dungeoneering)": {
+      "type": "KNOWLEDGE_DUNGEONNEERING",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (engineering)": {
+      "type": "KNOWLEDGE_ENGINEERING",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (geography)": {
+      "type": "KNOWLEDGE_GEOGRAPHY",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (history)": {
+      "type": "KNOWLEDGE_HISTORY",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (local)": {
+      "type": "KNOWLEDGE_LOCAL",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (nature)": {
+      "type": "KNOWLEDGE_NATURE",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (nobility)": {
+      "type": "KNOWLEDGE_NOBILITY",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (planes)": {
+      "type": "KNOWLEDGE_PLANES",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Knowledge (religion)": {
+      "type": "KNOWLEDGE_RELIGION",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Linguistics": {
+      "type": "LINGUISTICS",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Perception": {
+      "type": "PERCEPTION",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (act)": {
+      "type": "PERFORM_ACT",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (comedy)": {
+      "type": "PERFORM_COMEDY",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (dance)": {
+      "type": "PERFORM_DANCE",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (keyboard)": {
+      "type": "PERFORM_KEYBOARD",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (oratory)": {
+      "type": "PERFORM_ORATORY",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (percussion instruments)": {
+      "type": "PERFORM_PERCUSSION",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (sing)": {
+      "type": "PERFORM_SING",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (string instruments)": {
+      "type": "PERFORM_STRING",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Perform (wind instruments)": {
+      "type": "PERFORM_WIND",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Profession (architect)": {
+      "type": "PROFESSION_ARCHITECT",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (baker)": {
+      "type": "PROFESSION_BAKER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (barrister)": {
+      "type": "PROFESSION_BARRISTER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (brewer)": {
+      "type": "PROFESSION_BREWER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (butcher)": {
+      "type": "PROFESSION_BUTCHER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (clerk)": {
+      "type": "PROFESSION_CLERK",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (cook)": {
+      "type": "PROFESSION_COOK",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (courtesan)": {
+      "type": "PROFESSION_COURTESAN",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (driver)": {
+      "type": "PROFESSION_DRIVER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (engineer)": {
+      "type": "PROFESSION_ENGINEER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (farmer)": {
+      "type": "PROFESSION_FARMER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (fisherman)": {
+      "type": "PROFESSION_FISHERMAN",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (gambler)": {
+      "type": "PROFESSION_GAMBLER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (herbalist)": {
+      "type": "PROFESSION_HERBALIST",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (innkeeper)": {
+      "type": "PROFESSION_INNKEEPER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (librarian)": {
+      "type": "PROFESSION_LIBRARIAN",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (merchant)": {
+      "type": "PROFESSION_MERCHANT",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (midwife)": {
+      "type": "PROFESSION_MIDWIFE",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (miller)": {
+      "type": "PROFESSION_MILLER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (miner)": {
+      "type": "PROFESSION_MINER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (porter)": {
+      "type": "PROFESSION_PORTER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (sailor)": {
+      "type": "PROFESSION_SAILOR",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (scribe)": {
+      "type": "PROFESSION_SCRIBE",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (shepherd)": {
+      "type": "PROFESSION_SHEPHERD",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (soldier)": {
+      "type": "PROFESSION_SOLDIER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (stable master)": {
+      "type": "PROFESSION_STABLE_MASTER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (tanner)": {
+      "type": "PROFESSION_TANNER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (trapper)": {
+      "type": "PROFESSION_TRAPPER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Profession (woodcutter)": {
+      "type": "PROFESSION_WOODCUTTER",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Ride": {
+      "type": "RIDE",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Sense Motive": {
+      "type": "SENSE_MOTIVE",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Sleight of Hand": {
+      "type": "SLEIGHT_OF_HAND",
+      "keyAbility": "DEX",
+      "untrained": false,
+      "armorCheckPenalty": true
+    },
+    "Spellcraft": {
+      "type": "SPELLCRAFT",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false
+    },
+    "Stealth": {
+      "type": "STEALTH",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Survival": {
+      "type": "SURVIVAL",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false
+    },
+    "Swim": {
+      "type": "SWIM",
+      "keyAbility": "STR",
+      "untrained": true,
+      "armorCheckPenalty": true
+    },
+    "Use Magic Device": {
+      "type": "USE_MAGIC_DEVICE",
+      "keyAbility": "CHA",
+      "untrained": false,
+      "armorCheckPenalty": false
+    }
+  },
   "feats": {}
 }
