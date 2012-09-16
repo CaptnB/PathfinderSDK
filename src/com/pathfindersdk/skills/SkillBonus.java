@@ -9,7 +9,7 @@ public class SkillBonus extends Bonus
   private SkillType skillType;
   
   
-  SkillBonus(int bonus, BonusType type, SkillType skillType, Boolean circumstantial)
+  public SkillBonus(int bonus, BonusType type, SkillType skillType, Boolean circumstantial)
   {
     super(bonus, type, circumstantial);
     this.skillType = skillType;

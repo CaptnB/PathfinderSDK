@@ -2,11 +2,17 @@ package com.pathfindersdk.books;
 
 import com.pathfindersdk.creatures.Ability;
 import com.pathfindersdk.creatures.AbilityScore;
+import com.pathfindersdk.feats.Feat;
+import com.pathfindersdk.feats.FeatPrerequisite;
+import com.pathfindersdk.feats.FeatType;
+import com.pathfindersdk.general.BonusType;
 import com.pathfindersdk.races.Language;
 import com.pathfindersdk.races.Race;
 import com.pathfindersdk.races.Size;
 import com.pathfindersdk.races.Vision;
 import com.pathfindersdk.skills.Skill;
+import com.pathfindersdk.skills.SkillBonus;
+import com.pathfindersdk.skills.SkillPrerequisite;
 import com.pathfindersdk.skills.SkillType;
 
 /**
@@ -183,8 +189,15 @@ public class CoreBookFactory extends BookFactory
   @Override
   protected void addFeats(Book book)
   {
-    // TODO Auto-generated method stub
+    Feat testFeat1 = new Feat("Test 1 Feat", FeatType.GRIT);
+    testFeat1.addBenefits(new SkillBonus(2, BonusType.LUCK, SkillType.ACROBATICS, false));
+    book.addFeat(testFeat1);
 
+    Feat testFeat2 = new Feat("Test 2 Feat", FeatType.UNTYPED);
+    testFeat2.addBenefits(new SkillBonus(4, BonusType.UNTYPED, SkillType.CLIMB, true));
+    testFeat2.addPrerequisite(new SkillPrerequisite(SkillType.BLUFF, 2));
+    testFeat2.addPrerequisite(new FeatPrerequisite("Test 1 Feat"));
+    book.addFeat(testFeat2);
   }
 
   /* (non-Javadoc)

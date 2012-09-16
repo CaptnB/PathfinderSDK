@@ -1,5 +1,7 @@
 package com.pathfindersdk.test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -8,12 +10,17 @@ import com.google.gson.GsonBuilder;
 import com.pathfindersdk.books.Book;
 import com.pathfindersdk.books.BookFactory;
 import com.pathfindersdk.books.CoreBookFactory;
+import com.pathfindersdk.general.Bonus;
+import com.pathfindersdk.general.BonusAdapter;
+import com.pathfindersdk.general.Prerequisite;
+import com.pathfindersdk.general.PrerequisiteAdapter;
 
 /**
  * The Class TestApp.
  */
 public class TestApp
 {
+  private static Gson gson;
   
   /**
    * The main method.
@@ -22,8 +29,16 @@ public class TestApp
    */
   public static void main (String[] args)
   {
+    // Register types with polymorphism and set pretty print
+    GsonBuilder builder = new GsonBuilder();
+    builder.registerTypeAdapter(Bonus.class, new BonusAdapter());
+    builder.registerTypeAdapter(Prerequisite.class, new PrerequisiteAdapter());
+    builder.setPrettyPrinting();
+    gson = builder.create();
+    
     buildCoreBook("core_rulebook.json");
   }
+
   
   /**
    * Builds the core book.
@@ -36,6 +51,9 @@ public class TestApp
     Book coreBook = factory.createBook("Core Rulebook");
     
     writeJson(coreBook, "core_rulebook.json");
+    
+    //Book testBook = readJson("core_rulebook.json");
+    //writeJson(testBook, "test.json");
   }
   
   /**
@@ -46,8 +64,6 @@ public class TestApp
    */
   private static void writeJson(Book book, String path)
   {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    
     try 
     {
       FileWriter writer = new FileWriter(path);
@@ -60,6 +76,27 @@ public class TestApp
     }
     
     System.out.println(book.getName() + " has been written into [" + path + "]");
+  }
+  
+  private static Book readJson(String path)
+  {
+    Book book = null;
+    
+    try {
+   
+      BufferedReader br = new BufferedReader(
+        new FileReader(path));
+   
+      //convert the json string back to object
+      book = gson.fromJson(br, Book.class);
+   
+      System.out.println(book.getName() + " has been read from [" + path + "]");
+   
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    
+    return book;
   }
 
 }
