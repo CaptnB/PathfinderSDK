@@ -21,7 +21,7 @@ public class Feat
   // cannot resolve the type of each object when reading from it. That's 
   
   /** Feat's prerequisites. */
-  private HashSet<Prerequisite> prereqs = new HashSet<Prerequisite>();
+  private HashSet<Prerequisite> prerequisites = new HashSet<Prerequisite>();
   
   /** Feat's benefits. */
   private HashSet<Bonus> benefits = new HashSet<Bonus>();
@@ -51,7 +51,7 @@ public class Feat
   
   public HashSet<Prerequisite> getPrerequisites()
   {
-    return prereqs;
+    return prerequisites;
   }
   
   public HashSet<Bonus> getBenefits()

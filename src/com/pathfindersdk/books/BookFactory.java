@@ -23,6 +23,7 @@ public abstract class BookFactory
     addArchetypes(book);
     addPrestigeClasses(book);
     addSkills(book);
+    addSkillExpansions(book);
     addFeats(book);
     addEquipment(book);
     addActions(book);
@@ -73,6 +74,13 @@ public abstract class BookFactory
    * @param book the book
    */
   protected abstract void addSkills(Book book);
+  
+  /**
+   * Adds all the skill expansions included in the book.
+   *
+   * @param book the book
+   */
+  protected abstract void addSkillExpansions(Book book);
   
   /**
    * Adds all the feats included in the book.

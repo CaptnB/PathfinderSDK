@@ -61,5 +61,56 @@ public class Book
   {
     return feats;
   }
+  
+  /**
+   * Gets the race.
+   *
+   * @param name the name
+   * @return the race
+   */
+  public Race getRace(String name)
+  {
+    for(Race race : races)
+    {
+      if(race.getName().compareTo(name) == 0)
+        return race;
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Gets the skill.
+   *
+   * @param name the name
+   * @return the skill
+   */
+  public Skill getSkill(String name)
+  {
+    for(Skill skill : skills)
+    {
+      if(skill.getName().compareTo(name) == 0)
+        return skill;
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Gets the feat.
+   *
+   * @param name the name
+   * @return the feat
+   */
+  public Feat getFeat(String name)
+  {
+    for(Feat feat : feats)
+    {
+      if(feat.getName().compareTo(name) == 0)
+        return feat;
+    }
+    
+    return null;
+  }
 
 }

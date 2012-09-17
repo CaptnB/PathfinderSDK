@@ -58,16 +58,31 @@ public class Skill
     return keyAbility;
   }
   
+  /**
+   * Checks if is un trained.
+   *
+   * @return the boolean
+   */
   public Boolean isUnTrained()
   {
     return untrained;
   }
   
+  /**
+   * Checks if is armor check penalty.
+   *
+   * @return the boolean
+   */
   public Boolean isArmorCheckPenalty()
   {
     return armorCheckPenalty;
   }
   
+  /**
+   * Checks if is expandable.
+   *
+   * @return the boolean
+   */
   public Boolean isExpandable()
   {
     if(expansions.size() > 0)

@@ -28,6 +28,9 @@ public abstract class Creature
     return classes.size();
   }
   
+  /**
+   * Instantiates a new creature.
+   */
   public Creature()
   {
     abilityScores.add(new AbilityScore(Ability.STR, 10));
@@ -58,6 +61,12 @@ public abstract class Creature
     return classes;
   }
   
+  /**
+   * Gets the ability score.
+   *
+   * @param ability the ability
+   * @return the ability score
+   */
   public AbilityScore getAbilityScore(Ability ability)
   {
     for(AbilityScore abilityScore : abilityScores)
@@ -72,7 +81,7 @@ public abstract class Creature
   /**
    * Gets the skill.
    *
-   * @param skillType the skill type
+   * @param skillName the skill name
    * @return the skill
    */
   public SkillRank getSkill(String skillName)

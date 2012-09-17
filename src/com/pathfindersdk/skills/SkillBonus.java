@@ -19,7 +19,7 @@ public class SkillBonus extends Bonus
    *
    * @param bonus the bonus
    * @param type the type
-   * @param skillType the skill type
+   * @param skillName the skill name
    * @param circumstantial the circumstantial
    */
   public SkillBonus(int bonus, BonusType type, String skillName, Boolean circumstantial)
@@ -41,6 +41,9 @@ public class SkillBonus extends Bonus
     }
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.general.Bonus#remove(com.pathfindersdk.creatures.Creature)
+   */
   @Override
   public void remove(Creature creature)
   {

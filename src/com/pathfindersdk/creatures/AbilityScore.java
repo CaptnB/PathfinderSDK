@@ -14,6 +14,7 @@ public class AbilityScore
   /** Ability score. */
   private Integer score;
   
+  /** The bonuses. */
   private HashSet<AbilityBonus> bonuses = new HashSet<AbilityBonus>();
   
   /**

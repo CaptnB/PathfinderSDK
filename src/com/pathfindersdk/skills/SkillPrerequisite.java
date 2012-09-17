@@ -18,7 +18,7 @@ public class SkillPrerequisite extends Prerequisite
   /**
    * Instantiates a new skill prerequisite.
    *
-   * @param skillType the skill type
+   * @param skillName the skill name
    * @param ranks the ranks
    */
   public SkillPrerequisite(String skillName, int ranks)

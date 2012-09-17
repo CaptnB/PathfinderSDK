@@ -23,7 +23,7 @@ public class SkillRank
   /**
    * Instantiates a new skill rank.
    *
-   * @param skill the skill
+   * @param skillType the skill type
    */
   public SkillRank(Skill skillType)
   {
@@ -37,6 +37,11 @@ public class SkillRank
     return skillType;
   }
   
+  /**
+   * Checks if is class skill.
+   *
+   * @return the boolean
+   */
   public Boolean isClassSkill()
   {
     return classSkill;

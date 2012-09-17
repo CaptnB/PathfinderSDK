@@ -282,4 +282,86 @@ public class CoreBookFactory extends BookFactory
     book.getSkills().add(new Skill("Use Magic Device", Ability.CHA, false, false));
   }
 
+  /* (non-Javadoc)
+   * @see com.pathfindersdk.books.BookFactory#addSkillExpansions(com.pathfindersdk.books.Book)
+   */
+  @Override
+  protected void addSkillExpansions(Book book)
+  {
+    Skill craft = book.getSkill("Craft");
+    if(craft != null)
+    {
+      craft.getExpansions().add("alchemy");
+      craft.getExpansions().add("armor");
+      craft.getExpansions().add("baskets");
+      craft.getExpansions().add("books");
+      craft.getExpansions().add("bows");
+      craft.getExpansions().add("calligraphy");
+      craft.getExpansions().add("carpentry");
+      craft.getExpansions().add("cloth");
+      craft.getExpansions().add("clothing");
+      craft.getExpansions().add("glass");
+      craft.getExpansions().add("jewelry");
+      craft.getExpansions().add("leather");
+      craft.getExpansions().add("locks");
+      craft.getExpansions().add("paintings");
+      craft.getExpansions().add("pottery");
+      craft.getExpansions().add("sculptures");
+      craft.getExpansions().add("ships");
+      craft.getExpansions().add("shoes");
+      craft.getExpansions().add("stonemasonry");
+      craft.getExpansions().add("traps");
+      craft.getExpansions().add("weapons");
+    }
+    
+    Skill perform = book.getSkill("Perform");
+    if(perform != null)
+    {
+      perform.getExpansions().add("act");
+      perform.getExpansions().add("comedy");
+      perform.getExpansions().add("dance");
+      perform.getExpansions().add("keyboard");
+      perform.getExpansions().add("oratory");
+      perform.getExpansions().add("percussion instruments");
+      perform.getExpansions().add("string instruments");
+      perform.getExpansions().add("wind instruments");
+      perform.getExpansions().add("sing");
+    }
+
+    Skill profession = book.getSkill("Profession");
+    if(profession != null)
+    {
+      profession.getExpansions().add("architect");
+      profession.getExpansions().add("baker");
+      profession.getExpansions().add("barrister");
+      profession.getExpansions().add("brewer");
+      profession.getExpansions().add("butcher");
+      profession.getExpansions().add("clerk");
+      profession.getExpansions().add("cook");
+      profession.getExpansions().add("courtesan");
+      profession.getExpansions().add("driver");
+      profession.getExpansions().add("engineer");
+      profession.getExpansions().add("farmer");
+      profession.getExpansions().add("fisherman");
+      profession.getExpansions().add("gambler");
+      profession.getExpansions().add("gardener");
+      profession.getExpansions().add("herbalist");
+      profession.getExpansions().add("innkeeper");
+      profession.getExpansions().add("librarian");
+      profession.getExpansions().add("merchant");
+      profession.getExpansions().add("midwife");
+      profession.getExpansions().add("miller");
+      profession.getExpansions().add("miner");
+      profession.getExpansions().add("porter");
+      profession.getExpansions().add("sailor");
+      profession.getExpansions().add("scribe");
+      profession.getExpansions().add("shepherd");
+      profession.getExpansions().add("stable master");
+      profession.getExpansions().add("soldier");
+      profession.getExpansions().add("tanner");
+      profession.getExpansions().add("trapper");
+      profession.getExpansions().add("woodcutter");
+    }
+  }
+
 }
