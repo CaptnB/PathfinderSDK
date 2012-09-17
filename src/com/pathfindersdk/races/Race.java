@@ -1,8 +1,8 @@
 package com.pathfindersdk.races;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
-import com.pathfindersdk.creatures.AbilityScore;
+import com.pathfindersdk.creatures.AbilityBonus;
 
 /**
  * The Class Race.
@@ -14,7 +14,7 @@ public class Race
   private String name;
   
   /** Racial ability modifiers. */
-  private ArrayList<AbilityScore> abilityModifiers = new ArrayList<AbilityScore>();
+  private HashSet<AbilityBonus> abilityModifiers = new HashSet<AbilityBonus>();
   
   /** Race size. */
   private Size size;
@@ -23,10 +23,10 @@ public class Race
   private Vision vision;
   
   /** Racial base languages. */
-  private ArrayList<Language> baseLanguages = new ArrayList<Language>();
+  private HashSet<Language> baseLanguages = new HashSet<Language>();
   
   /** Racial optional languages. */
-  private ArrayList<Language> optionalLanguages = new ArrayList<Language>();
+  private HashSet<Language> optionalLanguages = new HashSet<Language>();
   
   /**
    * Instantiates a new race.
@@ -47,7 +47,7 @@ public class Race
     return name;
   }
   
-  public ArrayList<AbilityScore> getAbilityModifiers()
+  public HashSet<AbilityBonus> getAbilityModifiers()
   {
     return abilityModifiers;
   }
@@ -62,44 +62,14 @@ public class Race
     return vision;
   }
   
-  public ArrayList<Language> getBaseLanguages()
+  public HashSet<Language> getBaseLanguages()
   {
     return baseLanguages;
   }
   
-  public ArrayList<Language> getOptionalLanguages()
+  public HashSet<Language> getOptionalLanguages()
   {
     return optionalLanguages;
   }
   
-  /**
-   * Adds a racial ability modifier.
-   *
-   * @param abilityModifier racial ability modifier
-   */
-  public void addAbilityModifier(AbilityScore abilityModifier)
-  {
-    abilityModifiers.add(abilityModifier);
-  }
-  
-  /**
-   * Adds a base language.
-   *
-   * @param language base language
-   */
-  public void addBaseLanguage(Language language)
-  {
-    baseLanguages.add(language);
-  }
-  
-  /**
-   * Adds an optional language.
-   *
-   * @param language optional language
-   */
-  public void addOptionalLanguage(Language language)
-  {
-    optionalLanguages.add(language);
-  }
-
 }

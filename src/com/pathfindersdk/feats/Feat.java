@@ -1,6 +1,6 @@
 package com.pathfindersdk.feats;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 import com.pathfindersdk.general.Bonus;
 import com.pathfindersdk.general.Prerequisite;
@@ -21,10 +21,10 @@ public class Feat
   // cannot resolve the type of each object when reading from it. That's 
   
   /** Feat's prerequisites. */
-  private ArrayList<Prerequisite> prereqs = new ArrayList<Prerequisite>();
+  private HashSet<Prerequisite> prereqs = new HashSet<Prerequisite>();
   
   /** Feat's benefits. */
-  private ArrayList<Bonus> benefits = new ArrayList<Bonus>();
+  private HashSet<Bonus> benefits = new HashSet<Bonus>();
   
   /**
    * Instantiates a new feat.
@@ -49,23 +49,13 @@ public class Feat
     return type;
   }
   
-  /**
-   * Adds the prerequisite.
-   *
-   * @param prereq the prereq
-   */
-  public void addPrerequisite(Prerequisite prereq)
+  public HashSet<Prerequisite> getPrerequisites()
   {
-    prereqs.add(prereq);    
+    return prereqs;
   }
   
-  /**
-   * Adds the benefits.
-   *
-   * @param benefit the benefit
-   */
-  public void addBenefits(Bonus benefit)
+  public HashSet<Bonus> getBenefits()
   {
-    benefits.add(benefit);    
+    return benefits;    
   }
 }

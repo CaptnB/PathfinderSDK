@@ -1,6 +1,6 @@
 package com.pathfindersdk.general;
 
-import com.pathfindersdk.creatures.characters.Character;
+import com.pathfindersdk.creatures.Creature;
 
 /**
  * The Class Prerequisite.
@@ -11,8 +11,8 @@ public abstract class Prerequisite
   /**
    * Checks if prerequisite is filled.
    *
-   * @param character Character needing to fill the prerequisite
+   * @param creature Creature needing to fill the prerequisite
    * @return the boolean
    */
-  public abstract Boolean check(Character character);
+  public abstract Boolean check(Creature creature);
 }

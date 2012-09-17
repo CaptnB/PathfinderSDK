@@ -1,6 +1,6 @@
 package com.pathfindersdk.books;
 
-import java.util.TreeMap;
+import java.util.HashSet;
 
 import com.pathfindersdk.feats.Feat;
 import com.pathfindersdk.races.Race;
@@ -16,17 +16,17 @@ public class Book
   private String name;
   
   /** Included races in book. */
-  private TreeMap<String, Race> races = new TreeMap<String, Race>();
+  private HashSet<Race> races = new HashSet<Race>();
   //private TreeMap<String, Class> classes = new TreeMap<String, Class>();
   //private TreeMap<String, ClassExtension> classExtensions = new TreeMap<String, ClassExtension>();
   //private TreeMap<String, Archetype> archetypes = new TreeMap<String, Archetype>();
   //private TreeMap<String, PrestigeClass> prestigeClasses = new TreeMap<String, PrestigeClass>();
   
   /** Included skills in book. */
-  private TreeMap<String, Skill> skills = new TreeMap<String, Skill>();
+  private HashSet<Skill> skills = new HashSet<Skill>();
   
   /** Included feats in book. */
-  private TreeMap<String, Feat> feats = new TreeMap<String, Feat>();
+  private HashSet<Feat> feats = new HashSet<Feat>();
   //private TreeMap<String, Equipment> equipment = new TreeMap<String, Equipment>();
   //private TreeMap<String, Action> actions = new TreeMap<String, Action>();
   //private TreeMap<String, Spell> spells = new TreeMap<String, Spell>();
@@ -47,34 +47,19 @@ public class Book
     return name;
   }
   
-  /**
-   * Adds a race to the book.
-   *
-   * @param race Race to be added
-   */
-  public void addRace(Race race)
+  public HashSet<Race> getRaces()
   {
-    races.put(race.getName(), race);
+    return races;
   }
   
-  /**
-   * Adds a skill to the book.
-   *
-   * @param skill Skill to be added
-   */
-  public void addSkill(Skill skill)
+  public HashSet<Skill> getSkills()
   {
-    skills.put(skill.getName(), skill);
+    return skills;
   }
   
-  /**
-   * Adds a feat to the book.
-   *
-   * @param feat Feat to be added
-   */
-  public void addFeat(Feat feat)
+  public HashSet<Feat> getFeats()
   {
-    feats.put(feat.getName(), feat);
+    return feats;
   }
 
 }

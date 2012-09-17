@@ -31,13 +31,6 @@ public class TestApp
    */
   public static void main (String[] args)
   {
-    // Register types with polymorphism and set pretty print
-    GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(Bonus.class, new BonusAdapter());
-    builder.registerTypeAdapter(Prerequisite.class, new PrerequisiteAdapter());
-    builder.setPrettyPrinting();
-    gson = builder.create();
-    
     buildCoreBook("core_rulebook.json");
   }
 

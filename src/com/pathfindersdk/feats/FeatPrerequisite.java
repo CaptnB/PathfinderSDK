@@ -1,6 +1,6 @@
 package com.pathfindersdk.feats;
 
-import com.pathfindersdk.creatures.characters.Character;
+import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.general.Prerequisite;
 
 /**
@@ -26,9 +26,9 @@ public class FeatPrerequisite extends Prerequisite
    * @see com.pathfindersdk.general.Prerequisite#check(com.pathfindersdk.creatures.characters.Character)
    */
   @Override
-  public Boolean check(Character character)
+  public Boolean check(Creature creature)
   {
-    Feat feat = character.getFeat(featName);
+    Feat feat = creature.getFeat(featName);
     if(feat == null)
       return false;
     else

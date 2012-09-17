@@ -1,6 +1,6 @@
 package com.pathfindersdk.classes;
 
-import com.pathfindersdk.creatures.characters.Character;
+import com.pathfindersdk.creatures.Creature;
 
 /**
  * The Class Class.
@@ -13,7 +13,7 @@ public class Class
    *
    * @param character the character
    */
-  public void add(Character character)
+  public void add(Creature character)
   {
     
   }
@@ -23,7 +23,7 @@ public class Class
    *
    * @param character the character
    */
-  public void remove(Character character)
+  public void remove(Creature character)
   {
     
   }

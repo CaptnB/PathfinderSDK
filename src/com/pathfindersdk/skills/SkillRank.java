@@ -1,6 +1,6 @@
 package com.pathfindersdk.skills;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * The Class SkillRank.
@@ -9,7 +9,7 @@ public class SkillRank
 {
   
   /** The skill. */
-  private Skill skill;
+  private Skill skillType;
   
   /** The class skill. */
   private Boolean classSkill;
@@ -18,30 +18,25 @@ public class SkillRank
   private Integer ranks;
   
   /** The bonuses. */
-  private ArrayList<SkillBonus> bonuses = new ArrayList<SkillBonus>();
+  private HashSet<SkillBonus> bonuses = new HashSet<SkillBonus>();
   
   /**
    * Instantiates a new skill rank.
    *
    * @param skill the skill
    */
-  public SkillRank(Skill skill)
+  public SkillRank(Skill skillType)
   {
-    this.skill = skill;
+    this.skillType = skillType;
     this.classSkill = false;
     this.ranks = 0;
   }
   
-  public Skill getSkill()
+  public Skill getSkillType()
   {
-    return skill;
+    return skillType;
   }
   
-  /**
-   * Checks if is class skill.
-   *
-   * @return the boolean
-   */
   public Boolean isClassSkill()
   {
     return classSkill;
@@ -81,13 +76,8 @@ public class SkillRank
     setRanks(ranks - 1);
   }
 
-  /**
-   * Adds the bonus.
-   *
-   * @param bonus the bonus
-   */
-  public void addBonus(SkillBonus bonus)
+  public HashSet<SkillBonus> getBonuses()
   {
-    bonuses.add(bonus);
+    return bonuses;
   }
 }

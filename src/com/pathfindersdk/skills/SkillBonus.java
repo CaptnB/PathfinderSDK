@@ -2,7 +2,7 @@ package com.pathfindersdk.skills;
 
 import com.pathfindersdk.general.Bonus;
 import com.pathfindersdk.general.BonusType;
-import com.pathfindersdk.creatures.characters.Character;
+import com.pathfindersdk.creatures.Creature;
 
 /**
  * The Class SkillBonus.
@@ -11,7 +11,7 @@ public class SkillBonus extends Bonus
 {
   
   /** The skill type. */
-  private SkillType skillType;
+  private String skillName;
   
   
   /**
@@ -22,17 +22,29 @@ public class SkillBonus extends Bonus
    * @param skillType the skill type
    * @param circumstantial the circumstantial
    */
-  public SkillBonus(int bonus, BonusType type, SkillType skillType, Boolean circumstantial)
+  public SkillBonus(int bonus, BonusType type, String skillName, Boolean circumstantial)
   {
     super(bonus, type, circumstantial);
-    this.skillType = skillType;
+    this.skillName = skillName;
   }
 
   /* (non-Javadoc)
    * @see com.pathfindersdk.general.Bonus#apply(com.pathfindersdk.creatures.characters.Character)
    */
   @Override
-  public void apply(Character character)
+  public void apply(Creature creature)
   {
+    SkillRank skill = creature.getSkill(skillName);
+    if(skill != null)
+    {
+      skill.getBonuses().add(this);
+    }
+  }
+
+  @Override
+  public void remove(Creature creature)
+  {
+    // TODO Auto-generated method stub
+    
   }
 }

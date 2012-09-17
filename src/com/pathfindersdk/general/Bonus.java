@@ -1,6 +1,6 @@
 package com.pathfindersdk.general;
 
-import com.pathfindersdk.creatures.characters.Character;
+import com.pathfindersdk.creatures.Creature;
 
 /**
  * The Class Bonus. Base class for all typed bonuses.
@@ -32,9 +32,16 @@ public abstract class Bonus
   }
   
   /**
-   * Apply.
+   * Apply bonus.
    *
-   * @param character the character
+   * @param creature creature receiving the bonus
    */
-  public abstract void apply(Character character);
+  public abstract void apply(Creature creature);
+  
+  /**
+   * Remove bonus.
+   *
+   * @param creature creature losing the bonus
+   */
+  public abstract void remove(Creature creature);
 }

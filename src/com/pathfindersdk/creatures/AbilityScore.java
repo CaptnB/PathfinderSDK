@@ -1,16 +1,20 @@
 package com.pathfindersdk.creatures;
 
+import java.util.HashSet;
+
 /**
  * The Class AbilityScore.
  */
 public class AbilityScore
 {
   
+  /** Ability type. */
+  private Ability ability;
+  
   /** Ability score. */
   private Integer score;
   
-  /** Ability type. */
-  private Ability ability;
+  private HashSet<AbilityBonus> bonuses = new HashSet<AbilityBonus>();
   
   /**
    * Instantiates a new ability score.
@@ -18,10 +22,10 @@ public class AbilityScore
    * @param score Score
    * @param ability Ability
    */
-  public AbilityScore(int score, Ability ability)
+  public AbilityScore(Ability ability, int score)
   {
-    this.score = score;
     this.ability = ability;
+    this.score = score;
   }
   
   public Ability getAbility()
@@ -33,15 +37,26 @@ public class AbilityScore
   {
     return score;
   }
+  
+  public HashSet<AbilityBonus> getBonuses()
+  {
+    return bonuses;
+  }
 
   /**
-   * Adds (or substract) to the score.
-   *
-   * @param add the add
+   * Increments the score.
    */
-  public void add(int add)
+  public void increment()
   {
-    score += add;
+    score += 1;
+  }
+
+  /**
+   * Decrements the score.
+   */
+  public void decrement()
+  {
+    score -= 1;
   }
 
   /**

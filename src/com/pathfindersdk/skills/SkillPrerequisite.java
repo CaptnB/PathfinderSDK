@@ -1,7 +1,7 @@
 package com.pathfindersdk.skills;
 
 import com.pathfindersdk.general.Prerequisite;
-import com.pathfindersdk.creatures.characters.Character;
+import com.pathfindersdk.creatures.Creature;
 
 /**
  * The Class SkillPrerequisite.
@@ -10,7 +10,7 @@ public class SkillPrerequisite extends Prerequisite
 {
   
   /** The skill type. */
-  private SkillType skillType;
+  private String skillName;
   
   /** The ranks. */
   private Integer ranks;
@@ -21,9 +21,9 @@ public class SkillPrerequisite extends Prerequisite
    * @param skillType the skill type
    * @param ranks the ranks
    */
-  public SkillPrerequisite(SkillType skillType, int ranks)
+  public SkillPrerequisite(String skillName, int ranks)
   {
-    this.skillType = skillType;
+    this.skillName = skillName;
     this.ranks = ranks;
   }
 
@@ -31,10 +31,10 @@ public class SkillPrerequisite extends Prerequisite
    * @see com.pathfindersdk.general.Prerequisite#check(com.pathfindersdk.creatures.characters.Character)
    */
   @Override
-  public Boolean check(Character character)
+  public Boolean check(Creature creature)
   {
-    SkillRank skillRank = character.getSkill(skillType);
-    if(skillRank != null && skillRank.getRanks() >= ranks)
+    SkillRank skill = creature.getSkill(skillName);
+    if(skill != null && skill.getRanks() >= ranks)
       return true;
     else
       return false;
