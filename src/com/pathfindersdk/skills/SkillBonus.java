@@ -22,9 +22,9 @@ public class SkillBonus extends Bonus
    * @param skillName the skill name
    * @param circumstantial the circumstantial
    */
-  public SkillBonus(int bonus, BonusType type, String skillName, Boolean circumstantial)
+  public SkillBonus(int bonus, BonusType type, String skillName)
   {
-    super(bonus, type, circumstantial);
+    super(bonus, type);
     this.skillName = skillName;
   }
 

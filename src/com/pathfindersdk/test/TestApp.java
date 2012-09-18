@@ -1,28 +1,15 @@
 package com.pathfindersdk.test;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.pathfindersdk.books.Book;
 import com.pathfindersdk.books.BookFactory;
-import com.pathfindersdk.books.CoreBookFactory;
-import com.pathfindersdk.general.Bonus;
-import com.pathfindersdk.general.BonusAdapter;
-import com.pathfindersdk.general.Prerequisite;
-import com.pathfindersdk.general.PrerequisiteAdapter;
+import com.pathfindersdk.books.BookJson;
+import com.pathfindersdk.books.CoreRulebookFactory;
 
 /**
  * The Class TestApp.
  */
 public class TestApp
 {
-  
-  /** The gson. */
-  private static Gson gson;
   
   /**
    * The main method.
@@ -31,79 +18,39 @@ public class TestApp
    */
   public static void main (String[] args)
   {
-    GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(Bonus.class, new BonusAdapter());
-    builder.registerTypeAdapter(Prerequisite.class, new PrerequisiteAdapter());
-    builder.setPrettyPrinting();
-    gson = builder.create();
-    
-    buildCoreBook("core_rulebook.json");
-  }
+    BookJson json = new BookJson();
 
-  
-  /**
-   * Builds the core book.
-   *
-   * @param path book file path
-   */
-  private static void buildCoreBook(String path)
-  {
-    BookFactory factory = new CoreBookFactory();
+    BookFactory factory = new CoreRulebookFactory();
     Book coreBook = factory.createBook("Core Rulebook");
+    json.write(coreBook, "core_rulebook.json");
+
+    /*factory = new AdvancedPlayersGuideFactory();
+    Book apgBook = factory.createBook("Advanced Player's Guide");
+    json.write(apgBook, "advanced_players_guide.json");*/
     
-    writeJson(coreBook, "core_rulebook.json");
+    /*factory = new BestiaryFactory();
+    Book bestiaryBook = factory.createBook("Bestiary");
+    json.write(bestiaryBook, "bestiary.json");*/
     
-    //Book testBook = readJson("core_rulebook.json");
-    //writeJson(testBook, "test.json");
-  }
-  
-  /**
-   * Writes the book using json.
-   *
-   * @param book the book
-   * @param path the path
-   */
-  private static void writeJson(Book book, String path)
-  {
-    try 
-    {
-      FileWriter writer = new FileWriter(path);
-      writer.write(gson.toJson(book));
-      writer.close();
-    } 
-    catch (IOException e)
-    {
-      e.printStackTrace();
-    }
+    /*factory = new Bestiary2Factory();
+    Book bestiary2Book = factory.createBook("Bestiary 2");
+    json.write(bestiary2Book, "bestiary_2.json");*/
     
-    System.out.println(book.getName() + " has been written into [" + path + "]");
-  }
-  
-  /**
-   * Read json.
-   *
-   * @param path the path
-   * @return the book
-   */
-  private static Book readJson(String path)
-  {
-    Book book = null;
+    /*factory = new Bestiary3Factory();
+    Book bestiary3Book = factory.createBook("Bestiary 3");
+    json.write(bestiary3Book, "bestiary_3.json");*/
     
-    try {
-   
-      BufferedReader br = new BufferedReader(
-        new FileReader(path));
-   
-      //convert the json string back to object
-      book = gson.fromJson(br, Book.class);
-   
-      System.out.println(book.getName() + " has been read from [" + path + "]");
-   
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    /*factory = new AdvancedRaceGuideFactory();
+    Book argBook = factory.createBook("Advanced Race Guide");
+    json.write(argBook, "advanced_race_guide.json");*/
     
-    return book;
+    /*factory = new UltimateCombatFactory();
+    Book ucBook = factory.createBook("Ultimate Combat");
+    json.write(ucBook, "ultimate_combat.json");*/
+    
+    /*factory = new UltimateMagicFactory();
+    Book umBook = factory.createBook("Ultimate Magic");
+    json.write(umBook, "ultimate_magic.json");*/
   }
 
 }

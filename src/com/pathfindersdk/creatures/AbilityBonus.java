@@ -20,9 +20,9 @@ public class AbilityBonus extends Bonus
    * @param ability the ability
    * @param circumstantial the circumstantial
    */
-  public AbilityBonus(Integer bonus, BonusType type, Ability ability, Boolean circumstantial)
+  public AbilityBonus(Integer bonus, BonusType type, Ability ability)
   {
-    super(bonus, type, circumstantial);
+    super(bonus, type);
     this.ability = ability;
   }
 

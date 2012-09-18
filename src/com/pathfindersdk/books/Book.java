@@ -2,8 +2,8 @@ package com.pathfindersdk.books;
 
 import java.util.HashSet;
 
+import com.pathfindersdk.creatures.characters.Race;
 import com.pathfindersdk.feats.Feat;
-import com.pathfindersdk.races.Race;
 import com.pathfindersdk.skills.Skill;
 
 /**
@@ -111,6 +111,11 @@ public class Book
     }
     
     return null;
+  }
+  
+  public void updateIndexes()
+  {
+    // TODO: Implement this method
   }
 
 }

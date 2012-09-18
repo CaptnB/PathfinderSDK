@@ -17,6 +17,9 @@ public abstract class Bonus
   /** Bonus circumstantial. */
   protected Boolean circumstantial;   // Not added to total
   
+  /** Bonus circumstance. */
+  protected String circumstance;
+  
   /**
    * Instantiates a new bonus.
    *
@@ -24,11 +27,17 @@ public abstract class Bonus
    * @param type type
    * @param circumstantial the circumstantial
    */
-  public Bonus(int bonus, BonusType type, Boolean circumstantial)
+  public Bonus(int bonus, BonusType type)
   {
     this.bonus = bonus;
     this.type = type;
-    this.circumstantial = circumstantial;
+    this.circumstantial = false;
+  }
+  
+  public void setCircumstance(String circumstance)
+  {
+    this.circumstantial = true;
+    this.circumstance = circumstance;
   }
   
   /**

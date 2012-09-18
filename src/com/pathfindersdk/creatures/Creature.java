@@ -11,6 +11,12 @@ import com.pathfindersdk.skills.SkillRank;
  */
 public abstract class Creature
 {
+  /** The name */
+  private String name;
+  
+  /** The alignment. */
+  private Alignment alignment;
+  
   /** The ability scores. */
   private HashSet<AbilityScore> abilityScores = new HashSet<AbilityScore>();
   
@@ -31,8 +37,11 @@ public abstract class Creature
   /**
    * Instantiates a new creature.
    */
-  public Creature()
+  public Creature(String name, Alignment alignment)
   {
+    this.name = name;
+    this.alignment = alignment;
+    
     abilityScores.add(new AbilityScore(Ability.STR, 10));
     abilityScores.add(new AbilityScore(Ability.DEX, 10));
     abilityScores.add(new AbilityScore(Ability.CON, 10));
@@ -111,4 +120,6 @@ public abstract class Creature
     
     return null;
   }
+  
+  public abstract Size getSize();
 }

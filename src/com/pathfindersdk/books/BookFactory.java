@@ -30,6 +30,8 @@ public abstract class BookFactory
     addSpells(book);
     addMonsters(book);
     
+    book.updateIndexes();
+    
     return book;
   }
   
