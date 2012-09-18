@@ -1,6 +1,7 @@
 package com.pathfindersdk.books;
 
 import java.util.HashSet;
+import java.util.TreeSet;
 
 import com.pathfindersdk.creatures.characters.Race;
 import com.pathfindersdk.feats.Feat;
@@ -16,7 +17,7 @@ public class Book
   private String name;
   
   /** Included races in book. */
-  private HashSet<Race> races = new HashSet<Race>();
+  private TreeSet<Race> races = new TreeSet<Race>();
   //private TreeMap<String, Class> classes = new TreeMap<String, Class>();
   //private TreeMap<String, ClassExtension> classExtensions = new TreeMap<String, ClassExtension>();
   //private TreeMap<String, Archetype> archetypes = new TreeMap<String, Archetype>();
@@ -47,7 +48,7 @@ public class Book
     return name;
   }
   
-  public HashSet<Race> getRaces()
+  public TreeSet<Race> getRaces()
   {
     return races;
   }

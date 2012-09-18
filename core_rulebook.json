@@ -1,0 +1,624 @@
+{
+  "name": "Core Rulebook",
+  "races": [
+    {
+      "name": "Dwarf",
+      "abilityModifiers": [
+        {
+          "ability": "CHA",
+          "bonus": -2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "WIS",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "CON",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "DARKVISION",
+      "baseLanguages": [
+        "COMMON",
+        "DWARVEN"
+      ],
+      "optionalLanguages": [
+        "GOBLIN",
+        "ORC",
+        "GIANT",
+        "TERRAN",
+        "UNDERCOMMON",
+        "GNOME"
+      ],
+      "traits": [
+        {
+          "name": "Defensive Training",
+          "bonuses": []
+        },
+        {
+          "name": "Slow and Steady",
+          "bonuses": []
+        }
+      ]
+    },
+    {
+      "name": "Elf",
+      "abilityModifiers": [
+        {
+          "ability": "DEX",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "CON",
+          "bonus": -2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "INT",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "LOW_LIGHT",
+      "baseLanguages": [
+        "COMMON",
+        "ELVEN"
+      ],
+      "optionalLanguages": [
+        "SYLVAN",
+        "GOBLIN",
+        "CELESTIAL",
+        "ORC",
+        "DRACONIC",
+        "GNOME",
+        "GNOLL"
+      ],
+      "traits": []
+    },
+    {
+      "name": "Gnome",
+      "abilityModifiers": [
+        {
+          "ability": "STR",
+          "bonus": -2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "CON",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "CHA",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        }
+      ],
+      "size": "SMALL",
+      "vision": "LOW_LIGHT",
+      "baseLanguages": [
+        "SYLVAN",
+        "COMMON",
+        "GNOME"
+      ],
+      "optionalLanguages": [
+        "GOBLIN",
+        "ELVEN",
+        "ORC",
+        "GIANT",
+        "DWARVEN",
+        "DRACONIC"
+      ],
+      "traits": []
+    },
+    {
+      "name": "Half-Elf",
+      "abilityModifiers": [
+        {
+          "ability": "ANY",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "LOW_LIGHT",
+      "baseLanguages": [
+        "COMMON",
+        "ELVEN"
+      ],
+      "optionalLanguages": [
+        "SYLVAN",
+        "AQUAN",
+        "ABYSSAL",
+        "AURAN",
+        "GIANT",
+        "AKLO",
+        "DWARVEN",
+        "TERRAN",
+        "DRACONIC",
+        "UNDERCOMMON",
+        "GNOME",
+        "GOBLIN",
+        "CELESTIAL",
+        "ORC",
+        "HALFLING",
+        "IGNAN",
+        "INFERNAL",
+        "GNOLL"
+      ],
+      "traits": []
+    },
+    {
+      "name": "Half-Orc",
+      "abilityModifiers": [
+        {
+          "ability": "ANY",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "DARKVISION",
+      "baseLanguages": [
+        "COMMON",
+        "ORC"
+      ],
+      "optionalLanguages": [
+        "GOBLIN",
+        "ABYSSAL",
+        "GIANT",
+        "DRACONIC",
+        "GNOLL"
+      ],
+      "traits": []
+    },
+    {
+      "name": "Halfling",
+      "abilityModifiers": [
+        {
+          "ability": "STR",
+          "bonus": -2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "DEX",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        },
+        {
+          "ability": "CHA",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        }
+      ],
+      "size": "SMALL",
+      "vision": "NORMAL",
+      "baseLanguages": [
+        "COMMON",
+        "HALFLING"
+      ],
+      "optionalLanguages": [
+        "GOBLIN",
+        "ELVEN",
+        "DWARVEN",
+        "GNOME"
+      ],
+      "traits": []
+    },
+    {
+      "name": "Human",
+      "abilityModifiers": [
+        {
+          "ability": "ANY",
+          "bonus": 2,
+          "type": "RACIAL",
+          "circumstantial": false
+        }
+      ],
+      "size": "MEDIUM",
+      "vision": "NORMAL",
+      "baseLanguages": [
+        "COMMON"
+      ],
+      "optionalLanguages": [
+        "SYLVAN",
+        "AQUAN",
+        "ABYSSAL",
+        "AURAN",
+        "GIANT",
+        "AKLO",
+        "DWARVEN",
+        "TERRAN",
+        "DRACONIC",
+        "UNDERCOMMON",
+        "GNOME",
+        "GOBLIN",
+        "CELESTIAL",
+        "ELVEN",
+        "ORC",
+        "HALFLING",
+        "IGNAN",
+        "INFERNAL",
+        "GNOLL"
+      ],
+      "traits": []
+    }
+  ],
+  "skills": [
+    {
+      "name": "Sense Motive",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Handle Animal",
+      "keyAbility": "CHA",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Disguise",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (history)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Profession",
+      "keyAbility": "WIS",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": [
+        "trapper",
+        "midwife",
+        "butcher",
+        "librarian",
+        "stable master",
+        "sailor",
+        "miner",
+        "shepherd",
+        "gambler",
+        "farmer",
+        "driver",
+        "herbalist",
+        "miller",
+        "baker",
+        "innkeeper",
+        "cook",
+        "merchant",
+        "engineer",
+        "woodcutter",
+        "porter",
+        "scribe",
+        "architect",
+        "soldier",
+        "gardener",
+        "clerk",
+        "tanner",
+        "courtesan",
+        "brewer",
+        "barrister",
+        "fisherman"
+      ]
+    },
+    {
+      "name": "Craft",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": [
+        "shoes",
+        "books",
+        "carpentry",
+        "clothing",
+        "stonemasonry",
+        "armor",
+        "bows",
+        "jewelry",
+        "baskets",
+        "sculptures",
+        "cloth",
+        "calligraphy",
+        "traps",
+        "pottery",
+        "locks",
+        "glass",
+        "weapons",
+        "ships",
+        "paintings",
+        "alchemy",
+        "leather"
+      ]
+    },
+    {
+      "name": "Perform",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": [
+        "oratory",
+        "keyboard",
+        "comedy",
+        "string instruments",
+        "sing",
+        "percussion instruments",
+        "wind instruments",
+        "act",
+        "dance"
+      ]
+    },
+    {
+      "name": "Stealth",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Diplomacy",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Climb",
+      "keyAbility": "STR",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Sleight of Hand",
+      "keyAbility": "DEX",
+      "untrained": false,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Appraise",
+      "keyAbility": "INT",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Linguistics",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Perception",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Swim",
+      "keyAbility": "STR",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (dungeonneering)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (religion)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Escape Artist",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Spellcraft",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Use Magic Device",
+      "keyAbility": "CHA",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Ride",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Disable Device",
+      "keyAbility": "DEX",
+      "untrained": false,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (arcana)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (local)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (planes)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (nature)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Bluff",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Acrobatics",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Heal",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Survival",
+      "keyAbility": "WIS",
+      "untrained": true,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (geography)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (engineering)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    },
+    {
+      "name": "Intimidate",
+      "keyAbility": "CHA",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Fly",
+      "keyAbility": "DEX",
+      "untrained": true,
+      "armorCheckPenalty": true,
+      "expansions": []
+    },
+    {
+      "name": "Knowledge (nobility)",
+      "keyAbility": "INT",
+      "untrained": false,
+      "armorCheckPenalty": false,
+      "expansions": []
+    }
+  ],
+  "feats": [
+    {
+      "name": "Acrobatic Steps",
+      "type": "UNTYPED",
+      "prerequisites": [
+        {
+          "CLASSNAME": "com.pathfindersdk.creatures.AbilityPrerequisite",
+          "INSTANCE": {
+            "ability": "DEX",
+            "score": 15
+          }
+        },
+        {
+          "CLASSNAME": "com.pathfindersdk.feats.FeatPrerequisite",
+          "INSTANCE": {
+            "featName": "Nimble Moves"
+          }
+        }
+      ],
+      "benefits": []
+    },
+    {
+      "name": "Acrobatic",
+      "type": "UNTYPED",
+      "prerequisites": [],
+      "benefits": [
+        {
+          "CLASSNAME": "com.pathfindersdk.skills.SkillBonus",
+          "INSTANCE": {
+            "skillName": "Fly",
+            "bonus": 2,
+            "type": "UNTYPED",
+            "circumstantial": false
+          }
+        },
+        {
+          "CLASSNAME": "com.pathfindersdk.skills.SkillBonus",
+          "INSTANCE": {
+            "skillName": "Acrobatics",
+            "bonus": 2,
+            "type": "UNTYPED",
+            "circumstantial": false
+          }
+        }
+      ]
+    }
+  ]
+}

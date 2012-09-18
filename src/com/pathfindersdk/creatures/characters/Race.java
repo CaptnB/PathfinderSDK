@@ -10,7 +10,7 @@ import com.pathfindersdk.creatures.Vision;
 /**
  * The Class Race.
  */
-public class Race
+public class Race implements Comparable<Race>
 {
   
   /** Race name. */
@@ -80,6 +80,12 @@ public class Race
   public HashSet<RacialTrait> getTraits()
   {
     return traits;
+  }
+
+  @Override
+  public int compareTo(Race race)
+  {
+    return getName().compareTo(race.getName());
   }
   
 }
