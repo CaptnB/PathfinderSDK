@@ -15,6 +15,14 @@ public enum BonusType
   /** Racial bonus. */
   RACIAL ("Racial"),
   
+  ARMOR ("Armor"),
+  
+  SHIELD ("Shield"),
+  
+  NATURAL_ARMOR ("Natural Armor"),
+  
+  DEFLECTION ("Deflection"),
+  
   /** Untyped bonus. */
   UNTYPED ("Untyped");
   

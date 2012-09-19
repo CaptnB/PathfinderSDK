@@ -3,21 +3,17 @@ package com.pathfindersdk.general;
 import com.pathfindersdk.creatures.Creature;
 
 /**
- * The Class Bonus. Base class for all typed bonuses.
+ * This generic class applies a bonus to a Stat object.
  */
-public abstract class Bonus
+public class Bonus implements Comparable<Bonus>
 {
   
   /** Bonus (or malus) value. */
-  protected Integer bonus;
+  protected Integer value;
   
   /** Bonus type. */
   protected BonusType type;
   
-  /** Bonus circumstantial. */
-  protected Boolean circumstantial;   // Not added to total
-  
-  /** Bonus circumstance. */
   protected String circumstance;
   
   /**
@@ -27,30 +23,64 @@ public abstract class Bonus
    * @param type type
    * @param circumstantial the circumstantial
    */
-  public Bonus(int bonus, BonusType type)
+  public Bonus(int value, BonusType type)
   {
-    this.bonus = bonus;
+    this.value = value;
     this.type = type;
-    this.circumstantial = false;
+    this.circumstance = null;
   }
   
-  public void setCircumstance(String circumstance)
+  public Bonus(int value, BonusType type, String circumstance)
   {
-    this.circumstantial = true;
+    this.value = value;
+    this.type = type;
     this.circumstance = circumstance;
   }
   
+  public Integer getValue()
+  {
+    return value;
+  }
+  
+  public BonusType getType()
+  {
+    return type;
+  }
+  
+  public String getCircumstance()
+  {
+    return circumstance;
+  }
+  
   /**
-   * Apply bonus.
+   * Adds bonus to Stat.
    *
    * @param creature creature receiving the bonus
    */
-  public abstract void apply(Creature creature);
+  public void add(Stat stat)
+  {
+    stat.addBonus(this);
+  }
   
   /**
-   * Remove bonus.
+   * Removes bonus from Stat.
    *
    * @param creature creature losing the bonus
    */
-  public abstract void remove(Creature creature);
+  public void remove(Stat stat)
+  {
+    stat.removeBonus(this);
+  }
+
+  @Override
+  public int compareTo(Bonus bonus)
+  {
+    // Sort in descending order (highest bonus first so when bonuses don't stack, the first one is the one to consider)
+    if(getValue() > bonus.getValue())
+      return -1;
+    else if(getValue() == bonus.getValue())
+      return 0;
+    else
+      return 1;
+  }
 }
