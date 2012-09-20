@@ -7,8 +7,8 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.pathfindersdk.general.Bonus;
-import com.pathfindersdk.general.BonusAdapter;
+import com.pathfindersdk.bonus.Bonus;
+import com.pathfindersdk.bonus.BonusAdapter;
 import com.pathfindersdk.general.Prerequisite;
 import com.pathfindersdk.general.PrerequisiteAdapter;
 

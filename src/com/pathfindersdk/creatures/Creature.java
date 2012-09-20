@@ -4,7 +4,6 @@ import java.util.HashSet;
 
 import com.pathfindersdk.classes.Class;
 import com.pathfindersdk.feats.Feat;
-import com.pathfindersdk.skills.SkillRank;
 
 /**
  * The Class Character.
@@ -21,7 +20,7 @@ public abstract class Creature
   private HashSet<AbilityScore> abilityScores = new HashSet<AbilityScore>();
   
   /** The skill ranks. */
-  private HashSet<SkillRank> skillRanks = new HashSet<SkillRank>();
+  //private HashSet<SkillRank> skillRanks = new HashSet<SkillRank>();
   
   /** The feats. */
   private HashSet<Feat> feats = new HashSet<Feat>();
@@ -55,10 +54,10 @@ public abstract class Creature
     return abilityScores;
   }
   
-  public HashSet<SkillRank> getSkillRanks()
+  /*public HashSet<SkillRank> getSkillRanks()
   {
     return skillRanks;
-  }
+  }*/
   
   public HashSet<Feat> getFeats()
   {
@@ -93,7 +92,7 @@ public abstract class Creature
    * @param skillName the skill name
    * @return the skill
    */
-  public SkillRank getSkill(String skillName)
+  /*public SkillRank getSkill(String skillName)
   {
     for(SkillRank skillRank : skillRanks)
     {
@@ -102,7 +101,7 @@ public abstract class Creature
     }
     
     return null;
-  }
+  }*/
   
   /**
    * Gets the feat.

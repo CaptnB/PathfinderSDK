@@ -1,7 +1,7 @@
 package com.pathfindersdk.skills;
 
-import com.pathfindersdk.general.Prerequisite;
 import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.general.Prerequisite;
 
 /**
  * The Class SkillPrerequisite.
@@ -33,10 +33,10 @@ public class SkillPrerequisite extends Prerequisite
   @Override
   public Boolean check(Creature creature)
   {
-    SkillRank skill = creature.getSkill(skillName);
+    /*SkillRank skill = creature.getSkill(skillName);
     if(skill != null && skill.getRanks() >= ranks)
       return true;
-    else
+    else*/
       return false;
   }
 

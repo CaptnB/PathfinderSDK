@@ -2,7 +2,7 @@ package com.pathfindersdk.creatures.characters;
 
 import java.util.HashSet;
 
-import com.pathfindersdk.general.Bonus;
+import com.pathfindersdk.bonus.Bonus;
 
 public class RacialTrait
 {

@@ -2,7 +2,7 @@ package com.pathfindersdk.feats;
 
 import java.util.HashSet;
 
-import com.pathfindersdk.general.Bonus;
+import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.general.Prerequisite;
 
 /**

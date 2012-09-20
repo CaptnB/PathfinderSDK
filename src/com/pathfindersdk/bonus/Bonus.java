@@ -1,6 +1,5 @@
-package com.pathfindersdk.general;
+package com.pathfindersdk.bonus;
 
-import com.pathfindersdk.creatures.Creature;
 
 /**
  * This generic class applies a bonus to a Stat object.
@@ -52,25 +51,15 @@ public class Bonus implements Comparable<Bonus>
     return circumstance;
   }
   
-  /**
-   * Adds bonus to Stat.
-   *
-   * @param creature creature receiving the bonus
-   */
-  public void add(Stat stat)
+  public void apply(Stat stat)
   {
     stat.addBonus(this);
   }
-  
-  /**
-   * Removes bonus from Stat.
-   *
-   * @param creature creature losing the bonus
-   */
+
   public void remove(Stat stat)
   {
     stat.removeBonus(this);
-  }
+  }  
 
   @Override
   public int compareTo(Bonus bonus)
@@ -83,4 +72,5 @@ public class Bonus implements Comparable<Bonus>
     else
       return 1;
   }
+  
 }

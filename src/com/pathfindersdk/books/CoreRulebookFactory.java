@@ -1,7 +1,6 @@
 package com.pathfindersdk.books;
 
 import com.pathfindersdk.creatures.Ability;
-import com.pathfindersdk.creatures.AbilityBonus;
 import com.pathfindersdk.creatures.AbilityPrerequisite;
 import com.pathfindersdk.creatures.Language;
 import com.pathfindersdk.creatures.Size;
@@ -11,9 +10,7 @@ import com.pathfindersdk.creatures.characters.RacialTrait;
 import com.pathfindersdk.feats.Feat;
 import com.pathfindersdk.feats.FeatPrerequisite;
 import com.pathfindersdk.feats.FeatType;
-import com.pathfindersdk.general.BonusType;
 import com.pathfindersdk.skills.Skill;
-import com.pathfindersdk.skills.SkillBonus;
 
 /**
  * A factory for creating the Core Rulebook.
@@ -28,10 +25,10 @@ public class CoreRulebookFactory extends BookFactory
   protected void addRaces(Book book)
   {
     Race dwarf = new Race("Dwarf", Size.MEDIUM, Vision.DARKVISION);
-    dwarf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
+/*    dwarf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
     dwarf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.WIS));
     dwarf.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.CHA));
-    dwarf.getBaseLanguages().add(Language.COMMON);
+*/    dwarf.getBaseLanguages().add(Language.COMMON);
     dwarf.getBaseLanguages().add(Language.DWARVEN);
     dwarf.getOptionalLanguages().add(Language.GIANT);
     dwarf.getOptionalLanguages().add(Language.GNOME);
@@ -49,10 +46,10 @@ public class CoreRulebookFactory extends BookFactory
     book.getRaces().add(dwarf);
     
     Race elf = new Race("Elf", Size.MEDIUM, Vision.LOW_LIGHT);
-    elf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
+/*    elf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
     elf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.INT));
     elf.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.CON));
-    elf.getBaseLanguages().add(Language.COMMON);
+*/    elf.getBaseLanguages().add(Language.COMMON);
     elf.getBaseLanguages().add(Language.ELVEN);
     elf.getOptionalLanguages().add(Language.CELESTIAL);
     elf.getOptionalLanguages().add(Language.DRACONIC);
@@ -64,10 +61,10 @@ public class CoreRulebookFactory extends BookFactory
     book.getRaces().add(elf);
     
     Race gnome = new Race("Gnome", Size.SMALL, Vision.LOW_LIGHT);
-    gnome.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
+/*    gnome.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
     gnome.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
     gnome.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
-    gnome.getBaseLanguages().add(Language.COMMON);
+*/    gnome.getBaseLanguages().add(Language.COMMON);
     gnome.getBaseLanguages().add(Language.GNOME);
     gnome.getBaseLanguages().add(Language.SYLVAN);
     gnome.getOptionalLanguages().add(Language.DRACONIC);
@@ -79,8 +76,8 @@ public class CoreRulebookFactory extends BookFactory
     book.getRaces().add(gnome);
     
     Race halfElf = new Race("Half-Elf", Size.MEDIUM, Vision.LOW_LIGHT);
-    halfElf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
-    halfElf.getBaseLanguages().add(Language.COMMON);
+/*    halfElf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
+*/    halfElf.getBaseLanguages().add(Language.COMMON);
     halfElf.getBaseLanguages().add(Language.ELVEN);
     halfElf.getOptionalLanguages().add(Language.ABYSSAL);
     halfElf.getOptionalLanguages().add(Language.AKLO);
@@ -103,8 +100,8 @@ public class CoreRulebookFactory extends BookFactory
     book.getRaces().add(halfElf);
     
     Race halfOrc = new Race("Half-Orc", Size.MEDIUM, Vision.DARKVISION);
-    halfOrc.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
-    halfOrc.getBaseLanguages().add(Language.COMMON);
+/*    halfOrc.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
+*/    halfOrc.getBaseLanguages().add(Language.COMMON);
     halfOrc.getBaseLanguages().add(Language.ORC);
     halfOrc.getOptionalLanguages().add(Language.ABYSSAL);
     halfOrc.getOptionalLanguages().add(Language.DRACONIC);
@@ -114,10 +111,10 @@ public class CoreRulebookFactory extends BookFactory
     book.getRaces().add(halfOrc);
     
     Race halfling = new Race("Halfling", Size.SMALL, Vision.NORMAL);
-    halfling.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
+/*    halfling.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
     halfling.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
     halfling.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
-    halfling.getBaseLanguages().add(Language.COMMON);
+*/    halfling.getBaseLanguages().add(Language.COMMON);
     halfling.getBaseLanguages().add(Language.HALFLING);
     halfling.getOptionalLanguages().add(Language.DWARVEN);
     halfling.getOptionalLanguages().add(Language.ELVEN);
@@ -126,8 +123,8 @@ public class CoreRulebookFactory extends BookFactory
     book.getRaces().add(halfling);
     
     Race human = new Race("Human", Size.MEDIUM, Vision.NORMAL);
-    human.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
-    human.getBaseLanguages().add(Language.COMMON);
+/*    human.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
+*/    human.getBaseLanguages().add(Language.COMMON);
     human.getOptionalLanguages().add(Language.ABYSSAL);
     human.getOptionalLanguages().add(Language.AKLO);
     human.getOptionalLanguages().add(Language.AQUAN);
@@ -197,9 +194,9 @@ public class CoreRulebookFactory extends BookFactory
   protected void addFeats(Book book)
   {
     Feat acrobatic = new Feat("Acrobatic", FeatType.UNTYPED);
-    acrobatic.getBenefits().add(new SkillBonus(2, BonusType.UNTYPED, "Acrobatics"));
+/*    acrobatic.getBenefits().add(new SkillBonus(2, BonusType.UNTYPED, "Acrobatics"));
     acrobatic.getBenefits().add(new SkillBonus(2, BonusType.UNTYPED, "Fly"));
-    book.getFeats().add(acrobatic);
+*/    book.getFeats().add(acrobatic);
 
     Feat acrobaticSteps = new Feat("Acrobatic Steps", FeatType.UNTYPED);
     acrobaticSteps.getPrerequisites().add(new AbilityPrerequisite(Ability.DEX, 15));

@@ -1,12 +1,30 @@
-package com.pathfindersdk.general;
+package com.pathfindersdk.bonus;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.TreeSet;
 
 public class Stat
 {
+  // I'd prefer a Hashtable<BonusType, TreeSet<Bonus>> but hey...
+  private class BonusGroup
+  {
+    private TreeSet<Bonus> baseBonuses = new TreeSet<Bonus>();
+    private TreeSet<Bonus> circumstantialBonuses = new TreeSet<Bonus>();
+    
+    public TreeSet<Bonus> getBaseBonuses()
+    {
+      return baseBonuses;
+    }
+    
+    public TreeSet<Bonus> getCircumstantialBonuses()
+    {
+      return circumstantialBonuses;
+    }
+  }
+  
   private Integer baseScore;
-  private Hashtable<BonusType, StatBonus> statBonuses = new Hashtable<BonusType, StatBonus>();
+  private Hashtable<BonusType, BonusGroup> bonusGroups = new Hashtable<BonusType, BonusGroup>();
   
   public Stat(int baseScore)
   {
@@ -24,11 +42,11 @@ public class Stat
     Integer total = getBaseScore();
     
     // Get all keys
-    Enumeration<BonusType> keys = statBonuses.keys();
+    Enumeration<BonusType> keys = bonusGroups.keys();
     while(keys.hasMoreElements())
     {
       BonusType key = keys.nextElement();
-      StatBonus statBonus = statBonuses.get(key);
+      BonusGroup statBonus = bonusGroups.get(key);
       
       // If bonus is untyped, then add them all
       if(key == BonusType.UNTYPED)
@@ -52,35 +70,35 @@ public class Stat
   public void addBonus(Bonus bonus)
   {
     // Check if bonus of that type already exist, create it if it doesn't
-    StatBonus statBonus = statBonuses.get(bonus.getType());
-    if(statBonus == null)
+    BonusGroup bonusGroup = bonusGroups.get(bonus.getType());
+    if(bonusGroup == null)
     {
-      statBonus = new StatBonus();
-      statBonuses.put(bonus.getType(), statBonus);
+      bonusGroup = new BonusGroup();
+      bonusGroups.put(bonus.getType(), bonusGroup);
     }
     
     // Add bonus to right collection 
     if(bonus.getCircumstance() == null)
-      statBonus.getBaseBonuses().add(bonus);
+      bonusGroup.getBaseBonuses().add(bonus);
     else
-      statBonus.getCircumstantialBonuses().add(bonus);
+      bonusGroup.getCircumstantialBonuses().add(bonus);
   }
   
   public void removeBonus(Bonus bonus)
   {
     // Check if bonus of that type already exist, create it if it doesn't
-    StatBonus statBonus = statBonuses.get(bonus.getType());
-    if(statBonus != null)
+    BonusGroup bonusGroup = bonusGroups.get(bonus.getType());
+    if(bonusGroup != null)
     {
       // Add bonus to right collection 
       if(bonus.getCircumstance() == null)
-        statBonus.getBaseBonuses().remove(bonus);
+        bonusGroup.getBaseBonuses().remove(bonus);
       else
-        statBonus.getCircumstantialBonuses().remove(bonus);
+        bonusGroup.getCircumstantialBonuses().remove(bonus);
       
       // Remove unused StatBonus
-      if(statBonus.getBaseBonuses().isEmpty() && statBonus.getCircumstantialBonuses().isEmpty())
-        statBonuses.remove(bonus.getType());
+      if(bonusGroup.getBaseBonuses().isEmpty() && bonusGroup.getCircumstantialBonuses().isEmpty())
+        bonusGroups.remove(bonus.getType());
     }
   }
 

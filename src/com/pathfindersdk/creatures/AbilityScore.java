@@ -15,7 +15,7 @@ public class AbilityScore
   private Integer score;
   
   /** The bonuses. */
-  private HashSet<AbilityBonus> bonuses = new HashSet<AbilityBonus>();
+  //private HashSet<AbilityBonus> bonuses = new HashSet<AbilityBonus>();
   
   /**
    * Instantiates a new ability score.
@@ -39,10 +39,10 @@ public class AbilityScore
     return score;
   }
   
-  public HashSet<AbilityBonus> getBonuses()
+  /*public HashSet<AbilityBonus> getBonuses()
   {
     return bonuses;
-  }
+  }*/
 
   /**
    * Increments the score.

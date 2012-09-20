@@ -2,7 +2,6 @@ package com.pathfindersdk.creatures.characters;
 
 import java.util.HashSet;
 
-import com.pathfindersdk.creatures.AbilityBonus;
 import com.pathfindersdk.creatures.Language;
 import com.pathfindersdk.creatures.Size;
 import com.pathfindersdk.creatures.Vision;
@@ -17,7 +16,7 @@ public class Race implements Comparable<Race>
   private String name;
   
   /** Racial ability modifiers. */
-  private HashSet<AbilityBonus> abilityModifiers = new HashSet<AbilityBonus>();
+  //private HashSet<AbilityBonus> abilityModifiers = new HashSet<AbilityBonus>();
   
   /** Race size. */
   private Size size;
@@ -52,10 +51,10 @@ public class Race implements Comparable<Race>
     return name;
   }
   
-  public HashSet<AbilityBonus> getAbilityModifiers()
+  /*public HashSet<AbilityBonus> getAbilityModifiers()
   {
     return abilityModifiers;
-  }
+  }*/
   
   public Size getSize()
   {

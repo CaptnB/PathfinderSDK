@@ -1,29 +1,18 @@
-package com.pathfindersdk.general;
+package com.pathfindersdk.bonus;
 
 /**
- * The Enum BonusType.
+ * This enum lists all bonus types. For a stackable bonus, use UNTYPED. All others are non-stackable.
  */
 public enum BonusType
 {
-  
-  /** Morale bonus. */
   MORALE ("Morale"),
-  
-  /** Luck bonus. */
   LUCK ("Luck"),
-  
-  /** Racial bonus. */
   RACIAL ("Racial"),
-  
   ARMOR ("Armor"),
-  
   SHIELD ("Shield"),
-  
   NATURAL_ARMOR ("Natural Armor"),
-  
   DEFLECTION ("Deflection"),
-  
-  /** Untyped bonus. */
+  ENHANCEMENT ("Enhancement"),
   UNTYPED ("Untyped");
   
   /** Bonus type name. */

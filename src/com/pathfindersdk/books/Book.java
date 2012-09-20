@@ -17,17 +17,17 @@ public class Book
   private String name;
   
   /** Included races in book. */
-  private TreeSet<Race> races = new TreeSet<Race>();
+  private TreeSet<Race> races;
   //private TreeMap<String, Class> classes = new TreeMap<String, Class>();
   //private TreeMap<String, ClassExtension> classExtensions = new TreeMap<String, ClassExtension>();
   //private TreeMap<String, Archetype> archetypes = new TreeMap<String, Archetype>();
   //private TreeMap<String, PrestigeClass> prestigeClasses = new TreeMap<String, PrestigeClass>();
   
   /** Included skills in book. */
-  private HashSet<Skill> skills = new HashSet<Skill>();
+  private TreeSet<Skill> skills;
   
   /** Included feats in book. */
-  private HashSet<Feat> feats = new HashSet<Feat>();
+  private TreeSet<Feat> feats;
   //private TreeMap<String, Equipment> equipment = new TreeMap<String, Equipment>();
   //private TreeMap<String, Action> actions = new TreeMap<String, Action>();
   //private TreeMap<String, Spell> spells = new TreeMap<String, Spell>();
@@ -48,19 +48,28 @@ public class Book
     return name;
   }
   
-  public TreeSet<Race> getRaces()
+  public void addRace(Race race)
   {
-    return races;
+    if(races == null)
+      races = new TreeSet<Race>();
+    
+    races.add(race);
   }
   
-  public HashSet<Skill> getSkills()
+  public void addSkill(Skill skill)
   {
-    return skills;
+    if(skills == null)
+      skills = new TreeSet<Skill>();
+    
+    skills.add(skill);
   }
   
-  public HashSet<Feat> getFeats()
+  public void addFeat(Feat feat)
   {
-    return feats;
+    if(feats == null)
+      feats = new TreeSet<Feat>();
+    
+    feats.add(feat);
   }
   
   /**
