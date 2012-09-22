@@ -3,7 +3,7 @@ package com.pathfindersdk.creatures;
 import java.util.HashSet;
 
 import com.pathfindersdk.bonus.Bonus;
-import com.pathfindersdk.prerequisite.Prerequisite;
+import com.pathfindersdk.prerequisites.Prerequisite;
 
 /**
  * The Class Feat. 

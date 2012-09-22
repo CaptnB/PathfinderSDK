@@ -10,28 +10,15 @@ import com.pathfindersdk.indexes.RaceIndex;
 import com.pathfindersdk.indexes.SkillIndex;
 
 /**
- * The Class Book. It basically contains everything contained in a Pathfinder book. 
+ * This class wraps everything a book may contain. It also adds elements into indexes for easy retrieval, say from another book. 
  */
 public class Book
 {
-  
-  /** Book name. */
   private String name;
-  
-  /** Included races in book. */
   private TreeSet<Race> races;
-  
-  /** Included skills in book. */
   private TreeSet<Skill> skills;
-  
-  /** Included feats in book. */
   private TreeSet<Feat> feats;
   
-  /**
-   * Instantiates a new book.
-   *
-   * @param name The book's title
-   */
   public Book(String name)
   {
     this.name = name;
@@ -78,12 +65,6 @@ public class Book
     feats.add(feat);
   }
   
-  /**
-   * Gets the race.
-   *
-   * @param name the name
-   * @return the race
-   */
   public Race getRace(String name)
   {
     for(Race race : races)
@@ -95,12 +76,6 @@ public class Book
     return null;
   }
   
-  /**
-   * Gets the skill.
-   *
-   * @param name the name
-   * @return the skill
-   */
   public Skill getSkill(String name)
   {
     for(Skill skill : skills)
@@ -112,12 +87,6 @@ public class Book
     return null;
   }
   
-  /**
-   * Gets the feat.
-   *
-   * @param name the name
-   * @return the feat
-   */
   public Feat getFeat(String name)
   {
     for(Feat feat : feats)

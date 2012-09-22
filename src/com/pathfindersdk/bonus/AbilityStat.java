@@ -1,6 +1,8 @@
 package com.pathfindersdk.bonus;
 
-
+/**
+ * This class represents an ability score (ex: CHA 14 (+2)).
+ */
 public class AbilityStat extends Stat
 {
   public AbilityStat(Integer baseScore)

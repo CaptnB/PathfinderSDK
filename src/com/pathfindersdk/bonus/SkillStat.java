@@ -2,7 +2,9 @@ package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Skill;
 
-
+/**
+ * This class represents a character skill. 
+ */
 public class SkillStat extends Stat
 {
   private Skill skill;

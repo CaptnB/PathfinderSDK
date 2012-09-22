@@ -4,6 +4,9 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.TreeSet;
 
+/**
+ * This class is a generic character stat (ex: Initiative, AC, etc.). 
+ */
 public class Stat
 {
   // I'd prefer a Hashtable<BonusType, TreeSet<Bonus>> but hey...
@@ -49,10 +52,8 @@ public class Stat
   
   public Integer getScore()
   {
-    // Init total with base score
     Integer total = getBaseScore();
     
-    // Get all keys
     Enumeration<BonusType> keys = bonusGroups.keys();
     while(keys.hasMoreElements())
     {

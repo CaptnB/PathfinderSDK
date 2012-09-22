@@ -3,6 +3,7 @@ package com.pathfindersdk.bonus;
 
 /**
  * This generic class applies a bonus to a Stat object.
+ * Bonus types don't stack except for UNTYPED, the biggest bonus is always considered, circumstantial bonus are not added to total.
  */
 public class Bonus implements Comparable<Bonus>
 {

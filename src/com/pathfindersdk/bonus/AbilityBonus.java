@@ -3,6 +3,9 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Ability;
 
 
+/**
+ * This class applies a bonus to an AbilityStat (ex: Bull's Strenght +2 STR).
+ */
 public class AbilityBonus extends Bonus
 {
   private Ability ability;

@@ -5,11 +5,18 @@ import java.util.Map;
 
 import com.pathfindersdk.creatures.Skill;
 
+/**
+ * This class gathers all skills from all books into one accessible singleton.
+ */
 public class SkillIndex
 {
   private static SkillIndex instance = new SkillIndex();
-  
   private static Map<String, Skill> skills = new Hashtable<String, Skill>();
+  
+  public static SkillIndex getInstance()
+  {
+    return instance;
+  }  
   
   private SkillIndex() {}
   
