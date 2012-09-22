@@ -1,4 +1,4 @@
-package com.pathfindersdk.general;
+package com.pathfindersdk.prerequisite;
 
 import com.pathfindersdk.creatures.Creature;
 

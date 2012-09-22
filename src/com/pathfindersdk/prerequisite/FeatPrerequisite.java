@@ -1,7 +1,7 @@
-package com.pathfindersdk.feats;
+package com.pathfindersdk.prerequisite;
 
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.general.Prerequisite;
+import com.pathfindersdk.creatures.Feat;
 
 /**
  * The Class FeatPrerequisite.
@@ -9,22 +9,13 @@ import com.pathfindersdk.general.Prerequisite;
 public class FeatPrerequisite extends Prerequisite
 {
   
-  /** The feat name. */
   private String featName;
   
-  /**
-   * Instantiates a new feat prerequisite.
-   *
-   * @param featName the feat name
-   */
   public FeatPrerequisite(String featName)
   {
     this.featName = featName;
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.general.Prerequisite#check(com.pathfindersdk.creatures.characters.Character)
-   */
   @Override
   public Boolean check(Creature creature)
   {

@@ -1,123 +1,135 @@
 package com.pathfindersdk.creatures;
 
-import java.util.HashSet;
+import java.util.TreeMap;
 
-import com.pathfindersdk.classes.Class;
-import com.pathfindersdk.feats.Feat;
+import com.pathfindersdk.bonus.AbilityStat;
+import com.pathfindersdk.bonus.SkillStat;
+
 
 /**
  * The Class Character.
  */
 public abstract class Creature
 {
-  /** The name */
   private String name;
-  
-  /** The alignment. */
   private Alignment alignment;
+  private TreeMap<Ability, AbilityStat> abilities = new TreeMap<Ability, AbilityStat>();;
   
-  /** The ability scores. */
-  private HashSet<AbilityScore> abilityScores = new HashSet<AbilityScore>();
-  
-  /** The skill ranks. */
-  //private HashSet<SkillRank> skillRanks = new HashSet<SkillRank>();
-  
-  /** The feats. */
-  private HashSet<Feat> feats = new HashSet<Feat>();
-  
-  /** The classes. */
-  private HashSet<Class> classes = new HashSet<Class>();
+  private TreeMap<String, SkillStat> skills;
+  private TreeMap<String, Feat> feats;
+  private TreeMap<Integer, Class> classes;
   
   public Integer getLevel()
   {
     return classes.size();
   }
   
-  /**
-   * Instantiates a new creature.
-   */
   public Creature(String name, Alignment alignment)
   {
     this.name = name;
     this.alignment = alignment;
     
-    abilityScores.add(new AbilityScore(Ability.STR, 10));
-    abilityScores.add(new AbilityScore(Ability.DEX, 10));
-    abilityScores.add(new AbilityScore(Ability.CON, 10));
-    abilityScores.add(new AbilityScore(Ability.INT, 10));
-    abilityScores.add(new AbilityScore(Ability.WIS, 10));
-    abilityScores.add(new AbilityScore(Ability.CHA, 10));
-  }
-  
-  public HashSet<AbilityScore> getAbilityScores()
-  {
-    return abilityScores;
-  }
-  
-  /*public HashSet<SkillRank> getSkillRanks()
-  {
-    return skillRanks;
-  }*/
-  
-  public HashSet<Feat> getFeats()
-  {
-    return feats;
-  }
-  
-  public HashSet<Class> getClasses()
-  {
-    return classes;
-  }
-  
-  /**
-   * Gets the ability score.
-   *
-   * @param ability the ability
-   * @return the ability score
-   */
-  public AbilityScore getAbilityScore(Ability ability)
-  {
-    for(AbilityScore abilityScore : abilityScores)
-    {
-      if(abilityScore.getAbility() == ability)
-        return abilityScore;
-    }
+    abilities.put(Ability.STR, new AbilityStat(10));
+    abilities.put(Ability.DEX, new AbilityStat(10));
+    abilities.put(Ability.CON, new AbilityStat(10));
+    abilities.put(Ability.INT, new AbilityStat(10));
+    abilities.put(Ability.WIS, new AbilityStat(10));
+    abilities.put(Ability.CHA, new AbilityStat(10));
     
-    return null;
+    //SkillStat acrobatic = new SkillStat();
   }
   
-  /**
-   * Gets the skill.
-   *
-   * @param skillName the skill name
-   * @return the skill
-   */
-  /*public SkillRank getSkill(String skillName)
+  public String getName()
   {
-    for(SkillRank skillRank : skillRanks)
-    {
-      if(skillRank.getSkillType().getName().compareTo(skillName) == 0)
-        return skillRank;
-    }
-    
-    return null;
-  }*/
+    return name;
+  }
   
-  /**
-   * Gets the feat.
-   *
-   * @param featName the feat name
-   * @return the feat
-   */
-  public Feat getFeat(String featName)
+  public Alignment getAlignment()
   {
-    for(Feat feat : feats)
-    {
-      if(feat.getName().compareTo(featName) == 0)
-        return feat;
-    }
+    return alignment;
+  }
+  
+  public AbilityStat getAbility(Ability ability)
+  {
+    return abilities.get(ability);
+  }
+  
+  public void addSkill(SkillStat skill)
+  {
+    if(skill == null)
+      return;
     
-    return null;
+    if(skills == null)
+      skills = new TreeMap<String, SkillStat>();
+    
+    skills.put(skill.getName(), skill);
+  }
+  
+  public void removeSkill(SkillStat skill)
+  {
+    if(skills != null)
+    {
+      skills.remove(skill);
+      
+      if(skills.isEmpty())
+        skills = null;
+    }
+  }
+  
+  public SkillStat getSkill(String name)
+  {
+    return skills.get(name);
+  }
+  
+  public void addFeat(Feat feat)
+  {
+    if(feat == null)
+      return;
+    
+    if(feats == null)
+      feats = new TreeMap<String, Feat>();
+    
+    feats.put(feat.getName(), feat);
+  }
+  
+  public void removeFeat(Feat feat)
+  {
+    if(feats != null)
+    {
+      feats.remove(feat);
+      
+      if(feats.isEmpty())
+        feats = null;
+    }
+  }
+  
+  public Feat getFeat(String name)
+  {
+    return feats.get(name);
+  }
+  
+  public void addClass(Class aClass)
+  {
+    if(classes == null)
+      classes = new TreeMap<Integer, Class>();
+    
+    classes.put(classes.size(), aClass);
+  }
+  
+  public void removeClass(Class aClass)
+  {
+    if(classes != null)
+    {
+      classes.remove(aClass);
+      
+      if(classes.isEmpty())
+        classes = null;
+    }
+  }
+  
+  public Class getClass(int level)
+  {
+    return classes.get(level);
   }
   
   public abstract Size getSize();

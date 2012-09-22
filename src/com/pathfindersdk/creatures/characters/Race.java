@@ -1,7 +1,9 @@
 package com.pathfindersdk.creatures.characters;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.pathfindersdk.bonus.AbilityBonus;
 import com.pathfindersdk.creatures.Language;
 import com.pathfindersdk.creatures.Size;
 import com.pathfindersdk.creatures.Vision;
@@ -12,33 +14,13 @@ import com.pathfindersdk.creatures.Vision;
 public class Race implements Comparable<Race>
 {
   
-  /** Race name. */
   private String name;
-  
-  /** Racial ability modifiers. */
-  //private HashSet<AbilityBonus> abilityModifiers = new HashSet<AbilityBonus>();
-  
-  /** Race size. */
   private Size size;
-  
-  /** Race vision. */
   private Vision vision;
+  private List<Language> baseLanguages;
+  private List<Language> optionalLanguages;
+  private List<AbilityBonus> abilityBonuses;
   
-  /** Racial base languages. */
-  private HashSet<Language> baseLanguages = new HashSet<Language>();
-  
-  /** Racial optional languages. */
-  private HashSet<Language> optionalLanguages = new HashSet<Language>();
-  
-  private HashSet<RacialTrait> traits = new HashSet<RacialTrait>();
-  
-  /**
-   * Instantiates a new race.
-   *
-   * @param name race name
-   * @param size race size
-   * @param vision race vision
-   */
   public Race(String name, Size size, Vision vision)
   {
     this.name = name;
@@ -51,14 +33,14 @@ public class Race implements Comparable<Race>
     return name;
   }
   
-  /*public HashSet<AbilityBonus> getAbilityModifiers()
-  {
-    return abilityModifiers;
-  }*/
-  
   public Size getSize()
   {
     return size;
+  }
+  
+  public void setSize(Size size)
+  {
+    this.size = size;
   }
   
   public Vision getVision()
@@ -66,21 +48,35 @@ public class Race implements Comparable<Race>
     return vision;
   }
   
-  public HashSet<Language> getBaseLanguages()
+  public void setVision(Vision vision)
   {
-    return baseLanguages;
+    this.vision = vision;
   }
   
-  public HashSet<Language> getOptionalLanguages()
+  public void addBaseLanguage(Language language)
   {
-    return optionalLanguages;
+    if(baseLanguages == null)
+      baseLanguages = new ArrayList<Language>();
+    
+    baseLanguages.add(language);
   }
   
-  public HashSet<RacialTrait> getTraits()
+  public void addOptionalLanguage(Language language)
   {
-    return traits;
+    if(optionalLanguages == null)
+      optionalLanguages = new ArrayList<Language>();
+    
+    optionalLanguages.add(language);
   }
-
+  
+  public void addAbilityBonus(AbilityBonus bonus)
+  {
+    if(abilityBonuses == null)
+      abilityBonuses = new ArrayList<AbilityBonus>();
+    
+    abilityBonuses.add(bonus);
+  }
+  
   @Override
   public int compareTo(Race race)
   {

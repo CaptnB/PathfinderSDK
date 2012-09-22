@@ -6,27 +6,14 @@ package com.pathfindersdk.bonus;
  */
 public class Bonus implements Comparable<Bonus>
 {
-  
-  /** Bonus (or malus) value. */
   protected Integer value;
-  
-  /** Bonus type. */
   protected BonusType type;
-  
   protected String circumstance;
   
-  /**
-   * Instantiates a new bonus.
-   *
-   * @param bonus bonus
-   * @param type type
-   * @param circumstantial the circumstantial
-   */
   public Bonus(int value, BonusType type)
   {
     this.value = value;
     this.type = type;
-    this.circumstance = null;
   }
   
   public Bonus(int value, BonusType type, String circumstance)

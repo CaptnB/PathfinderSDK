@@ -1,4 +1,4 @@
-package com.pathfindersdk.feats;
+package com.pathfindersdk.creatures;
 
 /**
  * The Enum FeatType.

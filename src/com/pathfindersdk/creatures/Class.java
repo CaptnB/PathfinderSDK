@@ -1,6 +1,5 @@
-package com.pathfindersdk.classes;
+package com.pathfindersdk.creatures;
 
-import com.pathfindersdk.creatures.Creature;
 
 /**
  * The Class Class.

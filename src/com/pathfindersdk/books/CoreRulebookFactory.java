@@ -1,16 +1,13 @@
 package com.pathfindersdk.books;
 
+import com.pathfindersdk.bonus.AbilityBonus;
+import com.pathfindersdk.bonus.BonusType;
 import com.pathfindersdk.creatures.Ability;
-import com.pathfindersdk.creatures.AbilityPrerequisite;
 import com.pathfindersdk.creatures.Language;
 import com.pathfindersdk.creatures.Size;
+import com.pathfindersdk.creatures.Skill;
 import com.pathfindersdk.creatures.Vision;
 import com.pathfindersdk.creatures.characters.Race;
-import com.pathfindersdk.creatures.characters.RacialTrait;
-import com.pathfindersdk.feats.Feat;
-import com.pathfindersdk.feats.FeatPrerequisite;
-import com.pathfindersdk.feats.FeatType;
-import com.pathfindersdk.skills.Skill;
 
 /**
  * A factory for creating the Core Rulebook.
@@ -18,138 +15,125 @@ import com.pathfindersdk.skills.Skill;
 public class CoreRulebookFactory extends BookFactory
 {
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addRaces(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addRaces(Book book)
   {
     Race dwarf = new Race("Dwarf", Size.MEDIUM, Vision.DARKVISION);
-/*    dwarf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
-    dwarf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.WIS));
-    dwarf.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.CHA));
-*/    dwarf.getBaseLanguages().add(Language.COMMON);
-    dwarf.getBaseLanguages().add(Language.DWARVEN);
-    dwarf.getOptionalLanguages().add(Language.GIANT);
-    dwarf.getOptionalLanguages().add(Language.GNOME);
-    dwarf.getOptionalLanguages().add(Language.GOBLIN);
-    dwarf.getOptionalLanguages().add(Language.ORC);
-    dwarf.getOptionalLanguages().add(Language.TERRAN);
-    dwarf.getOptionalLanguages().add(Language.UNDERCOMMON);
-    RacialTrait slowAndSteady = new RacialTrait("Slow and Steady");
-    //slowAndSteady.getBonuses().add(new SpeedBonus(-10.0, BonusType.RACIAL));
-    dwarf.getTraits().add(slowAndSteady);
-    RacialTrait defensiveTraining = new RacialTrait("Defensive Training");
-    //AcBonus acBonus = new AcBonus(4, BonusType.DODGE);
-    //defensiveTraining.getBonuses().add(new AcBonus());
-    dwarf.getTraits().add(defensiveTraining);
-    book.getRaces().add(dwarf);
+    dwarf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
+    dwarf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.WIS));
+    dwarf.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.CHA));
+    dwarf.addBaseLanguage(Language.COMMON);
+    dwarf.addBaseLanguage(Language.DWARVEN);
+    dwarf.addOptionalLanguage(Language.GIANT);
+    dwarf.addOptionalLanguage(Language.GNOME);
+    dwarf.addOptionalLanguage(Language.GOBLIN);
+    dwarf.addOptionalLanguage(Language.ORC);
+    dwarf.addOptionalLanguage(Language.TERRAN);
+    dwarf.addOptionalLanguage(Language.UNDERCOMMON);
+    book.addRace(dwarf);
     
     Race elf = new Race("Elf", Size.MEDIUM, Vision.LOW_LIGHT);
-/*    elf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
-    elf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.INT));
-    elf.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.CON));
-*/    elf.getBaseLanguages().add(Language.COMMON);
-    elf.getBaseLanguages().add(Language.ELVEN);
-    elf.getOptionalLanguages().add(Language.CELESTIAL);
-    elf.getOptionalLanguages().add(Language.DRACONIC);
-    elf.getOptionalLanguages().add(Language.GNOLL);
-    elf.getOptionalLanguages().add(Language.GNOME);
-    elf.getOptionalLanguages().add(Language.GOBLIN);
-    elf.getOptionalLanguages().add(Language.ORC);
-    elf.getOptionalLanguages().add(Language.SYLVAN);
-    book.getRaces().add(elf);
+    elf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
+    elf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.INT));
+    elf.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.CON));
+    elf.addBaseLanguage(Language.COMMON);
+    elf.addBaseLanguage(Language.ELVEN);
+    elf.addOptionalLanguage(Language.CELESTIAL);
+    elf.addOptionalLanguage(Language.DRACONIC);
+    elf.addOptionalLanguage(Language.GNOLL);
+    elf.addOptionalLanguage(Language.GNOME);
+    elf.addOptionalLanguage(Language.GOBLIN);
+    elf.addOptionalLanguage(Language.ORC);
+    elf.addOptionalLanguage(Language.SYLVAN);
+    book.addRace(elf);
     
     Race gnome = new Race("Gnome", Size.SMALL, Vision.LOW_LIGHT);
-/*    gnome.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
-    gnome.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
-    gnome.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
-*/    gnome.getBaseLanguages().add(Language.COMMON);
-    gnome.getBaseLanguages().add(Language.GNOME);
-    gnome.getBaseLanguages().add(Language.SYLVAN);
-    gnome.getOptionalLanguages().add(Language.DRACONIC);
-    gnome.getOptionalLanguages().add(Language.DWARVEN);
-    gnome.getOptionalLanguages().add(Language.ELVEN);
-    gnome.getOptionalLanguages().add(Language.GIANT);
-    gnome.getOptionalLanguages().add(Language.GOBLIN);
-    gnome.getOptionalLanguages().add(Language.ORC);
-    book.getRaces().add(gnome);
+    gnome.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
+    gnome.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
+    gnome.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
+    gnome.addBaseLanguage(Language.COMMON);
+    gnome.addBaseLanguage(Language.GNOME);
+    gnome.addBaseLanguage(Language.SYLVAN);
+    gnome.addOptionalLanguage(Language.DRACONIC);
+    gnome.addOptionalLanguage(Language.DWARVEN);
+    gnome.addOptionalLanguage(Language.ELVEN);
+    gnome.addOptionalLanguage(Language.GIANT);
+    gnome.addOptionalLanguage(Language.GOBLIN);
+    gnome.addOptionalLanguage(Language.ORC);
+    book.addRace(gnome);
     
     Race halfElf = new Race("Half-Elf", Size.MEDIUM, Vision.LOW_LIGHT);
-/*    halfElf.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
-*/    halfElf.getBaseLanguages().add(Language.COMMON);
-    halfElf.getBaseLanguages().add(Language.ELVEN);
-    halfElf.getOptionalLanguages().add(Language.ABYSSAL);
-    halfElf.getOptionalLanguages().add(Language.AKLO);
-    halfElf.getOptionalLanguages().add(Language.AQUAN);
-    halfElf.getOptionalLanguages().add(Language.AURAN);
-    halfElf.getOptionalLanguages().add(Language.CELESTIAL);
-    halfElf.getOptionalLanguages().add(Language.DRACONIC);
-    halfElf.getOptionalLanguages().add(Language.DWARVEN);
-    halfElf.getOptionalLanguages().add(Language.GIANT);
-    halfElf.getOptionalLanguages().add(Language.GNOLL);
-    halfElf.getOptionalLanguages().add(Language.GNOME);
-    halfElf.getOptionalLanguages().add(Language.GOBLIN);
-    halfElf.getOptionalLanguages().add(Language.HALFLING);
-    halfElf.getOptionalLanguages().add(Language.IGNAN);
-    halfElf.getOptionalLanguages().add(Language.INFERNAL);
-    halfElf.getOptionalLanguages().add(Language.ORC);
-    halfElf.getOptionalLanguages().add(Language.SYLVAN);
-    halfElf.getOptionalLanguages().add(Language.TERRAN);
-    halfElf.getOptionalLanguages().add(Language.UNDERCOMMON);
-    book.getRaces().add(halfElf);
+    halfElf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
+    halfElf.addBaseLanguage(Language.COMMON);
+    halfElf.addBaseLanguage(Language.ELVEN);
+    halfElf.addOptionalLanguage(Language.ABYSSAL);
+    halfElf.addOptionalLanguage(Language.AKLO);
+    halfElf.addOptionalLanguage(Language.AQUAN);
+    halfElf.addOptionalLanguage(Language.AURAN);
+    halfElf.addOptionalLanguage(Language.CELESTIAL);
+    halfElf.addOptionalLanguage(Language.DRACONIC);
+    halfElf.addOptionalLanguage(Language.DWARVEN);
+    halfElf.addOptionalLanguage(Language.GIANT);
+    halfElf.addOptionalLanguage(Language.GNOLL);
+    halfElf.addOptionalLanguage(Language.GNOME);
+    halfElf.addOptionalLanguage(Language.GOBLIN);
+    halfElf.addOptionalLanguage(Language.HALFLING);
+    halfElf.addOptionalLanguage(Language.IGNAN);
+    halfElf.addOptionalLanguage(Language.INFERNAL);
+    halfElf.addOptionalLanguage(Language.ORC);
+    halfElf.addOptionalLanguage(Language.SYLVAN);
+    halfElf.addOptionalLanguage(Language.TERRAN);
+    halfElf.addOptionalLanguage(Language.UNDERCOMMON);
+    book.addRace(halfElf);
     
     Race halfOrc = new Race("Half-Orc", Size.MEDIUM, Vision.DARKVISION);
-/*    halfOrc.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
-*/    halfOrc.getBaseLanguages().add(Language.COMMON);
-    halfOrc.getBaseLanguages().add(Language.ORC);
-    halfOrc.getOptionalLanguages().add(Language.ABYSSAL);
-    halfOrc.getOptionalLanguages().add(Language.DRACONIC);
-    halfOrc.getOptionalLanguages().add(Language.GIANT);
-    halfOrc.getOptionalLanguages().add(Language.GNOLL);
-    halfOrc.getOptionalLanguages().add(Language.GOBLIN);
-    book.getRaces().add(halfOrc);
+    halfOrc.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
+    halfOrc.addBaseLanguage(Language.COMMON);
+    halfOrc.addBaseLanguage(Language.ORC);
+    halfOrc.addOptionalLanguage(Language.ABYSSAL);
+    halfOrc.addOptionalLanguage(Language.DRACONIC);
+    halfOrc.addOptionalLanguage(Language.GIANT);
+    halfOrc.addOptionalLanguage(Language.GNOLL);
+    halfOrc.addOptionalLanguage(Language.GOBLIN);
+    book.addRace(halfOrc);
     
     Race halfling = new Race("Halfling", Size.SMALL, Vision.NORMAL);
-/*    halfling.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
-    halfling.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
-    halfling.getAbilityModifiers().add(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
-*/    halfling.getBaseLanguages().add(Language.COMMON);
-    halfling.getBaseLanguages().add(Language.HALFLING);
-    halfling.getOptionalLanguages().add(Language.DWARVEN);
-    halfling.getOptionalLanguages().add(Language.ELVEN);
-    halfling.getOptionalLanguages().add(Language.GNOME);
-    halfling.getOptionalLanguages().add(Language.GOBLIN);
-    book.getRaces().add(halfling);
+    halfling.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
+    halfling.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
+    halfling.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
+    halfling.addBaseLanguage(Language.COMMON);
+    halfling.addBaseLanguage(Language.HALFLING);
+    halfling.addOptionalLanguage(Language.DWARVEN);
+    halfling.addOptionalLanguage(Language.ELVEN);
+    halfling.addOptionalLanguage(Language.GNOME);
+    halfling.addOptionalLanguage(Language.GOBLIN);
+    book.addRace(halfling);
     
     Race human = new Race("Human", Size.MEDIUM, Vision.NORMAL);
-/*    human.getAbilityModifiers().add(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
-*/    human.getBaseLanguages().add(Language.COMMON);
-    human.getOptionalLanguages().add(Language.ABYSSAL);
-    human.getOptionalLanguages().add(Language.AKLO);
-    human.getOptionalLanguages().add(Language.AQUAN);
-    human.getOptionalLanguages().add(Language.AURAN);
-    human.getOptionalLanguages().add(Language.CELESTIAL);
-    human.getOptionalLanguages().add(Language.DRACONIC);
-    human.getOptionalLanguages().add(Language.DWARVEN);
-    human.getOptionalLanguages().add(Language.ELVEN);
-    human.getOptionalLanguages().add(Language.GIANT);
-    human.getOptionalLanguages().add(Language.GNOLL);
-    human.getOptionalLanguages().add(Language.GNOME);
-    human.getOptionalLanguages().add(Language.GOBLIN);
-    human.getOptionalLanguages().add(Language.HALFLING);
-    human.getOptionalLanguages().add(Language.IGNAN);
-    human.getOptionalLanguages().add(Language.INFERNAL);
-    human.getOptionalLanguages().add(Language.ORC);
-    human.getOptionalLanguages().add(Language.SYLVAN);
-    human.getOptionalLanguages().add(Language.TERRAN);
-    human.getOptionalLanguages().add(Language.UNDERCOMMON);
-    book.getRaces().add(human);
+    human.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
+    human.addBaseLanguage(Language.COMMON);
+    human.addOptionalLanguage(Language.ABYSSAL);
+    human.addOptionalLanguage(Language.AKLO);
+    human.addOptionalLanguage(Language.AQUAN);
+    human.addOptionalLanguage(Language.AURAN);
+    human.addOptionalLanguage(Language.CELESTIAL);
+    human.addOptionalLanguage(Language.DRACONIC);
+    human.addOptionalLanguage(Language.DWARVEN);
+    human.addOptionalLanguage(Language.ELVEN);
+    human.addOptionalLanguage(Language.GIANT);
+    human.addOptionalLanguage(Language.GNOLL);
+    human.addOptionalLanguage(Language.GNOME);
+    human.addOptionalLanguage(Language.GOBLIN);
+    human.addOptionalLanguage(Language.HALFLING);
+    human.addOptionalLanguage(Language.IGNAN);
+    human.addOptionalLanguage(Language.INFERNAL);
+    human.addOptionalLanguage(Language.ORC);
+    human.addOptionalLanguage(Language.SYLVAN);
+    human.addOptionalLanguage(Language.TERRAN);
+    human.addOptionalLanguage(Language.UNDERCOMMON);
+    book.addRace(human);
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addClasses(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addClasses(Book book)
   {
@@ -157,9 +141,6 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addClassExtensions(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addClassExtensions(Book book)
   {
@@ -167,9 +148,6 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addArchetypes(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addArchetypes(Book book)
   {
@@ -177,9 +155,6 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addPrestigeClasses(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addPrestigeClasses(Book book)
   {
@@ -187,26 +162,13 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addFeats(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addFeats(Book book)
   {
-    Feat acrobatic = new Feat("Acrobatic", FeatType.UNTYPED);
-/*    acrobatic.getBenefits().add(new SkillBonus(2, BonusType.UNTYPED, "Acrobatics"));
-    acrobatic.getBenefits().add(new SkillBonus(2, BonusType.UNTYPED, "Fly"));
-*/    book.getFeats().add(acrobatic);
+    // TODO Auto-generated method stub
 
-    Feat acrobaticSteps = new Feat("Acrobatic Steps", FeatType.UNTYPED);
-    acrobaticSteps.getPrerequisites().add(new AbilityPrerequisite(Ability.DEX, 15));
-    acrobaticSteps.getPrerequisites().add(new FeatPrerequisite("Nimble Moves"));
-    book.getFeats().add(acrobaticSteps);
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addEquipment(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addEquipment(Book book)
   {
@@ -214,9 +176,6 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addActions(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addActions(Book book)
   {
@@ -224,9 +183,6 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addSpells(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addSpells(Book book)
   {
@@ -234,9 +190,6 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addMonsters(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addMonsters(Book book)
   {
@@ -244,56 +197,52 @@ public class CoreRulebookFactory extends BookFactory
 
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addSkills(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addSkills(Book book)
   {
-    book.getSkills().add(new Skill("Acrobatics", Ability.DEX, true, true));
-    book.getSkills().add(new Skill("Appraise", Ability.INT, true, false));
-    book.getSkills().add(new Skill("Bluff", Ability.CHA, true, false));
-    book.getSkills().add(new Skill("Climb", Ability.STR, true, true));
-    book.getSkills().add(new Skill("Craft", Ability.INT, true, false));
-    book.getSkills().add(new Skill("Diplomacy", Ability.CHA, true, false));
-    book.getSkills().add(new Skill("Disable Device", Ability.DEX, false, true));
-    book.getSkills().add(new Skill("Disguise", Ability.CHA, true, false));
-    book.getSkills().add(new Skill("Escape Artist", Ability.DEX, true, true));
-    book.getSkills().add(new Skill("Fly", Ability.DEX, true, true));
-    book.getSkills().add(new Skill("Handle Animal", Ability.CHA, false, false));
-    book.getSkills().add(new Skill("Heal", Ability.WIS, true, false));
-    book.getSkills().add(new Skill("Intimidate", Ability.CHA, true, true));
-    book.getSkills().add(new Skill("Knowledge (arcana)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (dungeonneering)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (engineering)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (geography)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (history)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (local)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (nature)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (nobility)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (planes)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Knowledge (religion)", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Linguistics", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Perception", Ability.WIS, true, false));
-    book.getSkills().add(new Skill("Perform", Ability.CHA, true, false));
-    book.getSkills().add(new Skill("Profession", Ability.WIS, false, false));
-    book.getSkills().add(new Skill("Ride", Ability.DEX, true, true));
-    book.getSkills().add(new Skill("Sense Motive", Ability.WIS, true, false));
-    book.getSkills().add(new Skill("Sleight of Hand", Ability.DEX, false, true));
-    book.getSkills().add(new Skill("Spellcraft", Ability.INT, false, false));
-    book.getSkills().add(new Skill("Stealth", Ability.DEX, true, true));
-    book.getSkills().add(new Skill("Survival", Ability.WIS, true, false));
-    book.getSkills().add(new Skill("Swim", Ability.STR, true, true));
-    book.getSkills().add(new Skill("Use Magic Device", Ability.CHA, false, false));
+    book.addSkill(new Skill("Acrobatics", Ability.DEX, true, true));
+    book.addSkill(new Skill("Appraise", Ability.INT, true, false));
+    book.addSkill(new Skill("Bluff", Ability.CHA, true, false));
+    book.addSkill(new Skill("Climb", Ability.STR, true, true));
+    book.addSkill(new Skill("Craft", Ability.INT, true, false));
+    book.addSkill(new Skill("Diplomacy", Ability.CHA, true, false));
+    book.addSkill(new Skill("Disable Device", Ability.DEX, false, true));
+    book.addSkill(new Skill("Disguise", Ability.CHA, true, false));
+    book.addSkill(new Skill("Escape Artist", Ability.DEX, true, true));
+    book.addSkill(new Skill("Fly", Ability.DEX, true, true));
+    book.addSkill(new Skill("Handle Animal", Ability.CHA, false, false));
+    book.addSkill(new Skill("Heal", Ability.WIS, true, false));
+    book.addSkill(new Skill("Intimidate", Ability.CHA, true, true));
+    book.addSkill(new Skill("Knowledge (arcana)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (dungeonneering)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (engineering)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (geography)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (history)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (local)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (nature)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (nobility)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (planes)", Ability.INT, false, false));
+    book.addSkill(new Skill("Knowledge (religion)", Ability.INT, false, false));
+    book.addSkill(new Skill("Linguistics", Ability.INT, false, false));
+    book.addSkill(new Skill("Perception", Ability.WIS, true, false));
+    book.addSkill(new Skill("Perform", Ability.CHA, true, false));
+    book.addSkill(new Skill("Profession", Ability.WIS, false, false));
+    book.addSkill(new Skill("Ride", Ability.DEX, true, true));
+    book.addSkill(new Skill("Sense Motive", Ability.WIS, true, false));
+    book.addSkill(new Skill("Sleight of Hand", Ability.DEX, false, true));
+    book.addSkill(new Skill("Spellcraft", Ability.INT, false, false));
+    book.addSkill(new Skill("Stealth", Ability.DEX, true, true));
+    book.addSkill(new Skill("Survival", Ability.WIS, true, false));
+    book.addSkill(new Skill("Swim", Ability.STR, true, true));
+    book.addSkill(new Skill("Use Magic Device", Ability.CHA, false, false));
   }
 
-  /* (non-Javadoc)
-   * @see com.pathfindersdk.books.BookFactory#addSkillExpansions(com.pathfindersdk.books.Book)
-   */
   @Override
   protected void addSkillExpansions(Book book)
   {
-    Skill craft = book.getSkill("Craft");
+    // TODO Auto-generated method stub
+
+    /*Skill craft = book.getSkill("Craft");
     if(craft != null)
     {
       craft.getExpansions().add("alchemy");
@@ -366,7 +315,7 @@ public class CoreRulebookFactory extends BookFactory
       profession.getExpansions().add("tanner");
       profession.getExpansions().add("trapper");
       profession.getExpansions().add("woodcutter");
-    }
+    }*/
   }
 
 }

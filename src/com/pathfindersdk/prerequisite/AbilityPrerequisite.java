@@ -1,6 +1,8 @@
-package com.pathfindersdk.creatures;
+package com.pathfindersdk.prerequisite;
 
-import com.pathfindersdk.general.Prerequisite;
+import com.pathfindersdk.bonus.AbilityStat;
+import com.pathfindersdk.creatures.Ability;
+import com.pathfindersdk.creatures.Creature;
 
 /**
  * The Class AbilityPrerequisite.
@@ -32,7 +34,7 @@ public class AbilityPrerequisite extends Prerequisite
   @Override
   public Boolean check(Creature creature)
   {
-    AbilityScore abilityScore = creature.getAbilityScore(ability);
+    AbilityStat abilityScore = creature.getAbility(ability);
     if(abilityScore != null && abilityScore.getScore() >= score)
       return true;
     else

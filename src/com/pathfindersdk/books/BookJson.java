@@ -9,8 +9,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.bonus.BonusAdapter;
-import com.pathfindersdk.general.Prerequisite;
-import com.pathfindersdk.general.PrerequisiteAdapter;
+import com.pathfindersdk.prerequisite.Prerequisite;
+import com.pathfindersdk.prerequisite.PrerequisiteAdapter;
 
 public class BookJson
 {

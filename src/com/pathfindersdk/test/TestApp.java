@@ -1,5 +1,10 @@
 package com.pathfindersdk.test;
 
+import com.pathfindersdk.books.Book;
+import com.pathfindersdk.books.BookFactory;
+import com.pathfindersdk.books.BookJson;
+import com.pathfindersdk.books.CoreRulebookFactory;
+
 
 /**
  * The Class TestApp.
@@ -14,12 +19,12 @@ public class TestApp
    */
   public static void main (String[] args)
   {
-    /*BookJson json = new BookJson();
+    BookJson json = new BookJson();
 
     BookFactory factory = new CoreRulebookFactory();
     Book coreBook = factory.createBook("Core Rulebook");
-    json.write(coreBook, "core_rulebook.json");*/
-
+    json.write(coreBook, "core_rulebook.json");
+    
     /*factory = new AdvancedPlayersGuideFactory();
     Book apgBook = factory.createBook("Advanced Player's Guide");
     json.write(apgBook, "advanced_players_guide.json");*/

@@ -1,11 +1,13 @@
 package com.pathfindersdk.books;
 
-import java.util.HashSet;
 import java.util.TreeSet;
 
+import com.pathfindersdk.creatures.Feat;
+import com.pathfindersdk.creatures.Skill;
 import com.pathfindersdk.creatures.characters.Race;
-import com.pathfindersdk.feats.Feat;
-import com.pathfindersdk.skills.Skill;
+import com.pathfindersdk.indexes.FeatIndex;
+import com.pathfindersdk.indexes.RaceIndex;
+import com.pathfindersdk.indexes.SkillIndex;
 
 /**
  * The Class Book. It basically contains everything contained in a Pathfinder book. 
@@ -18,20 +20,12 @@ public class Book
   
   /** Included races in book. */
   private TreeSet<Race> races;
-  //private TreeMap<String, Class> classes = new TreeMap<String, Class>();
-  //private TreeMap<String, ClassExtension> classExtensions = new TreeMap<String, ClassExtension>();
-  //private TreeMap<String, Archetype> archetypes = new TreeMap<String, Archetype>();
-  //private TreeMap<String, PrestigeClass> prestigeClasses = new TreeMap<String, PrestigeClass>();
   
   /** Included skills in book. */
   private TreeSet<Skill> skills;
   
   /** Included feats in book. */
   private TreeSet<Feat> feats;
-  //private TreeMap<String, Equipment> equipment = new TreeMap<String, Equipment>();
-  //private TreeMap<String, Action> actions = new TreeMap<String, Action>();
-  //private TreeMap<String, Spell> spells = new TreeMap<String, Spell>();
-  //private TreeMap<String, Monster> monsters = new TreeMap<String, Monster>();
   
   /**
    * Instantiates a new book.
@@ -50,25 +44,37 @@ public class Book
   
   public void addRace(Race race)
   {
+    if(race == null)
+      return;
+    
     if(races == null)
       races = new TreeSet<Race>();
     
+    RaceIndex.getRaces().put(race.getName(), race);
     races.add(race);
   }
   
   public void addSkill(Skill skill)
   {
+    if(skill == null)
+      return;
+    
     if(skills == null)
       skills = new TreeSet<Skill>();
     
+    SkillIndex.getSkills().put(skill.getName(), skill);
     skills.add(skill);
   }
   
   public void addFeat(Feat feat)
   {
+    if(feat == null)
+      return;
+    
     if(feats == null)
       feats = new TreeSet<Feat>();
     
+    FeatIndex.getFeats().put(feat.getName(), feat);
     feats.add(feat);
   }
   
