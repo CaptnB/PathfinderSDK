@@ -1,8 +1,8 @@
-package com.pathfindersdk.creatures;
+package com.pathfindersdk.basics;
 
 
 /**
- * The Class Skill.
+ * This class represents a general skill description (see SkillStat for character specific skills with ranks and class skill).
  */
 public class Skill implements Comparable<Skill>
 {

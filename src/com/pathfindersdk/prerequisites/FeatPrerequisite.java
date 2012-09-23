@@ -1,7 +1,7 @@
 package com.pathfindersdk.prerequisites;
 
+import com.pathfindersdk.basics.Feat;
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.creatures.Feat;
 
 /**
  * This class requires a character to have a specific feat (ex: Mobility requires Dodge).

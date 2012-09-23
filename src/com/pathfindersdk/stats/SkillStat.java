@@ -1,6 +1,6 @@
-package com.pathfindersdk.bonus;
+package com.pathfindersdk.stats;
 
-import com.pathfindersdk.creatures.Skill;
+import com.pathfindersdk.basics.Skill;
 
 /**
  * This class represents a character skill. 

@@ -3,7 +3,7 @@ package com.pathfindersdk.indexes;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.pathfindersdk.creatures.Skill;
+import com.pathfindersdk.basics.Skill;
 
 /**
  * This class gathers all skills from all books into one accessible singleton.

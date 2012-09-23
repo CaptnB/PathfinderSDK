@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * This class gathers all races from all books into one accessible singleton.
  */
-import com.pathfindersdk.creatures.characters.Race;
+import com.pathfindersdk.basics.Race;
 
 public class RaceIndex
 {

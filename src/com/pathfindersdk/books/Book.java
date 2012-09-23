@@ -2,9 +2,9 @@ package com.pathfindersdk.books;
 
 import java.util.TreeSet;
 
-import com.pathfindersdk.creatures.Feat;
-import com.pathfindersdk.creatures.Skill;
-import com.pathfindersdk.creatures.characters.Race;
+import com.pathfindersdk.basics.Feat;
+import com.pathfindersdk.basics.Race;
+import com.pathfindersdk.basics.Skill;
 import com.pathfindersdk.indexes.FeatIndex;
 import com.pathfindersdk.indexes.RaceIndex;
 import com.pathfindersdk.indexes.SkillIndex;

@@ -1,6 +1,6 @@
 package com.pathfindersdk.bonus;
 
-import com.pathfindersdk.creatures.Ability;
+import com.pathfindersdk.basics.Ability;
 
 
 /**

@@ -1,5 +1,7 @@
 package com.pathfindersdk.bonus;
 
+import com.pathfindersdk.stats.Stat;
+
 
 /**
  * This generic class applies a bonus to a Stat object.
@@ -55,8 +57,6 @@ public class Bonus implements Comparable<Bonus>
     // Sort in descending order (highest bonus first so when bonuses don't stack, the first one is the one to consider)
     if(getValue() > bonus.getValue())
       return -1;
-    else if(getValue() == bonus.getValue())
-      return 0;
     else
       return 1;
   }

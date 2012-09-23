@@ -3,7 +3,7 @@ package com.pathfindersdk.indexes;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.pathfindersdk.creatures.Feat;
+import com.pathfindersdk.basics.Feat;
 
 /**
  * This class gathers all feats from all books into one accessible singleton.

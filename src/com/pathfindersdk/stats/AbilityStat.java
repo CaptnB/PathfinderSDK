@@ -1,4 +1,4 @@
-package com.pathfindersdk.bonus;
+package com.pathfindersdk.stats;
 
 /**
  * This class represents an ability score (ex: CHA 14 (+2)).

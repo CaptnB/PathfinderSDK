@@ -1,8 +1,11 @@
-package com.pathfindersdk.bonus;
+package com.pathfindersdk.stats;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.TreeSet;
+
+import com.pathfindersdk.bonus.Bonus;
+import com.pathfindersdk.bonus.BonusType;
 
 /**
  * This class is a generic character stat (ex: Initiative, AC, etc.). 
@@ -54,25 +57,18 @@ public class Stat
   {
     Integer total = getBaseScore();
     
-    Enumeration<BonusType> keys = bonusGroups.keys();
-    while(keys.hasMoreElements())
+    if(bonusGroups != null)
     {
-      BonusType key = keys.nextElement();
-      BonusGroup statBonus = bonusGroups.get(key);
-      
-      // If bonus is untyped, then add them all
-      if(key == BonusType.UNTYPED)
+      for(BonusType key : bonusGroups.keySet())
       {
-        for(Bonus bonus : statBonus.getBaseBonuses())
-        {
-          total += bonus.getValue();
-        }
-      }
-      
-      // Bonus is not stackable, take biggest
-      else
-      {
-        total += statBonus.getBaseBonuses().first().getValue();
+        BonusGroup statBonus = bonusGroups.get(key);
+
+        // Add all untyped bonus
+        if(key == BonusType.UNTYPED)
+          for(Bonus bonus : statBonus.getBaseBonuses())
+            total += bonus.getValue();
+        else
+          total += statBonus.getBaseBonuses().first().getValue();
       }
     }
     

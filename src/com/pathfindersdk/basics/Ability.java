@@ -1,7 +1,7 @@
-package com.pathfindersdk.creatures;
+package com.pathfindersdk.basics;
 
 /**
- * The Enum Ability.
+ * This enum lists all 6 ability scores and also ANY for races with a floating bonus.
  */
 public enum Ability
 {
@@ -20,7 +20,7 @@ public enum Ability
     this.name = name;
   }
   
-  @Override public String toString()
+  public String getName()
   {
     return name;
   }

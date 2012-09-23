@@ -1,13 +1,19 @@
 package com.pathfindersdk.books;
 
+import com.pathfindersdk.basics.Ability;
+import com.pathfindersdk.basics.CreatureMainType;
+import com.pathfindersdk.basics.CreatureSubtype;
+import com.pathfindersdk.basics.CreatureType;
+import com.pathfindersdk.basics.Language;
+import com.pathfindersdk.basics.Race;
+import com.pathfindersdk.basics.RacialTrait;
+import com.pathfindersdk.basics.Size;
+import com.pathfindersdk.basics.Skill;
+import com.pathfindersdk.basics.SpeedType;
+import com.pathfindersdk.basics.Vision;
 import com.pathfindersdk.bonus.AbilityBonus;
 import com.pathfindersdk.bonus.BonusType;
-import com.pathfindersdk.creatures.Ability;
-import com.pathfindersdk.creatures.Language;
-import com.pathfindersdk.creatures.Size;
-import com.pathfindersdk.creatures.Skill;
-import com.pathfindersdk.creatures.Vision;
-import com.pathfindersdk.creatures.characters.Race;
+import com.pathfindersdk.stats.SpeedStat;
 /**
 * This class builds the Core Rulebook content and returns the book.
 */
@@ -17,7 +23,15 @@ public class CoreRulebookBuilder extends BookBuilder
   @Override
   protected void addRaces(Book book)
   {
-    Race dwarf = new Race("Dwarf", Size.MEDIUM, Vision.DARKVISION);
+    CreatureType type;
+    RacialTrait trait;
+    
+    type = new CreatureType(CreatureMainType.HUMANOID);
+    type.addSubtype(CreatureSubtype.DWARF);
+    Race dwarf = new Race("Dwarf", type, Size.MEDIUM);
+    dwarf.addVision(Vision.DARKVISION);
+    dwarf.addSpeed(new SpeedStat(20, SpeedType.BASE));
+    dwarf.addSpeed(new SpeedStat(20, SpeedType.ARMOR));
     dwarf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
     dwarf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.WIS));
     dwarf.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.CHA));
@@ -29,9 +43,29 @@ public class CoreRulebookBuilder extends BookBuilder
     dwarf.addOptionalLanguage(Language.ORC);
     dwarf.addOptionalLanguage(Language.TERRAN);
     dwarf.addOptionalLanguage(Language.UNDERCOMMON);
+    trait = new RacialTrait("Slow and Steady");
+    dwarf.addTrait(trait);
+    trait = new RacialTrait("Defensive Training");
+    dwarf.addTrait(trait);
+    trait = new RacialTrait("Greed");
+    dwarf.addTrait(trait);
+    trait = new RacialTrait("Hatred");
+    dwarf.addTrait(trait);
+    trait = new RacialTrait("Hardy");
+    dwarf.addTrait(trait);
+    trait = new RacialTrait("Stability");
+    dwarf.addTrait(trait);
+    trait = new RacialTrait("Stonecunning");
+    dwarf.addTrait(trait);
+    // Weapon familiarity
     book.addRace(dwarf);
     
-    Race elf = new Race("Elf", Size.MEDIUM, Vision.LOW_LIGHT);
+    type = new CreatureType(CreatureMainType.HUMANOID);
+    type.addSubtype(CreatureSubtype.HUMAN);
+    Race elf = new Race("Elf", type, Size.MEDIUM);
+    elf.addVision(Vision.LOW_LIGHT);
+    elf.addSpeed(new SpeedStat(30, SpeedType.BASE));
+    elf.addSpeed(new SpeedStat(20, SpeedType.ARMOR));
     elf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
     elf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.INT));
     elf.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.CON));
@@ -46,7 +80,12 @@ public class CoreRulebookBuilder extends BookBuilder
     elf.addOptionalLanguage(Language.SYLVAN);
     book.addRace(elf);
     
-    Race gnome = new Race("Gnome", Size.SMALL, Vision.LOW_LIGHT);
+    type = new CreatureType(CreatureMainType.HUMANOID);
+    type.addSubtype(CreatureSubtype.HUMAN);
+    Race gnome = new Race("Gnome", type, Size.SMALL);
+    gnome.addVision(Vision.LOW_LIGHT);
+    gnome.addSpeed(new SpeedStat(20, SpeedType.BASE));
+    gnome.addSpeed(new SpeedStat(15, SpeedType.ARMOR));
     gnome.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CON));
     gnome.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
     gnome.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
@@ -61,7 +100,12 @@ public class CoreRulebookBuilder extends BookBuilder
     gnome.addOptionalLanguage(Language.ORC);
     book.addRace(gnome);
     
-    Race halfElf = new Race("Half-Elf", Size.MEDIUM, Vision.LOW_LIGHT);
+    type = new CreatureType(CreatureMainType.HUMANOID);
+    type.addSubtype(CreatureSubtype.HUMAN);
+    Race halfElf = new Race("Half-Elf", type, Size.MEDIUM);
+    halfElf.addVision(Vision.LOW_LIGHT);
+    halfElf.addSpeed(new SpeedStat(30, SpeedType.BASE));
+    halfElf.addSpeed(new SpeedStat(20, SpeedType.ARMOR));
     halfElf.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
     halfElf.addBaseLanguage(Language.COMMON);
     halfElf.addBaseLanguage(Language.ELVEN);
@@ -85,7 +129,12 @@ public class CoreRulebookBuilder extends BookBuilder
     halfElf.addOptionalLanguage(Language.UNDERCOMMON);
     book.addRace(halfElf);
     
-    Race halfOrc = new Race("Half-Orc", Size.MEDIUM, Vision.DARKVISION);
+    type = new CreatureType(CreatureMainType.HUMANOID);
+    type.addSubtype(CreatureSubtype.HUMAN);
+    Race halfOrc = new Race("Half-Orc", type, Size.MEDIUM);
+    halfOrc.addVision(Vision.DARKVISION);
+    halfOrc.addSpeed(new SpeedStat(30, SpeedType.BASE));
+    halfOrc.addSpeed(new SpeedStat(20, SpeedType.ARMOR));
     halfOrc.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
     halfOrc.addBaseLanguage(Language.COMMON);
     halfOrc.addBaseLanguage(Language.ORC);
@@ -96,7 +145,12 @@ public class CoreRulebookBuilder extends BookBuilder
     halfOrc.addOptionalLanguage(Language.GOBLIN);
     book.addRace(halfOrc);
     
-    Race halfling = new Race("Halfling", Size.SMALL, Vision.NORMAL);
+    type = new CreatureType(CreatureMainType.HUMANOID);
+    type.addSubtype(CreatureSubtype.HUMAN);
+    Race halfling = new Race("Halfling", type, Size.SMALL);
+    halfling.addVision(Vision.NORMAL);
+    halfling.addSpeed(new SpeedStat(20, SpeedType.BASE));
+    halfling.addSpeed(new SpeedStat(15, SpeedType.ARMOR));
     halfling.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.DEX));
     halfling.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.CHA));
     halfling.addAbilityBonus(new AbilityBonus(-2, BonusType.RACIAL, Ability.STR));
@@ -108,7 +162,12 @@ public class CoreRulebookBuilder extends BookBuilder
     halfling.addOptionalLanguage(Language.GOBLIN);
     book.addRace(halfling);
     
-    Race human = new Race("Human", Size.MEDIUM, Vision.NORMAL);
+    type = new CreatureType(CreatureMainType.HUMANOID);
+    type.addSubtype(CreatureSubtype.HUMAN);
+    Race human = new Race("Human", type, Size.MEDIUM);
+    human.addVision(Vision.NORMAL);
+    human.addSpeed(new SpeedStat(30, SpeedType.BASE));
+    human.addSpeed(new SpeedStat(20, SpeedType.ARMOR));
     human.addAbilityBonus(new AbilityBonus(2, BonusType.RACIAL, Ability.ANY));
     human.addBaseLanguage(Language.COMMON);
     human.addOptionalLanguage(Language.ABYSSAL);

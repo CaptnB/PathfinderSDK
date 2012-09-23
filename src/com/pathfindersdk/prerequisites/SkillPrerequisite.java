@@ -1,7 +1,7 @@
 package com.pathfindersdk.prerequisites;
 
-import com.pathfindersdk.bonus.SkillStat;
 import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.stats.SkillStat;
 
 /**
  * This class requires a character to have a skill (SkillStat) at a specific rank or higher (ex: Mounted Combat requires Ride 1).
