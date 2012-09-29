@@ -9,8 +9,8 @@ import com.pathfindersdk.stats.SkillStat;
 public class SkillPrerequisite extends Prerequisite
 {
   
-  private String skillName;
-  private Integer ranks;
+  protected String skillName;
+  protected Integer ranks;
   
   public SkillPrerequisite(String skillName, int ranks)
   {

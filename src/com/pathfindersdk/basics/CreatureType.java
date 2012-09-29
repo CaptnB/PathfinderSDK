@@ -4,8 +4,8 @@ import java.util.TreeSet;
 
 public class CreatureType
 {
-  private CreatureMainType type;
-  private TreeSet<CreatureSubtype> subtypes;
+  protected CreatureMainType type;
+  protected TreeSet<CreatureSubtype> subtypes;
   
   public CreatureType(CreatureMainType type)
   {
@@ -31,16 +31,17 @@ public class CreatureType
     }
   }
 
-  public String getName()
+  @Override
+  public String toString()
   {
     if(subtypes == null)
-      return type.getName();
+      return type.toString();
     else
     {
-      String name = type.getName() + " (";
+      String name = type.toString() + " (";
       for(CreatureSubtype subtype : subtypes)
       {
-        name += subtype.getName();
+        name += subtype.toString();
         if(subtype != subtypes.last())
           name += ", ";
       }

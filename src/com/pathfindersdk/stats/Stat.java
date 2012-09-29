@@ -1,6 +1,5 @@
 package com.pathfindersdk.stats;
 
-import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.TreeSet;
 
@@ -10,7 +9,7 @@ import com.pathfindersdk.bonus.BonusType;
 /**
  * This class is a generic character stat (ex: Initiative, AC, etc.). 
  */
-public class Stat
+public abstract class Stat<K>
 {
   // I'd prefer a Hashtable<BonusType, TreeSet<Bonus>> but hey...
   private class BonusGroup
@@ -115,5 +114,7 @@ public class Stat
     if(bonusGroups.isEmpty())
       bonusGroups = null;
   }
+  
+  public abstract K getKey();
 
 }

@@ -9,7 +9,7 @@ import com.pathfindersdk.creatures.Creature;
 public class FeatPrerequisite extends Prerequisite
 {
   
-  private String featName;
+  protected String featName;
   
   public FeatPrerequisite(String featName)
   {

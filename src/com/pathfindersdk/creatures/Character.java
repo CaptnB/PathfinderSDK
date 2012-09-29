@@ -1,7 +1,6 @@
 package com.pathfindersdk.creatures;
 
 import com.pathfindersdk.basics.CreatureType;
-import com.pathfindersdk.basics.Race;
 import com.pathfindersdk.basics.Size;
 
 /**
@@ -9,14 +8,14 @@ import com.pathfindersdk.basics.Size;
  */
 public class Character extends Creature
 {
-  private Race race;
+  //protected RaceItem race;
 
   public Character(String name)
   {
     super(name);
   }
   
-  public void setRace(Race race)
+  /*public void setRace(RaceItem race)
   {
     if(race != null)
     {
@@ -28,23 +27,25 @@ public class Character extends Creature
       this.race = race;
       this.race.apply(this);
     }
-  }
+  }*/
   
-  public Race getRace()
+  /*public RaceItem getRace()
   {
     return race;
-  }
+  }*/
 
   @Override
   public Size getSize()
   {
-    return race.getSize();
+    //return race.getSize();
+    return null;
   }
 
   @Override
   public CreatureType getCreatureType()
   {
-    return race.getType();
+    //return race.getType();
+    return null;
   }
 
 }

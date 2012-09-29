@@ -1,31 +1,34 @@
 <class-diagram version="1.0.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
-  <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.Bestiary2Builder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/Bestiary2Builder.java" binary="false">    
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.Bestiary2Builder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/Bestiary2Builder.java" 
+    binary="false">    
     <position height="-1" width="-1" x="104" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.UltimateMagicBuilder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/UltimateMagicBuilder.java" binary="false">    
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.UltimateMagicBuilder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/UltimateMagicBuilder.java" 
+    binary="false">    
     <position height="-1" width="-1" x="321" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.CoreRulebookBuilder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/CoreRulebookBuilder.java" binary="false">    
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.CoreRulebookBuilder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/CoreRulebookBuilder.java" 
+    binary="false">    
     <position height="-1" width="-1" x="538" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookBuilder" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/books/BookBuilder.java" binary="false">    
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.BookBuilder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/BookBuilder.java" binary="false">    
     <position height="-1" width="-1" x="886" y="-92"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -40,33 +43,35 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.AdvancedPlayersGuideBuilder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/AdvancedPlayersGuideBuilder.java" 
-    binary="false">    
+  <class id="6" corner="BOTTOM_RIGHT" language="java" 
+    name="com.pathfindersdk.books.builders.AdvancedPlayersGuideBuilder" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/books/builders/AdvancedPlayersGuideBuilder.java" binary="false">    
     <position height="-1" width="-1" x="764" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="7" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.Bestiary3Builder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/Bestiary3Builder.java" binary="false">    
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.Bestiary3Builder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/Bestiary3Builder.java" 
+    binary="false">    
     <position height="-1" width="-1" x="990" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="8" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BestiaryBuilder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/BestiaryBuilder.java" binary="false">    
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.BestiaryBuilder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/BestiaryBuilder.java" 
+    binary="false">    
     <position height="-1" width="-1" x="1207" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="9" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.AdvancedRaceGuideBuilder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/AdvancedRaceGuideBuilder.java" 
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.AdvancedRaceGuideBuilder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/AdvancedRaceGuideBuilder.java" 
     binary="false">    
     <position height="-1" width="-1" x="1426" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -74,8 +79,9 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="10" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.UltimateCombatBuilder" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/UltimateCombatBuilder.java" binary="false">    
+  <class id="10" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.builders.UltimateCombatBuilder" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/builders/UltimateCombatBuilder.java" 
+    binary="false">    
     <position height="-1" width="-1" x="1645" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      

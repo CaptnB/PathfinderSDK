@@ -1,9 +1,9 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.stats;
 
 /**
  * This enum lists all 6 ability scores and also ANY for races with a floating bonus.
  */
-public enum Ability
+public enum AbilityType
 {
   STR ("Strenght"),
   DEX ("Dexterity"),
@@ -15,12 +15,13 @@ public enum Ability
   
   private final String name;
   
-  private Ability(String name)
+  private AbilityType(String name)
   {
     this.name = name;
   }
   
-  public String getName()
+  @Override
+  public String toString()
   {
     return name;
   }

@@ -1,16 +1,19 @@
 package com.pathfindersdk.creatures;
 
+import java.util.Hashtable;
 import java.util.TreeMap;
 
-import com.pathfindersdk.basics.Ability;
 import com.pathfindersdk.basics.Alignment;
 import com.pathfindersdk.basics.Class;
 import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.basics.Feat;
 import com.pathfindersdk.basics.Size;
 import com.pathfindersdk.basics.SpeedType;
-import com.pathfindersdk.stats.AbilityStat;
+import com.pathfindersdk.stats.AbilityType;
 import com.pathfindersdk.stats.SkillStat;
+import com.pathfindersdk.stats.Stat;
+import com.pathfindersdk.stats.StatGroup;
+import com.pathfindersdk.stats.StatGroupType;
 
 
 /**
@@ -18,29 +21,36 @@ import com.pathfindersdk.stats.SkillStat;
  */
 public abstract class Creature
 {
-  private String name;
-  private Alignment alignment;
-  private TreeMap<Ability, AbilityStat> abilities = new TreeMap<Ability, AbilityStat>();
-  private TreeMap<SpeedType, Double> speeds;
-  private TreeMap<String, SkillStat> skills;
-  private TreeMap<String, Feat> feats;
-  private TreeMap<Integer, Class> classes;
+  protected String name;
+  protected Alignment alignment;
+  protected Hashtable<StatGroupType, StatGroup> statGroups = new Hashtable<StatGroupType, StatGroup>(); 
+
+  protected TreeMap<AbilityType, Stat> stats;
+  protected TreeMap<SpeedType, Double> speeds;
+  protected TreeMap<String, SkillStat> skills;
+  protected TreeMap<String, Feat> feats;
+  protected TreeMap<Integer, Class> classes;
   
   public Creature(String name)
   {
     this.name = name;
     
-    abilities.put(Ability.STR, new AbilityStat(10));
-    abilities.put(Ability.DEX, new AbilityStat(10));
-    abilities.put(Ability.CON, new AbilityStat(10));
-    abilities.put(Ability.INT, new AbilityStat(10));
-    abilities.put(Ability.WIS, new AbilityStat(10));
-    abilities.put(Ability.CHA, new AbilityStat(10));
+    /*StatGroup group = new AbilityGroup();
+    group.addStat(new AbilityStat(10));
+    statGroups.put(StatGroupType.ABILITY_SCORES, group);
+    stats = new TreeMap<AbilityType, Stat>();
+    stats.put(AbilityType.STR, );
+    stats.put(AbilityType.DEX, new AbilityStat(10));
+    stats.put(AbilityType.CON, new AbilityStat(10));
+    stats.put(AbilityType.INT, new AbilityStat(10));
+    stats.put(AbilityType.WIS, new AbilityStat(10));
+    stats.put(AbilityType.CHA, new AbilityStat(10));*/
     
     //SkillStat acrobatic = new SkillStat();
   }
   
-  public String getName()
+  @Override
+  public String toString()
   {
     return name;
   }
@@ -60,9 +70,9 @@ public abstract class Creature
     this.alignment = alignment;
   }
   
-  public AbilityStat getAbility(Ability ability)
+  public Stat getStat(AbilityType statType)
   {
-    return abilities.get(ability);
+    return stats.get(statType);
   }
   
   public Double getSpeed(SpeedType speed)
@@ -97,7 +107,7 @@ public abstract class Creature
     if(skills == null)
       skills = new TreeMap<String, SkillStat>();
     
-    skills.put(skill.getName(), skill);
+    skills.put(skill.toString(), skill);
   }
   
   public void removeSkill(SkillStat skill)
@@ -124,7 +134,7 @@ public abstract class Creature
     if(feats == null)
       feats = new TreeMap<String, Feat>();
     
-    feats.put(feat.getName(), feat);
+    feats.put(feat.toString(), feat);
   }
   
   public void removeFeat(Feat feat)

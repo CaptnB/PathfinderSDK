@@ -21,8 +21,9 @@ public enum FeatType
   {
     this.name = name;
   }
-  
-  public String getName()
+
+  @Override
+  public String toString()
   {
     return name;
   }

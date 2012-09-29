@@ -8,12 +8,10 @@ public enum BonusType
   MORALE ("Morale"),
   LUCK ("Luck"),
   RACIAL ("Racial"),
-  ARMOR ("Armor"),
-  SHIELD ("Shield"),
-  NATURAL_ARMOR ("Natural Armor"),
+  DODGE ("Dodge"),
   DEFLECTION ("Deflection"),
   ENHANCEMENT ("Enhancement"),
-  UNTYPED ("Untyped");
+  UNTYPED ("");
   
   private final String name;
   
@@ -22,7 +20,8 @@ public enum BonusType
     this.name = name;
   }
   
-  public String getName()
+  @Override
+  public String toString()
   {
     return name;
   }

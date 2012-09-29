@@ -3,15 +3,15 @@ package com.pathfindersdk.indexes;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.pathfindersdk.basics.Skill;
+import com.pathfindersdk.books.items.SkillItem;
 
 /**
  * This class gathers all skills from all books into one accessible singleton.
  */
-public class SkillIndex
+public final class SkillIndex
 {
-  private static SkillIndex instance = new SkillIndex();
-  private static Map<String, Skill> skills = new Hashtable<String, Skill>();
+  protected static SkillIndex instance = new SkillIndex();
+  protected static Map<String, SkillItem> skills = new Hashtable<String, SkillItem>();
   
   public static SkillIndex getInstance()
   {
@@ -20,12 +20,12 @@ public class SkillIndex
   
   private SkillIndex() {}
   
-  public static Skill getSkill(String name)
+  public static SkillItem getSkill(String name)
   {
     return skills.get(name);
   }
   
-  public static Map<String, Skill> getSkills()
+  public static Map<String, SkillItem> getSkills()
   {
     return skills;
   }

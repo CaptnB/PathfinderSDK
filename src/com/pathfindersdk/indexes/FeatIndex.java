@@ -8,7 +8,7 @@ import com.pathfindersdk.basics.Feat;
 /**
  * This class gathers all feats from all books into one accessible singleton.
  */
-public class FeatIndex
+public final class FeatIndex
 {
   private static FeatIndex instance = new FeatIndex();
   private static Map<String, Feat> feats = new Hashtable<String, Feat>();

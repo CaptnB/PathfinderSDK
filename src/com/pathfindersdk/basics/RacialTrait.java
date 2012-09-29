@@ -1,41 +1,35 @@
 package com.pathfindersdk.basics;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import com.pathfindersdk.bonus.Bonus;
-import com.pathfindersdk.creatures.Character;
 
-public class RacialTrait implements Feature
+public class RacialTrait
 {
-  private String name;
-  private HashSet<Bonus> bonuses = new HashSet<Bonus>();
+  protected String name;
+  protected ArrayList<Bonus> bonuses;
+  //protected ArrayList<SpellLikeAbility> spellLikeAbilities;
   
   public RacialTrait(String name)
   {
     this.name = name;
   }
   
-  public String getName()
+  public void addBonus(Bonus bonus)
+  {
+    if(bonus != null)
+    {
+      if(bonuses == null)
+        bonuses = new ArrayList<Bonus>();
+      
+      bonuses.add(bonus);
+    }
+  }
+  
+  @Override
+  public String toString()
   {
     return name;
   }
-  
-  public HashSet<Bonus> getBonuses()
-  {
-    return bonuses;
-  }
 
-  @Override
-  public void apply(Character character)
-  {
-    // TODO Auto-generated method stub
-    
-  }
-
-  @Override
-  public void remove(Character character)
-  {
-    // TODO Auto-generated method stub
-    
-  }
 }

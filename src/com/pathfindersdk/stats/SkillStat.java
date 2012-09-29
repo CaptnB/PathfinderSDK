@@ -1,16 +1,16 @@
 package com.pathfindersdk.stats;
 
-import com.pathfindersdk.basics.Skill;
+import com.pathfindersdk.books.items.SkillItem;
 
 /**
  * This class represents a character skill. 
  */
-public class SkillStat extends Stat
+public class SkillStat extends Stat<String>
 {
-  private Skill skill;
-  private Boolean classSkill;
+  protected SkillItem skill;
+  protected Boolean classSkill;
   
-  public SkillStat(Skill skill)
+  public SkillStat(SkillItem skill)
   {
     super(0);
     
@@ -18,9 +18,10 @@ public class SkillStat extends Stat
     this.classSkill = false;
   }
   
-  public String getName()
+  @Override
+  public String toString()
   {
-    return skill.getName();
+    return skill.toString();
   }
   
   public Boolean isClassSkill()
@@ -47,5 +48,11 @@ public class SkillStat extends Stat
       return super.getScore() + 3;
     else
       return super.getScore();
+  }
+
+  @Override
+  public String getKey()
+  {
+    return skill.toString();
   }
 }

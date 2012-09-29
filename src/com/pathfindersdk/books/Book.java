@@ -1,106 +1,48 @@
 package com.pathfindersdk.books;
 
-import java.util.TreeSet;
+import java.util.Hashtable;
 
-import com.pathfindersdk.basics.Feat;
-import com.pathfindersdk.basics.Race;
-import com.pathfindersdk.basics.Skill;
-import com.pathfindersdk.indexes.FeatIndex;
-import com.pathfindersdk.indexes.RaceIndex;
-import com.pathfindersdk.indexes.SkillIndex;
 
 /**
  * This class wraps everything a book may contain. It also adds elements into indexes for easy retrieval, say from another book. 
  */
-public class Book
+public class Book extends BookContent
 {
-  private String name;
-  private TreeSet<Race> races;
-  private TreeSet<Skill> skills;
-  private TreeSet<Feat> feats;
+  protected Hashtable<BookSectionType, BookSection> sections;
   
   public Book(String name)
   {
-    this.name = name;
+    super(name);
   }
-  
-  public String getName()
+    
+  public void addSection(BookSection section)
   {
-    return name;
-  }
-  
-  public void addRace(Race race)
-  {
-    if(race == null)
-      return;
-    
-    if(races == null)
-      races = new TreeSet<Race>();
-    
-    RaceIndex.getRaces().put(race.getName(), race);
-    races.add(race);
-  }
-  
-  public void addSkill(Skill skill)
-  {
-    if(skill == null)
-      return;
-    
-    if(skills == null)
-      skills = new TreeSet<Skill>();
-    
-    SkillIndex.getSkills().put(skill.getName(), skill);
-    skills.add(skill);
-  }
-  
-  public void addFeat(Feat feat)
-  {
-    if(feat == null)
-      return;
-    
-    if(feats == null)
-      feats = new TreeSet<Feat>();
-    
-    FeatIndex.getFeats().put(feat.getName(), feat);
-    feats.add(feat);
-  }
-  
-  public Race getRace(String name)
-  {
-    for(Race race : races)
+    if(section != null)
     {
-      if(race.getName().compareTo(name) == 0)
-        return race;
-    }
-    
-    return null;
+      if(sections == null)
+        sections = new Hashtable<BookSectionType, BookSection>();
+      
+      if(sections.get(section.getType()) == null)
+        sections.put(section.getType(), section);
+    }    
   }
   
-  public Skill getSkill(String name)
+  public void removeSection(BookSection section)
   {
-    for(Skill skill : skills)
+    if(section != null && sections != null)
     {
-      if(skill.getName().compareTo(name) == 0)
-        return skill;
+      sections.remove(section.getType());
+      
+      if(sections.isEmpty())
+        sections = null;
     }
-    
-    return null;
   }
   
-  public Feat getFeat(String name)
+  public BookSection getSection(BookSectionType type)
   {
-    for(Feat feat : feats)
-    {
-      if(feat.getName().compareTo(name) == 0)
-        return feat;
-    }
-    
-    return null;
+    if(sections != null)
+      return sections.get(type);
+    else
+      return null;
   }
-  
-  public void updateIndexes()
-  {
-    // TODO: Implement this method
-  }
-
 }

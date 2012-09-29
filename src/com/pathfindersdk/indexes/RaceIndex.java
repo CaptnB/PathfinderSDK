@@ -6,12 +6,12 @@ import java.util.Map;
 /**
  * This class gathers all races from all books into one accessible singleton.
  */
-import com.pathfindersdk.basics.Race;
+import com.pathfindersdk.books.items.RaceItem;
 
-public class RaceIndex
+public final class RaceIndex
 {
   private static RaceIndex instance = new RaceIndex();
-  private static Map<String, Race> races = new Hashtable<String, Race>();
+  private static Map<String, RaceItem> races = new Hashtable<String, RaceItem>();
     
   public static RaceIndex getInstance()
   {
@@ -20,12 +20,12 @@ public class RaceIndex
   
   private RaceIndex() {}
   
-  public static Race getRace(String name)
+  public static RaceItem getRace(String name)
   {
     return races.get(name);
   }
   
-  public static Map<String, Race> getRaces()
+  public static Map<String, RaceItem> getRaces()
   {
     return races;
   }

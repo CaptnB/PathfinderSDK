@@ -8,8 +8,8 @@ import com.pathfindersdk.basics.Size;
  */
 public class Monster extends Creature
 {
-  private Size size;
-  private CreatureType type;
+  protected Size size;
+  protected CreatureType type;
 
   public Monster(String name, Size size, CreatureType type)
   {

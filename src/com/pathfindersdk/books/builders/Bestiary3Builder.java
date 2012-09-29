@@ -1,9 +1,11 @@
-package com.pathfindersdk.books;
+package com.pathfindersdk.books.builders;
+
+import com.pathfindersdk.books.Book;
 
 /**
- * This class builds the Advanced Player's Guide content and returns the book.
+ * This class builds the Bestiary 3 content and returns the book.
  */
-public class AdvancedPlayersGuideBuilder extends BookBuilder
+public class Bestiary3Builder extends BookBuilder
 {
 
   @Override
@@ -11,6 +13,13 @@ public class AdvancedPlayersGuideBuilder extends BookBuilder
   {
     // TODO Auto-generated method stub
 
+  }
+
+  @Override
+  protected void addAlternateRacialTraits(Book book)
+  {
+    // TODO Auto-generated method stub
+    
   }
 
   @Override
@@ -49,13 +58,6 @@ public class AdvancedPlayersGuideBuilder extends BookBuilder
   }
 
   @Override
-  protected void addSkillExpansions(Book book)
-  {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
   protected void addFeats(Book book)
   {
     // TODO Auto-generated method stub
@@ -64,13 +66,6 @@ public class AdvancedPlayersGuideBuilder extends BookBuilder
 
   @Override
   protected void addEquipment(Book book)
-  {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  protected void addActions(Book book)
   {
     // TODO Auto-generated method stub
 

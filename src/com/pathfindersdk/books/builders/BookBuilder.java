@@ -1,4 +1,6 @@
-package com.pathfindersdk.books;
+package com.pathfindersdk.books.builders;
+
+import com.pathfindersdk.books.Book;
 
 /**
  * A base builder for creating Book objects.
@@ -6,21 +8,22 @@ package com.pathfindersdk.books;
 public abstract class BookBuilder
 {
   
-  public Book createBook(String bookName)
+  public Book createBook(String title)
   {
-    Book book = new Book(bookName);
+    Book book = new Book(title);
     
     addRaces(book);
+    addAlternateRacialTraits(book);
     addClasses(book);
     addClasses(book);
     addClassExtensions(book);
     addArchetypes(book);
     addPrestigeClasses(book);
     addSkills(book);
-    addSkillExpansions(book);
+    //addSkillExpansions(book);
     addFeats(book);
     addEquipment(book);
-    addActions(book);
+    //addActions(book);
     addSpells(book);
     addMonsters(book);
     
@@ -28,6 +31,8 @@ public abstract class BookBuilder
   }
   
   protected abstract void addRaces(Book book);
+  
+  protected abstract void addAlternateRacialTraits(Book book);
   
   protected abstract void addClasses(Book book);
   
@@ -39,13 +44,13 @@ public abstract class BookBuilder
   
   protected abstract void addSkills(Book book);
   
-  protected abstract void addSkillExpansions(Book book);
+  //protected abstract void addSkillExpansions(Book book);
   
   protected abstract void addFeats(Book book);
   
   protected abstract void addEquipment(Book book);
   
-  protected abstract void addActions(Book book);
+  //protected abstract void addActions(Book book);
   
   protected abstract void addSpells(Book book);
   

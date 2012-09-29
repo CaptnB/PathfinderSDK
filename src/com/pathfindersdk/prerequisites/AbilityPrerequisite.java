@@ -1,18 +1,17 @@
 package com.pathfindersdk.prerequisites;
 
-import com.pathfindersdk.basics.Ability;
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.stats.AbilityStat;
+import com.pathfindersdk.stats.AbilityType;
 
 /**
  * This class requires a character to have an ability score (AbilityStat) at a specific value or higher (ex: Dodge feat requires Dex 13).
  */
 public class AbilityPrerequisite extends Prerequisite
 {
-  private Ability ability;
-  private Integer score;
+  protected AbilityType ability;
+  protected Integer score;
 
-  public AbilityPrerequisite(Ability ability, int score)
+  public AbilityPrerequisite(AbilityType ability, int score)
   {
     this.ability = ability;
     this.score = score;
@@ -21,10 +20,10 @@ public class AbilityPrerequisite extends Prerequisite
   @Override
   public Boolean isFilled(Creature creature)
   {
-    AbilityStat abilityScore = creature.getAbility(ability);
+    /*AbilityStat abilityScore = creature.getAbility(ability);
     if(abilityScore != null && abilityScore.getScore() >= score)
       return true;
-    else
+    else*/
       return false;
   }
 

@@ -1,6 +1,6 @@
 package com.pathfindersdk.bonus;
 
-import com.pathfindersdk.stats.Stat;
+import com.pathfindersdk.creatures.Creature;
 
 
 /**
@@ -11,18 +11,22 @@ public class Bonus implements Comparable<Bonus>
 {
   protected Integer value;
   protected BonusType type;
+  protected Boolean stackable;
   protected String circumstance;
+  protected BonusStrategy strategy;
   
-  public Bonus(int value, BonusType type)
+  public Bonus(int value, BonusType type, BonusStrategy strategy)
   {
     this.value = value;
     this.type = type;
+    this.strategy = strategy;
   }
   
-  public Bonus(int value, BonusType type, String circumstance)
+  public Bonus(int value, BonusType type, BonusStrategy strategy, String circumstance)
   {
     this.value = value;
     this.type = type;
+    this.strategy = strategy;
     this.circumstance = circumstance;
   }
   
@@ -41,15 +45,15 @@ public class Bonus implements Comparable<Bonus>
     return circumstance;
   }
   
-  public void apply(Stat stat)
+  public void applyTo(Creature creature)
   {
-    stat.addBonus(this);
+    strategy.applyTo(creature);
   }
 
-  public void remove(Stat stat)
+  public void removeFrom(Creature creature)
   {
-    stat.removeBonus(this);
-  }  
+    strategy.removeFrom(creature);
+  }
 
   @Override
   public int compareTo(Bonus bonus)
