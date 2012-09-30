@@ -4,7 +4,6 @@ import java.util.Hashtable;
 import java.util.TreeMap;
 
 import com.pathfindersdk.basics.Alignment;
-import com.pathfindersdk.basics.Class;
 import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.basics.Feat;
 import com.pathfindersdk.basics.Size;

@@ -30,13 +30,6 @@ public class Bestiary3Builder extends BookBuilder
   }
 
   @Override
-  protected void addClassExtensions(Book book)
-  {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
   protected void addArchetypes(Book book)
   {
     // TODO Auto-generated method stub

@@ -16,7 +16,7 @@ public abstract class BookBuilder
     addAlternateRacialTraits(book);
     addClasses(book);
     addClasses(book);
-    addClassExtensions(book);
+    //addClassExtensions(book);
     addArchetypes(book);
     addPrestigeClasses(book);
     addSkills(book);
@@ -36,7 +36,7 @@ public abstract class BookBuilder
   
   protected abstract void addClasses(Book book);
   
-  protected abstract void addClassExtensions(Book book);
+  //protected abstract void addClassExtensions(Book book);
   
   protected abstract void addArchetypes(Book book);
   
