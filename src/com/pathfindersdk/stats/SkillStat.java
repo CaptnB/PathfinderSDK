@@ -5,7 +5,7 @@ import com.pathfindersdk.books.items.SkillItem;
 /**
  * This class represents a character skill. 
  */
-public class SkillStat extends Stat<String>
+public class SkillStat extends Stat
 {
   protected SkillItem skill;
   protected Boolean classSkill;
@@ -13,15 +13,8 @@ public class SkillStat extends Stat<String>
   public SkillStat(SkillItem skill)
   {
     super(0);
-    
     this.skill = skill;
     this.classSkill = false;
-  }
-  
-  @Override
-  public String toString()
-  {
-    return skill.toString();
   }
   
   public Boolean isClassSkill()
@@ -42,17 +35,13 @@ public class SkillStat extends Stat<String>
   @Override
   public Integer getScore()
   {
+    // Cannot use untrained
     if(!skill.isUnTrained() && getBaseScore() == 0)
       return 0;
-    else if(hasClassSkillBonus())
+    else if(isClassSkill() && getBaseScore() > 0)
       return super.getScore() + 3;
     else
       return super.getScore();
   }
 
-  @Override
-  public String getKey()
-  {
-    return skill.toString();
-  }
 }

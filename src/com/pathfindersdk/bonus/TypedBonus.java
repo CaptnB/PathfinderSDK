@@ -1,6 +1,6 @@
 package com.pathfindersdk.bonus;
 
-import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.stats.Stat;
 
 
 /**
@@ -46,18 +46,6 @@ public class TypedBonus implements Bonus, Comparable<TypedBonus>
   }
   
   @Override
-  public void applyTo(Creature creature)
-  {
-    strategy.applyTo(creature);
-  }
-
-  @Override
-  public void removeFrom(Creature creature)
-  {
-    strategy.removeFrom(creature);
-  }
-
-  @Override
   public int compareTo(TypedBonus bonus)
   {
     // Sort in descending order (highest bonus first so when bonuses don't stack, the first one is the one to consider)
@@ -65,6 +53,20 @@ public class TypedBonus implements Bonus, Comparable<TypedBonus>
       return -1;
     else
       return 1;
+  }
+
+  @Override
+  public void applyTo(Stat stat)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  public void removeFrom(Stat stat)
+  {
+    // TODO Auto-generated method stub
+    
   }
   
 }

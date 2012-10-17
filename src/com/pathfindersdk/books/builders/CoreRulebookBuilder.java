@@ -2,8 +2,6 @@ package com.pathfindersdk.books.builders;
 
 import com.pathfindersdk.basics.ClassItem;
 import com.pathfindersdk.basics.ClassLevel;
-import com.pathfindersdk.basics.CreatureMainType;
-import com.pathfindersdk.basics.CreatureSubtype;
 import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.basics.Dice;
 import com.pathfindersdk.basics.Language;
@@ -26,6 +24,8 @@ import com.pathfindersdk.books.BookSection;
 import com.pathfindersdk.books.BookSectionType;
 import com.pathfindersdk.books.items.RaceItem;
 import com.pathfindersdk.books.items.SkillItem;
+import com.pathfindersdk.creatures.CreatureMainType;
+import com.pathfindersdk.creatures.CreatureSubtype;
 import com.pathfindersdk.stats.AbilityType;
 import com.pathfindersdk.stats.SpeedStat;
 /**
@@ -73,8 +73,8 @@ public class CoreRulebookBuilder extends BookBuilder
     trait.addBonus(new TypedBonus(1, BonusType.UNTYPED, new AttackBonusStrategy(), "against humanoid creatures of the orc and goblinoid subtypes."));
     race.addTrait(trait);
     trait = new RacialTrait("Hardy");
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORTITUDE), "against poison, spells ans spell-like abilities."));
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REFLEX), "against poison, spells ans spell-like abilities."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORT), "against poison, spells ans spell-like abilities."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REF), "against poison, spells ans spell-like abilities."));
     trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.WILL), "against poison, spells ans spell-like abilities."));
     race.addTrait(trait);
     trait = new RacialTrait("Stability");
@@ -107,8 +107,8 @@ public class CoreRulebookBuilder extends BookBuilder
     race.addOptionalLanguage(Language.SYLVAN);
     trait = new RacialTrait("Elven Immunities");
     // TODO: add immunity to sleep
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORTITUDE), "against enchantment spells and effects."));
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REFLEX), "against enchantment spells and effects."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORT), "against enchantment spells and effects."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REF), "against enchantment spells and effects."));
     trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.WILL), "against enchantment spells and effects."));
     race.addTrait(trait);
     trait = new RacialTrait("Elven Magic");
@@ -150,8 +150,8 @@ public class CoreRulebookBuilder extends BookBuilder
     trait.addBonus(new TypedBonus(1, BonusType.UNTYPED, new AttackBonusStrategy(), "against humanoid creatures of the reptilian and goblinoid subtypes."));
     race.addTrait(trait);
     trait = new RacialTrait("Illusion Resistance");
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORTITUDE), "against illusion spells and effects."));
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REFLEX), "against illusion spells and effects."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORT), "against illusion spells and effects."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REF), "against illusion spells and effects."));
     trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.WILL), "against illusion spells and effects."));
     race.addTrait(trait);
     trait = new RacialTrait("Keen Senses");
@@ -245,13 +245,13 @@ public class CoreRulebookBuilder extends BookBuilder
     race.addOptionalLanguage(Language.GNOME);
     race.addOptionalLanguage(Language.GOBLIN);
     trait = new RacialTrait("Fearless");
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORTITUDE), "against fear. Stacks with Halfling Luck."));
-    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REFLEX), "against fear. Stacks with Halfling Luck."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORT), "against fear. Stacks with Halfling Luck."));
+    trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REF), "against fear. Stacks with Halfling Luck."));
     trait.addBonus(new TypedBonus(2, BonusType.RACIAL, new SaveBonusStrategy(SaveType.WILL), "against fear. Stacks with Halfling Luck."));
     race.addTrait(trait);
     trait = new RacialTrait("Halfling Luck");
-    trait.addBonus(new TypedBonus(1, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORTITUDE)));
-    trait.addBonus(new TypedBonus(1, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REFLEX)));
+    trait.addBonus(new TypedBonus(1, BonusType.RACIAL, new SaveBonusStrategy(SaveType.FORT)));
+    trait.addBonus(new TypedBonus(1, BonusType.RACIAL, new SaveBonusStrategy(SaveType.REF)));
     trait.addBonus(new TypedBonus(1, BonusType.RACIAL, new SaveBonusStrategy(SaveType.WILL)));
     race.addTrait(trait);
     trait = new RacialTrait("Keen Senses");

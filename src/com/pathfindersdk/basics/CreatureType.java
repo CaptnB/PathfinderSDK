@@ -2,6 +2,9 @@ package com.pathfindersdk.basics;
 
 import java.util.TreeSet;
 
+import com.pathfindersdk.creatures.CreatureMainType;
+import com.pathfindersdk.creatures.CreatureSubtype;
+
 public class CreatureType
 {
   protected CreatureMainType type;

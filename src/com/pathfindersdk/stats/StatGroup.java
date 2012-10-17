@@ -2,25 +2,31 @@ package com.pathfindersdk.stats;
 
 import java.util.Hashtable;
 
-public abstract class StatGroup<K>
+public class StatGroup implements StatComponent
 {
-  protected StatGroupType groupType;
-  protected Hashtable<K, Stat<K>> stats;
+  protected Hashtable<String, StatComponent> stats;
   
-  public StatGroup(StatGroupType groupType)
+  public StatGroup()
   {
-    this.groupType = groupType;
   }
   
-  public StatGroupType getGroupType()
+  public void addComponent(String name, StatComponent stat)
   {
-    return groupType;
+    if(stat != null)
+    {
+      if(stats == null)
+        stats = new Hashtable<String, StatComponent>();
+      
+      stats.put(name, stat);
+    }
   }
-  
-  public abstract Stat<K> getStat(K key);
-  
-  public abstract void addStat(Stat<K> stat);
-  
-  public abstract void removeStat(Stat<K> stat);
+
+  public void removeComponent(String name)
+  {
+    if(stats != null)
+    {
+      stats.remove(name);
+    }
+  }
 
 }

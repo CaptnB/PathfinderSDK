@@ -3,13 +3,13 @@ package com.pathfindersdk.stats;
 /**
  * This class represents an ability score (ex: CHA 14 (+2)).
  */
-public class AbilityStat extends Stat<AbilityType>
+public class AbilityStat extends Stat
 {
   protected AbilityType type;
   
-  public AbilityStat(Integer baseScore, AbilityType type)
+  public AbilityStat(AbilityType type)
   {
-    super(baseScore);
+    super(10);
     this.type = type;
   }
   
@@ -23,9 +23,4 @@ public class AbilityStat extends Stat<AbilityType>
     return (getScore() - 10) / 2;
   }
 
-  @Override
-  public AbilityType getKey()
-  {
-    return type;
-  }
 }

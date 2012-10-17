@@ -2,8 +2,8 @@ package com.pathfindersdk.basics;
 
 public enum SaveType
 {
-  FORTITUDE ("Fortitude"),
-  REFLEX ("Reflex"),
+  FORT ("Fortitude"),
+  REF ("Reflex"),
   WILL ("Will");
   
   private String name;

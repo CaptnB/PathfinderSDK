@@ -1,6 +1,5 @@
 package com.pathfindersdk.prerequisites;
 
-import com.pathfindersdk.basics.Feat;
 import com.pathfindersdk.creatures.Creature;
 
 /**
@@ -19,11 +18,11 @@ public class FeatPrerequisite extends Prerequisite
   @Override
   public Boolean isFilled(Creature creature)
   {
-    Feat feat = creature.getFeat(featName);
-    if(feat == null)
-      return false;
-    else
+    /*Feat feat = creature.getFeat(featName);
+    if(feat != null)
       return true;
+    else*/
+      return false;
   }
 
 }

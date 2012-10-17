@@ -3,13 +3,13 @@ package com.pathfindersdk.stats;
 import java.util.Hashtable;
 import java.util.TreeSet;
 
-import com.pathfindersdk.bonus.TypedBonus;
 import com.pathfindersdk.bonus.BonusType;
+import com.pathfindersdk.bonus.TypedBonus;
 
 /**
  * This class is a generic character stat (ex: Initiative, AC, etc.). 
  */
-public abstract class Stat<K>
+public class Stat implements StatComponent
 {
   // I'd prefer a Hashtable<BonusType, TreeSet<Bonus>> but hey...
   private class BonusGroup
@@ -34,8 +34,8 @@ public abstract class Stat<K>
     }
   }
   
-  private Integer baseScore;
-  private Hashtable<BonusType, BonusGroup> bonusGroups;
+  protected Integer baseScore;
+  protected Hashtable<BonusType, BonusGroup> bonusGroups;
   
   public Stat(int baseScore)
   {
@@ -115,6 +115,4 @@ public abstract class Stat<K>
       bonusGroups = null;
   }
   
-  public abstract K getKey();
-
 }

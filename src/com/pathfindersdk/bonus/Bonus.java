@@ -1,9 +1,9 @@
 package com.pathfindersdk.bonus;
 
-import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.stats.Stat;
 
 public interface Bonus
 {
-  public abstract void applyTo(Creature creature);
-  public abstract void removeFrom(Creature creature);
+  public abstract void applyTo(Stat stat);
+  public abstract void removeFrom(Stat stat);
 }

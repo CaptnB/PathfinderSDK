@@ -5,7 +5,7 @@ import com.pathfindersdk.basics.SpeedType;
 /**
  * This class represents a creature's speed.
  */
-public class SpeedStat extends Stat<SpeedType>
+public class SpeedStat extends Stat
 {
   protected SpeedType type;
 
@@ -16,12 +16,6 @@ public class SpeedStat extends Stat<SpeedType>
   }
   
   public SpeedType getType()
-  {
-    return type;
-  }
-
-  @Override
-  public SpeedType getKey()
   {
     return type;
   }
