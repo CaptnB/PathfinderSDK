@@ -10,7 +10,7 @@ import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.AbilityScore;
 import com.pathfindersdk.stats.SavingThrow;
 import com.pathfindersdk.stats.Size;
-import com.pathfindersdk.stats.Stat;
+import com.pathfindersdk.stats.Speed;
 
 
 /**
@@ -22,7 +22,7 @@ public abstract class Creature
   protected AlignmentType alignment;
   protected Size size;
   protected Boolean biped;
-  protected Hashtable<SpeedType, Stat> speeds = new Hashtable<SpeedType, Stat>();
+  protected Hashtable<SpeedType, Speed> speeds = new Hashtable<SpeedType, Speed>();
   protected Hashtable<AbilityType, AbilityScore> abilityScores = new Hashtable<AbilityType, AbilityScore>(); 
   protected Hashtable<SaveType, SavingThrow> savingThrows = new Hashtable<SaveType, SavingThrow>(); 
   
@@ -145,22 +145,22 @@ public abstract class Creature
     return size.getSize(biped);
   }
   
-  public Stat getSpeed(SpeedType type)
+  public Speed getSpeed(SpeedType type)
   {
-    Stat speed = speeds.get(type);
+    Speed speed = speeds.get(type);
     if(speed == null)
       System.out.println("Speed is null!");
     
     return speed;
   }
   
-  public void addSpeed(SpeedType type, Stat speed)
+  public void addSpeed(Speed speed)
   {
-    speeds.put(type, speed);
+    speeds.put(speed.getType(), speed);
   }
 
-  public void removeSpeed(SpeedType speed)
+  public void removeSpeed(Speed speed)
   {
-    speeds.remove(speed);
+    speeds.remove(speed.getType());
   }
 }
