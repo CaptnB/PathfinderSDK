@@ -16,8 +16,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <enumeration id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.BonusType" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/bonus/BonusType.java" binary="false">    
+  <enumeration id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.enums.BonusType" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/enums/BonusType.java" binary="false">    
     <position height="-1" width="-1" x="594" y="352"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      

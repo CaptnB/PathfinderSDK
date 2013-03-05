@@ -1,4 +1,4 @@
-package com.pathfindersdk.books;
+package com.pathfindersdk.enums;
 
 public enum BookSectionType
 {

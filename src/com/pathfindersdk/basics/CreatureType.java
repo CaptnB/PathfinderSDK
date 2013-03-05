@@ -2,8 +2,8 @@ package com.pathfindersdk.basics;
 
 import java.util.TreeSet;
 
-import com.pathfindersdk.creatures.CreatureMainType;
-import com.pathfindersdk.creatures.CreatureSubtype;
+import com.pathfindersdk.enums.CreatureMainType;
+import com.pathfindersdk.enums.CreatureSubtype;
 
 public class CreatureType
 {

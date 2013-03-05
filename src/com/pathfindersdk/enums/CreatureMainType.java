@@ -1,4 +1,4 @@
-package com.pathfindersdk.creatures;
+package com.pathfindersdk.enums;
 
 /**
  * This enum lists all creature types.

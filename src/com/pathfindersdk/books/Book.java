@@ -2,6 +2,8 @@ package com.pathfindersdk.books;
 
 import java.util.Hashtable;
 
+import com.pathfindersdk.enums.BookSectionType;
+
 
 /**
  * This class wraps everything a book may contain. It also adds elements into indexes for easy retrieval, say from another book. 

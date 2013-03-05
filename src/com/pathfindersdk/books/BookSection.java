@@ -2,6 +2,8 @@ package com.pathfindersdk.books;
 
 import java.util.TreeSet;
 
+import com.pathfindersdk.enums.BookSectionType;
+
 public class BookSection extends BookContent
 {
   protected BookSectionType type;

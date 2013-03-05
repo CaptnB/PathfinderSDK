@@ -1,4 +1,4 @@
-package com.pathfindersdk.equipment;
+package com.pathfindersdk.enums;
 
 public enum ArmorType
 {

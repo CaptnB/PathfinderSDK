@@ -16,8 +16,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <enumeration id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookSectionType" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/BookSectionType.java" binary="false">    
+  <enumeration id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.enums.BookSectionType" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/enums/BookSectionType.java" binary="false">    
     <position height="-1" width="-1" x="331" y="654"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      

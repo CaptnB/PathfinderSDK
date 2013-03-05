@@ -1,9 +1,9 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.enums;
 
 /**
  * This enum lists all available vision types.
  */
-public enum Vision
+public enum VisionType
 {
   NORMAL ("Normal"),
   LOW_LIGHT ("Low-Light"),
@@ -11,7 +11,7 @@ public enum Vision
   
   private final String name;
   
-  private Vision(String name)
+  private VisionType(String name)
   {
     this.name = name;
   }

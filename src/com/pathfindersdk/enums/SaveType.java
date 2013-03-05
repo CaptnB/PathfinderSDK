@@ -1,12 +1,15 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.enums;
 
+/**
+ * This enum lists all 3 saving throw types.
+ */
 public enum SaveType
 {
   FORT ("Fortitude"),
   REF ("Reflex"),
   WILL ("Will");
   
-  private String name;
+  private final String name;
   
   private SaveType(String name)
   {

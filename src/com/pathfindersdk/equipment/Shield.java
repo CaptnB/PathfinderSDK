@@ -1,5 +1,7 @@
 package com.pathfindersdk.equipment;
 
+import com.pathfindersdk.enums.BodySlotType;
+
 public class Shield extends BodyEquipment
 {
   protected Integer ac;
@@ -10,7 +12,7 @@ public class Shield extends BodyEquipment
   
   public Shield(String name, int ac, int maxDex, int checkPenalty, float spellFailure, int cost, int weight)
   {
-    super(name, cost, weight, BodySlot.SHIELD);
+    super(name, cost, weight, BodySlotType.SHIELD);
     this.ac = ac;
     this.maxDex = maxDex;
     this.checkPenalty = checkPenalty;

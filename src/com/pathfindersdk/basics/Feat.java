@@ -3,6 +3,7 @@ package com.pathfindersdk.basics;
 import java.util.HashSet;
 
 import com.pathfindersdk.bonus.Bonus;
+import com.pathfindersdk.enums.FeatType;
 import com.pathfindersdk.prerequisites.Prerequisite;
 
 /**

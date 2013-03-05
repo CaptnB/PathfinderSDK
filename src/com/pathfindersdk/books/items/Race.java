@@ -3,30 +3,30 @@ package com.pathfindersdk.books.items;
 import java.util.ArrayList;
 
 import com.pathfindersdk.basics.CreatureType;
-import com.pathfindersdk.basics.Language;
 import com.pathfindersdk.basics.RacialTrait;
-import com.pathfindersdk.basics.Size;
-import com.pathfindersdk.basics.Vision;
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.stats.SpeedStat;
+import com.pathfindersdk.enums.LanguageType;
+import com.pathfindersdk.enums.SizeType;
+import com.pathfindersdk.enums.VisionType;
+import com.pathfindersdk.stats.Speed;
 
 /**
  * This class represents a character race.
  */
-public class RaceItem extends BookItem
+public class Race extends BookItem
 {
   protected CreatureType type;
-  protected Size size;
-  protected ArrayList<Vision> visions;
-  protected ArrayList<Language> baseLanguages;
-  protected ArrayList<Language> optionalLanguages;
+  protected SizeType size;
+  protected ArrayList<VisionType> visions;
+  protected ArrayList<LanguageType> baseLanguages;
+  protected ArrayList<LanguageType> optionalLanguages;
   protected ArrayList<Bonus> bonuses;
-  protected ArrayList<SpeedStat> speeds;
+  protected ArrayList<Speed> speeds;
   protected ArrayList<RacialTrait> traits;
   
-  public RaceItem(String name, CreatureType type, Size size)
+  public Race(String name, CreatureType type, SizeType size)
   {
     super(name);
     this.type = type;
@@ -38,44 +38,44 @@ public class RaceItem extends BookItem
     return type;
   }
   
-  public Size getSize()
+  public SizeType getSize()
   {
     return size;
   }
   
-  public void setSize(Size size)
+  public void setSize(SizeType size)
   {
     this.size = size;
   }
   
-  public void addVision(Vision vision)
+  public void addVision(VisionType vision)
   {
     if(visions == null)
-      visions = new ArrayList<Vision>();
+      visions = new ArrayList<VisionType>();
     
     visions.add(vision);
   }
   
-  public void addSpeed(SpeedStat speed)
+  public void addSpeed(Speed speed)
   {
     if(speeds == null)
-      speeds = new ArrayList<SpeedStat>();
+      speeds = new ArrayList<Speed>();
     
     speeds.add(speed);
   }
   
-  public void addBaseLanguage(Language language)
+  public void addBaseLanguage(LanguageType language)
   {
     if(baseLanguages == null)
-      baseLanguages = new ArrayList<Language>();
+      baseLanguages = new ArrayList<LanguageType>();
     
     baseLanguages.add(language);
   }
   
-  public void addOptionalLanguage(Language language)
+  public void addOptionalLanguage(LanguageType language)
   {
     if(optionalLanguages == null)
-      optionalLanguages = new ArrayList<Language>();
+      optionalLanguages = new ArrayList<LanguageType>();
     
     optionalLanguages.add(language);
   }

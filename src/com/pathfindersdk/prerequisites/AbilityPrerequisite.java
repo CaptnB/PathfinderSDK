@@ -1,7 +1,7 @@
 package com.pathfindersdk.prerequisites;
 
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.stats.AbilityType;
+import com.pathfindersdk.enums.AbilityType;
 
 /**
  * This class requires a character to have an ability score (AbilityStat) at a specific value or higher (ex: Dodge feat requires Dex 13).

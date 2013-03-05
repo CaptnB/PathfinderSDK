@@ -2,6 +2,9 @@ package com.pathfindersdk.equipment;
 
 import java.util.ArrayList;
 
+import com.pathfindersdk.enums.ArmorType;
+import com.pathfindersdk.enums.BodySlotType;
+
 public class Armor extends BodyEquipment
 {
   protected ArmorType type;
@@ -13,7 +16,7 @@ public class Armor extends BodyEquipment
 
   public Armor(String name, ArmorType type, int ac, int maxDex, int checkPenalty, float spellFailure, int cost, int weight)
   {
-    super(name, cost, weight, BodySlot.ARMOR);
+    super(name, cost, weight, BodySlotType.ARMOR);
     this.type = type;
     this.ac = ac;
     this.maxDex = maxDex;

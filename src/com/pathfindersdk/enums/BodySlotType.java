@@ -1,6 +1,6 @@
-package com.pathfindersdk.equipment;
+package com.pathfindersdk.enums;
 
-public enum BodySlot
+public enum BodySlotType
 {
   ARMOR ("Armor"),
   BELT ("Belt"),
@@ -19,7 +19,7 @@ public enum BodySlot
   
   private final String name;
   
-  private BodySlot(String name)
+  private BodySlotType(String name)
   {
     this.name = name;
   }

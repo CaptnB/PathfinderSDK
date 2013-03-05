@@ -2,7 +2,7 @@ package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.stats.AbilityType;
+import com.pathfindersdk.enums.AbilityType;
 
 
 /**

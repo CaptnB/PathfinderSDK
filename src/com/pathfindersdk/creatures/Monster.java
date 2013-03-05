@@ -1,15 +1,15 @@
 package com.pathfindersdk.creatures;
 
 
+
 /**
  * The Class Monster.
  */
 public class Monster extends Creature
 {
-  public Monster(String name)
+  public Monster()
   {
-    super(name);
+    super("New monster");
   }
-
-
+  
 }

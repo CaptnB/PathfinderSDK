@@ -1,4 +1,4 @@
-package com.pathfindersdk.stats;
+package com.pathfindersdk.enums;
 
 /**
  * This enum lists all 6 ability scores and also ANY for races with a floating bonus.

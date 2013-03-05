@@ -1,9 +1,9 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.enums;
 
 /**
  * This enum lists all 9 alignments.
  */
-public enum Alignment
+public enum AlignmentType
 {
   LAWFUL_GOOD ("Lawful Good"),
   LAWFUL_NEUTRAL ("Lawful Neutral"),
@@ -17,7 +17,7 @@ public enum Alignment
   
   private final String name;
   
-  private Alignment(String name)
+  private AlignmentType(String name)
   {
     this.name = name;
   }

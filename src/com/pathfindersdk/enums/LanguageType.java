@@ -1,9 +1,9 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.enums;
 
 /**
  * This enum lists all available Languages.
  */
-public enum Language
+public enum LanguageType
 {
   ABYSSAL ("Abyssal"),
   AKLO ("Aklo"),
@@ -29,7 +29,7 @@ public enum Language
   
   private final String name;
   
-  private Language(String name)
+  private LanguageType(String name)
   {
     this.name = name;
   }

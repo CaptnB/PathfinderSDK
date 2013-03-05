@@ -3,32 +3,32 @@ package com.pathfindersdk.stats;
 import java.util.Hashtable;
 import java.util.TreeSet;
 
-import com.pathfindersdk.bonus.BonusType;
-import com.pathfindersdk.bonus.TypedBonus;
+import com.pathfindersdk.bonus.Bonus;
+import com.pathfindersdk.enums.BonusType;
 
 /**
  * This class is a generic character stat (ex: Initiative, AC, etc.). 
  */
-public class Stat implements StatComponent
+public class Stat
 {
   // I'd prefer a Hashtable<BonusType, TreeSet<Bonus>> but hey...
   private class BonusGroup
   {
-    private TreeSet<TypedBonus> baseBonuses;
-    private TreeSet<TypedBonus> circumstantialBonuses;
+    private TreeSet<Bonus> baseBonuses;
+    private TreeSet<Bonus> circumstantialBonuses;
     
-    public TreeSet<TypedBonus> getBaseBonuses()
+    public TreeSet<Bonus> getBaseBonuses()
     {
       if(baseBonuses == null)
-        baseBonuses = new TreeSet<TypedBonus>();
-      
+        baseBonuses = new TreeSet<Bonus>();
+
       return baseBonuses;
     }
     
-    public TreeSet<TypedBonus> getCircumstantialBonuses()
+    public TreeSet<Bonus> getCircumstantialBonuses()
     {
       if(circumstantialBonuses == null)
-        circumstantialBonuses = new TreeSet<TypedBonus>();
+        circumstantialBonuses = new TreeSet<Bonus>();
       
       return circumstantialBonuses;
     }
@@ -64,7 +64,7 @@ public class Stat implements StatComponent
 
         // Add all untyped bonus
         if(key == BonusType.UNTYPED)
-          for(TypedBonus bonus : statBonus.getBaseBonuses())
+          for(Bonus bonus : statBonus.getBaseBonuses())
             total += bonus.getValue();
         else
           total += statBonus.getBaseBonuses().first().getValue();
@@ -74,7 +74,7 @@ public class Stat implements StatComponent
     return total;
   }
 
-  public void addBonus(TypedBonus bonus)
+  public void addBonus(Bonus bonus)
   {
     if(bonusGroups == null)
       bonusGroups = new Hashtable<BonusType, BonusGroup>();
@@ -94,7 +94,7 @@ public class Stat implements StatComponent
       bonusGroup.getCircumstantialBonuses().add(bonus);
   }
   
-  public void removeBonus(TypedBonus bonus)
+  public void removeBonus(Bonus bonus)
   {
     // Check if bonus of that type already exist, create it if it doesn't
     BonusGroup bonusGroup = bonusGroups.get(bonus.getType());

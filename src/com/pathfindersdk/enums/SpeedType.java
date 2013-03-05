@@ -1,4 +1,4 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.enums;
 
 /**
  * This enum lists all available speed types.
