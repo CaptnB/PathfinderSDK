@@ -10,7 +10,7 @@ public class AbilityScore extends Stat implements Rollable
 {
   public AbilityScore()
   {
-    super(0);
+    super(10);
   }
   
   public AbilityScore(int baseScore)
