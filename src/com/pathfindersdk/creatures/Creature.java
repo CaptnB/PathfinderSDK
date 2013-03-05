@@ -8,6 +8,7 @@ import com.pathfindersdk.enums.SaveType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.AbilityScore;
+import com.pathfindersdk.stats.Initiative;
 import com.pathfindersdk.stats.SavingThrow;
 import com.pathfindersdk.stats.Size;
 import com.pathfindersdk.stats.Speed;
@@ -24,7 +25,8 @@ public abstract class Creature
   protected Boolean biped;
   protected Hashtable<SpeedType, Speed> speeds = new Hashtable<SpeedType, Speed>();
   protected Hashtable<AbilityType, AbilityScore> abilityScores = new Hashtable<AbilityType, AbilityScore>(); 
-  protected Hashtable<SaveType, SavingThrow> savingThrows = new Hashtable<SaveType, SavingThrow>(); 
+  protected Hashtable<SaveType, SavingThrow> savingThrows = new Hashtable<SaveType, SavingThrow>();
+  protected Initiative initiative;
   
   public Creature(String name)
   {
@@ -42,6 +44,8 @@ public abstract class Creature
     savingThrows.put(SaveType.FORT, new SavingThrow(getAbilityScore(AbilityType.CON)));
     savingThrows.put(SaveType.REF,  new SavingThrow(getAbilityScore(AbilityType.DEX)));
     savingThrows.put(SaveType.WILL, new SavingThrow(getAbilityScore(AbilityType.WIS)));
+    
+    initiative = new Initiative(getAbilityScore(AbilityType.DEX));
   }
   
   public void setName(String name)
