@@ -5,7 +5,6 @@ import java.util.Hashtable;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.SaveType;
-import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.AbilityScore;
 import com.pathfindersdk.stats.Initiative;
@@ -22,7 +21,6 @@ public abstract class Creature
   protected String name;
   protected AlignmentType alignment;
   protected Size size;
-  protected Boolean biped;
   protected Hashtable<SpeedType, Speed> speeds = new Hashtable<SpeedType, Speed>();
   protected Hashtable<AbilityType, AbilityScore> abilityScores = new Hashtable<AbilityType, AbilityScore>(); 
   protected Hashtable<SaveType, SavingThrow> savingThrows = new Hashtable<SaveType, SavingThrow>();
@@ -31,8 +29,6 @@ public abstract class Creature
   public Creature(String name)
   {
     this.name = name;
-    
-    biped = true;
     
     abilityScores.put(AbilityType.STR, new AbilityScore(10));
     abilityScores.put(AbilityType.DEX, new AbilityScore(10));
@@ -46,6 +42,11 @@ public abstract class Creature
     savingThrows.put(SaveType.WILL, new SavingThrow(getAbilityScore(AbilityType.WIS)));
     
     initiative = new Initiative(getAbilityScore(AbilityType.DEX));
+  }
+  
+  public String getName()
+  {
+    return name;
   }
   
   public void setName(String name)
@@ -63,16 +64,35 @@ public abstract class Creature
     this.alignment = alignment;
   }
   
-  public boolean isBiped()
+  public Size getSize()
   {
-    return biped;
+    return size;
   }
-  
-  public void setBiped(boolean biped)
+
+  public void setSize(Size size)
   {
-    this.biped = biped;
+    this.size = size;
   }
-  
+
+  public Speed getSpeed(SpeedType type)
+  {
+    Speed speed = speeds.get(type);
+    if(speed == null)
+      System.out.println("Speed is null!");
+    
+    return speed;
+  }
+
+  public void addSpeed(Speed speed)
+  {
+    speeds.put(speed.getType(), speed);
+  }
+
+  public void removeSpeed(Speed speed)
+  {
+    speeds.remove(speed.getType());
+  }
+
   public AbilityScore getAbilityScore(AbilityType type)
   {
     AbilityScore score = abilityScores.get(type);
@@ -136,35 +156,8 @@ public abstract class Creature
     return getSavingThrow(SaveType.WILL);
   }
   
-  public void setSize(SizeType size)
+  public Initiative getInitiative()
   {
-    if(size == null)
-      this.size = new Size(size);
-    else
-      this.size.setBaseSize(size);
-  }
-
-  public SizeType getSize()
-  {
-    return size.getSize(biped);
-  }
-  
-  public Speed getSpeed(SpeedType type)
-  {
-    Speed speed = speeds.get(type);
-    if(speed == null)
-      System.out.println("Speed is null!");
-    
-    return speed;
-  }
-  
-  public void addSpeed(Speed speed)
-  {
-    speeds.put(speed.getType(), speed);
-  }
-
-  public void removeSpeed(Speed speed)
-  {
-    speeds.remove(speed.getType());
+    return initiative;
   }
 }
