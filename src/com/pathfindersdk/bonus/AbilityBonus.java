@@ -3,7 +3,6 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.BonusType;
-import com.pathfindersdk.stats.AbilityScore;
 
 public class AbilityBonus extends Bonus
 {
@@ -24,22 +23,12 @@ public class AbilityBonus extends Bonus
   @Override
   public void applyTo(Creature creature)
   {
-    AbilityScore score = creature.getAbilityScore(ability);
-    
-    if(score != null)
-      score.addBonus(this);
-    else
-      System.out.println("Could not find AbilityScore (type : " + ability.toString() + ") from Creature (name : " + creature.getName() + ")");
+    applyToStat(creature.getAbilityScore(ability));
   }
   
   @Override
   public void removeFrom(Creature creature)
   {
-    AbilityScore score = creature.getAbilityScore(ability);
-    
-    if(score != null)
-      score.removeBonus(this);
-    else
-      System.out.println("Could not find AbilityScore (type : " + ability.toString() + ") from Creature (name : " + creature.getName() + ")");
+    removeFromStat(creature.getAbilityScore(ability));
   }
 }

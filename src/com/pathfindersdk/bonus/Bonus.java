@@ -2,6 +2,7 @@ package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.stats.Stat;
 
 
 public abstract class Bonus implements Comparable<Bonus>
@@ -52,4 +53,19 @@ public abstract class Bonus implements Comparable<Bonus>
 
   public abstract void removeFrom(Creature creature);
 
+  protected void applyToStat(Stat stat)
+  {
+    if(stat != null)
+      stat.addBonus(this);
+    else
+      System.out.println("Stat is null, could not add Bonus [" + this.getClass().getSimpleName() + "]");
+  }
+  
+  protected void removeFromStat(Stat stat)
+  {
+    if(stat != null)
+      stat.removeBonus(this);
+    else
+      System.out.println("Stat is null, could not remove Bonus [" + this.getClass().getSimpleName() + "]");
+  }
 }

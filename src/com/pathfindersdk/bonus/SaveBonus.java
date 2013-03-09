@@ -3,7 +3,6 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 import com.pathfindersdk.enums.SaveType;
-import com.pathfindersdk.stats.SavingThrow;
 
 public class SaveBonus extends Bonus
 {
@@ -24,22 +23,12 @@ public class SaveBonus extends Bonus
   @Override
   public void applyTo(Creature creature)
   {
-    SavingThrow savingThrow = creature.getSavingThrow(save);
-    
-    if(savingThrow != null)
-      savingThrow.addBonus(this);
-    else
-      System.out.println("Could not find SavingThrow (type : " + save.toString() + ") from Creature (name : " + creature.getName() + ")");
+    applyToStat(creature.getSavingThrow(save));
   }
   
   @Override
   public void removeFrom(Creature creature)
   {
-    SavingThrow savingThrow = creature.getSavingThrow(save);
-    
-    if(savingThrow != null)
-      savingThrow.removeBonus(this);
-    else
-      System.out.println("Could not find SavingThrow (type : " + save.toString() + ") from Creature (name : " + creature.getName() + ")");
+    removeFromStat(creature.getSavingThrow(save));
   }
 }

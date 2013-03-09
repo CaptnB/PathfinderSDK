@@ -3,14 +3,14 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 
-public class InitiativeBonus extends Bonus
+public class SizeBonus extends Bonus
 {
-  public InitiativeBonus(int value, BonusType type)
+  public SizeBonus(int value, BonusType type)
   {
     super(value, type);
   }
-
-  public InitiativeBonus(int value, BonusType type, String circumstance)
+  
+  public SizeBonus(int value, BonusType type, String circumstance)
   {
     super(value, type, circumstance);
   }
@@ -18,13 +18,13 @@ public class InitiativeBonus extends Bonus
   @Override
   public void applyTo(Creature creature)
   {
-    applyToStat(creature.getInitiative());
+    applyToStat(creature.getSize());
   }
 
   @Override
   public void removeFrom(Creature creature)
   {
-    removeFromStat(creature.getInitiative());
+    removeFromStat(creature.getSize());
   }
 
 }
