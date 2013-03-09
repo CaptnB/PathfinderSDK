@@ -5,55 +5,25 @@ package com.pathfindersdk.enums;
  */
 public enum SizeType
 {
-  FINE            ("Fine", 8, 0.5, 0.0), 
-  DIMINUTIVE      ("Diminutive", 4, 1.0, 0.0), 
-  TINY            ("Tiny", 2, 2.5, 0.0), 
-  SMALL           ("Small", 1, 5.0, 5.0), 
-  MEDIUM          ("Medium", 0, 5.0, 5.0), 
-  LARGE_TALL      ("Large (tall)", -1, 10.0, 10.0), 
-  LARGE_LONG      ("Large (long)", -1, 10.0, 5.0), 
-  HUGE_TALL       ("Huge (tall)", -2, 15.0, 15.0), 
-  HUGE_LONG       ("Huge (long)", -2, 15.0, 10.0), 
-  GARGANTUAN_TALL ("Gargantuan (tall)", -4, 20.0, 20.0), 
-  GARGANTUAN_LONG ("Gargantuan (long)", -4, 20.0, 15.0), 
-  COLOSSAL_TALL   ("Colossal (tall)", -8, 30.0, 30.0), 
-  COLOSSAL_LONG   ("Colossal (long)", -8, 30.0, 20.0);
+  FINE       ("Fine"), 
+  DIMINUTIVE ("Diminutive"), 
+  TINY       ("Tiny"), 
+  SMALL      ("Small"), 
+  MEDIUM     ("Medium"), 
+  LARGE      ("Large"), 
+  HUGE       ("Huge"), 
+  GARGANTUAN ("Gargantuan"), 
+  COLOSSAL   ("Colossal");
 
   private final String name;
 
-  private final Integer modifier;
-  private final Double space;
-  private final Double reach;
-
-  private SizeType(String name, int modifier, double space, double reach)
+  private SizeType(String name)
   {
     this.name = name;
-    this.modifier = modifier;
-    this.space = space;
-    this.reach = reach;
   }
 
-  public Integer getSizeBonus()
-  {
-    return modifier;
-  }
-
-  public Integer getCmbBonus()
-  {
-    return -modifier;
-  }
-
-  public Double getSpace()
-  {
-    return space;
-  }
-
-  public Double getReach()
-  {
-    return reach;
-  }
   
-  public SizeType offset(int offset, boolean biped)
+  public SizeType offset(int offset)
   {
     SizeType size = this;
     
@@ -80,39 +50,23 @@ public enum SizeType
           break;
           
         case MEDIUM:
-          if(biped)
-            size = LARGE_TALL;
-          else
-            size = LARGE_LONG;
+          size = LARGE;
           break;
           
-        case LARGE_TALL:
-          size = HUGE_TALL;
+        case LARGE:
+          size = HUGE;
           break;
           
-        case LARGE_LONG: 
-          size = HUGE_LONG;
+        case HUGE: 
+          size = GARGANTUAN;
           break;
           
-        case HUGE_TALL: 
-          size = GARGANTUAN_TALL;
+        case GARGANTUAN: 
+          size = COLOSSAL;
           break;
           
-        case HUGE_LONG: 
-          size = GARGANTUAN_LONG;
-          break;
-          
-        case GARGANTUAN_TALL: 
-          size = COLOSSAL_TALL;
-          break;
-          
-        case GARGANTUAN_LONG: 
-          size = COLOSSAL_LONG;
-          break;
-        
         // Max size reached
-        case COLOSSAL_TALL: 
-        case COLOSSAL_LONG:
+        case COLOSSAL: 
         default:
           break;
           
@@ -125,32 +79,19 @@ public enum SizeType
       {
         switch(size)
         {
-        case COLOSSAL_TALL:
-          size = GARGANTUAN_TALL;
+        case COLOSSAL:
+          size = GARGANTUAN;
           break;
           
-        case COLOSSAL_LONG:
-          size = GARGANTUAN_LONG;
+        case GARGANTUAN: 
+          size = HUGE;
           break;
           
-        case GARGANTUAN_TALL: 
-          size = HUGE_TALL;
+        case HUGE: 
+          size = LARGE;
           break;
           
-        case GARGANTUAN_LONG: 
-          size = HUGE_LONG;
-          break;
-
-        case HUGE_TALL: 
-          size = LARGE_TALL;
-          break;
-          
-        case HUGE_LONG: 
-          size = LARGE_LONG;
-          break;
-          
-        case LARGE_TALL:
-        case LARGE_LONG: 
+        case LARGE:
           size = MEDIUM;
           break;
           
