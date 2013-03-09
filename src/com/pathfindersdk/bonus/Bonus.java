@@ -1,9 +1,10 @@
 package com.pathfindersdk.bonus;
 
+import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 
 
-public class Bonus implements Comparable<Bonus>
+public abstract class Bonus implements Comparable<Bonus>
 {
   protected Integer value;
   protected BonusType type;
@@ -46,5 +47,9 @@ public class Bonus implements Comparable<Bonus>
     else
       return 1;
   }
+
+  public abstract void applyTo(Creature creature);
+
+  public abstract void removeFrom(Creature creature);
 
 }
