@@ -20,7 +20,6 @@ public abstract class Creature
 {
   protected String name;
   protected AlignmentType alignment;
-  protected Size size;
   protected Hashtable<SpeedType, Speed> speeds = new Hashtable<SpeedType, Speed>();
   protected Hashtable<AbilityType, AbilityScore> abilityScores = new Hashtable<AbilityType, AbilityScore>(); 
   protected Hashtable<SaveType, SavingThrow> savingThrows = new Hashtable<SaveType, SavingThrow>();
@@ -64,15 +63,7 @@ public abstract class Creature
     this.alignment = alignment;
   }
   
-  public Size getSize()
-  {
-    return size;
-  }
-
-  public void setSize(Size size)
-  {
-    this.size = size;
-  }
+  public abstract Size getSize();
 
   public Speed getSpeed(SpeedType type)
   {

@@ -1,6 +1,7 @@
 package com.pathfindersdk.creatures;
 
 import com.pathfindersdk.books.items.Race;
+import com.pathfindersdk.stats.Size;
 
 
 /**
@@ -25,5 +26,16 @@ public class Character extends Creature
     return race;
   }
   
+  @Override
+  public Size getSize()
+  {
+    if(race != null)
+      return race.getSize();
+    else
+    {
+      
+      return null;
+    }
+  }
 
 }

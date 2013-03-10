@@ -14,22 +14,16 @@ public class Stat
   // I'd prefer a Hashtable<BonusType, TreeSet<Bonus>> but hey...
   private class BonusGroup
   {
-    private TreeSet<Bonus> baseBonuses;
-    private TreeSet<Bonus> circumstantialBonuses;
+    private TreeSet<Bonus> baseBonuses = new TreeSet<Bonus>();
+    private TreeSet<Bonus> circumstantialBonuses = new TreeSet<Bonus>();
     
     public TreeSet<Bonus> getBaseBonuses()
     {
-      if(baseBonuses == null)
-        baseBonuses = new TreeSet<Bonus>();
-
       return baseBonuses;
     }
     
     public TreeSet<Bonus> getCircumstantialBonuses()
     {
-      if(circumstantialBonuses == null)
-        circumstantialBonuses = new TreeSet<Bonus>();
-      
       return circumstantialBonuses;
     }
   }
@@ -62,10 +56,12 @@ public class Stat
       {
         BonusGroup statBonus = bonusGroups.get(key);
 
-        // Add all untyped bonus
+        // Untyped bonuses stack
         if(key == BonusType.UNTYPED)
           for(Bonus bonus : statBonus.getBaseBonuses())
             total += bonus.getValue();
+        
+        // Typed bonuses do not stack so use the biggest one (sorted in descending order, first == biggest)
         else
           total += statBonus.getBaseBonuses().first().getValue();
       }

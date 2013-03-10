@@ -6,19 +6,20 @@ import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.basics.RacialTrait;
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.VisionType;
+import com.pathfindersdk.stats.Size;
 import com.pathfindersdk.stats.Speed;
+import com.pathfindersdk.creatures.Character;
 
 /**
  * This class represents a character race.
  */
-public class Race extends BookItem
+public class Race extends BookItem implements Feature<Character>
 {
   protected CreatureType type;
-  protected SizeType size;
+  protected Size size;
   protected ArrayList<VisionType> visions;
   protected ArrayList<LanguageType> baseLanguages;
   protected ArrayList<LanguageType> optionalLanguages;
@@ -30,7 +31,7 @@ public class Race extends BookItem
   {
     super(name);
     this.type = type;
-    this.size = size;
+    this.size = new Size(size);
   }
   
   public CreatureType getType()
@@ -38,12 +39,12 @@ public class Race extends BookItem
     return type;
   }
   
-  public SizeType getSize()
+  public Size getSize()
   {
     return size;
   }
   
-  public void setSize(SizeType size)
+  public void setSize(Size size)
   {
     this.size = size;
   }
@@ -97,17 +98,15 @@ public class Race extends BookItem
   }
 
   @Override
-  public void applyTo(Creature creature)
+  public void applyTo(Character character)
   {
-    // TODO Auto-generated method stub
-    
+    character.setRace(this);
   }
 
   @Override
-  public void removeFrom(Creature creature)
+  public void removeFrom(Character character)
   {
-    // TODO Auto-generated method stub
-    
+    character.setRace(null);
   }
   
 }

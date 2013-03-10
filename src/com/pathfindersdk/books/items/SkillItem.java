@@ -1,7 +1,6 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.AbilityType;
 
 
@@ -35,20 +34,6 @@ public class SkillItem extends BookItem
   public Boolean isArmorCheckPenalty()
   {
     return armorCheckPenalty;
-  }
-
-  @Override
-  public void applyTo(Creature creature)
-  {
-    // TODO Auto-generated method stub
-    
-  }
-
-  @Override
-  public void removeFrom(Creature creature)
-  {
-    // TODO Auto-generated method stub
-    
   }
 
 }

@@ -1,16 +1,25 @@
 package com.pathfindersdk.books;
 
-import com.pathfindersdk.creatures.Creature;
 
-public abstract class BookItem extends BookContent
+
+public abstract class BookItem implements Comparable<BookItem>
 {
-
+  protected String name;
+  
   public BookItem(String name)
   {
-    super(name);
+    this.name = name;
   }
-
-  public abstract void applyTo(Creature creature);
   
-  public abstract void removeFrom(Creature creature);
+  @Override
+  public String toString()
+  {
+    return name;
+  }
+  
+  @Override
+  public int compareTo(BookItem component)
+  {
+    return toString().compareTo(component.toString());
+  }
 }

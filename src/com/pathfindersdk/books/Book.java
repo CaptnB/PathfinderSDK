@@ -8,15 +8,24 @@ import com.pathfindersdk.enums.BookSectionType;
 /**
  * This class wraps everything a book may contain. It also adds elements into indexes for easy retrieval, say from another book. 
  */
-public class Book extends BookContent
+public class Book
 {
+  protected String title;
   protected Hashtable<BookSectionType, BookSection> sections;
   
-  public Book(String name)
+  public Book(String title)
   {
-    super(name);
+    this.title = title;
   }
-    
+  
+  public BookSection getSection(BookSectionType type)
+  {
+    if(sections != null)
+      return sections.get(type);
+    else
+      return null;
+  }
+
   public void addSection(BookSection section)
   {
     if(section != null)
@@ -24,8 +33,7 @@ public class Book extends BookContent
       if(sections == null)
         sections = new Hashtable<BookSectionType, BookSection>();
       
-      if(sections.get(section.getType()) == null)
-        sections.put(section.getType(), section);
+      sections.put(section.getType(), section);
     }    
   }
   
@@ -38,13 +46,5 @@ public class Book extends BookContent
       if(sections.isEmpty())
         sections = null;
     }
-  }
-  
-  public BookSection getSection(BookSectionType type)
-  {
-    if(sections != null)
-      return sections.get(type);
-    else
-      return null;
   }
 }

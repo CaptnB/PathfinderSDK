@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.creatures.Creature;
 
 public class Equipment extends BookItem
 {
@@ -50,18 +49,4 @@ public class Equipment extends BookItem
     }
   }
   
-  @Override
-  public void applyTo(Creature creature)
-  {
-    // TODO Auto-generated method stub
-    
-  }
-
-  @Override
-  public void removeFrom(Creature creature)
-  {
-    // TODO Auto-generated method stub
-    
-  }
-
 }

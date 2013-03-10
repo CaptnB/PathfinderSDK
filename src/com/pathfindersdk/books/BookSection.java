@@ -4,7 +4,7 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.enums.BookSectionType;
 
-public class BookSection extends BookContent
+public class BookSection extends BookItem
 {
   protected BookSectionType type;
   protected TreeSet<BookItem> items;
@@ -20,6 +20,11 @@ public class BookSection extends BookContent
     return type;
   }
   
+  public TreeSet<BookItem> getItems()
+  {
+    return items;
+  }
+
   public void addItem(BookItem item)
   {
     if(item != null)
