@@ -1,5 +1,6 @@
 package com.pathfindersdk.creatures;
 
+import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.stats.Size;
 
 
@@ -10,6 +11,7 @@ import com.pathfindersdk.stats.Size;
 public class Monster extends Creature
 {
   protected Size size;
+  protected CreatureType type;
 
   public Monster()
   {
@@ -25,6 +27,17 @@ public class Monster extends Creature
   public void setSize(Size size)
   {
     this.size = size;
+  }
+
+  @Override
+  public CreatureType getType()
+  {
+    return type;
+  }
+
+  public void setCreatureType(CreatureType type)
+  {
+    this.type = type;
   }
 
 }

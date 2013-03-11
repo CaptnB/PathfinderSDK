@@ -54,20 +54,44 @@ public class Stat
     {
       for(BonusType key : bonusGroups.keySet())
       {
-        BonusGroup statBonus = bonusGroups.get(key);
+        BonusGroup group = bonusGroups.get(key);
 
-        // Untyped bonuses stack
-        if(key == BonusType.UNTYPED)
-          for(Bonus bonus : statBonus.getBaseBonuses())
-            total += bonus.getValue();
-        
-        // Typed bonuses do not stack so use the biggest one (sorted in descending order, first == biggest)
-        else
-          total += statBonus.getBaseBonuses().first().getValue();
+        // Only consider base bonuses as they are permanent (i.e. do not add circumstantial bonuses to total)
+        if(!group.getBaseBonuses().isEmpty())
+        {
+          // Untyped bonuses always stack
+          if(key == BonusType.UNTYPED)
+            for(Bonus bonus : group.getBaseBonuses())
+              total += bonus.getValue();
+          
+          // Typed bonuses do not stack so use the biggest one (sorted in descending order, first == biggest)
+          else
+            total += group.getBaseBonuses().first().getValue();
+        }
       }
     }
     
     return total;
+  }
+  
+  public TreeSet<Bonus> getAllCircumstantialBonuses()
+  {
+    // Circumstantial bonuses may come from any BonusType so this method gathers them all into one TreeSet
+    TreeSet<Bonus> circSet = new TreeSet<Bonus>();
+    
+    if(bonusGroups != null)
+    {
+      for(BonusType key : bonusGroups.keySet())
+      {
+        BonusGroup group = bonusGroups.get(key);
+
+        if(!group.getCircumstantialBonuses().isEmpty())
+          for(Bonus bonus : group.getCircumstantialBonuses())
+            circSet.add(bonus);
+      }
+    }
+    
+    return circSet;
   }
 
   public void addBonus(Bonus bonus)
@@ -111,4 +135,28 @@ public class Stat
       bonusGroups = null;
   }
   
+  @Override
+  public String toString()
+  {
+    // With all circumstantial bonuses, list them in parenthesis
+    String circumstantial = "";
+    TreeSet<Bonus> circSet = getAllCircumstantialBonuses(); 
+    if(!circSet.isEmpty())
+    {
+      circumstantial += " (";
+      for(Bonus bonus : circSet)
+      {
+        if(bonus.getValue() >= 0)
+          circumstantial += "+";
+        
+        circumstantial += bonus.getValue().toString() + " " + bonus.getType().toString() + " " + bonus.getCircumstance();
+        
+        if(bonus != circSet.last())
+          circumstantial += ", ";
+      }
+      circumstantial += ")";
+    }
+
+    return getScore().toString() + circumstantial;
+  }
 }

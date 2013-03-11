@@ -3,7 +3,6 @@ package com.pathfindersdk.basics;
 import java.util.ArrayList;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.prerequisites.Prerequisite;
 
 
@@ -89,19 +88,5 @@ public class ClassItem extends BookItem
       if(levels.isEmpty())
         levels = null;
     }
-  }
-
-  @Override
-  public void applyTo(Creature creature)
-  {
-    // TODO Auto-generated method stub
-    
-  }
-
-  @Override
-  public void removeFrom(Creature creature)
-  {
-    // TODO Auto-generated method stub
-    
   }
 }

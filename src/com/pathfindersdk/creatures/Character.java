@@ -1,5 +1,6 @@
 package com.pathfindersdk.creatures;
 
+import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.books.items.Race;
 import com.pathfindersdk.stats.Size;
 
@@ -18,6 +19,14 @@ public class Character extends Creature
   
   public void setRace(Race race)
   {
+    // Remove current race bonuses
+    if(this.race != null)
+      this.race.removeFrom(this);
+    
+    // Make sure to apply new race bonuses
+    if(race != null)
+      race.applyTo(this);
+    
     this.race = race;
   }
   
@@ -32,10 +41,16 @@ public class Character extends Creature
     if(race != null)
       return race.getSize();
     else
-    {
-      
       return null;
-    }
+  }
+
+  @Override
+  public CreatureType getType()
+  {
+    if(race != null)
+      return race.getType();
+    else
+      return null;
   }
 
 }

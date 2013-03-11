@@ -12,6 +12,12 @@ public class Initiative extends Stat implements Rollable
     super(0);
     this.dex = dex;
   }
+  
+  @Override
+  public Integer getScore()
+  {
+    return super.getScore() + dex.getModifier();
+  }
 
   @Override
   public Integer roll()

@@ -2,6 +2,7 @@ package com.pathfindersdk.creatures;
 
 import java.util.Hashtable;
 
+import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.SaveType;
@@ -52,6 +53,8 @@ public abstract class Creature
   {
     this.name = name;
   }
+  
+  public abstract CreatureType getType();
   
   public AlignmentType getAlignment()
   {

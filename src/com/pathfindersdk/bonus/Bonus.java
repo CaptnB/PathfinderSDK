@@ -25,21 +25,38 @@ public abstract class Bonus implements Comparable<Bonus>, Feature<Creature>
     this.circumstance = circumstance;
   }
   
+  // I disabled setters because Bonus are only sorted when they enter the TreeSet and can't trigger a resort...
+  
   public Integer getValue()
   {
     return value;
   }
   
+/*  public void setValue(int value)
+  {
+    this.value = value;
+  }
+*/  
   public BonusType getType()
   {
     return type;
   }
   
+/*  public void setType(BonusType type)
+  {
+    this.type = type;
+  }
+*/  
   public String getCircumstance()
   {
     return circumstance;
   }
   
+/*  public void setCircumstance(String circumstance)
+  {
+    this.circumstance = circumstance;
+  }
+*/  
   @Override
   public int compareTo(Bonus bonus)
   {

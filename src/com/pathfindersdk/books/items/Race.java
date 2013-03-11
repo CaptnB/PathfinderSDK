@@ -100,13 +100,15 @@ public class Race extends BookItem implements Feature<Character>
   @Override
   public void applyTo(Character character)
   {
-    character.setRace(this);
+    for(Bonus bonus : bonuses)
+      bonus.applyTo(character);
   }
 
   @Override
   public void removeFrom(Character character)
   {
-    character.setRace(null);
+    for(Bonus bonus : bonuses)
+      bonus.removeFrom(character);
   }
   
 }

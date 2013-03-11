@@ -195,4 +195,10 @@ public class Size extends Stat
       return 5.0;
     }
   }
+  
+  @Override
+  public String toString()
+  {
+    return getSize().toString();
+  }
 }

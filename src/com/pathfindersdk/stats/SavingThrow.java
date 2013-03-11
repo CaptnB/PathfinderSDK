@@ -12,6 +12,12 @@ public class SavingThrow extends Stat implements Rollable
     super(0);
     this.ability = ability;
   }
+  
+  @Override
+  public Integer getScore()
+  {
+    return super.getScore() + ability.getModifier();
+  }
 
   @Override
   public Integer roll()
