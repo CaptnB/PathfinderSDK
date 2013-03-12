@@ -8,13 +8,13 @@ public class SaveBonus extends Bonus
 {
   protected SaveType save;
 
-  public SaveBonus(int value, SaveType save, BonusType type)
+  public SaveBonus(int value, BonusType type, SaveType save)
   {
     super(value, type);
     this.save = save;
   }
 
-  public SaveBonus(int value, SaveType save, BonusType type, String circumstance)
+  public SaveBonus(int value, BonusType type, SaveType save, String circumstance)
   {
     super(value, type, circumstance);
     this.save = save;

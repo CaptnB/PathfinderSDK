@@ -9,6 +9,7 @@ public class Skill extends Stat
 {
   protected SkillItem skill;
   protected Boolean classSkill;
+  protected AbilityScore ability;
   
   public Skill(SkillItem skill)
   {
@@ -38,10 +39,14 @@ public class Skill extends Stat
     // Cannot use untrained
     if(!skill.isUnTrained() && getBaseScore() == 0)
       return 0;
+    
+    // Trained class-skill
     else if(isClassSkill() && getBaseScore() > 0)
-      return super.getScore() + 3;
+      return super.getScore() + ability.getModifier() + 3;
+    
+    // Everything else
     else
-      return super.getScore();
+      return super.getScore() + ability.getModifier();
   }
 
 }

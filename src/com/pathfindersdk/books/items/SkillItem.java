@@ -9,21 +9,14 @@ import com.pathfindersdk.enums.AbilityType;
  */
 public class SkillItem extends BookItem
 {
-  protected AbilityType keyAbility;
   protected Boolean untrained;
   protected Boolean armorCheckPenalty;
 
   public SkillItem(String name, AbilityType keyAbility, Boolean untrained, Boolean armorCheckPenalty)
   {
     super(name);
-    this.keyAbility = keyAbility;
     this.untrained = untrained;
     this.armorCheckPenalty = armorCheckPenalty;
-  }
-  
-  public AbilityType getKeyAbility()
-  {
-    return keyAbility;
   }
   
   public Boolean isUnTrained()

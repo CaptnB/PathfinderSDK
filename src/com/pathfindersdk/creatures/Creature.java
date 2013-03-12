@@ -21,7 +21,6 @@ public abstract class Creature
 {
   protected String name;
   protected AlignmentType alignment;
-  protected Hashtable<SpeedType, Speed> speeds = new Hashtable<SpeedType, Speed>();
   protected Hashtable<AbilityType, AbilityScore> abilityScores = new Hashtable<AbilityType, AbilityScore>(); 
   protected Hashtable<SaveType, SavingThrow> savingThrows = new Hashtable<SaveType, SavingThrow>();
   protected Initiative initiative;
@@ -68,24 +67,11 @@ public abstract class Creature
   
   public abstract Size getSize();
 
-  public Speed getSpeed(SpeedType type)
-  {
-    Speed speed = speeds.get(type);
-    if(speed == null)
-      System.out.println("Speed is null!");
-    
-    return speed;
-  }
+  public abstract Speed getSpeed(SpeedType type);
 
-  public void addSpeed(Speed speed)
-  {
-    speeds.put(speed.getType(), speed);
-  }
+  public abstract void addSpeed(Speed speed);
 
-  public void removeSpeed(Speed speed)
-  {
-    speeds.remove(speed.getType());
-  }
+  public abstract void removeSpeed(Speed speed);
 
   public AbilityScore getAbilityScore(AbilityType type)
   {

@@ -2,7 +2,9 @@ package com.pathfindersdk.creatures;
 
 import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.books.items.Race;
+import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.Size;
+import com.pathfindersdk.stats.Speed;
 
 
 /**
@@ -51,6 +53,29 @@ public class Character extends Creature
       return race.getType();
     else
       return null;
+  }
+
+  @Override
+  public Speed getSpeed(SpeedType type)
+  {
+    if(race != null)
+      return race.getSpeed(type);
+    else
+      return null;
+  }
+
+  @Override
+  public void addSpeed(Speed speed)
+  {
+    if(race != null)
+      race.addSpeed(speed);
+  }
+
+  @Override
+  public void removeSpeed(Speed speed)
+  {
+    if(race != null)
+      race.removeSpeed(speed);
   }
 
 }

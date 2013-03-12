@@ -1,6 +1,7 @@
 package com.pathfindersdk.books.items;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.basics.RacialTrait;
@@ -8,6 +9,7 @@ import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
+import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
 import com.pathfindersdk.stats.Size;
 import com.pathfindersdk.stats.Speed;
@@ -24,7 +26,7 @@ public class Race extends BookItem implements Feature<Character>
   protected ArrayList<LanguageType> baseLanguages;
   protected ArrayList<LanguageType> optionalLanguages;
   protected ArrayList<Bonus> bonuses;
-  protected ArrayList<Speed> speeds;
+  protected Hashtable<SpeedType, Speed> speeds = new Hashtable<SpeedType, Speed>();
   protected ArrayList<RacialTrait> traits;
   
   public Race(String name, CreatureType type, SizeType size)
@@ -56,13 +58,35 @@ public class Race extends BookItem implements Feature<Character>
     
     visions.add(vision);
   }
+
+  public Speed getSpeed(SpeedType type)
+  {
+    if(speeds != null)
+      return speeds.get(type);
+    else
+      return null;
+  }
   
   public void addSpeed(Speed speed)
   {
-    if(speeds == null)
-      speeds = new ArrayList<Speed>();
-    
-    speeds.add(speed);
+    if(speed != null)
+    {
+      if(speeds == null)
+        speeds = new Hashtable<SpeedType, Speed>();
+      
+      speeds.put(speed.getType(), speed);
+    }
+  }
+  
+  public void removeSpeed(Speed speed)
+  {
+    if(speeds != null)
+    {
+      speeds.remove(speed.getType());
+      
+      if(speeds.isEmpty())
+        speeds = null;
+    }
   }
   
   public void addBaseLanguage(LanguageType language)
