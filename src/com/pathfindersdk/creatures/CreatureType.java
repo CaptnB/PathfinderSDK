@@ -1,4 +1,4 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.creatures;
 
 import java.util.TreeSet;
 

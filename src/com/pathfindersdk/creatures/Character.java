@@ -1,10 +1,9 @@
 package com.pathfindersdk.creatures;
 
-import com.pathfindersdk.basics.CreatureType;
-import com.pathfindersdk.books.items.Race;
+import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.Size;
-import com.pathfindersdk.stats.Speed;
+import com.pathfindersdk.stats.Stat;
 
 
 /**
@@ -56,7 +55,7 @@ public class Character extends Creature
   }
 
   @Override
-  public Speed getSpeed(SpeedType type)
+  public Stat getSpeed(SpeedType type)
   {
     if(race != null)
       return race.getSpeed(type);
@@ -65,17 +64,43 @@ public class Character extends Creature
   }
 
   @Override
-  public void addSpeed(Speed speed)
+  public void addSpeed(SpeedType type, Stat speed)
   {
     if(race != null)
-      race.addSpeed(speed);
+      race.addSpeed(type, speed);
   }
 
   @Override
-  public void removeSpeed(Speed speed)
+  public void removeSpeed(SpeedType type, Stat speed)
   {
     if(race != null)
-      race.removeSpeed(speed);
+      race.removeSpeed(type, speed);
+  }
+  
+  @Override
+  public String toString()
+  {
+    String out = "";
+
+/*  
+    System.out.println("Fortitude : " + character.getFortitude().toString());
+    System.out.println("Reflex : " + character.getReflex().toString());
+    System.out.println("Will : " + character.getWill().toString());
+    System.out.println("Initiative : " + character.getInitiative().toString());
+    System.out.println("Base speed : " + character.getSpeed(SpeedType.BASE).toString());
+    System.out.println("Armor speed : " + character.getSpeed(SpeedType.ARMOR).toString());
+    System.out.println("Burrow speed : " + character.getSpeed(SpeedType.BURROW).toString());*/
+    out += "Name : " + (getName() != null ? getName() : "NULL") + "\n";
+    out += "Alignment : " + (getAlignment() != null ? getAlignment().toString() : "NULL") + "\n";
+    out += (getRace() != null ? getRace().toString() : "NULL"); 
+    out += "Strenght : " + (getAbilityScore(AbilityType.STR) != null ? getAbilityScore(AbilityType.STR).toString() : "NULL") + "\n";
+    out += "Dexterity : " + (getAbilityScore(AbilityType.DEX) != null ? getAbilityScore(AbilityType.DEX).toString() : "NULL") + "\n";
+    out += "Constitution : " + (getAbilityScore(AbilityType.CON) != null ? getAbilityScore(AbilityType.CON).toString() : "NULL") + "\n";
+    out += "Intelligence : " + (getAbilityScore(AbilityType.INT) != null ? getAbilityScore(AbilityType.INT).toString() : "NULL") + "\n";
+    out += "Wisdom : " + (getAbilityScore(AbilityType.WIS) != null ? getAbilityScore(AbilityType.WIS).toString() : "NULL") + "\n";
+    out += "Charisma : " + (getAbilityScore(AbilityType.CHA) != null ? getAbilityScore(AbilityType.CHA).toString() : "NULL") + "\n";
+    
+    return out;
   }
 
 }

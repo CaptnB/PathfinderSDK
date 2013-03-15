@@ -2,16 +2,14 @@ package com.pathfindersdk.creatures;
 
 import java.util.Hashtable;
 
-import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.SaveType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.AbilityScore;
-import com.pathfindersdk.stats.Initiative;
-import com.pathfindersdk.stats.SavingThrow;
+import com.pathfindersdk.stats.AbilityStat;
 import com.pathfindersdk.stats.Size;
-import com.pathfindersdk.stats.Speed;
+import com.pathfindersdk.stats.Stat;
 
 
 /**
@@ -22,8 +20,8 @@ public abstract class Creature
   protected String name;
   protected AlignmentType alignment;
   protected Hashtable<AbilityType, AbilityScore> abilityScores = new Hashtable<AbilityType, AbilityScore>(); 
-  protected Hashtable<SaveType, SavingThrow> savingThrows = new Hashtable<SaveType, SavingThrow>();
-  protected Initiative initiative;
+  protected Hashtable<SaveType, AbilityStat> savingThrows = new Hashtable<SaveType, AbilityStat>();
+  protected AbilityStat initiative;
   
   public Creature(String name)
   {
@@ -36,11 +34,11 @@ public abstract class Creature
     abilityScores.put(AbilityType.WIS, new AbilityScore(10));
     abilityScores.put(AbilityType.CHA, new AbilityScore(10));
 
-    savingThrows.put(SaveType.FORT, new SavingThrow(getAbilityScore(AbilityType.CON)));
-    savingThrows.put(SaveType.REF,  new SavingThrow(getAbilityScore(AbilityType.DEX)));
-    savingThrows.put(SaveType.WILL, new SavingThrow(getAbilityScore(AbilityType.WIS)));
+    savingThrows.put(SaveType.FORT, new AbilityStat(getAbilityScore(AbilityType.CON)));
+    savingThrows.put(SaveType.REF,  new AbilityStat(getAbilityScore(AbilityType.DEX)));
+    savingThrows.put(SaveType.WILL, new AbilityStat(getAbilityScore(AbilityType.WIS)));
     
-    initiative = new Initiative(getAbilityScore(AbilityType.DEX));
+    initiative = new AbilityStat(getAbilityScore(AbilityType.DEX));
   }
   
   public String getName()
@@ -67,11 +65,11 @@ public abstract class Creature
   
   public abstract Size getSize();
 
-  public abstract Speed getSpeed(SpeedType type);
+  public abstract Stat getSpeed(SpeedType type);
 
-  public abstract void addSpeed(Speed speed);
+  public abstract void addSpeed(SpeedType type, Stat speed);
 
-  public abstract void removeSpeed(Speed speed);
+  public abstract void removeSpeed(SpeedType type, Stat speed);
 
   public AbilityScore getAbilityScore(AbilityType type)
   {
@@ -112,31 +110,31 @@ public abstract class Creature
     return getAbilityScore(AbilityType.CHA);
   }
   
-  public SavingThrow getSavingThrow(SaveType type)
+  public AbilityStat getSavingThrow(SaveType type)
   {
-    SavingThrow savingThrow = savingThrows.get(type);
+    AbilityStat savingThrow = savingThrows.get(type);
     if(savingThrow == null)
       System.out.println("SavingThrow is null!");
     
     return savingThrow;
   }
   
-  public SavingThrow getFortitude()
+  public AbilityStat getFortitude()
   {
     return getSavingThrow(SaveType.FORT);
   }
   
-  public SavingThrow getReflex()
+  public AbilityStat getReflex()
   {
     return getSavingThrow(SaveType.REF);
   }
   
-  public SavingThrow getWill()
+  public AbilityStat getWill()
   {
     return getSavingThrow(SaveType.WILL);
   }
   
-  public Initiative getInitiative()
+  public AbilityStat getInitiative()
   {
     return initiative;
   }

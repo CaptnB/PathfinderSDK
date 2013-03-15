@@ -2,10 +2,9 @@ package com.pathfindersdk.creatures;
 
 import java.util.Hashtable;
 
-import com.pathfindersdk.basics.CreatureType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.Size;
-import com.pathfindersdk.stats.Speed;
+import com.pathfindersdk.stats.Stat;
 
 
 
@@ -16,7 +15,7 @@ public class Monster extends Creature
 {
   protected Size size;
   protected CreatureType type;
-  protected Hashtable<SpeedType, Speed> speeds;
+  protected Hashtable<SpeedType, Stat> speeds;
 
   public Monster()
   {
@@ -46,7 +45,7 @@ public class Monster extends Creature
   }
 
   @Override
-  public Speed getSpeed(SpeedType type)
+  public Stat getSpeed(SpeedType type)
   {
     if(speeds != null)
       return speeds.get(type);
@@ -55,23 +54,23 @@ public class Monster extends Creature
   }
 
   @Override
-  public void addSpeed(Speed speed)
+  public void addSpeed(SpeedType type, Stat speed)
   {
     if(speed != null)
     {
       if(speeds == null)
-        speeds = new Hashtable<SpeedType, Speed>();
+        speeds = new Hashtable<SpeedType, Stat>();
       
-      speeds.put(speed.getType(), speed);
+      speeds.put(type, speed);
     }    
   }
 
   @Override
-  public void removeSpeed(Speed speed)
+  public void removeSpeed(SpeedType type, Stat speed)
   {
     if(speeds != null)
     {
-      speeds.remove(speed.getType());
+      speeds.remove(type);
       
       if(speeds.isEmpty())
         speeds = null;

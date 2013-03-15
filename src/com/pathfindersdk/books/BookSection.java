@@ -46,4 +46,5 @@ public class BookSection extends BookItem
         items = null;
     }
   }
+
 }

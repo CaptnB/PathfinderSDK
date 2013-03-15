@@ -7,7 +7,8 @@ public enum SaveType
 {
   FORT ("Fortitude"),
   REF ("Reflex"),
-  WILL ("Will");
+  WILL ("Will"),
+  ALL ("All");
   
   private final String name;
   

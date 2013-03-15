@@ -1,7 +1,9 @@
-package com.pathfindersdk.basics;
+package com.pathfindersdk.books.items;
 
 import java.util.ArrayList;
 
+import com.pathfindersdk.basics.ClassLevel;
+import com.pathfindersdk.basics.Dice;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.prerequisites.Prerequisite;
 

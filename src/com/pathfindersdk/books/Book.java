@@ -18,6 +18,11 @@ public class Book
     this.title = title;
   }
   
+  public String getTitle()
+  {
+    return title;
+  }
+  
   public BookSection getSection(BookSectionType type)
   {
     if(sections != null)
