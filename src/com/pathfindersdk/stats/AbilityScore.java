@@ -1,7 +1,5 @@
 package com.pathfindersdk.stats;
 
-import com.pathfindersdk.basics.Dice;
-import com.pathfindersdk.basics.Rollable;
 
 /**
  * This class represents an ability score (ex: CHA 14 (+2)).

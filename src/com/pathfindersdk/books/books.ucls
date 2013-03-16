@@ -1,5 +1,5 @@
-<class-diagram version="1.0.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
-  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+<class-diagram version="1.0.10" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookSection" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/books/BookSection.java" binary="false">    
     <position height="-1" width="-1" x="106" y="479"/>    
@@ -26,50 +26,62 @@
   </class>  
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.Index" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/books/Index.java" binary="false">    
-    <position height="-1" width="-1" x="468" y="427"/>    
+    <position height="-1" width="-1" x="479" y="485"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookBuilder" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/books/BookBuilder.java" binary="false">    
+    <position height="-1" width="-1" x="486" y="188"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <dependency id="6">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="7">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="6" name="index"/>      
-      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
+      <attribute id="8" name="index"/>      
+      <multiplicity id="9" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="8">    
+  <association id="10">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="9" name="instance"/>      
-      <multiplicity id="10" minimum="0" maximum="1"/>    
+      <attribute id="11" name="instance"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="11">    
+  <generalization id="13">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <association id="12">    
+  <association id="14">    
     <bendpoint x="175" y="214"/>    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="13" name="items"/>      
-      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+      <attribute id="15" name="items"/>      
+      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="15">    
+  <association id="17">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="16" name="books"/>      
-      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
+      <attribute id="18" name="books"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="18">    
+  <generalization id="20">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  

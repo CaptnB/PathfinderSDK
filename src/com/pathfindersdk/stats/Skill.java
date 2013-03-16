@@ -5,15 +5,14 @@ import com.pathfindersdk.books.items.SkillItem;
 /**
  * This class represents a character skill. 
  */
-public class Skill extends Stat
+public class Skill extends AbilityStat
 {
   protected SkillItem skill;
   protected Boolean classSkill;
-  protected AbilityScore ability;
   
-  public Skill(SkillItem skill)
+  public Skill(SkillItem skill, AbilityScore ability)
   {
-    super(0);
+    super(ability);
     this.skill = skill;
     this.classSkill = false;
   }

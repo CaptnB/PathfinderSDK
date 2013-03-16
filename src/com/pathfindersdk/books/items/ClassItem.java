@@ -1,13 +1,14 @@
 package com.pathfindersdk.books.items;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import com.pathfindersdk.basics.ClassLevel;
-import com.pathfindersdk.basics.Dice;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
+import com.pathfindersdk.creatures.ClassLevel;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.prerequisites.Prerequisite;
+import com.pathfindersdk.stats.Dice;
 
 
 /**
@@ -15,11 +16,11 @@ import com.pathfindersdk.prerequisites.Prerequisite;
  */
 public class ClassItem extends BookItem
 {
-  protected ArrayList<Prerequisite> prerequisites;
+  protected List<Prerequisite> prerequisites;
   protected Dice hitDice;
-  protected ArrayList<String> classSkills;
+  protected List<String> classSkills;
   protected Integer skillRanks;
-  protected ArrayList<ClassLevel> levels;
+  protected List<ClassLevel> levels;
   
   public ClassItem(String name, Dice hitDice, int skillRanks)
   {

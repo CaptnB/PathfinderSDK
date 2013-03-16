@@ -1,5 +1,6 @@
 package com.pathfindersdk.creatures;
 
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import com.pathfindersdk.bonus.Bonus;
@@ -7,7 +8,7 @@ import com.pathfindersdk.bonus.Bonus;
 public class RacialTrait implements Feature<Character>, Comparable<RacialTrait>
 {
   protected String name;
-  protected TreeSet<Bonus> bonuses;
+  protected SortedSet<Bonus> bonuses;
 
   public RacialTrait(String name)
   {

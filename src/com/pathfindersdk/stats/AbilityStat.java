@@ -1,7 +1,5 @@
 package com.pathfindersdk.stats;
 
-import com.pathfindersdk.basics.Dice;
-import com.pathfindersdk.basics.Rollable;
 
 public class AbilityStat extends Stat implements Rollable
 {

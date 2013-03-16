@@ -1,5 +1,7 @@
 package com.pathfindersdk.creatures;
 
+import java.util.Collections;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import com.pathfindersdk.enums.CreatureMainType;
@@ -8,19 +10,44 @@ import com.pathfindersdk.enums.CreatureSubtype;
 public class CreatureType
 {
   protected CreatureMainType type;
-  protected TreeSet<CreatureSubtype> subtypes;
+  protected SortedSet<CreatureSubtype> subtypes;
+  
+  public CreatureType(CreatureType type)
+  {
+    this.type = type.getType();
+    for(CreatureSubtype subtype : type.getSubtypes())
+      addSubtype(subtype);
+  }
   
   public CreatureType(CreatureMainType type)
   {
     this.type = type;
   }
   
+  public CreatureMainType getType()
+  {
+    return type;
+  }
+
+  public void setType(CreatureMainType type)
+  {
+    this.type = type;
+  }
+
+  public SortedSet<CreatureSubtype> getSubtypes()
+  {
+    return Collections.unmodifiableSortedSet(subtypes);
+  }
+
   public void addSubtype(CreatureSubtype subtype)
   {
-    if(subtypes == null)
-      subtypes = new TreeSet<CreatureSubtype>();
-    
-    subtypes.add(subtype);
+    if(subtype != null)
+    {
+      if(subtypes == null)
+        subtypes = new TreeSet<CreatureSubtype>();
+      
+      subtypes.add(subtype);
+    }
   }
   
   public void removeSubtype(CreatureSubtype subtype)

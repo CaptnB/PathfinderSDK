@@ -1,8 +1,9 @@
 package com.pathfindersdk.books.items;
 
 import java.util.Collections;
-import java.util.Hashtable;
+import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import com.pathfindersdk.books.BookItem;
@@ -20,14 +21,14 @@ import com.pathfindersdk.stats.Stat;
 public class RaceItem extends BookItem
 {
   protected CreatureType type;
-  protected Hashtable<AbilityType, Integer> racialModifiers;
+  protected SortedMap<AbilityType, Integer> racialModifiers;
   protected SizeType size;
   protected VisionType vision;
-  protected TreeSet<RacialTrait> racialTraits;
-  protected TreeSet<AlternateRacialTraitItem> alternateRacialTraits;
-  protected SortedSet<LanguageType> baseLanguages = new TreeSet<LanguageType>();
+  protected SortedSet<RacialTrait> racialTraits;
+  protected SortedSet<AlternateRacialTraitItem> alternateRacialTraits;
+  protected SortedSet<LanguageType> baseLanguages;
   protected SortedSet<LanguageType> optionalLanguages;
-  protected Hashtable<SpeedType, Stat> speeds;
+  protected SortedMap<SpeedType, Stat> speeds;
   // Weapon familiarity...
     
   public RaceItem(String name)
@@ -45,14 +46,20 @@ public class RaceItem extends BookItem
     this.type = type;
   }
   
-  public Hashtable<AbilityType, Integer> getRacialModifiers()
+  public SortedMap<AbilityType, Integer> getRacialModifiers()
   {
-    return racialModifiers;
+    return Collections.unmodifiableSortedMap(racialModifiers);
   }
 
-  public void setRacialModifiers(Hashtable<AbilityType, Integer> racialModifiers)
+  public void addRacialModifier(AbilityType ability, Integer score)
   {
-    this.racialModifiers = racialModifiers;
+    if(ability != null && score != null)
+    {
+      if(racialModifiers == null)
+        racialModifiers = new TreeMap<AbilityType, Integer>();
+      
+      racialModifiers.put(ability, score);
+    }
   }
 
   public SizeType getSize()
@@ -75,68 +82,11 @@ public class RaceItem extends BookItem
     this.vision = vision;
   }
 
-  public TreeSet<RacialTrait> getRacialTraits()
+  public SortedSet<RacialTrait> getRacialTraits()
   {
-    return racialTraits;
+    return Collections.unmodifiableSortedSet(racialTraits);
   }
 
-  public void setRacialTraits(TreeSet<RacialTrait> racialTraits)
-  {
-    this.racialTraits = racialTraits;
-  }
-
-  public TreeSet<AlternateRacialTraitItem> getAlternateRacialTraits()
-  {
-    return alternateRacialTraits;
-  }
-
-  public void setAlternateRacialTraits(
-      TreeSet<AlternateRacialTraitItem> alternateRacialTraits)
-  {
-    this.alternateRacialTraits = alternateRacialTraits;
-  }
-
-  public SortedSet<LanguageType> getBaseLanguages()
-  {
-    return Collections.unmodifiableSortedSet(baseLanguages);
-  }
-
-  public void setBaseLanguages(TreeSet<LanguageType> baseLanguages)
-  {
-    this.baseLanguages = baseLanguages;
-  }
-
-  public SortedSet<LanguageType> getOptionalLanguages()
-  {
-    return optionalLanguages;
-  }
-
-  public void setOptionalLanguages(TreeSet<LanguageType> optionalLanguages)
-  {
-    this.optionalLanguages = optionalLanguages;
-  }
-
-  public Hashtable<SpeedType, Stat> getSpeeds()
-  {
-    return speeds;
-  }
-
-  public void setSpeeds(Hashtable<SpeedType, Stat> speeds)
-  {
-    this.speeds = speeds;
-  }
-
-  public void addRacialModifier(Integer score, AbilityType type)
-  {
-    if(type != null && score != null)
-    {
-      if(racialModifiers == null)
-        racialModifiers = new Hashtable<AbilityType, Integer>();
-      
-      racialModifiers.put(type, score);
-    }
-  }
-    
   public void addRacialTrait(RacialTrait trait)
   {
     if(trait != null)
@@ -147,7 +97,12 @@ public class RaceItem extends BookItem
       racialTraits.add(trait);
     }
   }
-  
+
+  public SortedSet<AlternateRacialTraitItem> getAlternateRacialTraits()
+  {
+    return Collections.unmodifiableSortedSet(alternateRacialTraits);
+  }
+
   public void addAlternateRacialTrait(AlternateRacialTraitItem trait)
   {
     if(trait != null)
@@ -158,7 +113,12 @@ public class RaceItem extends BookItem
       alternateRacialTraits.add(trait);
     }
   }
-  
+
+  public SortedSet<LanguageType> getBaseLanguages()
+  {
+    return Collections.unmodifiableSortedSet(baseLanguages);
+  }
+
   public void addBaseLanguage(LanguageType language)
   {
     if(language != null)
@@ -169,7 +129,12 @@ public class RaceItem extends BookItem
       baseLanguages.add(language);
     }
   }
-  
+
+  public SortedSet<LanguageType> getOptionalLanguages()
+  {
+    return Collections.unmodifiableSortedSet(optionalLanguages);
+  }
+
   public void addOptionalLanguage(LanguageType language)
   {
     if(language != null)
@@ -180,18 +145,23 @@ public class RaceItem extends BookItem
       optionalLanguages.add(language);
     }
   }
-  
+
+  public SortedMap<SpeedType, Stat> getSpeeds()
+  {
+    return Collections.unmodifiableSortedMap(speeds);
+  }
+
   public void addSpeed(SpeedType type, Stat speed)
   {
     if(type != null && speed != null)
     {
       if(speeds == null)
-        speeds = new Hashtable<SpeedType, Stat>();
+        speeds = new TreeMap<SpeedType, Stat>();
       
       speeds.put(type, speed);
     }
   }
-
+  
   @Override
   protected void index()
   {

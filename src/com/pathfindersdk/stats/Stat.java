@@ -1,6 +1,9 @@
 package com.pathfindersdk.stats;
 
-import java.util.Hashtable;
+import java.util.Collections;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import com.pathfindersdk.bonus.Bonus;
@@ -11,25 +14,63 @@ import com.pathfindersdk.enums.BonusType;
  */
 public class Stat
 {
-  // I'd prefer a Hashtable<BonusType, TreeSet<Bonus>> but hey...
+  // I'd prefer a SortedMap<BonusType, SortedSet<Bonus>> but hey...
   private class BonusGroup
   {
-    private TreeSet<Bonus> baseBonuses = new TreeSet<Bonus>();
-    private TreeSet<Bonus> circumstantialBonuses = new TreeSet<Bonus>();
+    private SortedSet<Bonus> baseBonuses;
+    private SortedSet<Bonus> circumstantialBonuses;
     
-    public TreeSet<Bonus> getBaseBonuses()
+    public SortedSet<Bonus> getBaseBonuses()
     {
-      return baseBonuses;
+      return Collections.unmodifiableSortedSet(baseBonuses);
     }
     
-    public TreeSet<Bonus> getCircumstantialBonuses()
+    public SortedSet<Bonus> getCircumstantialBonuses()
     {
-      return circumstantialBonuses;
+      return Collections.unmodifiableSortedSet(circumstantialBonuses);
+    }
+    
+    public void addBonus(Bonus bonus)
+    {
+      if(bonus != null)
+      {
+        if(bonus.getCircumstance() == null)
+        {
+          if(baseBonuses == null)
+            baseBonuses = new TreeSet<Bonus>();
+          
+          baseBonuses.add(bonus);
+        }
+        else
+        {
+          if(circumstantialBonuses == null)
+            circumstantialBonuses = new TreeSet<Bonus>();
+          
+          circumstantialBonuses.add(bonus);
+        }
+      }
+    }
+    
+    public void removeBonus(Bonus bonus)
+    {
+      if(bonus != null)
+      {
+        if(bonus.getCircumstance() == null)
+        {
+          if(baseBonuses != null)
+            baseBonuses.remove(bonus);
+        }
+        else
+        {
+          if(circumstantialBonuses != null)
+            circumstantialBonuses.remove(bonus);
+        }
+      }
     }
   }
   
   protected Integer baseScore;
-  protected Hashtable<BonusType, BonusGroup> bonusGroups;
+  protected SortedMap<BonusType, BonusGroup> bonusGroups;
   
   public Stat(int baseScore)
   {
@@ -49,55 +90,63 @@ public class Stat
   public Integer getScore()
   {
     Integer total = getBaseScore();
-    
-    if(bonusGroups != null)
-    {
-      for(BonusType key : bonusGroups.keySet())
-      {
-        BonusGroup group = bonusGroups.get(key);
+    SortedSet<Bonus> bonusSet = getAllBaseBonuses();
 
-        // Only consider base bonuses as they are permanent (i.e. do not add circumstantial bonuses to total)
-        if(!group.getBaseBonuses().isEmpty())
-        {
-          // Untyped bonuses always stack
-          if(key == BonusType.UNTYPED)
-            for(Bonus bonus : group.getBaseBonuses())
-              total += bonus.getValue();
-          
-          // Typed bonuses do not stack so use the biggest one (sorted in descending order, first == biggest)
-          else
-            total += group.getBaseBonuses().first().getValue();
-        }
-      }
-    }
+    for(Bonus bonus : bonusSet)
+      total += bonus.getValue();
     
     return total;
   }
   
-  public TreeSet<Bonus> getAllCircumstantialBonuses()
+  public SortedSet<Bonus> getAllBaseBonuses()
   {
-    // Circumstantial bonuses may come from any BonusType so this method gathers them all into one TreeSet
-    TreeSet<Bonus> circSet = new TreeSet<Bonus>();
+    SortedSet<Bonus> bonusSet = new TreeSet<Bonus>();
     
     if(bonusGroups != null)
     {
-      for(BonusType key : bonusGroups.keySet())
+      for(BonusType type : bonusGroups.keySet())
       {
-        BonusGroup group = bonusGroups.get(key);
-
-        if(!group.getCircumstantialBonuses().isEmpty())
-          for(Bonus bonus : group.getCircumstantialBonuses())
-            circSet.add(bonus);
+        BonusGroup group = bonusGroups.get(type);
+        
+        // Untyped bonuses stack so get them all
+        if(type.equals(BonusType.UNTYPED))
+        {
+          for(Bonus bonus : group.getBaseBonuses())
+            bonusSet.add(bonus);
+        }
+        
+        // Typed bonuses don't stack so get the biggest (1st one in SortedSet)
+        else
+          bonusSet.add(group.getBaseBonuses().first());
       }
     }
     
-    return circSet;
+    return Collections.unmodifiableSortedSet(bonusSet);
+  }
+  
+  public SortedSet<Bonus> getAllCircumstantialBonuses()
+  {
+    // Circumstantial bonuses may come from any BonusType so this method gathers them all into one TreeSet
+    SortedSet<Bonus> bonusSet = new TreeSet<Bonus>();
+    
+    if(bonusGroups != null)
+    {
+      for(BonusType type : bonusGroups.keySet())
+      {
+        BonusGroup group = bonusGroups.get(type);
+
+        for(Bonus bonus : group.getCircumstantialBonuses())
+          bonusSet.add(bonus);
+      }
+    }
+    
+    return Collections.unmodifiableSortedSet(bonusSet);
   }
 
   public void addBonus(Bonus bonus)
   {
     if(bonusGroups == null)
-      bonusGroups = new Hashtable<BonusType, BonusGroup>();
+      bonusGroups = new TreeMap<BonusType, BonusGroup>();
 
     // Check if bonus of that type already exist, create it if it doesn't
     BonusGroup bonusGroup = bonusGroups.get(bonus.getType());
@@ -106,27 +155,17 @@ public class Stat
       bonusGroup = new BonusGroup();
       bonusGroups.put(bonus.getType(), bonusGroup);
     }
-    
-    // Add bonus to right collection 
-    if(bonus.getCircumstance() == null)
-      bonusGroup.getBaseBonuses().add(bonus);
-    else
-      bonusGroup.getCircumstantialBonuses().add(bonus);
+    bonusGroup.addBonus(bonus);
   }
   
   public void removeBonus(Bonus bonus)
   {
-    // Check if bonus of that type already exist, create it if it doesn't
     BonusGroup bonusGroup = bonusGroups.get(bonus.getType());
     if(bonusGroup != null)
     {
-      // Add bonus to right collection 
-      if(bonus.getCircumstance() == null)
-        bonusGroup.getBaseBonuses().remove(bonus);
-      else
-        bonusGroup.getCircumstantialBonuses().remove(bonus);
+      bonusGroup.removeBonus(bonus);
       
-      // Remove unused StatBonus
+      // Remove unused bonus type
       if(bonusGroup.getBaseBonuses().isEmpty() && bonusGroup.getCircumstantialBonuses().isEmpty())
         bonusGroups.remove(bonus.getType());
     }
@@ -140,7 +179,7 @@ public class Stat
   {
     // With all circumstantial bonuses, list them in parenthesis
     String circumstantial = "";
-    TreeSet<Bonus> circSet = getAllCircumstantialBonuses(); 
+    SortedSet<Bonus> circSet = getAllCircumstantialBonuses(); 
     if(!circSet.isEmpty())
     {
       circumstantial += " (";

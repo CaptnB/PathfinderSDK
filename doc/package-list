@@ -1,7 +1,9 @@
+com.pathfindersdk.basics
 com.pathfindersdk.bonus
 com.pathfindersdk.books
+com.pathfindersdk.books.items
 com.pathfindersdk.creatures
-com.pathfindersdk.creatures.characters
-com.pathfindersdk.creatures.monsters
-com.pathfindersdk.indexes
+com.pathfindersdk.enums
+com.pathfindersdk.equipment
 com.pathfindersdk.prerequisites
+com.pathfindersdk.stats
