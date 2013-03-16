@@ -1,55 +1,38 @@
 package com.pathfindersdk.books;
 
-import java.util.Hashtable;
+import java.util.Collections;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
-import com.pathfindersdk.enums.BookSectionType;
-
-
-/**
- * This class wraps everything a book may contain. It also adds elements into indexes for easy retrieval, say from another book. 
- */
-public class Book
+public class Book extends BookItem
 {
-  protected String title;
-  protected Hashtable<BookSectionType, BookSection> sections;
-  
-  public Book(String title)
-  {
-    this.title = title;
-  }
-  
-  public String getTitle()
-  {
-    return title;
-  }
-  
-  public BookSection getSection(BookSectionType type)
-  {
-    if(sections != null)
-      return sections.get(type);
-    else
-      return null;
-  }
+  protected SortedSet<BookItem> items;
 
-  public void addSection(BookSection section)
+  public Book(String name)
   {
-    if(section != null)
-    {
-      if(sections == null)
-        sections = new Hashtable<BookSectionType, BookSection>();
-      
-      sections.put(section.getType(), section);
-    }    
+    super(name);
   }
   
-  public void removeSection(BookSection section)
+  public SortedSet<BookItem> getitems()
   {
-    if(section != null && sections != null)
+    return Collections.unmodifiableSortedSet(items);
+  }
+  
+  public void addItem(BookItem item)
+  {
+    if(item != null)
     {
-      sections.remove(section.getType());
+      if(items == null)
+        items = new TreeSet<BookItem>();
       
-      if(sections.isEmpty())
-        sections = null;
+      items.add(item);
     }
   }
+
+  @Override
+  protected void index()
+  {
+    Index.getInstance().addBook(this);
+  }
+
 }

@@ -1,13 +1,10 @@
 package com.pathfindersdk.books;
 
-import java.util.TreeSet;
-
 import com.pathfindersdk.enums.BookSectionType;
 
-public class BookSection extends BookItem
+public class BookSection extends Book
 {
   protected BookSectionType type;
-  protected TreeSet<BookItem> items;
   
   public BookSection(BookSectionType type)
   {
@@ -20,31 +17,10 @@ public class BookSection extends BookItem
     return type;
   }
   
-  public TreeSet<BookItem> getItems()
+  @Override
+  public void index()
   {
-    return items;
-  }
-
-  public void addItem(BookItem item)
-  {
-    if(item != null)
-    {
-      if(items == null)
-        items = new TreeSet<BookItem>();
-      
-      items.add(item);
-    }
-  }
-  
-  public void removeItem(BookItem item)
-  {
-    if(items != null)
-    {
-      items.remove(item);
-      
-      if(items.isEmpty())
-        items = null;
-    }
+    Index.getInstance().addIndex(this);
   }
 
 }

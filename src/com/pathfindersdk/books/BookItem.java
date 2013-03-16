@@ -9,12 +9,15 @@ public abstract class BookItem implements Comparable<BookItem>
   public BookItem(String name)
   {
     this.name = name;
+    index();
   }
   
   public String getName()
   {
     return name;
   }
+  
+  protected abstract void index();
   
   @Override
   public String toString()

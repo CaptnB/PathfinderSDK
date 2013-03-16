@@ -1,8 +1,8 @@
 <class-diagram version="1.0.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
-  generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookSection" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/books/BookSection.java" binary="false">    
-    <position height="-1" width="-1" x="327" y="341"/>    
+    <position height="-1" width="-1" x="106" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -10,80 +10,73 @@
   </class>  
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.Book" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/books/Book.java" binary="false">    
-    <position height="-1" width="-1" x="109" y="282"/>    
+    <position height="-1" width="-1" x="113" y="306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <enumeration id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.enums.BookSectionType" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/enums/BookSectionType.java" binary="false">    
-    <position height="-1" width="-1" x="331" y="654"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookContent" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/books/BookContent.java" binary="false">    
-    <position height="-1" width="-1" x="304" y="96"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="5" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookItem" project="PathfinderSDK" 
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.BookItem" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/books/BookItem.java" binary="false">    
-    <position height="112" width="160" x="503" y="273"/>    
+    <position height="-1" width="-1" x="107" y="93"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <association id="6">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="7" name="sections"/>      
-      <multiplicity id="8" minimum="0" maximum="2147483647"/>    
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.Index" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/books/Index.java" binary="false">    
+    <position height="-1" width="-1" x="468" y="427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="5">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="6" name="index"/>      
+      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="9">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="10" name="items"/>      
-      <multiplicity id="11" minimum="0" maximum="2147483647"/>    
+  <association id="8">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="9" name="instance"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
   </association>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
   <association id="12">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="13" name="type"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+    <bendpoint x="175" y="214"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="13" name="items"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="15">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="16">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <dependency id="17">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
+  <association id="15">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="16" name="books"/>      
+      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
   <generalization id="18">    
     <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="TARGET" refId="3"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
     <operations public="true" package="true" protected="true" private="true"/>  
   </classifier-display>  
-  <association-display labels="true" multiplicity="true"/>
+  <association-display labels="false" multiplicity="false"/>
 </class-diagram>
