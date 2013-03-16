@@ -1,7 +1,9 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.AbilityType;
+import com.pathfindersdk.enums.BookSectionType;
 
 
 /**
@@ -27,6 +29,12 @@ public class SkillItem extends BookItem
   public Boolean isArmorCheckPenalty()
   {
     return armorCheckPenalty;
+  }
+
+  @Override
+  protected void index()
+  {
+    Index.getInstance().getIndex(BookSectionType.SKILLS).addItem(this);
   }
 
 }

@@ -4,18 +4,19 @@ import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.BookSectionType;
 
-public class AlternateRacialTraitItem extends BookItem
+public class PrestigeClassItem extends BookItem
 {
 
-  public AlternateRacialTraitItem(String name)
+  public PrestigeClassItem(String name)
   {
     super(name);
+    // TODO Auto-generated constructor stub
   }
 
   @Override
   protected void index()
   {
-    Index.getInstance().getIndex(BookSectionType.ALTERNATE_RACIAL_TRAITS).addItem(this);
+    Index.getInstance().getIndex(BookSectionType.PRESTIGE_CLASSES).addItem(this);
   }
 
 }

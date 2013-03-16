@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.pathfindersdk.basics.ClassLevel;
 import com.pathfindersdk.basics.Dice;
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.prerequisites.Prerequisite;
 
 
@@ -90,5 +92,11 @@ public class ClassItem extends BookItem
       if(levels.isEmpty())
         levels = null;
     }
+  }
+
+  @Override
+  protected void index()
+  {
+    Index.getInstance().getIndex(BookSectionType.CLASSES).addItem(this);
   }
 }
