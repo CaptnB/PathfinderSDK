@@ -51,7 +51,7 @@ public class RaceItem extends BookItem
     return Collections.unmodifiableSortedMap(racialModifiers);
   }
 
-  public void addRacialModifier(AbilityType ability, Integer score)
+  public void addRacialModifier(Integer score, AbilityType ability)
   {
     if(ability != null && score != null)
     {

@@ -18,9 +18,6 @@ public class BookSection extends Book
   }
   
   @Override
-  public void index()
-  {
-    Index.getInstance().addIndex(this);
-  }
+  public void index(){}
 
 }
