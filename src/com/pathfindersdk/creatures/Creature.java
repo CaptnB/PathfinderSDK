@@ -1,11 +1,16 @@
 package com.pathfindersdk.creatures;
 
-import java.util.Hashtable;
+import java.util.Collections;
+import java.util.SortedMap;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.SaveType;
 import com.pathfindersdk.enums.SpeedType;
+import com.pathfindersdk.enums.VisionType;
 import com.pathfindersdk.stats.AbilityScore;
 import com.pathfindersdk.stats.AbilityStat;
 import com.pathfindersdk.stats.Size;
@@ -18,15 +23,17 @@ import com.pathfindersdk.stats.Stat;
 public abstract class Creature
 {
   protected String name;
-  protected AlignmentType alignment;
-  protected Hashtable<AbilityType, AbilityScore> abilityScores = new Hashtable<AbilityType, AbilityScore>(); 
-  protected Hashtable<SaveType, AbilityStat> savingThrows = new Hashtable<SaveType, AbilityStat>();
-  protected AbilityStat initiative;
+  protected transient AlignmentType alignment;
+  protected transient CreatureType type;
+  protected transient Size size;
+  protected transient SortedSet<VisionType> visions = new TreeSet<VisionType>();
+  protected transient SortedMap<SpeedType, Stat> speeds = new TreeMap<SpeedType, Stat>();
+  protected transient SortedMap<AbilityType, AbilityScore> abilityScores = new TreeMap<AbilityType, AbilityScore>(); 
+  protected transient SortedMap<SaveType, AbilityStat> savingThrows = new TreeMap<SaveType, AbilityStat>();
+  protected transient AbilityStat initiative;
   
-  public Creature(String name)
+  public Creature()
   {
-    this.name = name;
-    
     abilityScores.put(AbilityType.STR, new AbilityScore(10));
     abilityScores.put(AbilityType.DEX, new AbilityScore(10));
     abilityScores.put(AbilityType.CON, new AbilityScore(10));
@@ -51,8 +58,6 @@ public abstract class Creature
     this.name = name;
   }
   
-  public abstract CreatureType getType();
-  
   public AlignmentType getAlignment()
   {
     return alignment;
@@ -63,13 +68,63 @@ public abstract class Creature
     this.alignment = alignment;
   }
   
-  public abstract Size getSize();
+  public CreatureType getType()
+  {
+    return type;
+  }
+  
+  public void setType(CreatureType type)
+  {
+    this.type = type;
+  }
+  
+  public Size getSize()
+  {
+    return size;
+  }
+  
+  public void setSize(Size size)
+  {
+    this.size = size;
+  }
+  
+  public SortedSet<VisionType> getVisions()
+  {
+    return Collections.unmodifiableSortedSet(visions);
+  }
+  
+  public VisionType getVision()
+  {
+    return getVisions().first();
+  }
+  
+  public void addVision(VisionType vision)
+  {
+    visions.add(vision);
+  }
 
-  public abstract Stat getSpeed(SpeedType type);
+  public SortedMap<SpeedType, Stat> getSpeeds()
+  {
+    return Collections.unmodifiableSortedMap(speeds);
+  }
+  
+  public Stat getSpeed(SpeedType type)
+  {
+    return speeds.get(type);
+  }
+  
+  public void addSpeed(SpeedType type, Stat speed)
+  {
+    if(type != null && speed != null)
+    {
+      speeds.put(type, speed);
+    }
+  }
 
-  public abstract void addSpeed(SpeedType type, Stat speed);
-
-  public abstract void removeSpeed(SpeedType type, Stat speed);
+  public void removeSpeed(SpeedType type)
+  {
+    speeds.remove(type);
+  }
 
   public AbilityScore getAbilityScore(AbilityType type)
   {

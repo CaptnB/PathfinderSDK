@@ -5,6 +5,7 @@ import com.pathfindersdk.enums.GenderType;
 
 public class Description implements Feature<Character>
 {
+  protected String name;
   protected String playerName;
   protected String playerEmail;
   protected AlignmentType alignment;
@@ -16,6 +17,16 @@ public class Description implements Feature<Character>
   protected Double weight;
   protected String hairColor;
   protected String eyesColor;
+  
+  public String getName()
+  {
+    return name;
+  }
+  
+  public void setName(String name)
+  {
+    this.name = name;
+  }
 
   public String getPlayerName()
   {
@@ -130,12 +141,14 @@ public class Description implements Feature<Character>
   @Override
   public void applyTo(Character character)
   {
+    character.setName(name);
     character.setAlignment(alignment);
   }
 
   @Override
   public void removeFrom(Character character)
   {
+    character.setName(null);
     character.setAlignment(null);
   }
 

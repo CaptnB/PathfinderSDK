@@ -1,10 +1,6 @@
 package com.pathfindersdk.creatures;
 
-import java.util.Hashtable;
-
-import com.pathfindersdk.enums.SpeedType;
-import com.pathfindersdk.stats.Size;
-import com.pathfindersdk.stats.Stat;
+import com.pathfindersdk.books.items.MonsterItem;
 
 
 
@@ -13,68 +9,19 @@ import com.pathfindersdk.stats.Stat;
  */
 public class Monster extends Creature
 {
-  protected Size size;
-  protected CreatureType type;
-  protected Hashtable<SpeedType, Stat> speeds;
+  protected String name;
+  protected transient MonsterItem monster;
 
-  public Monster()
+  public Monster(MonsterItem monster)
   {
-    super("New monster");
-  }
-  
-  @Override
-  public Size getSize()
-  {
-    return size;
-  }
-
-  public void setSize(Size size)
-  {
-    this.size = size;
-  }
-
-  @Override
-  public CreatureType getType()
-  {
-    return type;
-  }
-
-  public void setCreatureType(CreatureType type)
-  {
-    this.type = type;
-  }
-
-  @Override
-  public Stat getSpeed(SpeedType type)
-  {
-    if(speeds != null)
-      return speeds.get(type);
-    else
-      return null;
-  }
-
-  @Override
-  public void addSpeed(SpeedType type, Stat speed)
-  {
-    if(speed != null)
+    if(monster != null)
     {
-      if(speeds == null)
-        speeds = new Hashtable<SpeedType, Stat>();
-      
-      speeds.put(type, speed);
-    }    
-  }
-
-  @Override
-  public void removeSpeed(SpeedType type, Stat speed)
-  {
-    if(speeds != null)
-    {
-      speeds.remove(type);
-      
-      if(speeds.isEmpty())
-        speeds = null;
+      setName(monster.getName());
+      // set other Monster values with MonsterItem ones
     }
+    else
+      throw new IllegalArgumentException("MonsterItem can't be null");
   }
+
 
 }
