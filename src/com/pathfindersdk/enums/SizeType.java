@@ -25,102 +25,16 @@ public enum SizeType
   
   public SizeType offset(int offset)
   {
-    SizeType size = this;
+    int offsetOrdinal = this.ordinal() + offset;
+    SizeType[] values = SizeType.values();
     
-    if(offset > 0)
-    {
-      for(int i = 0; i < offset; i++)
-      {
-        switch(size)
-        {
-        case FINE:
-          size = DIMINUTIVE;
-          break;
-          
-        case DIMINUTIVE:
-          size = TINY;
-          break;
-          
-        case TINY:
-          size = SMALL;
-          break;
-          
-        case SMALL:
-          size = MEDIUM;
-          break;
-          
-        case MEDIUM:
-          size = LARGE;
-          break;
-          
-        case LARGE:
-          size = HUGE;
-          break;
-          
-        case HUGE: 
-          size = GARGANTUAN;
-          break;
-          
-        case GARGANTUAN: 
-          size = COLOSSAL;
-          break;
-          
-        // Max size reached
-        case COLOSSAL: 
-        default:
-          break;
-          
-        }
-      }
-    }
-    else if(offset < 0)
-    {
-      for(int i = 0; i < -offset; i++)
-      {
-        switch(size)
-        {
-        case COLOSSAL:
-          size = GARGANTUAN;
-          break;
-          
-        case GARGANTUAN: 
-          size = HUGE;
-          break;
-          
-        case HUGE: 
-          size = LARGE;
-          break;
-          
-        case LARGE:
-          size = MEDIUM;
-          break;
-          
-        case MEDIUM:
-          size = SMALL;
-          break;
-          
-        case SMALL:
-          size = TINY;
-          break;
-          
-        case TINY:
-          size = DIMINUTIVE;
-          break;
-          
-        case DIMINUTIVE:
-          size = FINE;
-          break;
-                    
-        // Min size reached
-        case FINE:
-        default:
-          break;
-          
-        }
-      }
-    }
+    // Check bounds
+    if(offsetOrdinal < 0)
+      offsetOrdinal = 0;
+    else if(offsetOrdinal >= values.length)
+      offsetOrdinal = values.length - 1;
     
-    return size;
+    return values[offsetOrdinal];
   }
 
   @Override
