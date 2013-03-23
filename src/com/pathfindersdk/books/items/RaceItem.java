@@ -7,11 +7,9 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.creatures.CreatureType;
 import com.pathfindersdk.enums.AbilityType;
-import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
@@ -175,8 +173,10 @@ public class RaceItem extends BookItem
   }
 
   @Override
-  protected void index()
+  public RaceItem deepCopy()
   {
-    Index.getInstance().getIndex(BookSectionType.RACES).addItem(this);
+    // TODO Auto-generated method stub
+    return null;
   }
+
 }

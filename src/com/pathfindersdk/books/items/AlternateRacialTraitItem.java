@@ -1,8 +1,6 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
-import com.pathfindersdk.enums.BookSectionType;
 
 public class AlternateRacialTraitItem extends BookItem
 {
@@ -13,9 +11,10 @@ public class AlternateRacialTraitItem extends BookItem
   }
 
   @Override
-  protected void index()
+  public AlternateRacialTraitItem deepCopy()
   {
-    Index.getInstance().getIndex(BookSectionType.ALTERNATE_RACIAL_TRAITS).addItem(this);
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

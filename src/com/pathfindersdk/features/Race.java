@@ -13,25 +13,19 @@ import com.pathfindersdk.enums.LanguageType;
 public class Race extends Feature<Character>
 {
   protected transient RaceItem race;
-  protected String name;
   protected SortedSet<LanguageType> bonusLanguages;               // Bonus languages from high INT score
   protected SortedSet<AlternateRacialTraitItem> alternateTraits;  // Optional alternate racial traits
   
   public Race(RaceItem race)
   {
-    super(race.getName());
-    setRaceItem(race);
-  }
-  
-  protected void setRaceItem(RaceItem race)
-  {
+    super("");    // Can't check for race == null before...
+    
     if(race != null)
-      name = race.getName();
+      this.name = race.getName();
     else
       throw new IllegalArgumentException("race can't be null");
   }
   
-
   @Override
   public void applyTo(Character character)
   {

@@ -1,38 +1,34 @@
 package com.pathfindersdk.books;
 
 import java.util.Collections;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
-public class Book extends BookItem
+import com.pathfindersdk.enums.BookSectionType;
+
+public class Book
 {
-  protected SortedSet<BookItem> items;
+  protected String title;
+  protected SortedMap<BookSectionType, BookSection> sections;
 
-  public Book(String name)
+  public Book(String title)
   {
-    super(name);
+    this.title = title;
   }
   
-  public SortedSet<BookItem> getitems()
+  public SortedMap<BookSectionType, BookSection> getSections()
   {
-    return Collections.unmodifiableSortedSet(items);
+    return Collections.unmodifiableSortedMap(sections);
   }
   
-  public void addItem(BookItem item)
+  public void addSection(BookSection section)
   {
-    if(item != null)
+    if(section != null)
     {
-      if(items == null)
-        items = new TreeSet<BookItem>();
+      if(sections == null)
+        sections = new TreeMap<BookSectionType, BookSection>();
       
-      items.add(item);
+      sections.put(section.getType(), section);
     }
   }
-
-  @Override
-  protected void index()
-  {
-    Index.getInstance().addBook(this);
-  }
-
 }

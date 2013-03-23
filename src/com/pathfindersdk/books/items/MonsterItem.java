@@ -1,8 +1,6 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
-import com.pathfindersdk.enums.BookSectionType;
 
 public class MonsterItem extends BookItem
 {
@@ -14,9 +12,10 @@ public class MonsterItem extends BookItem
   }
 
   @Override
-  protected void index()
+  public MonsterItem deepCopy()
   {
-    Index.getInstance().getIndex(BookSectionType.MONSTERS).addItem(this);
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

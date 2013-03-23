@@ -9,15 +9,15 @@ public abstract class BookItem implements Comparable<BookItem>
   public BookItem(String name)
   {
     this.name = name;
-    index();
   }
   
   public String getName()
   {
     return name;
   }
-  
-  protected abstract void index();
+
+  // Make sure to use covariant return type when overriding
+  public abstract BookItem deepCopy();
   
   @Override
   public String toString()

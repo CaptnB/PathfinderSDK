@@ -10,7 +10,6 @@ public class Index
 {
   private static Index instance = new Index();
   
-  private SortedSet<Book> books = new TreeSet<Book>();                // References all books directly
   private SortedSet<BookSection> index = new TreeSet<BookSection>();  // Does not reference book sections directly, it gathers say all RaceItems
   
   // Library is a singleton
@@ -21,24 +20,11 @@ public class Index
     return instance;
   }
 
-  public SortedSet<Book> getBooks()
-  {
-    return Collections.unmodifiableSortedSet(books);
-  }
-
-  public SortedSet<BookSection> getIndex()
+  public SortedSet<BookSection> getFullIndex()
   {
     return Collections.unmodifiableSortedSet(index);
   }
 
-  public void addBook(Book book)
-  {
-    if(book != null)
-    {
-      books.add(book);
-    }
-  }
-  
   public void addIndex(BookSection section)
   {
     if(section != null)

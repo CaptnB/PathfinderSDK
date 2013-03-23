@@ -6,12 +6,12 @@ public enum BookSectionType
   ALTERNATE_RACIAL_TRAITS ("Alternate Racial Traits"),
   CLASSES ("Classes"),
   CLASS_EXTENSIONS ("Class Extensions"),
-  PRESTIGE_CLASSES ("Prestige Classes"),
   ARCHETYPES ("Archetypes"),
+  PRESTIGE_CLASSES ("Prestige Classes"),
   SKILLS ("Skills"),
   FEATS ("Feats"),
-  EQUIPMENT ("Equipment"),
   SPELLS ("Spells"),
+  EQUIPMENT ("Equipment"),
   MONSTERS ("Monsters");
   
   private final String name;

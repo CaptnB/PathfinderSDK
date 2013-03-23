@@ -22,27 +22,37 @@ import com.pathfindersdk.stats.Stat;
  */
 public abstract class Creature
 {
-  protected String name;
-  protected transient AlignmentType alignment;
+  // Step 1 - Determine ability scores
+  protected SortedMap<AbilityType, AbilityScore> abilityScores = new TreeMap<AbilityType, AbilityScore>();
+  
+  // Step 2 - Pick your race
   protected transient CreatureType type;
   protected transient Size size;
   protected transient SortedSet<VisionType> visions = new TreeSet<VisionType>();
   protected transient SortedMap<SpeedType, Stat> speeds = new TreeMap<SpeedType, Stat>();
-  protected transient SortedMap<AbilityType, AbilityScore> abilityScores = new TreeMap<AbilityType, AbilityScore>(); 
+  
+  // Step 3 - Pick your class
+  
+  // Step 4 - Pick skills and feats
+  
+  // Step 5 - Buy equipment
+  
+  // Step 6 - Finishing details
+  protected String name;
+  protected transient AlignmentType alignment;
+
+  
   protected transient SortedMap<SaveType, AbilityStat> savingThrows = new TreeMap<SaveType, AbilityStat>();
   protected transient AbilityStat initiative;
   
-  //public RacialTrait trait;
-  //public Feat feat;
-  
   public Creature()
   {
-    abilityScores.put(AbilityType.STR, new AbilityScore(10));
-    abilityScores.put(AbilityType.DEX, new AbilityScore(10));
-    abilityScores.put(AbilityType.CON, new AbilityScore(10));
-    abilityScores.put(AbilityType.INT, new AbilityScore(10));
-    abilityScores.put(AbilityType.WIS, new AbilityScore(10));
-    abilityScores.put(AbilityType.CHA, new AbilityScore(10));
+    abilityScores.put(AbilityType.STR, new AbilityScore());
+    abilityScores.put(AbilityType.DEX, new AbilityScore());
+    abilityScores.put(AbilityType.CON, new AbilityScore());
+    abilityScores.put(AbilityType.INT, new AbilityScore());
+    abilityScores.put(AbilityType.WIS, new AbilityScore());
+    abilityScores.put(AbilityType.CHA, new AbilityScore());
 
     savingThrows.put(SaveType.FORT, new AbilityStat(getAbilityScore(AbilityType.CON)));
     savingThrows.put(SaveType.REF,  new AbilityStat(getAbilityScore(AbilityType.DEX)));
@@ -76,20 +86,20 @@ public abstract class Creature
     return type;
   }
   
-  public void setType(CreatureType type)
+  /*public void setType(CreatureType type)
   {
     this.type = type;
-  }
+  }*/
   
   public Size getSize()
   {
     return size;
   }
   
-  public void setSize(Size size)
+  /*public void setSize(Size size)
   {
     this.size = size;
-  }
+  }*/
   
   public SortedSet<VisionType> getVisions()
   {

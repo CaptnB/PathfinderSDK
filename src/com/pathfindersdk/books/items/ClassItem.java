@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
-import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.features.ClassLevel;
 import com.pathfindersdk.prerequisites.Prerequisite;
 import com.pathfindersdk.stats.Dice;
@@ -96,8 +94,10 @@ public class ClassItem extends BookItem
   }
 
   @Override
-  protected void index()
+  public ClassItem deepCopy()
   {
-    Index.getInstance().getIndex(BookSectionType.CLASSES).addItem(this);
+    // TODO Auto-generated method stub
+    return null;
   }
+
 }
