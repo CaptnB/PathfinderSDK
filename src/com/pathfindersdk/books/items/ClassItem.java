@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
-import com.pathfindersdk.creatures.ClassLevel;
 import com.pathfindersdk.enums.BookSectionType;
+import com.pathfindersdk.features.ClassLevel;
 import com.pathfindersdk.prerequisites.Prerequisite;
 import com.pathfindersdk.stats.Dice;
 

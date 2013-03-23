@@ -1,5 +1,8 @@
 package com.pathfindersdk.creatures;
 
+import com.pathfindersdk.features.Description;
+import com.pathfindersdk.features.Race;
+
 
 
 /**

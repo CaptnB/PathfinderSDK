@@ -1,12 +1,12 @@
 package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.creatures.Feature;
 import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.features.Applicable;
 import com.pathfindersdk.stats.Stat;
 
 
-public abstract class Bonus implements Comparable<Bonus>, Feature<Creature>
+public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
 {
   protected Integer value;
   protected BonusType type;
@@ -81,4 +81,5 @@ public abstract class Bonus implements Comparable<Bonus>, Feature<Creature>
     
     return out;
   }
+  
 }

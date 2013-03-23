@@ -32,6 +32,9 @@ public abstract class Creature
   protected transient SortedMap<SaveType, AbilityStat> savingThrows = new TreeMap<SaveType, AbilityStat>();
   protected transient AbilityStat initiative;
   
+  //public RacialTrait trait;
+  //public Feat feat;
+  
   public Creature()
   {
     abilityScores.put(AbilityType.STR, new AbilityScore(10));

@@ -8,14 +8,16 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
+import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.creatures.CreatureType;
-import com.pathfindersdk.creatures.RacialTrait;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
+import com.pathfindersdk.features.Feature;
+import com.pathfindersdk.features.WeaponFamiliarity;
 import com.pathfindersdk.stats.Stat;
 
 public class RaceItem extends BookItem
@@ -24,12 +26,12 @@ public class RaceItem extends BookItem
   protected SortedMap<AbilityType, Integer> racialModifiers;
   protected SizeType size;
   protected VisionType vision;
-  protected SortedSet<RacialTrait> racialTraits;
+  protected SortedSet<Feature<Character>> racialTraits;
   protected SortedSet<AlternateRacialTraitItem> alternateRacialTraits;
   protected SortedSet<LanguageType> baseLanguages;
   protected SortedSet<LanguageType> optionalLanguages;
   protected SortedMap<SpeedType, Stat> speeds;
-  // Weapon familiarity...
+  protected WeaponFamiliarity weaponFamiliarity;
     
   public RaceItem(String name)
   {
@@ -82,17 +84,17 @@ public class RaceItem extends BookItem
     this.vision = vision;
   }
 
-  public SortedSet<RacialTrait> getRacialTraits()
+  public SortedSet<Feature<Character>> getRacialTraits()
   {
     return Collections.unmodifiableSortedSet(racialTraits);
   }
 
-  public void addRacialTrait(RacialTrait trait)
+  public void addRacialTrait(Feature<Character> trait)
   {
     if(trait != null)
     {
       if(racialTraits == null)
-        racialTraits = new TreeSet<RacialTrait>();
+        racialTraits = new TreeSet<Feature<Character>>();
       
       racialTraits.add(trait);
     }
@@ -162,6 +164,16 @@ public class RaceItem extends BookItem
     }
   }
   
+  public WeaponFamiliarity getWeaponFamiliarity()
+  {
+    return weaponFamiliarity;
+  }
+
+  public void setWeaponFamiliarity(WeaponFamiliarity weaponFamiliarity)
+  {
+    this.weaponFamiliarity = weaponFamiliarity;
+  }
+
   @Override
   protected void index()
   {

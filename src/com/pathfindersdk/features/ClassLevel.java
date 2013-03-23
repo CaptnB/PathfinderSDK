@@ -1,10 +1,11 @@
-package com.pathfindersdk.creatures;
+package com.pathfindersdk.features;
 
 import java.util.ArrayList;
 
 import com.pathfindersdk.bonus.Bonus;
+import com.pathfindersdk.creatures.Creature;
 
-public class ClassLevel
+public class ClassLevel implements Applicable<Creature>
 {
   protected Integer baseAttackBonus;
   protected Integer fortitude;
@@ -38,5 +39,19 @@ public class ClassLevel
   public Integer getWill()
   {
     return will;
+  }
+
+  @Override
+  public void applyTo(Creature target)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  public void removeFrom(Creature target)
+  {
+    // TODO Auto-generated method stub
+    
   }
 }

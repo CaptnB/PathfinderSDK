@@ -1,11 +1,16 @@
 package com.pathfindersdk.stats;
 
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.enums.SizeType;
 
 public class Size extends Stat
 {
   protected SizeType baseSize;
   protected int numberOfLegs;
+  protected SortedSet<Bonus> sizeBonuses = new TreeSet<Bonus>();
   
   public Size(SizeType baseSize)
   {
@@ -15,6 +20,7 @@ public class Size extends Stat
     
     setBaseSize(baseSize);
     setNumberOfLegs(2); // Most creatures are biped
+    setSizeBonuses();
   }
   
   public Size(SizeType baseSize, int numberOfLegs)
@@ -23,6 +29,7 @@ public class Size extends Stat
     
     setBaseSize(baseSize);
     setNumberOfLegs(numberOfLegs);
+    setSizeBonuses();
   }
   
   public void setBaseSize(SizeType baseSize)
@@ -52,6 +59,11 @@ public class Size extends Stat
     return numberOfLegs;
   }
 
+  protected void setSizeBonuses()
+  {
+    
+  }
+  
   // To only consider bonuses, make sure baseScore always remains zero
   @Override
   public void setBaseScore(int score) {}
@@ -195,7 +207,7 @@ public class Size extends Stat
       return 5.0;
     }
   }
-  
+
   @Override
   public String toString()
   {

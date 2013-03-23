@@ -98,6 +98,11 @@ public class Stat
     return total;
   }
   
+  public void incrementBaseScore(int increment)
+  {
+    setBaseScore(baseScore + increment);
+  }
+  
   public SortedSet<Bonus> getAllBaseBonuses()
   {
     SortedSet<Bonus> bonusSet = new TreeSet<Bonus>();

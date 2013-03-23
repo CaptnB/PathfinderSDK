@@ -12,6 +12,9 @@ public enum BonusType
   DEFLECTION ("Deflection"),
   ENHANCEMENT ("Enhancement"),
   SIZE ("Size"),
+  ARMOR ("Armor"),
+  SHIELD ("Shield"),
+  NATURAL_ARMOR ("Natural Armor"),
   UNTYPED ("");
   
   private final String name;

@@ -1,9 +1,10 @@
-package com.pathfindersdk.creatures;
+package com.pathfindersdk.features;
 
+import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.GenderType;
 
-public class Description implements Feature<Character>
+public class Description implements Applicable<Character>
 {
   protected String name;
   protected String playerName;

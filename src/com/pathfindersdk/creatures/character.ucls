@@ -8,52 +8,36 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.creatures.RacialTrait" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/creatures/RacialTrait.java" binary="false">    
-    <position height="-1" width="-1" x="801" y="124"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.creatures.Description" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/creatures/Description.java" binary="false">    
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.features.Description" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/features/Description.java" binary="false">    
     <position height="-1" width="-1" x="205" y="596"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.creatures.Race" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/creatures/Race.java" binary="false">    
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.features.Race" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/features/Race.java" binary="false">    
     <position height="-1" width="-1" x="513" y="130"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <association id="5">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="6" name="traits"/>      
-      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
+  <association id="4">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="5" name="description"/>      
+      <multiplicity id="6" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="8">    
+  <association id="7">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="9" name="description"/>      
-      <multiplicity id="10" minimum="0" maximum="1"/>    
+      <attribute id="8" name="race"/>      
+      <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="11">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="race"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
