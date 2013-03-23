@@ -3,12 +3,22 @@ package com.pathfindersdk.stats;
 public class ArmorClass extends Stat
 {
   protected AbilityScore dex;
+  protected Size size;
   protected Integer maxDex;
 
-  public ArmorClass(int baseScore, AbilityScore dex)
+  public ArmorClass(AbilityScore dex, Size size)
   {
     super(10);
-    this.dex = dex;
+    
+    if(dex != null)
+      this.dex = dex;
+    else
+      throw new IllegalArgumentException("dex must not be null");
+    
+    if(size != null)
+      this.size = size;
+    else
+      throw new IllegalArgumentException("size must not be null");
   }
 
   public void setMaxDex(Integer maxDex)
@@ -19,7 +29,7 @@ public class ArmorClass extends Stat
   @Override
   public Integer getScore()
   {
-    return super.getScore() + Math.min(dex.getModifier(), maxDex);
+    return super.getScore() + Math.min(dex.getModifier(), maxDex) + size.getModifier();
   }
 
 }

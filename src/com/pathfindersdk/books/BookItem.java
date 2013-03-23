@@ -26,8 +26,8 @@ public abstract class BookItem implements Comparable<BookItem>
   }
   
   @Override
-  public int compareTo(BookItem component)
+  public int compareTo(BookItem item)
   {
-    return toString().compareTo(component.toString());
+    return toString().compareTo(item.toString());
   }
 }

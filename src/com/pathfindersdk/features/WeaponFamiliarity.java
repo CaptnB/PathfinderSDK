@@ -8,7 +8,7 @@ public class WeaponFamiliarity extends Feature<Character>
 {
   protected SortedSet<WeaponProficiency> proficiencies;
 
-  public WeaponFamiliarity(String name)
+  public WeaponFamiliarity()
   {
     super("Weapon familiarity");
   }

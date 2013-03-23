@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.prerequisites.Prerequisite;
 
@@ -12,26 +13,26 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
 {
   protected String name;
   protected Set<Prerequisite> prerequisites;
-  protected SortedSet<Applicable<T>> applicables;
+  protected SortedSet<Bonus> bonuses;
   
   public Feature(String name)
   {
     this.name = name;
   }
   
-  public SortedSet<Applicable<T>> getApplicables()
+  public SortedSet<Bonus> getBonuses()
   {
-    return Collections.unmodifiableSortedSet(applicables);
+    return Collections.unmodifiableSortedSet(bonuses);
   }
   
-  public void addApplicable(Applicable<T> applicable)
+  public void addBonus(Bonus bonus)
   {
-    if(applicable != null)
+    if(bonus != null)
     {
-      if(applicables == null)
-        applicables = new TreeSet<Applicable<T>>();
+      if(bonuses == null)
+        bonuses = new TreeSet<Bonus>();
       
-      applicables.add(applicable);
+      bonuses.add(bonus);
     }
   }
   
@@ -59,11 +60,11 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
   {
     if(fillsPrerequisites(target))
     {
-      if(applicables != null)
+      if(bonuses != null)
       {
-        for(Applicable<T> applicable : applicables)
+        for(Bonus bonus : bonuses)
         {
-          applicable.applyTo(target);
+          bonus.applyTo(target);
         }
       }
     }
@@ -72,11 +73,11 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
   @Override
   public void removeFrom(T target)
   {
-    if(applicables != null)
+    if(bonuses != null)
     {
-      for(Applicable<T> applicable : applicables)
+      for(Bonus bonus : bonuses)
       {
-        applicable.removeFrom(target);
+        bonus.removeFrom(target);
       }
     }
   }
