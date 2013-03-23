@@ -1,6 +1,8 @@
 package com.pathfindersdk.books.items;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
@@ -9,11 +11,11 @@ import java.util.TreeSet;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.creatures.CreatureType;
-import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
+import com.pathfindersdk.features.AbilityIncrease;
 import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.features.WeaponFamiliarity;
 import com.pathfindersdk.stats.Stat;
@@ -21,7 +23,7 @@ import com.pathfindersdk.stats.Stat;
 public class RaceItem extends BookItem
 {
   protected CreatureType type;
-  protected SortedMap<AbilityType, Integer> racialModifiers;
+  protected List<AbilityIncrease> racialModifiers;
   protected SizeType size;
   protected VisionType vision;
   protected SortedSet<Feature<Character>> racialTraits;
@@ -46,19 +48,19 @@ public class RaceItem extends BookItem
     this.type = type;
   }
   
-  public SortedMap<AbilityType, Integer> getRacialModifiers()
+  public List<AbilityIncrease> getRacialModifiers()
   {
-    return Collections.unmodifiableSortedMap(racialModifiers);
+    return Collections.unmodifiableList(racialModifiers);
   }
 
-  public void addRacialModifier(Integer score, AbilityType ability)
+  public void addRacialModifier(AbilityIncrease racialModifier)
   {
-    if(ability != null && score != null)
+    if(racialModifier != null)
     {
       if(racialModifiers == null)
-        racialModifiers = new TreeMap<AbilityType, Integer>();
+        racialModifiers = new ArrayList<AbilityIncrease>();
       
-      racialModifiers.put(ability, score);
+      racialModifiers.add(racialModifier);
     }
   }
 
