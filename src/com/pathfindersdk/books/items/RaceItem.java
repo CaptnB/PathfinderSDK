@@ -50,7 +50,10 @@ public class RaceItem extends BookItem
   
   public List<AbilityIncrease> getRacialModifiers()
   {
-    return Collections.unmodifiableList(racialModifiers);
+    if(racialModifiers != null)
+      return Collections.unmodifiableList(racialModifiers);
+    else
+      return null;
   }
 
   public void addRacialModifier(AbilityIncrease racialModifier)
@@ -86,7 +89,10 @@ public class RaceItem extends BookItem
 
   public SortedSet<Feature<Character>> getRacialTraits()
   {
-    return Collections.unmodifiableSortedSet(racialTraits);
+    if(racialTraits != null)
+      return Collections.unmodifiableSortedSet(racialTraits);
+    else
+      return null;
   }
 
   public void addRacialTrait(Feature<Character> trait)
@@ -102,7 +108,10 @@ public class RaceItem extends BookItem
 
   public SortedSet<AlternateRacialTraitItem> getAlternateRacialTraits()
   {
-    return Collections.unmodifiableSortedSet(alternateRacialTraits);
+    if(alternateRacialTraits != null)
+      return Collections.unmodifiableSortedSet(alternateRacialTraits);
+    else
+      return null;
   }
 
   public void addAlternateRacialTrait(AlternateRacialTraitItem trait)
@@ -118,7 +127,10 @@ public class RaceItem extends BookItem
 
   public SortedSet<LanguageType> getBaseLanguages()
   {
-    return Collections.unmodifiableSortedSet(baseLanguages);
+    if(baseLanguages != null)
+      return Collections.unmodifiableSortedSet(baseLanguages);
+    else
+      return null;
   }
 
   public void addBaseLanguage(LanguageType language)
@@ -134,7 +146,10 @@ public class RaceItem extends BookItem
 
   public SortedSet<LanguageType> getOptionalLanguages()
   {
-    return Collections.unmodifiableSortedSet(optionalLanguages);
+    if(optionalLanguages != null)
+      return Collections.unmodifiableSortedSet(optionalLanguages);
+    else
+      return null;
   }
 
   public void addOptionalLanguage(LanguageType language)
@@ -150,7 +165,10 @@ public class RaceItem extends BookItem
 
   public SortedMap<SpeedType, Stat> getSpeeds()
   {
-    return Collections.unmodifiableSortedMap(speeds);
+    if(speeds != null)
+      return Collections.unmodifiableSortedMap(speeds);
+    else
+      return null;
   }
 
   public void addSpeed(SpeedType type, Stat speed)

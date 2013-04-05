@@ -18,7 +18,10 @@ public class Book
   
   public SortedMap<BookSectionType, BookSection> getSections()
   {
-    return Collections.unmodifiableSortedMap(sections);
+    if(sections != null)
+      return Collections.unmodifiableSortedMap(sections);
+    else
+      return null;
   }
   
   public void addSection(BookSection section)

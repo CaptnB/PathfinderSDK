@@ -8,21 +8,27 @@ import com.pathfindersdk.stats.Stat;
 
 public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
 {
-  protected Integer value;
-  protected BonusType type;
-  protected String circumstance;
+  final private Integer value;
+  final private BonusType type;
+  final private String circumstance;
 
-  public Bonus(int value, BonusType type)
+  public Bonus(Integer value, BonusType type)
   {
-    this.value = value;
-    this.type = type;
+    this(value, type, null);
   }
   
-  public Bonus(int value, BonusType type, String circumstance)
+  public Bonus(Integer value, BonusType type, String circumstance)
   {
-    this.value = value;
-    this.type = type;
-    this.circumstance = circumstance;
+    if(value == null)
+      throw new IllegalArgumentException("value can't be null");
+    else if(type == null)
+      throw new IllegalArgumentException("type can't be null");
+    else
+    {
+      this.value = value;
+      this.type = type;
+      this.circumstance = circumstance;
+    }
   }
   
   public Integer getValue()
@@ -40,14 +46,16 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
     return circumstance;
   }
   
+  public Boolean isCircumstantial()
+  {
+    return circumstance != null;
+  }
+  
   @Override
   public int compareTo(Bonus bonus)
   {
     // Sort in descending order (highest bonus first so when bonuses don't stack, the first one is the one to consider)
-    if(getValue() > bonus.getValue())
-      return -1;
-    else
-      return 1;
+    return bonus.getValue().compareTo(getValue());
   }
 
   protected void applyToStat(Stat stat)

@@ -3,14 +3,14 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 
-public class InitiativeBonus extends Bonus
+public final class InitiativeBonus extends Bonus
 {
-  public InitiativeBonus(int value, BonusType type)
+  public InitiativeBonus(Integer value, BonusType type)
   {
     super(value, type);
   }
 
-  public InitiativeBonus(int value, BonusType type, String circumstance)
+  public InitiativeBonus(Integer value, BonusType type, String circumstance)
   {
     super(value, type, circumstance);
   }

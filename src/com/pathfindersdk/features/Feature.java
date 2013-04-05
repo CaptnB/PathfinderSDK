@@ -22,7 +22,10 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
   
   public SortedSet<Bonus> getBonuses()
   {
-    return Collections.unmodifiableSortedSet(bonuses);
+    if(bonuses != null)
+      return Collections.unmodifiableSortedSet(bonuses);
+    else
+      return null;
   }
   
   public void addBonus(Bonus bonus)

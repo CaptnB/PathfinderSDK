@@ -110,6 +110,43 @@ public class Size extends Stat
     }
   }
   
+  public Integer getSkillModifier()
+  {
+    switch(getSize())
+    {
+    case FINE:
+      return 8;
+      
+    case DIMINUTIVE:
+      return 6;
+      
+    case TINY:
+      return 4;
+      
+    case SMALL:
+      return 2;
+      
+    case MEDIUM:
+      return 0;
+      
+    case LARGE:
+      return -2;
+      
+    case HUGE: 
+      return -4;
+      
+    case GARGANTUAN:
+      return -6;
+      
+    case COLOSSAL:
+      return -8;
+      
+    default:
+      System.out.println("Unknown SizeType");
+      return 0;
+    }
+  }
+  
   public Double getSpace()
   {
     switch(getSize())

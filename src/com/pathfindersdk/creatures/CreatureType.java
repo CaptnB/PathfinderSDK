@@ -36,7 +36,10 @@ public class CreatureType
 
   public SortedSet<CreatureSubtype> getSubtypes()
   {
-    return Collections.unmodifiableSortedSet(subtypes);
+    if(subtypes != null)
+      return Collections.unmodifiableSortedSet(subtypes);
+    else
+      return null;
   }
 
   public void addSubtype(CreatureSubtype subtype)

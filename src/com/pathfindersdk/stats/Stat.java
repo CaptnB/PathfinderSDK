@@ -15,38 +15,44 @@ import com.pathfindersdk.enums.BonusType;
 public class Stat
 {
   // I'd prefer a SortedMap<BonusType, SortedSet<Bonus>> but hey...
-  private class BonusGroup
+  protected final class BonusGroup
   {
     private SortedSet<Bonus> baseBonuses;
     private SortedSet<Bonus> circumstantialBonuses;
     
     public SortedSet<Bonus> getBaseBonuses()
     {
-      return Collections.unmodifiableSortedSet(baseBonuses);
+      if(baseBonuses != null)
+        return Collections.unmodifiableSortedSet(baseBonuses);
+      else
+        return null;
     }
     
     public SortedSet<Bonus> getCircumstantialBonuses()
     {
-      return Collections.unmodifiableSortedSet(circumstantialBonuses);
+      if(circumstantialBonuses != null)
+        return Collections.unmodifiableSortedSet(circumstantialBonuses);
+      else
+        return null;
     }
     
     public void addBonus(Bonus bonus)
     {
       if(bonus != null)
       {
-        if(bonus.getCircumstance() == null)
-        {
-          if(baseBonuses == null)
-            baseBonuses = new TreeSet<Bonus>();
-          
-          baseBonuses.add(bonus);
-        }
-        else
+        if(bonus.isCircumstantial())
         {
           if(circumstantialBonuses == null)
             circumstantialBonuses = new TreeSet<Bonus>();
           
           circumstantialBonuses.add(bonus);
+        }
+        else
+        {
+          if(baseBonuses == null)
+            baseBonuses = new TreeSet<Bonus>();
+          
+          baseBonuses.add(bonus);
         }
       }
     }
@@ -55,17 +61,32 @@ public class Stat
     {
       if(bonus != null)
       {
-        if(bonus.getCircumstance() == null)
+        if(bonus.isCircumstantial())
         {
-          if(baseBonuses != null)
-            baseBonuses.remove(bonus);
+          if(circumstantialBonuses != null)
+          {
+            circumstantialBonuses.remove(bonus);
+            
+            if(circumstantialBonuses.isEmpty())
+              circumstantialBonuses = null;
+          }
         }
         else
         {
-          if(circumstantialBonuses != null)
-            circumstantialBonuses.remove(bonus);
+          if(baseBonuses != null)
+          {
+            baseBonuses.remove(bonus);
+            
+            if(baseBonuses.isEmpty())
+              baseBonuses = null;
+          }
         }
       }
+    }
+    
+    public Boolean isEmpty()
+    {
+      return (baseBonuses == null && circumstantialBonuses == null);
     }
   }
   
@@ -113,16 +134,21 @@ public class Stat
       {
         BonusGroup group = bonusGroups.get(type);
         
-        // Untyped bonuses stack so get them all
-        if(type.equals(BonusType.UNTYPED))
+        if(group.getBaseBonuses() != null)
         {
-          for(Bonus bonus : group.getBaseBonuses())
-            bonusSet.add(bonus);
+          // Untyped bonuses stack so get them all
+          if(type.equals(BonusType.UNTYPED))
+          {
+            for(Bonus bonus : group.getBaseBonuses())
+              bonusSet.add(bonus);
+          }
+          
+          // Typed bonuses don't stack so get the biggest (1st one in SortedSet)
+          else
+          {
+            bonusSet.add(group.getBaseBonuses().first());
+          }
         }
-        
-        // Typed bonuses don't stack so get the biggest (1st one in SortedSet)
-        else
-          bonusSet.add(group.getBaseBonuses().first());
       }
     }
     
@@ -140,8 +166,13 @@ public class Stat
       {
         BonusGroup group = bonusGroups.get(type);
 
-        for(Bonus bonus : group.getCircumstantialBonuses())
-          bonusSet.add(bonus);
+        if(group.getCircumstantialBonuses() != null)
+        {
+          for(Bonus bonus : group.getCircumstantialBonuses())
+          {
+            bonusSet.add(bonus);
+          }
+        }
       }
     }
     
@@ -165,18 +196,21 @@ public class Stat
   
   public void removeBonus(Bonus bonus)
   {
-    BonusGroup bonusGroup = bonusGroups.get(bonus.getType());
-    if(bonusGroup != null)
+    if(bonusGroups != null)
     {
-      bonusGroup.removeBonus(bonus);
+      BonusGroup bonusGroup = bonusGroups.get(bonus.getType());
+      if(bonusGroup != null)
+      {
+        bonusGroup.removeBonus(bonus);
+        
+        // Remove unused bonus type
+        if(bonusGroup.isEmpty())
+          bonusGroups.remove(bonus.getType());
+      }
       
-      // Remove unused bonus type
-      if(bonusGroup.getBaseBonuses().isEmpty() && bonusGroup.getCircumstantialBonuses().isEmpty())
-        bonusGroups.remove(bonus.getType());
+      if(bonusGroups.isEmpty())
+        bonusGroups = null;
     }
-    
-    if(bonusGroups.isEmpty())
-      bonusGroups = null;
   }
   
   @Override

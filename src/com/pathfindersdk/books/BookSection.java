@@ -23,7 +23,10 @@ public class BookSection implements Comparable<BookSection>
   
   public SortedSet<BookItem> getItems()
   {
-    return Collections.unmodifiableSortedSet(items);
+    if(items != null)
+      return Collections.unmodifiableSortedSet(items);
+    else
+      return null;
   }
   
   public void addItem(BookItem item)

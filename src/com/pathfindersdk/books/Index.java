@@ -22,7 +22,10 @@ public class Index
 
   public SortedSet<BookSection> getFullIndex()
   {
-    return Collections.unmodifiableSortedSet(index);
+    if(index != null)
+      return Collections.unmodifiableSortedSet(index);
+    else
+      return null;
   }
 
   public void addIndex(BookSection section)
