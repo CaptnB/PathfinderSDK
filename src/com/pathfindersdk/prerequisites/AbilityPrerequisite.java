@@ -9,7 +9,7 @@ import com.pathfindersdk.enums.AbilityType;
 public class AbilityPrerequisite extends Prerequisite
 {
   protected AbilityType ability;
-  protected Integer score;
+  protected int score;
 
   public AbilityPrerequisite(AbilityType ability, int score)
   {
@@ -18,7 +18,7 @@ public class AbilityPrerequisite extends Prerequisite
   }
   
   @Override
-  public Boolean isFilled(Creature creature)
+  public boolean isFilled(Creature creature)
   {
     /*AbilityStat abilityScore = creature.getAbility(ability);
     if(abilityScore != null && abilityScore.getScore() >= score)

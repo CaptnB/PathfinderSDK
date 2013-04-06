@@ -24,7 +24,7 @@ public class SaveBonusTest
   }
 
   @Test (expected = IllegalArgumentException.class) 
-  public void testSaveBonusIntegerBonusTypeNull()
+  public void testSaveBonusIntBonusTypeNull()
   {
     new SaveBonus(2, BonusType.ARMOR, null);
   }
@@ -33,14 +33,26 @@ public class SaveBonusTest
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(2, character.getFortitude().getScore().intValue());
+    assertEquals(2, character.getFortitude().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(0, character.getFortitude().getScore().intValue());
+    assertEquals(0, character.getFortitude().getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }

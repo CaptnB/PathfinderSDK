@@ -16,18 +16,18 @@ public class AbilityScore extends Stat implements Rollable
     super(baseScore);
   }
   
-  public Integer getBaseModifier()
+  public int getBaseModifier()
   {
-    return (int)Math.floor((getBaseScore().doubleValue() - 10.0) / 2.0);
+    return (int)Math.floor((getBaseScore() - 10.0) / 2.0);
   }
 
-  public Integer getModifier()
+  public int getModifier()
   {
-    return (int)Math.floor((getScore().doubleValue() - 10.0) / 2.0);
+    return (int)Math.floor((getScore() - 10.0) / 2.0);
   }
 
   @Override
-  public Integer roll()
+  public int roll()
   {
     return (new Dice(1, 20)).roll() + getModifier();
   }

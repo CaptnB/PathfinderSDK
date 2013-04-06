@@ -1,70 +1,84 @@
 package com.pathfindersdk.books.items;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
 import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.creatures.CreatureType;
+import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
 import com.pathfindersdk.features.AbilityIncrease;
 import com.pathfindersdk.features.Feature;
-import com.pathfindersdk.features.WeaponFamiliarity;
-import com.pathfindersdk.stats.Stat;
 
-public class RaceItem extends BookItem
+/**
+ * Immutable class to wrap a race book entry.
+ */
+final public class RaceItem extends BookItem
 {
-  protected CreatureType type;
-  protected List<AbilityIncrease> racialModifiers;
-  protected SizeType size;
-  protected VisionType vision;
-  protected SortedSet<Feature<Character>> racialTraits;
-  protected SortedSet<AlternateRacialTraitItem> alternateRacialTraits;
-  protected SortedSet<LanguageType> baseLanguages;
-  protected SortedSet<LanguageType> optionalLanguages;
-  protected SortedMap<SpeedType, Stat> speeds;
-  protected WeaponFamiliarity weaponFamiliarity;
+  final private CreatureType type;
+  final private List<AbilityIncrease> racialModifiers;
+  final private SizeType size;
+  final private SortedMap<SpeedType, Integer> speeds;
+  final private VisionType vision;
+  final private SortedSet<Feature<Character>> racialTraits;
+  // TODO: Check weapon proficiencies/familiarities
+  final private SortedSet<LanguageType> baseLanguages;
+  final private SortedSet<LanguageType> optionalLanguages;
     
-  public RaceItem(String name)
+  public RaceItem(String name, CreatureType type, List<AbilityIncrease> racialModifiers, SizeType size, SortedMap<SpeedType, Integer> speeds, 
+      VisionType vision, SortedSet<Feature<Character>> racialTraits, SortedSet<LanguageType> baseLanguages, SortedSet<LanguageType> optionalLanguages)
   {
     super(name);
+    
+    if(type == null)
+      throw new IllegalArgumentException("type can't be null!");
+    
+    if(racialModifiers == null)
+      throw new IllegalArgumentException("racialModifiers can't be null!");
+    
+    if(size == null)
+      throw new IllegalArgumentException("size can't be null!");
+    
+    if(speeds == null)
+      throw new IllegalArgumentException("speeds can't be null!");
+    
+    if(vision == null)
+      throw new IllegalArgumentException("vision can't be null!");
+    
+    if(racialTraits == null)
+      throw new IllegalArgumentException("racialTraits can't be null!");
+    
+    if(baseLanguages == null)
+      throw new IllegalArgumentException("baseLanguages can't be null!");
+    
+    if(optionalLanguages == null)
+      throw new IllegalArgumentException("optionalLanguages can't be null!");
+    
+    this.type = type;
+    this.racialModifiers = racialModifiers;
+    this.size = size;
+    this.speeds = speeds;
+    this.vision = vision;
+    this.racialTraits = racialTraits;
+    this.baseLanguages = baseLanguages;
+    this.optionalLanguages = optionalLanguages;
   }
   
   public CreatureType getType()
   {
     return type;
   }
-
-  public void setType(CreatureType type)
-  {
-    this.type = type;
-  }
   
   public List<AbilityIncrease> getRacialModifiers()
   {
-    if(racialModifiers != null)
-      return Collections.unmodifiableList(racialModifiers);
-    else
-      return null;
-  }
-
-  public void addRacialModifier(AbilityIncrease racialModifier)
-  {
-    if(racialModifier != null)
-    {
-      if(racialModifiers == null)
-        racialModifiers = new ArrayList<AbilityIncrease>();
-      
-      racialModifiers.add(racialModifier);
-    }
+    return Collections.unmodifiableList(racialModifiers);
   }
 
   public SizeType getSize()
@@ -72,9 +86,9 @@ public class RaceItem extends BookItem
     return size;
   }
 
-  public void setSize(SizeType size)
+  public SortedMap<SpeedType, Integer> getSpeeds()
   {
-    this.size = size;
+    return Collections.unmodifiableSortedMap(speeds);
   }
 
   public VisionType getVision()
@@ -82,121 +96,25 @@ public class RaceItem extends BookItem
     return vision;
   }
 
-  public void setVision(VisionType vision)
-  {
-    this.vision = vision;
-  }
-
   public SortedSet<Feature<Character>> getRacialTraits()
   {
-    if(racialTraits != null)
-      return Collections.unmodifiableSortedSet(racialTraits);
-    else
-      return null;
-  }
-
-  public void addRacialTrait(Feature<Character> trait)
-  {
-    if(trait != null)
-    {
-      if(racialTraits == null)
-        racialTraits = new TreeSet<Feature<Character>>();
-      
-      racialTraits.add(trait);
-    }
-  }
-
-  public SortedSet<AlternateRacialTraitItem> getAlternateRacialTraits()
-  {
-    if(alternateRacialTraits != null)
-      return Collections.unmodifiableSortedSet(alternateRacialTraits);
-    else
-      return null;
-  }
-
-  public void addAlternateRacialTrait(AlternateRacialTraitItem trait)
-  {
-    if(trait != null)
-    {
-      if(alternateRacialTraits == null)
-        alternateRacialTraits = new TreeSet<AlternateRacialTraitItem>();
-      
-      alternateRacialTraits.add(trait);
-    }
+    return Collections.unmodifiableSortedSet(racialTraits);
   }
 
   public SortedSet<LanguageType> getBaseLanguages()
   {
-    if(baseLanguages != null)
-      return Collections.unmodifiableSortedSet(baseLanguages);
-    else
-      return null;
-  }
-
-  public void addBaseLanguage(LanguageType language)
-  {
-    if(language != null)
-    {
-      if(baseLanguages == null)
-        baseLanguages = new TreeSet<LanguageType>();
-      
-      baseLanguages.add(language);
-    }
+    return Collections.unmodifiableSortedSet(baseLanguages);
   }
 
   public SortedSet<LanguageType> getOptionalLanguages()
   {
-    if(optionalLanguages != null)
-      return Collections.unmodifiableSortedSet(optionalLanguages);
-    else
-      return null;
-  }
-
-  public void addOptionalLanguage(LanguageType language)
-  {
-    if(language != null)
-    {
-      if(optionalLanguages == null)
-        optionalLanguages = new TreeSet<LanguageType>();
-      
-      optionalLanguages.add(language);
-    }
-  }
-
-  public SortedMap<SpeedType, Stat> getSpeeds()
-  {
-    if(speeds != null)
-      return Collections.unmodifiableSortedMap(speeds);
-    else
-      return null;
-  }
-
-  public void addSpeed(SpeedType type, Stat speed)
-  {
-    if(type != null && speed != null)
-    {
-      if(speeds == null)
-        speeds = new TreeMap<SpeedType, Stat>();
-      
-      speeds.put(type, speed);
-    }
-  }
-  
-  public WeaponFamiliarity getWeaponFamiliarity()
-  {
-    return weaponFamiliarity;
-  }
-
-  public void setWeaponFamiliarity(WeaponFamiliarity weaponFamiliarity)
-  {
-    this.weaponFamiliarity = weaponFamiliarity;
+    return Collections.unmodifiableSortedSet(optionalLanguages);
   }
 
   @Override
-  public RaceItem deepCopy()
+  public void index()
   {
-    // TODO Auto-generated method stub
-    return null;
+    Index.getInstance().getIndex(BookSectionType.RACES).addItemWithoutIndexing(this);
   }
 
 }

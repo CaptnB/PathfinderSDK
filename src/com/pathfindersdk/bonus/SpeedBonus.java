@@ -25,25 +25,19 @@ final public class SpeedBonus extends Bonus
   @Override
   public void applyTo(Creature target)
   {
-    if(target != null)
-    {
-      if(target.getSpeed(speed) != null)
-      {
-        target.getSpeed(speed).addBonus(this);
-      }
-    }
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+
+    applyToStat(target.getSpeed(speed));
   }
 
   @Override
   public void removeFrom(Creature target)
   {
-    if(target != null)
-    {
-      if(target.getSpeed(speed) != null)
-      {
-        target.getSpeed(speed).removeBonus(this);
-      }
-    }
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
+    removeFromStat(target.getSpeed(speed));
   }
 
 }

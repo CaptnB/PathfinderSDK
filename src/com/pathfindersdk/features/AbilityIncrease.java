@@ -10,10 +10,10 @@ import com.pathfindersdk.stats.AbilityScore;
  */
 public class AbilityIncrease implements Applicable<Creature>
 {
-  protected Integer increment;
+  protected int increment;
   protected AbilityType ability;
   
-  public AbilityIncrease(Integer increment, AbilityType ability)
+  public AbilityIncrease(int increment, AbilityType ability)
   {
     this.increment = increment;
     this.ability = ability;

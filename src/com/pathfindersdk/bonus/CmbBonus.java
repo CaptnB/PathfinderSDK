@@ -19,12 +19,18 @@ final public class CmbBonus extends Bonus
   @Override
   public void applyTo(Creature target)
   {
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
     applyToStat(target.getCmb());
   }
 
   @Override
   public void removeFrom(Creature target)
   {
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
     removeFromStat(target.getCmb());
   }
 

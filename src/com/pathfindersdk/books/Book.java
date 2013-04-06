@@ -1,37 +1,45 @@
 package com.pathfindersdk.books;
 
 import java.util.Collections;
+import java.util.Set;
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 import com.pathfindersdk.enums.BookSectionType;
 
-public class Book
+/**
+ * Immutable class that wraps everything a Pathfinder book may contain.
+ */
+final public class Book
 {
-  protected String title;
-  protected SortedMap<BookSectionType, BookSection> sections;
+  final private String title;
+  final private SortedMap<BookSectionType, BookSection> sections;
 
-  public Book(String title)
+  public Book(String title, SortedMap<BookSectionType, BookSection> sections)
   {
+    if(title == null)
+      throw new IllegalArgumentException("title can't be null!");
+    
+    if(sections == null)
+      throw new IllegalArgumentException("sections can't be null");
+    
     this.title = title;
+    this.sections = sections;
   }
   
   public SortedMap<BookSectionType, BookSection> getSections()
   {
-    if(sections != null)
-      return Collections.unmodifiableSortedMap(sections);
-    else
-      return null;
+    return Collections.unmodifiableSortedMap(sections);
   }
   
-  public void addSection(BookSection section)
+  @Override
+  public String toString()
   {
-    if(section != null)
-    {
-      if(sections == null)
-        sections = new TreeMap<BookSectionType, BookSection>();
-      
-      sections.put(section.getType(), section);
-    }
+    String out = title + "\n\n";
+    
+    Set<BookSectionType> keys = sections.keySet();
+    for(BookSectionType key : keys)
+      out += sections.get(key).toString();
+    
+    return out;
   }
 }

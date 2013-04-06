@@ -1,18 +1,18 @@
 package com.pathfindersdk.books;
 
 import java.util.Collections;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import com.pathfindersdk.enums.BookSectionType;
 
-public class Index
+final public class Index
 {
+  // Singleton
   private static Index instance = new Index();
-  
-  private SortedSet<BookSection> index = new TreeSet<BookSection>();  // Does not reference book sections directly, it gathers say all RaceItems
-  
-  // Library is a singleton
+  private SortedMap<BookSectionType, BookSection> index = new TreeMap<BookSectionType, BookSection>();
+    
   private Index() {}
 
   public static Index getInstance()
@@ -20,52 +20,38 @@ public class Index
     return instance;
   }
 
-  public SortedSet<BookSection> getFullIndex()
+  public SortedMap<BookSectionType, BookSection> getFullIndex()
   {
-    if(index != null)
-      return Collections.unmodifiableSortedSet(index);
-    else
-      return null;
-  }
-
-  public void addIndex(BookSection section)
-  {
-    if(section != null)
-    {
-      // Check if an existing indexed section with the same type already exists
-      BookSectionType type = section.getType();
-      boolean alreadyIndexed = false;
-      
-      for(BookSection indexed : index)
-      {
-        if(indexed.getType().equals(type))
-          alreadyIndexed = true;
-      }
-      
-      if(!alreadyIndexed)
-        index.add(new BookSection(section.getType()));
-    }
+    return Collections.unmodifiableSortedMap(index);
   }
   
   public BookSection getIndex(BookSectionType type)
   {
-    BookSection section = null;
-    
-    // Try to find an existing section
-    for(BookSection indexed : index)
-    {
-      if(indexed.getType().equals(type))
-        section = indexed;
-    }
-    
+    if(type == null)
+      throw new IllegalArgumentException("type can't be null!");
+      
+    // Get existing section
+    BookSection section = index.get(type);
+
     // If section has not been found, create and add it to index
     if(section == null)
     {
       section = new BookSection(type);
-      index.add(section);
+      index.put(type, section);
     }
     
     return section;
   }
 
+  @Override
+  public String toString()
+  {
+    String out = "Index\n-----\n";
+    
+    Set<BookSectionType> keys = index.keySet();
+    for(BookSectionType key: keys)
+      out += index.get(key).toString();
+    
+    return out;
+  }
 }

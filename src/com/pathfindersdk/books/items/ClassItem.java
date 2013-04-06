@@ -1,103 +1,80 @@
 package com.pathfindersdk.books.items;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.features.ClassLevel;
 import com.pathfindersdk.prerequisites.Prerequisite;
 import com.pathfindersdk.stats.Dice;
 
 
 /**
- * This class contains a class progression level by level.
+ * Immutable class to wrap a playable class book entry.
  */
-public class ClassItem extends BookItem
+final public class ClassItem extends BookItem
 {
-  protected List<Prerequisite> prerequisites;
-  protected Dice hitDice;
-  protected List<String> classSkills;
-  protected Integer skillRanks;
-  protected List<ClassLevel> levels;
+  final private List<Prerequisite> prerequisites;
+  final private Dice hitDice;
+  final private List<String> classSkills;
+  final private int skillRanks;
+  final private List<ClassLevel> levels;
   
-  public ClassItem(String name, Dice hitDice, int skillRanks)
+  public ClassItem(String name, List<Prerequisite> prerequisites, Dice hitDice, List<String> classSkills, int skillRanks, List<ClassLevel> levels)
   {
     super(name);
+    
+    if(prerequisites == null)
+      throw new IllegalArgumentException("prerequisites can't bu null");
+    
+    if(hitDice == null)
+      throw new IllegalArgumentException("hitDice can't bu null");
+    
+    if(classSkills == null)
+      throw new IllegalArgumentException("classSkills can't bu null");
+    
+    if(levels == null)
+      throw new IllegalArgumentException("levels can't bu null");
+    
+    this.prerequisites = prerequisites;
     this.hitDice = hitDice;
+    this.classSkills = classSkills;
     this.skillRanks = skillRanks;
+    this.levels = levels;
+  }
+
+  public List<Prerequisite> getPrerequisites()
+  {
+    return Collections.unmodifiableList(prerequisites);
   }
   
-  public void addPrerequisite(Prerequisite prereq)
+  public Dice getHitDice()
   {
-    if(prereq != null)
-    {
-      if(prerequisites == null)
-        prerequisites = new ArrayList<Prerequisite>();
-      
-      prerequisites.add(prereq);
-    }
+    return hitDice;
   }
   
-  public void removePrerequisite(Prerequisite prereq)
+  public List<String> getClassSkills()
   {
-    if(prerequisites != null)
-    {
-      prerequisites.remove(prereq);
-      
-      if(prerequisites.isEmpty())
-        prerequisites = null;
-    }
+    return Collections.unmodifiableList(classSkills);
   }
   
-  public void addClassSkill(String skillName)
+  public int getSkillRanks()
   {
-    if(skillName != null)
-    {
-      if(classSkills == null)
-        classSkills = new ArrayList<String>();
-      
-      classSkills.add(skillName);
-    }
+    return skillRanks;
   }
   
-  public void removeClassSkill(String skillName)
+  public List<ClassLevel> getLevels()
   {
-    if(classSkills != null)
-    {
-      classSkills.remove(skillName);
-      
-      if(classSkills.isEmpty())
-        classSkills = null;
-    }
-  }
-  
-  public void addClassLevel(ClassLevel level)
-  {
-    if(level != null)
-    {
-      if(levels == null)
-        levels = new ArrayList<ClassLevel>();
-      
-      levels.add(level);
-    }
-  }
-  
-  public void removeClassLevel(ClassLevel level)
-  {
-    if(levels != null)
-    {
-      levels.remove(level);
-      
-      if(levels.isEmpty())
-        levels = null;
-    }
+    return Collections.unmodifiableList(levels);
   }
 
   @Override
-  public ClassItem deepCopy()
+  public void index()
   {
-    // TODO Auto-generated method stub
-    return null;
+    Index.getInstance().getIndex(BookSectionType.CLASSES).addItemWithoutIndexing(this);
   }
 
+  
 }

@@ -6,6 +6,10 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.enums.BookSectionType;
 
+/**
+ * This class represents a book section (or chapter) that usually contains the same type of items.
+ * Ex: A section with type BookSectionType.RACES will contains RaceItems
+ */
 public class BookSection implements Comparable<BookSection>
 {
   protected BookSectionType type;
@@ -13,6 +17,8 @@ public class BookSection implements Comparable<BookSection>
   
   public BookSection(BookSectionType type)
   {
+    if(type == null)
+      throw new IllegalArgumentException("type can't ne null!");
     this.type = type;
   }
   
@@ -29,22 +35,24 @@ public class BookSection implements Comparable<BookSection>
       return null;
   }
   
+  // Add item to section and also places it into main index corresponding section
   public void addItem(BookItem item)
   {
-    if(item != null)
-    {
-      if(items == null)
-        items = new TreeSet<BookItem>();
-      
-      // Add to section
-      items.add(item);
-      
-      // Add to index
-      Index.getInstance().getIndex(type).addItemWithoutIndexing(item);
-    }
+    if(item == null)
+      throw new IllegalArgumentException("item can't be null!");
+
+    if(items == null)
+      items = new TreeSet<BookItem>();
+    
+    // Add to this section
+    items.add(item);
+    
+    // Add to index
+    item.index();
   }
 
-  protected void addItemWithoutIndexing(BookItem item)
+  // 
+  public void addItemWithoutIndexing(BookItem item)
   {
     if(item != null)
     {
@@ -61,5 +69,15 @@ public class BookSection implements Comparable<BookSection>
   {
     // Sort BookSection according to the BookSectionType enum
     return type.compareTo(section.getType());
+  }
+  
+  @Override
+  public String toString()
+  {
+    String out = type.toString();
+    for(BookItem item : items)
+      out += "\n  " + item.toString();
+    
+    return out;
   }
 }

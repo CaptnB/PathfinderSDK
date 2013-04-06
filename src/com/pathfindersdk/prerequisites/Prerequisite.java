@@ -7,5 +7,5 @@ import com.pathfindersdk.creatures.Creature;
  */
 public abstract class Prerequisite
 {
-  public abstract Boolean isFilled(Creature creature);
+  public abstract boolean isFilled(Creature creature);
 }

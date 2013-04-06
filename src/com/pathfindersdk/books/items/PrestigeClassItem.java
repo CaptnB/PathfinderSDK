@@ -1,8 +1,13 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 
-public class PrestigeClassItem extends BookItem
+/**
+ * Immutable class to wrap a prestige class book entry.
+ */
+final public class PrestigeClassItem extends BookItem
 {
 
   public PrestigeClassItem(String name)
@@ -12,10 +17,9 @@ public class PrestigeClassItem extends BookItem
   }
 
   @Override
-  public PrestigeClassItem deepCopy()
+  public void index()
   {
-    // TODO Auto-generated method stub
-    return null;
+    Index.getInstance().getIndex(BookSectionType.PRESTIGE_CLASSES).addItemWithoutIndexing(this);
   }
 
 }

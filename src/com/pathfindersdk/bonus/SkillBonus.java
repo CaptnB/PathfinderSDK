@@ -24,12 +24,18 @@ final public class SkillBonus extends Bonus
   @Override
   public void applyTo(Creature target)
   {
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
     applyToStat(target.getSkill(skillName));
   }
 
   @Override
   public void removeFrom(Creature target)
   {
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
     removeFromStat(target.getSkill(skillName));
   }
 

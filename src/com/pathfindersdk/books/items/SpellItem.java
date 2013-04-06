@@ -1,8 +1,13 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 
-public class SpellItem extends BookItem
+/**
+ * Immutable class to wrap a spell book entry.
+ */
+final public class SpellItem extends BookItem
 {
 
   public SpellItem(String name)
@@ -12,10 +17,9 @@ public class SpellItem extends BookItem
   }
 
   @Override
-  public SpellItem deepCopy()
+  public void index()
   {
-    // TODO Auto-generated method stub
-    return null;
+    Index.getInstance().getIndex(BookSectionType.SPELLS).addItemWithoutIndexing(this);
   }
 
 }

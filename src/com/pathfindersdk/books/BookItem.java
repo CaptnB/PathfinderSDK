@@ -1,13 +1,17 @@
 package com.pathfindersdk.books;
 
-
-
+/**
+ * Base class for every item found in a book. Make sure every derived class is immutable (final class, final private members and no setters) 
+ * as it prevents unintended modifications of the book content and simplifies affectations (no clone())
+ */
 public abstract class BookItem implements Comparable<BookItem>
 {
-  protected String name;
+  final private String name;
   
   public BookItem(String name)
   {
+    if(name == null)
+      throw new IllegalArgumentException("name can't be null!");
     this.name = name;
   }
   
@@ -15,9 +19,8 @@ public abstract class BookItem implements Comparable<BookItem>
   {
     return name;
   }
-
-  // Make sure to use covariant return type when overriding
-  public abstract BookItem deepCopy();
+  
+  public abstract void index();
   
   @Override
   public String toString()

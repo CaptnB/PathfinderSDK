@@ -23,14 +23,20 @@ final public class SaveBonus extends Bonus
   }
   
   @Override
-  public void applyTo(Creature creature)
+  public void applyTo(Creature target)
   {
-    applyToStat(creature.getSavingThrow(save));
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
+    applyToStat(target.getSavingThrow(save));
   }
   
   @Override
-  public void removeFrom(Creature creature)
+  public void removeFrom(Creature target)
   {
-    removeFromStat(creature.getSavingThrow(save));
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
+    removeFromStat(target.getSavingThrow(save));
   }
 }

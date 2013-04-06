@@ -26,14 +26,26 @@ public class InitiativeBonusTest
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(2, character.getInitiative().getScore().intValue());
+    assertEquals(2, character.getInitiative().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(0, character.getInitiative().getScore().intValue());
+    assertEquals(0, character.getInitiative().getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }

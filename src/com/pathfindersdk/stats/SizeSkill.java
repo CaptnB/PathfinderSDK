@@ -17,7 +17,7 @@ public class SizeSkill extends Skill
   }
 
   @Override
-  public Integer getScore()
+  public int getScore()
   {
     if(size != null)
       return super.getScore() + size.getSkillModifier();

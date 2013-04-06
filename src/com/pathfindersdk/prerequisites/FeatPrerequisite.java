@@ -16,7 +16,7 @@ public class FeatPrerequisite extends Prerequisite
   }
 
   @Override
-  public Boolean isFilled(Creature creature)
+  public boolean isFilled(Creature creature)
   {
     /*Feat feat = creature.getFeat(featName);
     if(feat != null)

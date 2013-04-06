@@ -1,8 +1,13 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 
-public class EquipmentItem extends BookItem
+/**
+ * Immutable class to wrap an equipment book entry.
+ */
+final public class EquipmentItem extends BookItem
 {
 
   public EquipmentItem(String name)
@@ -12,10 +17,9 @@ public class EquipmentItem extends BookItem
   }
 
   @Override
-  public EquipmentItem deepCopy()
+  public void index()
   {
-    // TODO Auto-generated method stub
-    return null;
+    Index.getInstance().getIndex(BookSectionType.EQUIPMENT).addItemWithoutIndexing(this);
   }
 
 }

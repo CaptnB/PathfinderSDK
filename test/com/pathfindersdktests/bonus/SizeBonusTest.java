@@ -39,4 +39,16 @@ public class SizeBonusTest
     assertEquals(SizeType.MEDIUM, character.getSize().getSize());
   }
 
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
+  }
+
 }

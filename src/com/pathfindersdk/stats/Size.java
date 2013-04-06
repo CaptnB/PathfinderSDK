@@ -54,7 +54,7 @@ public class Size extends Stat
       
   }
   
-  public Integer getNumberOfLegs()
+  public int getNumberOfLegs()
   {
     return numberOfLegs;
   }
@@ -73,7 +73,7 @@ public class Size extends Stat
     return baseSize.offset(getScore());
   }
   
-  public Integer getModifier()
+  public int getModifier()
   {
     switch(getSize())
     {
@@ -110,7 +110,7 @@ public class Size extends Stat
     }
   }
   
-  public Integer getSkillModifier()
+  public int getSkillModifier()
   {
     switch(getSize())
     {
@@ -147,7 +147,7 @@ public class Size extends Stat
     }
   }
   
-  public Double getSpace()
+  public double getSpace()
   {
     switch(getSize())
     {
@@ -184,19 +184,19 @@ public class Size extends Stat
     }
   }
   
-  public Boolean isTall()
+  public boolean isTall()
   {
     // Otyugh is considered tall with 3 legs (don't recall any one-legged monster)
     // I'm assuming that everything without legs or more than 4 is long...
     return (numberOfLegs >= 1 && numberOfLegs < 4);
   }
   
-  public Boolean isLong()
+  public boolean isLong()
   {
     return !isTall();
   }
   
-  public Double getReach()
+  public double getReach()
   {
     switch(getSize())
     {

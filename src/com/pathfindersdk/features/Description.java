@@ -13,9 +13,9 @@ public class Description implements Applicable<Character>
   protected String deity;
   protected String homeland;
   protected GenderType gender;
-  protected Integer age;
-  protected Double height;
-  protected Double weight;
+  protected int age;
+  protected double height;
+  protected double weight;
   protected String hairColor;
   protected String eyesColor;
   
@@ -89,32 +89,32 @@ public class Description implements Applicable<Character>
     this.gender = gender;
   }
 
-  public Integer getAge()
+  public int getAge()
   {
     return age;
   }
 
-  public void setAge(Integer age)
+  public void setAge(int age)
   {
     this.age = age;
   }
 
-  public Double getHeight()
+  public double getHeight()
   {
     return height;
   }
 
-  public void setHeight(Double height)
+  public void setHeight(double height)
   {
     this.height = height;
   }
 
-  public Double getWeight()
+  public double getWeight()
   {
     return weight;
   }
 
-  public void setWeight(Double weight)
+  public void setWeight(double weight)
   {
     this.weight = weight;
   }

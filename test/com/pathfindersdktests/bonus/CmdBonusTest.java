@@ -27,14 +27,26 @@ public class CmdBonusTest
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(12, character.getCmd().getScore().intValue());
+    assertEquals(12, character.getCmd().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(10, character.getCmd().getScore().intValue());
+    assertEquals(10, character.getCmd().getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }

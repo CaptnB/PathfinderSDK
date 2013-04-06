@@ -27,14 +27,26 @@ public class AttackBonusTest
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(2, character.getAttack().getScore().intValue());
+    assertEquals(2, character.getAttack().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(0, character.getAttack().getScore().intValue());
+    assertEquals(0, character.getAttack().getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }

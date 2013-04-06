@@ -25,19 +25,36 @@ public class SkillBonusTest
     bonus = new SkillBonus(2, BonusType.ARMOR, "Acrobatics");
   }
 
+  @Test (expected = IllegalArgumentException.class)
+  public void testSkillBonusIntBonusTypeNull()
+  {
+    new SkillBonus(2, BonusType.ARMOR, null);
+  }
 
   @Test
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(2, character.getSkill("Acrobatics").getScore().intValue());
+    assertEquals(2, character.getSkill("Acrobatics").getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(0, character.getSkill("Acrobatics").getScore().intValue());
+    assertEquals(0, character.getSkill("Acrobatics").getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }

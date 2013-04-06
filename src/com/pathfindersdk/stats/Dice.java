@@ -3,10 +3,10 @@ package com.pathfindersdk.stats;
 import java.util.Random;
 
 
-public class Dice implements Rollable
+final public class Dice implements Rollable
 {
-  protected Integer numbers;
-  protected Integer faces;
+  final private int numbers;
+  final private int faces;
   
   public Dice(int numbers, int faces)
   {
@@ -22,7 +22,7 @@ public class Dice implements Rollable
   }
   
   @Override
-  public Integer roll()
+  public int roll()
   {
     int roll = 0;
     Random random = new Random();

@@ -1,5 +1,10 @@
 package com.pathfindersdk.books;
 
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import com.pathfindersdk.enums.BookSectionType;
+
 
 /**
  * A base builder for creating Book objects.
@@ -9,44 +14,47 @@ public abstract class BookBuilder
   
   public Book createBook(String title)
   {
-    Book book = new Book(title);
+    // Create book tree map of sections
+    SortedMap<BookSectionType, BookSection> sections = new TreeMap<BookSectionType, BookSection>();
+   
+    // Fill each section
+    addRaces(sections);
+    addAlternateRacialTraits(sections);
+    addClasses(sections);
+    addClasses(sections);
+    addClassExtensions(sections);
+    addArchetypes(sections);
+    addPrestigeClasses(sections);
+    addSkills(sections);
+    addFeats(sections);
+    addEquipment(sections);
+    addSpells(sections);
+    addMonsters(sections);
     
-    addRaces(book);
-    addAlternateRacialTraits(book);
-    addClasses(book);
-    addClasses(book);
-    addClassExtensions(book);
-    addArchetypes(book);
-    addPrestigeClasses(book);
-    addSkills(book);
-    addFeats(book);
-    addEquipment(book);
-    addSpells(book);
-    addMonsters(book);
-    
-    return book;
+    // Return newly assembled book
+    return new Book(title, sections);
   }
   
-  protected abstract void addRaces(Book book);
+  protected abstract void addRaces(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addAlternateRacialTraits(Book book);
+  protected abstract void addAlternateRacialTraits(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addClasses(Book book);
+  protected abstract void addClasses(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addClassExtensions(Book book);
+  protected abstract void addClassExtensions(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addArchetypes(Book book);
+  protected abstract void addArchetypes(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addPrestigeClasses(Book book);
+  protected abstract void addPrestigeClasses(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addSkills(Book book);
+  protected abstract void addSkills(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addFeats(Book book);
+  protected abstract void addFeats(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addEquipment(Book book);
+  protected abstract void addEquipment(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addSpells(Book book);
+  protected abstract void addSpells(SortedMap<BookSectionType, BookSection> sections);
   
-  protected abstract void addMonsters(Book book);
+  protected abstract void addMonsters(SortedMap<BookSectionType, BookSection> sections);
   
 }

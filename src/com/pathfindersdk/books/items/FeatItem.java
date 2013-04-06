@@ -1,8 +1,13 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 
-public class FeatItem extends BookItem
+/**
+ * Immutable class to wrap a feat book entry.
+ */
+final public class FeatItem extends BookItem
 {
 
   public FeatItem(String name)
@@ -12,10 +17,9 @@ public class FeatItem extends BookItem
   }
 
   @Override
-  public FeatItem deepCopy()
+  public void index()
   {
-    // TODO Auto-generated method stub
-    return null;
+    Index.getInstance().getIndex(BookSectionType.FEATS).addItemWithoutIndexing(this);
   }
 
 }

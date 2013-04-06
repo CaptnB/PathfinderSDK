@@ -7,10 +7,10 @@ import com.pathfindersdk.creatures.Creature;
 
 public class ClassLevel implements Applicable<Creature>
 {
-  protected Integer baseAttackBonus;
-  protected Integer fortitude;
-  protected Integer reflex;
-  protected Integer will;
+  protected int baseAttackBonus;
+  protected int fortitude;
+  protected int reflex;
+  protected int will;
   protected ArrayList<Bonus> specials;
   
   public ClassLevel(int baseAttackBonus, int fortitude, int reflex, int will)
@@ -21,22 +21,22 @@ public class ClassLevel implements Applicable<Creature>
     this.will = will;
   }
   
-  public Integer getBaseAttackBonus()
+  public int getBaseAttackBonus()
   {
     return baseAttackBonus;
   }
   
-  public Integer getFortitude()
+  public int getFortitude()
   {
     return fortitude;
   }
   
-  public Integer getReflex()
+  public int getReflex()
   {
     return reflex;
   }
   
-  public Integer getWill()
+  public int getWill()
   {
     return will;
   }

@@ -8,20 +8,12 @@ import com.pathfindersdk.stats.Stat;
 
 public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
 {
-  final private Integer value;
+  final private int value;
   final private BonusType type;
   final private String circumstance;
 
-  public Bonus(Integer value, BonusType type)
+  public Bonus(int value, BonusType type, String circumstance)
   {
-    this(value, type, null);
-  }
-  
-  public Bonus(Integer value, BonusType type, String circumstance)
-  {
-    if(value == null)
-      throw new IllegalArgumentException("value can't be null");
-    
     if(type == null)
       throw new IllegalArgumentException("type can't be null");
     
@@ -30,7 +22,7 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
     this.circumstance = circumstance;
   }
   
-  public Integer getValue()
+  public int getValue()
   {
     return value;
   }
@@ -45,7 +37,7 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
     return circumstance;
   }
   
-  public Boolean isCircumstantial()
+  public boolean isCircumstantial()
   {
     return circumstance != null;
   }
@@ -54,23 +46,28 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
   public int compareTo(Bonus bonus)
   {
     // Sort in descending order (highest bonus first so when bonuses don't stack, the first one is the one to consider)
-    return bonus.getValue().compareTo(getValue());
+    if(bonus.getValue() > getValue())
+      return 1;
+    else if(bonus.getValue() < getValue())
+      return -1;
+    else
+      return 0;
   }
 
   protected void applyToStat(Stat stat)
   {
-    if(stat != null)
-      stat.addBonus(this);
-    else
-      System.out.println("Stat is null, could not add Bonus [" + this.getClass().getSimpleName() + "]");
+    if(stat == null)
+      throw new IllegalArgumentException("stat can't be null");
+    
+    stat.addBonus(this);
   }
   
   protected void removeFromStat(Stat stat)
   {
-    if(stat != null)
-      stat.removeBonus(this);
-    else
-      System.out.println("Stat is null, could not remove Bonus [" + this.getClass().getSimpleName() + "]");
+    if(stat == null)
+      throw new IllegalArgumentException("stat can't be null");
+    
+    stat.removeBonus(this);
   }
   
   @Override
@@ -84,7 +81,7 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
     out += value + " " + type.toString();
     
     if(circumstance != null)
-      out += " " + circumstance;
+      out += " (" + circumstance + ")";
     
     return out;
   }

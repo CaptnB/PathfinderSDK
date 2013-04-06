@@ -12,13 +12,13 @@ public class AbilityStat extends Stat implements Rollable
   }
   
   @Override
-  public Integer getScore()
+  public int getScore()
   {
     return super.getScore() + ability.getModifier();
   }
 
   @Override
-  public Integer roll()
+  public int roll()
   {
     return (new Dice(1, 20)).roll() + getScore() + ability.getModifier();
   }

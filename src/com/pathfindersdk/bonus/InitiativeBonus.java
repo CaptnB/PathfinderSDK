@@ -6,26 +6,32 @@ import com.pathfindersdk.enums.BonusType;
 final public class InitiativeBonus extends Bonus
 {
   
-  public InitiativeBonus(Integer value, BonusType type)
+  public InitiativeBonus(int value, BonusType type)
   {
     this(value, type, null);
   }
 
-  public InitiativeBonus(Integer value, BonusType type, String circumstance)
+  public InitiativeBonus(int value, BonusType type, String circumstance)
   {
     super(value, type, circumstance);
   }
 
   @Override
-  public void applyTo(Creature creature)
+  public void applyTo(Creature target)
   {
-    applyToStat(creature.getInitiative());
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
+    applyToStat(target.getInitiative());
   }
 
   @Override
-  public void removeFrom(Creature creature)
+  public void removeFrom(Creature target)
   {
-    removeFromStat(creature.getInitiative());
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
+    removeFromStat(target.getInitiative());
   }
 
 }

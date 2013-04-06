@@ -8,7 +8,7 @@ import com.pathfindersdk.books.items.SkillItem;
 public class Skill extends AbilityStat
 {
   protected SkillItem skill;
-  protected Boolean classSkill;
+  protected boolean classSkill;
   
   public Skill(SkillItem skill, AbilityScore ability)
   {
@@ -17,23 +17,23 @@ public class Skill extends AbilityStat
     this.classSkill = false;
   }
   
-  public Boolean isClassSkill()
+  public boolean isClassSkill()
   {
     return classSkill;
   }
   
-  public void setClassSkill(Boolean classSkill)
+  public void setClassSkill(boolean classSkill)
   {
     this.classSkill = classSkill;
   }
   
-  public Boolean hasClassSkillBonus()
+  public boolean hasClassSkillBonus()
   {
     return isClassSkill() && getBaseScore() > 0;
   }
   
   @Override
-  public Integer getScore()
+  public int getScore()
   {
     // Cannot use untrained
     if(!skill.isUnTrained() && getBaseScore() == 0)

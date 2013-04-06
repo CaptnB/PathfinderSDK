@@ -27,14 +27,26 @@ public class CmbBonusTest
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(2, character.getCmb().getScore().intValue());
+    assertEquals(2, character.getCmb().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(0, character.getCmb().getScore().intValue());
+    assertEquals(0, character.getCmb().getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }

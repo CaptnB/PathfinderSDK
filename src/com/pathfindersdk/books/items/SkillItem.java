@@ -1,24 +1,42 @@
 package com.pathfindersdk.books.items;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.AbilityType;
+import com.pathfindersdk.enums.BookSectionType;
 
 
 /**
- * This class represents a general skill description (see SkillStat for character specific skills with ranks and class skill).
+ * Immutable class that wraps a skill description book entry.
  */
-public class SkillItem extends BookItem
+final public class SkillItem extends BookItem
 {
-  protected Boolean untrained;
-  protected Boolean armorCheckPenalty;
-  protected AbilityType keyAbility;
+  final private boolean untrained;
+  final private boolean armorCheckPenalty;
+  final private AbilityType keyAbility;
+  final private List<String> extensions; // Only used for skills like Craft, Perform and Profession that require a specialization (Craft (alchemy))
 
-  public SkillItem(String name, AbilityType keyAbility, Boolean untrained, Boolean armorCheckPenalty)
+  public SkillItem(String name, AbilityType keyAbility, boolean untrained, boolean armorCheckPenalty)
+  {
+    // Pass an empty list of extensions
+    this(name, keyAbility, untrained, armorCheckPenalty, new ArrayList<String>());
+  }
+  
+  public SkillItem(String name, AbilityType keyAbility, boolean untrained, boolean armorCheckPenalty, List<String> extensions)
   {
     super(name);
+    
+    if(keyAbility == null)
+      throw new IllegalArgumentException("keyAbility can't be null");
+    
     this.keyAbility = keyAbility;
     this.untrained = untrained;
     this.armorCheckPenalty = armorCheckPenalty;
+    this.extensions = extensions;
   }
   
   public AbilityType getKeyAbility()
@@ -26,21 +44,30 @@ public class SkillItem extends BookItem
     return keyAbility;
   }
   
-  public Boolean isUnTrained()
+  public boolean isUnTrained()
   {
     return untrained;
   }
   
-  public Boolean isArmorCheckPenalty()
+  public boolean isArmorCheckPenalty()
   {
     return armorCheckPenalty;
   }
-
-  @Override
-  public SkillItem deepCopy()
+  
+  public List<String> getExtensions()
   {
-    // TODO Auto-generated method stub
-    return null;
+    return Collections.unmodifiableList(extensions);
   }
 
+  public boolean isExtensible()
+  {
+    return extensions.size() > 0;
+  }
+
+  @Override
+  public void index()
+  {
+    Index.getInstance().getIndex(BookSectionType.SKILLS).addItemWithoutIndexing(this);
+  }
+  
 }

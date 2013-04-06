@@ -39,9 +39,9 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
     }
   }
   
-  protected Boolean fillsPrerequisites(T target)
+  protected boolean fillsPrerequisites(T target)
   {
-    Boolean filled = true;
+    boolean filled = true;
 
     if(prerequisites != null)
     {

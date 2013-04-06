@@ -1,8 +1,13 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 
-public class ArchetypeItem extends BookItem
+/**
+ * Immutable class to wrap an archetype book entry.
+ */
+final public class ArchetypeItem extends BookItem
 {
 
   public ArchetypeItem(String name)
@@ -12,10 +17,9 @@ public class ArchetypeItem extends BookItem
   }
 
   @Override
-  public ArchetypeItem deepCopy()
+  public void index()
   {
-    // TODO Auto-generated method stub
-    return null;
+    Index.getInstance().getIndex(BookSectionType.ARCHETYPES).addItemWithoutIndexing(this);
   }
 
 }

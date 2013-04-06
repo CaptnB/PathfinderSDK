@@ -10,7 +10,7 @@ public class ArmorClass extends Stat
 {
   protected AbilityScore dex;
   protected Size size;
-  protected Integer maxDex;
+//  protected int maxDex; this should be a reference to shield/armor.getMaxDex()
 
   public ArmorClass(AbilityScore dex, Size size)
   {
@@ -20,14 +20,14 @@ public class ArmorClass extends Stat
     this.size = size;
   }
 
-  public void setMaxDex(Integer maxDex)
+//  public void setMaxDex(int maxDex)
+//  {
+//    this.maxDex = maxDex;
+//  }
+
+  public int getTouch()
   {
-    this.maxDex = maxDex;
-  }
-  
-  public Integer getTouch()
-  {
-    Integer touch = getBaseScore();
+    int touch = getBaseScore();
     
     // Touch AC ignores armor, shield and natural AC
     SortedSet<Bonus> bonusSet = getAllBaseBonuses();
@@ -44,9 +44,9 @@ public class ArmorClass extends Stat
     // Add dex modifier (limited by armor max dex if any)
     if(dex != null)
     {
-      if(maxDex != null)
-        touch += Math.min(dex.getModifier(), maxDex);
-      else
+//      if(maxDex > 0)
+//        touch += Math.min(dex.getModifier(), maxDex);
+//      else
         touch += dex.getModifier();
     }
  
@@ -57,9 +57,9 @@ public class ArmorClass extends Stat
     return touch;
   }
   
-  public Integer getFlatFooted()
+  public int getFlatFooted()
   {
-    Integer flatFooted = getBaseScore();
+    int flatFooted = getBaseScore();
     
     // Flat-footed AC does not include dex modifier and ignores dodge bonus
     SortedSet<Bonus> bonusSet = getAllBaseBonuses();
@@ -79,17 +79,17 @@ public class ArmorClass extends Stat
   }
   
   @Override
-  public Integer getScore()
+  public int getScore()
   {
     // Add all bonuses
-    Integer ac = super.getScore();
+    int ac = super.getScore();
     
     // Add dex modifier (limited by armor max dex if any)
     if(dex != null)
     {
-      if(maxDex != null)
-        ac += Math.min(dex.getModifier(), maxDex);
-      else
+//      if(maxDex > 0)
+//        ac += Math.min(dex.getModifier(), maxDex);
+//      else
         ac += dex.getModifier();
     }
     

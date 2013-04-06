@@ -84,13 +84,13 @@ public class Stat
       }
     }
     
-    public Boolean isEmpty()
+    public boolean isEmpty()
     {
       return (baseBonuses == null && circumstantialBonuses == null);
     }
   }
   
-  protected Integer baseScore;
+  protected int baseScore;
   protected SortedMap<BonusType, BonusGroup> bonusGroups;
   
   public Stat(int baseScore)
@@ -98,7 +98,7 @@ public class Stat
     this.baseScore = baseScore;
   }
   
-  public Integer getBaseScore()
+  public int getBaseScore()
   {
     return baseScore;
   }
@@ -108,9 +108,9 @@ public class Stat
     baseScore = score;
   }
   
-  public Integer getScore()
+  public int getScore()
   {
-    Integer total = getBaseScore();
+    int total = getBaseScore();
     SortedSet<Bonus> bonusSet = getAllBaseBonuses();
 
     for(Bonus bonus : bonusSet)
@@ -227,7 +227,7 @@ public class Stat
         if(bonus.getValue() >= 0)
           circumstantial += "+";
         
-        circumstantial += bonus.getValue().toString() + " " + bonus.getType().toString() + " " + bonus.getCircumstance();
+        circumstantial += bonus.getValue() + " " + bonus.getType().toString() + " " + bonus.getCircumstance();
         
         if(bonus != circSet.last())
           circumstantial += ", ";
@@ -235,6 +235,6 @@ public class Stat
       circumstantial += ")";
     }
 
-    return getScore().toString() + circumstantial;
+    return getScore() + circumstantial;
   }
 }

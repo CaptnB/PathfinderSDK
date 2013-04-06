@@ -9,7 +9,7 @@ public class SkillPrerequisite extends Prerequisite
 {
   
   protected String skillName;
-  protected Integer ranks;
+  protected int ranks;
   
   public SkillPrerequisite(String skillName, int ranks)
   {
@@ -18,7 +18,7 @@ public class SkillPrerequisite extends Prerequisite
   }
 
   @Override
-  public Boolean isFilled(Creature creature)
+  public boolean isFilled(Creature creature)
   {
     /*SkillStat skill = creature.getSkill(skillName);
     if(skill != null && skill.getBaseScore() >= ranks)

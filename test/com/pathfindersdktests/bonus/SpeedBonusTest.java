@@ -25,19 +25,36 @@ public class SpeedBonusTest
     bonus = new SpeedBonus(10, BonusType.ARMOR, SpeedType.BASE);
   }
 
+  @Test (expected = IllegalArgumentException.class)
+  public void testBonusIntBonusTypeNull()
+  {
+    new SpeedBonus(10, BonusType.ARMOR, null);
+  }
 
   @Test
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(40, character.getSpeed(SpeedType.BASE).getScore().intValue());
+    assertEquals(40, character.getSpeed(SpeedType.BASE).getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(30, character.getSpeed(SpeedType.BASE).getScore().intValue());
+    assertEquals(30, character.getSpeed(SpeedType.BASE).getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }

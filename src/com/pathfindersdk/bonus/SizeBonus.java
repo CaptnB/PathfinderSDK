@@ -17,15 +17,21 @@ final public class SizeBonus extends Bonus
   }
 
   @Override
-  public void applyTo(Creature creature)
+  public void applyTo(Creature target)
   {
-    applyToStat(creature.getSize());
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
+    applyToStat(target.getSize());
   }
 
   @Override
-  public void removeFrom(Creature creature)
+  public void removeFrom(Creature target)
   {
-    removeFromStat(creature.getSize());
+    if(target == null)
+      throw new IllegalArgumentException("target can't be null");
+    
+    removeFromStat(target.getSize());
   }
 
 }

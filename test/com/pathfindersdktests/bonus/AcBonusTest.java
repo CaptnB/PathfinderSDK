@@ -31,14 +31,26 @@ public class AcBonusTest
   public void testApplyTo()
   {
     bonus.applyTo(character);
-    assertEquals(12, character.getArmorClass().getScore().intValue());
+    assertEquals(12, character.getArmorClass().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
     bonus.removeFrom(character);
-    assertEquals(10, character.getArmorClass().getScore().intValue());
+    assertEquals(10, character.getArmorClass().getScore());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testApplyToNull()
+  {
+    bonus.applyTo(null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testRemoveFromNull()
+  {
+    bonus.removeFrom(null);
   }
 
 }
