@@ -21,14 +21,13 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
   {
     if(value == null)
       throw new IllegalArgumentException("value can't be null");
-    else if(type == null)
+    
+    if(type == null)
       throw new IllegalArgumentException("type can't be null");
-    else
-    {
-      this.value = value;
-      this.type = type;
-      this.circumstance = circumstance;
-    }
+    
+    this.value = value;
+    this.type = type;
+    this.circumstance = circumstance;
   }
   
   public Integer getValue()

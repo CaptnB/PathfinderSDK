@@ -3,11 +3,12 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 
-public class SizeBonus extends Bonus
+final public class SizeBonus extends Bonus
 {
+  
   public SizeBonus(int value, BonusType type)
   {
-    super(value, type);
+    this(value, type, null);
   }
   
   public SizeBonus(int value, BonusType type, String circumstance)

@@ -4,19 +4,21 @@ import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 import com.pathfindersdk.enums.SaveType;
 
-public class SaveBonus extends Bonus
+final public class SaveBonus extends Bonus
 {
-  protected SaveType save;
+  final private SaveType save;
 
   public SaveBonus(int value, BonusType type, SaveType save)
   {
-    super(value, type);
-    this.save = save;
+    this(value, type, save, null);
   }
 
   public SaveBonus(int value, BonusType type, SaveType save, String circumstance)
   {
     super(value, type, circumstance);
+    
+    if(save == null)
+      throw new IllegalArgumentException("save can't be null!");
     this.save = save;
   }
   

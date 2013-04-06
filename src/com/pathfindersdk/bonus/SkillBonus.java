@@ -3,19 +3,21 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 
-public class SkillBonus extends Bonus
+final public class SkillBonus extends Bonus
 {
-  protected String skillName;
+  final private String skillName;
 
   public SkillBonus(int value, BonusType type, String skillName)
   {
-    super(value, type);
-    this.skillName = skillName;
+    this(value, type, skillName, null);
   }
 
   public SkillBonus(int value, BonusType type, String skillName, String circumstance)
   {
     super(value, type, circumstance);
+    
+    if(skillName == null)
+      throw new IllegalArgumentException("skillName can't be null!");
     this.skillName = skillName;
   }
 

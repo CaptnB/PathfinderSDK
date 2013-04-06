@@ -3,12 +3,12 @@ package com.pathfindersdk.bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 
-public class CmbBonus extends Bonus
+final public class CmbBonus extends Bonus
 {
 
   public CmbBonus(int value, BonusType type)
   {
-    super(value, type);
+    this(value, type, null);
   }
 
   public CmbBonus(int value, BonusType type, String circumstance)

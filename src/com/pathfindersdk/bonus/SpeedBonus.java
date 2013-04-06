@@ -4,19 +4,21 @@ import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BonusType;
 import com.pathfindersdk.enums.SpeedType;
 
-public class SpeedBonus extends Bonus
+final public class SpeedBonus extends Bonus
 {
-  protected SpeedType speed;
+  final private SpeedType speed;
 
   public SpeedBonus(int value, BonusType type, SpeedType speed)
   {
-    super(value, type);
-    this.speed = speed;
+    this(value, type, speed, null);
   }
 
   public SpeedBonus(int value, BonusType type, SpeedType speed, String circumstance)
   {
     super(value, type, circumstance);
+    
+    if(speed == null)
+      throw new IllegalArgumentException("speed can't be null");
     this.speed = speed;
   }
 

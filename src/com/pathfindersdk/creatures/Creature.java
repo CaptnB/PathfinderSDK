@@ -78,8 +78,7 @@ public abstract class Creature
       {
         if(item instanceof SkillItem)
         {
-          SkillItem skillItem = (SkillItem)item;
-          skills.put(skillItem.getName(), new Skill(skillItem, getAbilityScore(skillItem.getKeyAbility())));
+          addSkill((SkillItem)item);
         }
       }
     }
@@ -267,6 +266,11 @@ public abstract class Creature
   public Stat getArmorClass()
   {
     return armorClass;
+  }
+  
+  public void addSkill(SkillItem item)
+  {
+    skills.put(item.getName(), new Skill(item, getAbilityScore(item.getKeyAbility())));
   }
   
   public Stat getSkill(String skillName)

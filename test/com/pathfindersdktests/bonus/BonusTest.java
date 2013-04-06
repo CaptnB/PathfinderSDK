@@ -14,9 +14,10 @@ import com.pathfindersdk.enums.BonusType;
 
 public class BonusTest
 {
+  // This is just a basic implementation of abstract class Bonus.
   private class BasicBonus extends Bonus
   {
-    // This concrete class allows testing of abstract class Bonus
+
     public BasicBonus(Integer value, BonusType type)
     {
       super(value, type);
@@ -30,13 +31,13 @@ public class BonusTest
     @Override
     public void applyTo(Creature target)
     {
-      // No need to test this
+      // No need to test this here.
     }
 
     @Override
     public void removeFrom(Creature target)
     {
-      // No need to test this
+      // No need to test this here.
     }
     
   }
