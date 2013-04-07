@@ -15,15 +15,15 @@ import com.pathfindersdk.enums.BonusType;
 public class BonusTest
 {
   // This is just a basic implementation of abstract class Bonus.
-  private static class BasicBonus extends Bonus
+  private static class BonusStub extends Bonus
   {
 
-    public BasicBonus(int value, BonusType type)
+    public BonusStub(int value, BonusType type)
     {
       this(value, type, null);
     }
 
-    public BasicBonus(int value, BonusType type, String circumstance)
+    public BonusStub(int value, BonusType type, String circumstance)
     {
       super(value, type, circumstance);
     }
@@ -51,15 +51,15 @@ public class BonusTest
   public static void initTests()
   {
     character = new Character();
-    bonus = new BasicBonus(2, BonusType.ARMOR);
-    negBonus = new BasicBonus(-2, BonusType.ARMOR);
-    circBonus = new BasicBonus(2, BonusType.ARMOR, "a string");
+    bonus = new BonusStub(2, BonusType.ARMOR);
+    negBonus = new BonusStub(-2, BonusType.ARMOR);
+    circBonus = new BonusStub(2, BonusType.ARMOR, "a string");
   }
 
   @Test (expected = IllegalArgumentException.class)  
   public void testInitiativeBonusIntNull()
   {
-    new BasicBonus(2, null);
+    new BonusStub(2, null);
   }
 
   @Test
