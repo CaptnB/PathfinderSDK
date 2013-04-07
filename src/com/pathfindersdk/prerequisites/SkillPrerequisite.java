@@ -5,7 +5,7 @@ import com.pathfindersdk.creatures.Creature;
 /**
  * This class requires a creature to have a skill (SkillStat) at a specific rank or higher (ex: Mounted Combat requires Ride 1).
  */
-public class SkillPrerequisite extends Prerequisite<Creature>
+public class SkillPrerequisite implements Prerequisite<Creature>
 {
   
   protected String skillName;
@@ -18,7 +18,7 @@ public class SkillPrerequisite extends Prerequisite<Creature>
   }
 
   @Override
-  public boolean isFilled(Creature creature)
+  public boolean isFilled(Creature target)
   {
     /*SkillStat skill = creature.getSkill(skillName);
     if(skill != null && skill.getBaseScore() >= ranks)

@@ -5,7 +5,7 @@ import com.pathfindersdk.creatures.Creature;
 /**
  * This class requires a creature to have a specific feat (ex: Mobility requires Dodge).
  */
-public class FeatPrerequisite extends Prerequisite<Creature>
+public class FeatPrerequisite implements Prerequisite<Creature>
 {
   
   protected String featName;
@@ -16,7 +16,7 @@ public class FeatPrerequisite extends Prerequisite<Creature>
   }
 
   @Override
-  public boolean isFilled(Creature creature)
+  public boolean isFilled(Creature target)
   {
     /*Feat feat = creature.getFeat(featName);
     if(feat != null)

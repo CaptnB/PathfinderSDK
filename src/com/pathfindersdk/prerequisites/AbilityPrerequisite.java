@@ -6,7 +6,7 @@ import com.pathfindersdk.enums.AbilityType;
 /**
  * This class requires a character to have an ability score (AbilityStat) at a specific value or higher (ex: Dodge feat requires Dex 13).
  */
-public class AbilityPrerequisite extends Prerequisite<Creature>
+public class AbilityPrerequisite implements Prerequisite<Creature>
 {
   protected AbilityType ability;
   protected int score;
@@ -18,7 +18,7 @@ public class AbilityPrerequisite extends Prerequisite<Creature>
   }
   
   @Override
-  public boolean isFilled(Creature creature)
+  public boolean isFilled(Creature target)
   {
     /*AbilityStat abilityScore = creature.getAbility(ability);
     if(abilityScore != null && abilityScore.getScore() >= score)

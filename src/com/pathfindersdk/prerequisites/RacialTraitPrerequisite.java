@@ -7,7 +7,7 @@ import com.pathfindersdk.features.Race;
 /**
  * This class requires a race to have a specific racial trait.
  */
-final public class RacialTraitPrerequisite extends Prerequisite<Race>
+final public class RacialTraitPrerequisite implements Prerequisite<Race>
 {
   final private String traitName;
   
