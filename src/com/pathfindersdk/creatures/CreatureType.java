@@ -12,18 +12,19 @@ public class CreatureType
   protected CreatureMainType type;
   protected SortedSet<CreatureSubtype> subtypes;
   
+  public CreatureType(CreatureMainType type)
+  {
+    setType(type);
+  }
+  
+  // Copy constructor
   public CreatureType(CreatureType type)
   {
-    this.type = type.getType();
+    setType(type.getType());
     for(CreatureSubtype subtype : type.getSubtypes())
       addSubtype(subtype);
   }
-  
-  public CreatureType(CreatureMainType type)
-  {
-    this.type = type;
-  }
-  
+
   public CreatureMainType getType()
   {
     return type;
@@ -31,6 +32,8 @@ public class CreatureType
 
   public void setType(CreatureMainType type)
   {
+    if(type == null)
+      throw new IllegalArgumentException("type can't be null!");
     this.type = type;
   }
 
@@ -44,13 +47,13 @@ public class CreatureType
 
   public void addSubtype(CreatureSubtype subtype)
   {
-    if(subtype != null)
-    {
-      if(subtypes == null)
-        subtypes = new TreeSet<CreatureSubtype>();
+    if(subtype == null)
+      throw new IllegalArgumentException("subtype can't be null!");
       
-      subtypes.add(subtype);
-    }
+    if(subtypes == null)
+      subtypes = new TreeSet<CreatureSubtype>();
+    
+    subtypes.add(subtype);
   }
   
   public void removeSubtype(CreatureSubtype subtype)

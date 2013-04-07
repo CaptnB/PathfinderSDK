@@ -2,7 +2,7 @@ package com.pathfindersdk.books.items;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.SortedMap;
+import java.util.Map;
 import java.util.SortedSet;
 
 import com.pathfindersdk.books.BookItem;
@@ -25,14 +25,14 @@ final public class RaceItem extends BookItem
   final private CreatureType type;
   final private List<AbilityIncrease> racialModifiers;
   final private SizeType size;
-  final private SortedMap<SpeedType, Integer> speeds;
+  final private Map<SpeedType, Integer> speeds;
   final private VisionType vision;
   final private SortedSet<Feature<Character>> racialTraits;
   // TODO: Check weapon proficiencies/familiarities
   final private SortedSet<LanguageType> baseLanguages;
   final private SortedSet<LanguageType> optionalLanguages;
     
-  public RaceItem(String name, CreatureType type, List<AbilityIncrease> racialModifiers, SizeType size, SortedMap<SpeedType, Integer> speeds, 
+  public RaceItem(String name, CreatureType type, List<AbilityIncrease> racialModifiers, SizeType size, Map<SpeedType, Integer> speeds, 
       VisionType vision, SortedSet<Feature<Character>> racialTraits, SortedSet<LanguageType> baseLanguages, SortedSet<LanguageType> optionalLanguages)
   {
     super(name);
@@ -86,9 +86,9 @@ final public class RaceItem extends BookItem
     return size;
   }
 
-  public SortedMap<SpeedType, Integer> getSpeeds()
+  public Map<SpeedType, Integer> getSpeeds()
   {
-    return Collections.unmodifiableSortedMap(speeds);
+    return Collections.unmodifiableMap(speeds);
   }
 
   public VisionType getVision()

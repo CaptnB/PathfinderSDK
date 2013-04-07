@@ -5,16 +5,19 @@ import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.stats.AbilityScore;
 
 /**
- *  This class represent an AbilityScore increase. While Bonus only gives a temporary boost, AbilityIncrease is permanent 
+ *  This immutable class represent an AbilityScore increase. While Bonus only gives a temporary boost, AbilityIncrease is permanent 
  *  and counts toward bonus spells, feat prerequisites and the like. AbilityIncrease come from races, every 4th level, etc.
  */
-public class AbilityIncrease implements Applicable<Creature>
+final public class AbilityIncrease implements Applicable<Creature>
 {
-  protected int increment;
-  protected AbilityType ability;
+  final private int increment;
+  final private AbilityType ability;
   
   public AbilityIncrease(int increment, AbilityType ability)
   {
+    if(ability == null)
+      throw new IllegalArgumentException("ability can't be null!");
+    
     this.increment = increment;
     this.ability = ability;
   }

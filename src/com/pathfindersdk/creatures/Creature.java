@@ -12,6 +12,7 @@ import com.pathfindersdk.books.items.SkillItem;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.BookSectionType;
+import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SaveType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
@@ -56,6 +57,8 @@ public abstract class Creature
   
   protected transient SortedMap<SaveType, AbilityStat> savingThrows = new TreeMap<SaveType, AbilityStat>();
   protected transient AbilityStat initiative;
+  
+  protected transient SortedSet<LanguageType> languages = new TreeSet<LanguageType>();
   
   public Creature()
   {
@@ -276,5 +279,18 @@ public abstract class Creature
   public Stat getSkill(String skillName)
   {
     return skills.get(skillName);
+  }
+  
+  public SortedSet<LanguageType> getLanguages()
+  {
+    return Collections.unmodifiableSortedSet(languages);
+  }
+  
+  public void addLanguage(LanguageType language)
+  {
+    if(language == null)
+      throw new IllegalArgumentException("language can't be null");
+    
+    languages.add(language);
   }
 }

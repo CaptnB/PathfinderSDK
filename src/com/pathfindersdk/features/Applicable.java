@@ -1,8 +1,10 @@
 package com.pathfindersdk.features;
 
-import com.pathfindersdk.creatures.Creature;
 
-public interface Applicable<T extends Creature>
+/**
+ * Interface to apply/remove stuff from something else
+ */
+public interface Applicable<T>
 {
   public void applyTo(T target);
   public void removeFrom(T target);

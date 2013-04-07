@@ -1,9 +1,7 @@
 package com.pathfindersdk.features;
 
 import java.util.Collections;
-import java.util.Set;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
@@ -11,50 +9,49 @@ import com.pathfindersdk.prerequisites.Prerequisite;
 
 public class Feature<T extends Creature> implements Applicable<T>, Comparable<Feature<T>>
 {
-  protected String name;
-  protected Set<Prerequisite> prerequisites;
-  protected SortedSet<Bonus> bonuses;
+  final private String name;
+  final private SortedSet<Prerequisite<T>> prerequisites;
+  final private SortedSet<Bonus> bonuses;
   
-  public Feature(String name)
+  public Feature(String name, SortedSet<Prerequisite<T>> prerequisites, SortedSet<Bonus> bonuses)
   {
+    if(name == null)
+      throw new IllegalArgumentException("name can't be null");
+    
+    if(prerequisites == null)
+      throw new IllegalArgumentException("prerequisites can't be null");
+    
+    if(bonuses == null)
+      throw new IllegalArgumentException("bonuses can't be null");
+    
     this.name = name;
+    this.prerequisites = prerequisites;
+    this.bonuses = bonuses;
+  }
+  
+  public SortedSet<Prerequisite<T>> getPrerequisites()
+  {
+    return Collections.unmodifiableSortedSet(prerequisites);
   }
   
   public SortedSet<Bonus> getBonuses()
   {
-    if(bonuses != null)
-      return Collections.unmodifiableSortedSet(bonuses);
-    else
-      return null;
-  }
-  
-  public void addBonus(Bonus bonus)
-  {
-    if(bonus != null)
-    {
-      if(bonuses == null)
-        bonuses = new TreeSet<Bonus>();
-      
-      bonuses.add(bonus);
-    }
+    return Collections.unmodifiableSortedSet(bonuses);
   }
   
   protected boolean fillsPrerequisites(T target)
   {
     boolean filled = true;
 
-    if(prerequisites != null)
+    for(Prerequisite<T> prereq : prerequisites)
     {
-      for(Prerequisite prereq : prerequisites)
+      if(!prereq.isFilled(target))
       {
-        if(!prereq.isFilled(target))
-        {
-          filled = false;
-          break;
-        }
+        filled = false;
+        break;
       }
     }
-
+  
     return filled;
   }
   

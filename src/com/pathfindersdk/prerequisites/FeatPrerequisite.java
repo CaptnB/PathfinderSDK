@@ -3,9 +3,9 @@ package com.pathfindersdk.prerequisites;
 import com.pathfindersdk.creatures.Creature;
 
 /**
- * This class requires a character to have a specific feat (ex: Mobility requires Dodge).
+ * This class requires a creature to have a specific feat (ex: Mobility requires Dodge).
  */
-public class FeatPrerequisite extends Prerequisite
+public class FeatPrerequisite extends Prerequisite<Creature>
 {
   
   protected String featName;

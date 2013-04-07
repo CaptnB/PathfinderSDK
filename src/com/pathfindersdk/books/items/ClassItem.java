@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
+import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.features.ClassLevel;
 import com.pathfindersdk.prerequisites.Prerequisite;
@@ -16,13 +17,13 @@ import com.pathfindersdk.stats.Dice;
  */
 final public class ClassItem extends BookItem
 {
-  final private List<Prerequisite> prerequisites;
+  final private List<Prerequisite<Creature>> prerequisites;
   final private Dice hitDice;
   final private List<String> classSkills;
   final private int skillRanks;
   final private List<ClassLevel> levels;
   
-  public ClassItem(String name, List<Prerequisite> prerequisites, Dice hitDice, List<String> classSkills, int skillRanks, List<ClassLevel> levels)
+  public ClassItem(String name, List<Prerequisite<Creature>> prerequisites, Dice hitDice, List<String> classSkills, int skillRanks, List<ClassLevel> levels)
   {
     super(name);
     
@@ -45,7 +46,7 @@ final public class ClassItem extends BookItem
     this.levels = levels;
   }
 
-  public List<Prerequisite> getPrerequisites()
+  public List<Prerequisite<Creature>> getPrerequisites()
   {
     return Collections.unmodifiableList(prerequisites);
   }
