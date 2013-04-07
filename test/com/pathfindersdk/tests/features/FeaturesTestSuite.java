@@ -1,14 +1,12 @@
-package com.pathfindersdk.tests.books;
+package com.pathfindersdk.tests.features;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({
-  BookItemTest.class
-})
-public class BooksTestSuite
+@SuiteClasses({})
+public class FeaturesTestSuite
 {
 
 }

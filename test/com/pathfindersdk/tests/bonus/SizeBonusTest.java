@@ -33,6 +33,7 @@ public class SizeBonusTest
     character.setSize(new Size(SizeType.MEDIUM));
 
     Bonus bonus = new SizeBonus(2, BonusType.ARMOR);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
 
     assertEquals(SizeType.MEDIUM, character.getSize().getSize());

@@ -36,6 +36,7 @@ public class SaveBonusTest
     Character character = new Character();
 
     Bonus bonus = new SaveBonus(2, BonusType.ARMOR, SaveType.FORT);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
 
     assertEquals(0, character.getFortitude().getScore());

@@ -39,6 +39,7 @@ public class SpeedBonusTest
     character.addSpeed(SpeedType.BASE, new Stat(30));
 
     Bonus bonus = new SpeedBonus(10, BonusType.ARMOR, SpeedType.BASE);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
 
     assertEquals(30, character.getSpeed(SpeedType.BASE).getScore());

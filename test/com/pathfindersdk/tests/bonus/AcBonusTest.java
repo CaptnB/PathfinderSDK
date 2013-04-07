@@ -33,6 +33,7 @@ public class AcBonusTest
     character.setSize(new Size(SizeType.MEDIUM));
     
     Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
     
     assertEquals(10, character.getArmorClass().getScore());

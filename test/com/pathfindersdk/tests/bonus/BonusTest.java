@@ -124,7 +124,9 @@ public class BonusTest
   {
     Bonus bonus1 = new BonusStub(2, BonusType.ARMOR);
     Bonus bonus2 = new BonusStub(1, BonusType.ARMOR);
-    assertEquals(1, bonus1.compareTo(bonus2));
+    
+    // Descending order -> biggest returns "smaller"
+    assertEquals(-1, bonus1.compareTo(bonus2));
   }
   
   @Test
@@ -140,7 +142,9 @@ public class BonusTest
   {
     Bonus bonus1 = new BonusStub(1, BonusType.ARMOR);
     Bonus bonus2 = new BonusStub(2, BonusType.ARMOR);
-    assertEquals(-1, bonus1.compareTo(bonus2));
+
+    // Descending order -> smallest returns "bigger"
+    assertEquals(1, bonus1.compareTo(bonus2));
   }
   
 }

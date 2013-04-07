@@ -29,6 +29,7 @@ public class AttackBonusTest
     Character character = new Character();
 
     Bonus bonus = new AttackBonus(2, BonusType.ENHANCEMENT);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
 
     assertEquals(0, character.getAttack().getScore());

@@ -24,7 +24,7 @@ public class SkillBonusTest
   public void testApplyTo()
   {
     Character character = new Character();
-    character.addSkill(new SkillItem("Acrobatics", AbilityType.CHA, false, false));
+    character.addSkill(new SkillItem("Acrobatics", AbilityType.CHA, true, false));
 
     Bonus bonus = new SkillBonus(2, BonusType.ARMOR, "Acrobatics");
     bonus.applyTo(character);
@@ -36,9 +36,10 @@ public class SkillBonusTest
   public void testRemoveFrom()
   {
     Character character = new Character();
-    character.addSkill(new SkillItem("Acrobatics", AbilityType.CHA, false, false));
+    character.addSkill(new SkillItem("Acrobatics", AbilityType.CHA, true, false));
 
     Bonus bonus = new SkillBonus(2, BonusType.ARMOR, "Acrobatics");
+    bonus.applyTo(character);
     bonus.removeFrom(character);
 
     assertEquals(0, character.getSkill("Acrobatics").getScore());
