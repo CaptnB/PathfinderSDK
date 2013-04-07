@@ -39,6 +39,12 @@ public class PieceTest
     assertEquals(20, p.getNumber());
   }
 
+  @Test (expected = IllegalArgumentException.class)
+  public void testSetNegativeNumber()
+  {
+    new PieceStub(-10);
+  }
+
   @Test
   public void testAdd()
   {
