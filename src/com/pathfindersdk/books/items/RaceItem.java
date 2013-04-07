@@ -7,7 +7,6 @@ import java.util.SortedSet;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
-import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.creatures.CreatureType;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.enums.LanguageType;
@@ -15,7 +14,7 @@ import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
 import com.pathfindersdk.features.AbilityIncrease;
-import com.pathfindersdk.features.Feature;
+import com.pathfindersdk.features.RacialTrait;
 
 /**
  * Immutable class to wrap a race book entry.
@@ -27,13 +26,13 @@ final public class RaceItem extends BookItem
   final private SizeType size;
   final private Map<SpeedType, Integer> speeds;
   final private VisionType vision;
-  final private SortedSet<Feature<Character>> racialTraits;
+  final private SortedSet<RacialTrait> racialTraits;
   // TODO: Check weapon proficiencies/familiarities
   final private SortedSet<LanguageType> baseLanguages;
   final private SortedSet<LanguageType> optionalLanguages;
     
   public RaceItem(String name, CreatureType type, List<AbilityIncrease> racialModifiers, SizeType size, Map<SpeedType, Integer> speeds, 
-      VisionType vision, SortedSet<Feature<Character>> racialTraits, SortedSet<LanguageType> baseLanguages, SortedSet<LanguageType> optionalLanguages)
+      VisionType vision, SortedSet<RacialTrait> racialTraits, SortedSet<LanguageType> baseLanguages, SortedSet<LanguageType> optionalLanguages)
   {
     super(name);
     
@@ -96,7 +95,7 @@ final public class RaceItem extends BookItem
     return vision;
   }
 
-  public SortedSet<Feature<Character>> getRacialTraits()
+  public SortedSet<RacialTrait> getRacialTraits()
   {
     return Collections.unmodifiableSortedSet(racialTraits);
   }

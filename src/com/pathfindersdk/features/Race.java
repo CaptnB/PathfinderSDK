@@ -20,33 +20,33 @@ import com.pathfindersdk.stats.Stat;
  */
 final public class Race implements Applicable<Character>
 {
-  final private RaceItem race;
+  final private RaceItem raceItem;
   final private transient Size size;
   final private transient Map<SpeedType, Stat> speeds;
-  private transient SortedSet<Feature<Character>> racialTraits = new TreeSet<Feature<Character>>();
+  private transient SortedSet<RacialTrait> racialTraits = new TreeSet<RacialTrait>();
   private SortedSet<AlternateRacialTraitItem> alternateTraits;
   
-  public Race(RaceItem race)
+  public Race(RaceItem raceItem)
   {
-    if(race == null)
-      throw new IllegalArgumentException("race can't be null!");
+    if(raceItem == null)
+      throw new IllegalArgumentException("raceItem can't be null!");
     
-    this.race = race;
+    this.raceItem = raceItem;
     
     // Derived values
-    this.size = new Size(race.getSize());
+    this.size = new Size(raceItem.getSize());
 
     Map<SpeedType, Stat> speeds = new HashMap<SpeedType, Stat>();
-    Set<SpeedType> speedKeys = race.getSpeeds().keySet();
+    Set<SpeedType> speedKeys = raceItem.getSpeeds().keySet();
     for(SpeedType speedKey : speedKeys)
-      speeds.put(speedKey, new Stat(race.getSpeeds().get(speedKey)));
+      speeds.put(speedKey, new Stat(raceItem.getSpeeds().get(speedKey)));
     this.speeds = speeds;
     
-    for(Feature<Character> trait : race.getRacialTraits())
+    for(RacialTrait trait : raceItem.getRacialTraits())
       racialTraits.add(trait);
   }
   
-  public SortedSet<Feature<Character>> getRacialTraits()
+  public SortedSet<RacialTrait> getRacialTraits()
   {
     return Collections.unmodifiableSortedSet(racialTraits);
   }
@@ -87,7 +87,7 @@ final public class Race implements Applicable<Character>
   @Override
   public void applyTo(Character character)
   {
-    for(AbilityIncrease racialModifier : race.getRacialModifiers())
+    for(AbilityIncrease racialModifier : raceItem.getRacialModifiers())
       racialModifier.applyTo(character);
     
     character.setSize(size);
@@ -96,13 +96,13 @@ final public class Race implements Applicable<Character>
     for(SpeedType speedKey : speedKeys)
       character.addSpeed(speedKey, speeds.get(speedKey));
     
-    character.addVision(race.getVision());
+    character.addVision(raceItem.getVision());
     
     for(Feature<Character> racialTrait : racialTraits)
       racialTrait.applyTo(character);
     
     // TODO: Weapon familiarities
-    for(LanguageType language : race.getBaseLanguages())
+    for(LanguageType language : raceItem.getBaseLanguages())
       character.addLanguage(language);
   }
   

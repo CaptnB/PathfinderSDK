@@ -2,16 +2,27 @@ package com.pathfindersdk.features;
 
 import java.util.Collections;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.prerequisites.Prerequisite;
 
+/**
+ * Template class that wraps a named feature giving out bonuses (with optional prerequisites).
+ * Ex: Racial traits are Feature<Character> as they don't apply to Monster. Feats are Feature<Creature> as they can be given to Monster also,
+ * Feats can also have prerequisites.
+ */
 public class Feature<T extends Creature> implements Applicable<T>, Comparable<Feature<T>>
 {
   final private String name;
   final private SortedSet<Prerequisite<T>> prerequisites;
   final private SortedSet<Bonus> bonuses;
+  
+  public Feature(String name, SortedSet<Bonus> bonuses)
+  {
+    this(name, new TreeSet<Prerequisite<T>>(), bonuses);
+  }  
   
   public Feature(String name, SortedSet<Prerequisite<T>> prerequisites, SortedSet<Bonus> bonuses)
   {
@@ -60,12 +71,9 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
   {
     if(fillsPrerequisites(target))
     {
-      if(bonuses != null)
+      for(Bonus bonus : bonuses)
       {
-        for(Bonus bonus : bonuses)
-        {
-          bonus.applyTo(target);
-        }
+        bonus.applyTo(target);
       }
     }
   }
@@ -73,12 +81,9 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
   @Override
   public void removeFrom(T target)
   {
-    if(bonuses != null)
+    for(Bonus bonus : bonuses)
     {
-      for(Bonus bonus : bonuses)
-      {
-        bonus.removeFrom(target);
-      }
+      bonus.removeFrom(target);
     }
   }
 

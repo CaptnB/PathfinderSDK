@@ -6,10 +6,9 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
-import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.enums.BookSectionType;
-import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.features.Race;
+import com.pathfindersdk.features.RacialTrait;
 import com.pathfindersdk.prerequisites.RacialTraitPrerequisite;
 
 /**
@@ -19,10 +18,10 @@ final public class AlternateRacialTraitItem extends BookItem
 {
   final private String raceName;
   final private SortedSet<String> replacedTraits;
-  final private Feature<Character> newTrait;
+  final private RacialTrait newTrait;
   final private transient SortedSet<RacialTraitPrerequisite> prerequisites;
 
-  public AlternateRacialTraitItem(String name, String raceName, SortedSet<String> replacedTraits, Feature<Character> newTrait)
+  public AlternateRacialTraitItem(String name, String raceName, SortedSet<String> replacedTraits, RacialTrait newTrait)
   {
     super(name);
     
@@ -56,7 +55,7 @@ final public class AlternateRacialTraitItem extends BookItem
     return Collections.unmodifiableSortedSet(replacedTraits);
   }
   
-  public Feature<Character> getNewTrait()
+  public RacialTrait getNewTrait()
   {
     return newTrait;
   }
