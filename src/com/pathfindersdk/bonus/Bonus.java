@@ -46,12 +46,7 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
   public int compareTo(Bonus bonus)
   {
     // Sort in descending order (highest bonus first so when bonuses don't stack, the first one is the one to consider)
-    if(bonus.getValue() > getValue())
-      return 1;
-    else if(bonus.getValue() < getValue())
-      return -1;
-    else
-      return 0;
+    return Integer.valueOf(bonus.getValue()).compareTo(Integer.valueOf(getValue()));
   }
 
   protected void applyToStat(Stat stat)
