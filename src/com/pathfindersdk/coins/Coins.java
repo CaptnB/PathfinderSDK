@@ -12,40 +12,27 @@ final public class Coins
   
   public Coins add(Piece piece)
   {
-    convert(piece);
+    int totalValue = getValue() + piece.getValue();
+    
+    cp.setNumber(totalValue % 10);
+    totalValue /= 10;
+    
+    sp.setNumber(totalValue % 10);
+    totalValue /= 10;
+    
+    gp.setNumber(totalValue % 10);
+    totalValue /= 10;
+    
+    pp.setNumber(totalValue);
     
     return this;
   }
   
-  private void convert(Piece piece)
+  private int getValue()
   {
-    int valueInSp = convertCpToSp(piece.getValue());
-    int valueInGp = convertSpToGp(valueInSp);
-    int valueInPp = convertGpToPp(valueInGp);
-    pp.add(valueInPp);
+    return cp.getValue() + sp.getValue() + gp.getValue() + pp.getValue();
   }
-  
-  private int convertCpToSp(int valueInCp)
-  {
-    int totalCp = cp.getNumber() + valueInCp;
-    cp.setNumber(totalCp % 10);
-    return totalCp / 10;
-  }
-  
-  private int convertSpToGp(int valueInSp)
-  {
-    int totalSp = sp.getNumber() + valueInSp;
-    sp.setNumber(totalSp % 10);
-    return totalSp / 10;
-  }
-  
-  private int convertGpToPp(int valueInGp)
-  {
-    int totalGp = gp.getNumber() + valueInGp;
-    gp.setNumber(totalGp % 10);
-    return totalGp / 10;
-  }
-  
+
   @Override
   public String toString()
   {
