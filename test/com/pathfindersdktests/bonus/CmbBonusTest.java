@@ -2,7 +2,6 @@ package com.pathfindersdktests.bonus;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.pathfindersdk.bonus.Bonus;
@@ -12,40 +11,40 @@ import com.pathfindersdk.enums.BonusType;
 
 public class CmbBonusTest
 {
-  static Character character;
-  static Bonus bonus;
-  
-  @BeforeClass
-  public static void initTests()
-  {
-    character = new Character();
-    bonus = new CmbBonus(2, BonusType.ARMOR);
-  }
-
 
   @Test
   public void testApplyTo()
   {
+    Character character = new Character();
+
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.applyTo(character);
+
     assertEquals(2, character.getCmb().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
+    Character character = new Character();
+
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.removeFrom(character);
+    
     assertEquals(0, character.getCmb().getScore());
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testApplyToNull()
   {
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.applyTo(null);
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testRemoveFromNull()
   {
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.removeFrom(null);
   }
 

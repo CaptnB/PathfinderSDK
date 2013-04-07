@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.pathfindersdk.bonus.Bonus;
@@ -42,20 +41,6 @@ public class BonusTest
     
   }
 
-  static Character character;
-  static Bonus bonus;
-  static Bonus negBonus;
-  static Bonus circBonus;
-  
-  @BeforeClass
-  public static void initTests()
-  {
-    character = new Character();
-    bonus = new BonusStub(2, BonusType.ARMOR);
-    negBonus = new BonusStub(-2, BonusType.ARMOR);
-    circBonus = new BonusStub(2, BonusType.ARMOR, "a string");
-  }
-
   @Test (expected = IllegalArgumentException.class)  
   public void testInitiativeBonusIntNull()
   {
@@ -65,61 +50,97 @@ public class BonusTest
   @Test
   public void testGetValue()
   {
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR);
     assertEquals(2, bonus.getValue());
   }
 
   @Test
   public void testGetType()
   {
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR);
     assertEquals(BonusType.ARMOR, bonus.getType());
   }
 
   @Test
   public void testGetCircumstanceNull()
   {
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR);
     assertNull(bonus.getCircumstance());
   }
   
   @Test
   public void testToString()
   {
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR);
     assertEquals("+2 Armor", bonus.toString());
   }
 
   @Test
   public void testGetCircumstance()
   {
-    assertEquals("a string", circBonus.getCircumstance());
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR, "a string");
+    assertEquals("a string", bonus.getCircumstance());
   }
   
   @Test
   public void testIsCircumstantial()
   {
-    assertTrue(circBonus.isCircumstantial());
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR, "a string");
+    assertTrue(bonus.isCircumstantial());
   }
   
   @Test
   public void testToStringCircumstantial()
   {
-    assertEquals("+2 Armor (a string)", circBonus.toString());
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR, "a string");
+    assertEquals("+2 Armor (a string)", bonus.toString());
   }
   
   @Test
   public void testToStringNegative()
   {
-    assertEquals("-2 Armor", negBonus.toString());
+    Bonus bonus = new BonusStub(-2, BonusType.ARMOR);
+    assertEquals("-2 Armor", bonus.toString());
   }
   
   @Test (expected = IllegalArgumentException.class)
-  public void testApplyToNull()
+  public void testApplyToStatNull()
   {
+    Character character = new Character();
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR);
     bonus.applyTo(character);
   }
   
   @Test (expected = IllegalArgumentException.class)
-  public void testRemoveFromNull()
+  public void testRemoveFromStatNull()
   {
+    Character character = new Character();
+    Bonus bonus = new BonusStub(2, BonusType.ARMOR);
     bonus.removeFrom(character);
+  }
+  
+  @Test
+  public void testComparToGreater()
+  {
+    Bonus bonus1 = new BonusStub(2, BonusType.ARMOR);
+    Bonus bonus2 = new BonusStub(1, BonusType.ARMOR);
+    assertEquals(1, bonus1.compareTo(bonus2));
+  }
+  
+  @Test
+  public void testComparToEqual()
+  {
+    Bonus bonus1 = new BonusStub(2, BonusType.ARMOR);
+    Bonus bonus2 = new BonusStub(2, BonusType.ARMOR);
+    assertEquals(0, bonus1.compareTo(bonus2));
+  }
+  
+  @Test
+  public void testComparToLesser()
+  {
+    Bonus bonus1 = new BonusStub(1, BonusType.ARMOR);
+    Bonus bonus2 = new BonusStub(2, BonusType.ARMOR);
+    assertEquals(-1, bonus1.compareTo(bonus2));
   }
   
 }

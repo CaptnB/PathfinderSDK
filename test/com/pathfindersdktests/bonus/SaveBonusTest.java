@@ -2,7 +2,6 @@ package com.pathfindersdktests.bonus;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.pathfindersdk.bonus.Bonus;
@@ -13,15 +12,6 @@ import com.pathfindersdk.enums.SaveType;
 
 public class SaveBonusTest
 {
-  static Character character;
-  static Bonus bonus;
-  
-  @BeforeClass
-  public static void initTests()
-  {
-    character = new Character();
-    bonus = new SaveBonus(2, BonusType.ARMOR, SaveType.FORT);
-  }
 
   @Test (expected = IllegalArgumentException.class) 
   public void testSaveBonusIntBonusTypeNull()
@@ -32,26 +22,36 @@ public class SaveBonusTest
   @Test
   public void testApplyTo()
   {
+    Character character = new Character();
+
+    Bonus bonus = new SaveBonus(2, BonusType.ARMOR, SaveType.FORT);
     bonus.applyTo(character);
+
     assertEquals(2, character.getFortitude().getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
+    Character character = new Character();
+
+    Bonus bonus = new SaveBonus(2, BonusType.ARMOR, SaveType.FORT);
     bonus.removeFrom(character);
+
     assertEquals(0, character.getFortitude().getScore());
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testApplyToNull()
   {
+    Bonus bonus = new SaveBonus(2, BonusType.ARMOR, SaveType.FORT);
     bonus.applyTo(null);
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testRemoveFromNull()
   {
+    Bonus bonus = new SaveBonus(2, BonusType.ARMOR, SaveType.FORT);
     bonus.removeFrom(null);
   }
 

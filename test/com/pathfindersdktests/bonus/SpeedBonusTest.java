@@ -2,7 +2,6 @@ package com.pathfindersdktests.bonus;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.pathfindersdk.bonus.Bonus;
@@ -14,16 +13,6 @@ import com.pathfindersdk.stats.Stat;
 
 public class SpeedBonusTest
 {
-  static Character character;
-  static Bonus bonus;
-  
-  @BeforeClass
-  public static void initTests()
-  {
-    character = new Character();
-    character.addSpeed(SpeedType.BASE, new Stat(30));
-    bonus = new SpeedBonus(10, BonusType.ARMOR, SpeedType.BASE);
-  }
 
   @Test (expected = IllegalArgumentException.class)
   public void testBonusIntBonusTypeNull()
@@ -34,26 +23,38 @@ public class SpeedBonusTest
   @Test
   public void testApplyTo()
   {
+    Character character = new Character();
+    character.addSpeed(SpeedType.BASE, new Stat(30));
+
+    Bonus bonus = new SpeedBonus(10, BonusType.ARMOR, SpeedType.BASE);
     bonus.applyTo(character);
+
     assertEquals(40, character.getSpeed(SpeedType.BASE).getScore());
   }
 
   @Test
   public void testRemoveFrom()
   {
+    Character character = new Character();
+    character.addSpeed(SpeedType.BASE, new Stat(30));
+
+    Bonus bonus = new SpeedBonus(10, BonusType.ARMOR, SpeedType.BASE);
     bonus.removeFrom(character);
+
     assertEquals(30, character.getSpeed(SpeedType.BASE).getScore());
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testApplyToNull()
   {
+    Bonus bonus = new SpeedBonus(10, BonusType.ARMOR, SpeedType.BASE);
     bonus.applyTo(null);
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testRemoveFromNull()
   {
+    Bonus bonus = new SpeedBonus(10, BonusType.ARMOR, SpeedType.BASE);
     bonus.removeFrom(null);
   }
 
