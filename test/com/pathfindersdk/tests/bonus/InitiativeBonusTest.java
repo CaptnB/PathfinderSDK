@@ -29,6 +29,7 @@ public class InitiativeBonusTest
     Character character = new Character();
 
     Bonus bonus = new InitiativeBonus(2, BonusType.LUCK);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
 
     assertEquals(0, character.getInitiative().getScore());

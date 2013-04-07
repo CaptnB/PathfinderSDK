@@ -29,6 +29,7 @@ public class CmbBonusTest
     Character character = new Character();
 
     Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
     
     assertEquals(0, character.getCmb().getScore());

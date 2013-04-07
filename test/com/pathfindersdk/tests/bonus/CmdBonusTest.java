@@ -29,6 +29,7 @@ public class CmdBonusTest
     Character character = new Character();
 
     Bonus bonus = new CmdBonus(2, BonusType.ARMOR);
+    bonus.applyTo(character);
     bonus.removeFrom(character);
 
     assertEquals(10, character.getCmd().getScore());
