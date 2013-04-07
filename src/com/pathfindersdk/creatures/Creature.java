@@ -8,6 +8,7 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
+import com.pathfindersdk.books.items.FeatItem;
 import com.pathfindersdk.books.items.SkillItem;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
@@ -42,6 +43,7 @@ public abstract class Creature
   
   // Step 4 - Pick skills and feats
   protected transient SortedMap<String, Stat> skills = new TreeMap<String, Stat>();
+  protected transient SortedMap<String, FeatItem> feats = new TreeMap<String, FeatItem>();
   
   // Step 5 - Buy equipment
   
@@ -279,6 +281,16 @@ public abstract class Creature
   public Stat getSkill(String skillName)
   {
     return skills.get(skillName);
+  }
+  
+  public void addFeat(FeatItem item)
+  {
+    feats.put(item.getName(), item);
+  }
+  
+  public FeatItem getFeat(String featName)
+  {
+    return feats.get(featName);
   }
   
   public SortedSet<LanguageType> getLanguages()

@@ -1,4 +1,4 @@
-package com.pathfindersdktests.coins;
+package com.pathfindersdk.tests.coins;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

@@ -1,4 +1,4 @@
-package com.pathfindersdktests.books;
+package com.pathfindersdk.tests.books;
 
 import static org.junit.Assert.fail;
 
@@ -8,10 +8,10 @@ import com.pathfindersdk.books.BookItem;
 
 public class BookItemTest
 {
-  private static class BasisBookItem extends BookItem
+  private static class BookItemStub extends BookItem
   {
 
-    public BasisBookItem(String name)
+    public BookItemStub(String name)
     {
       super(name);
       // TODO Auto-generated constructor stub
@@ -26,10 +26,10 @@ public class BookItemTest
     
   }
 
-  @Test
+  @Test (expected = IllegalArgumentException.class)
   public void testBookItem()
   {
-    fail("Not yet implemented");
+    new BookItemStub(null);
   }
 
   @Test

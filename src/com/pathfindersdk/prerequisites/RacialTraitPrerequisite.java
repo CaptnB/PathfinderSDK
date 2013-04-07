@@ -23,7 +23,7 @@ final public class RacialTraitPrerequisite implements Prerequisite<Race>
   public boolean isFilled(Race target)
   {
     if(target == null)
-      throw new IllegalArgumentException("race can't be null!");
+      throw new IllegalArgumentException("target can't be null!");
 
     for(Feature<Character> racialTrait : target.getRacialTraits())
     {

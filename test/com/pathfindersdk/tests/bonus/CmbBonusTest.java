@@ -1,15 +1,15 @@
-package com.pathfindersdktests.bonus;
+package com.pathfindersdk.tests.bonus;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import com.pathfindersdk.bonus.Bonus;
-import com.pathfindersdk.bonus.CmdBonus;
+import com.pathfindersdk.bonus.CmbBonus;
 import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.enums.BonusType;
 
-public class CmdBonusTest
+public class CmbBonusTest
 {
 
   @Test
@@ -17,10 +17,10 @@ public class CmdBonusTest
   {
     Character character = new Character();
 
-    Bonus bonus = new CmdBonus(2, BonusType.ARMOR);
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.applyTo(character);
 
-    assertEquals(12, character.getCmd().getScore());
+    assertEquals(2, character.getCmb().getScore());
   }
 
   @Test
@@ -28,23 +28,23 @@ public class CmdBonusTest
   {
     Character character = new Character();
 
-    Bonus bonus = new CmdBonus(2, BonusType.ARMOR);
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.removeFrom(character);
-
-    assertEquals(10, character.getCmd().getScore());
+    
+    assertEquals(0, character.getCmb().getScore());
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testApplyToNull()
   {
-    Bonus bonus = new CmdBonus(2, BonusType.ARMOR);
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.applyTo(null);
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testRemoveFromNull()
   {
-    Bonus bonus = new CmdBonus(2, BonusType.ARMOR);
+    Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.removeFrom(null);
   }
 

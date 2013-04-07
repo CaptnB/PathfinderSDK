@@ -1,4 +1,4 @@
-package com.pathfindersdktests.coins;
+package com.pathfindersdk.tests.coins;
 
 import static org.junit.Assert.assertEquals;
 

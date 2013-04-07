@@ -2,7 +2,7 @@
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <interface id="1" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.Prerequisite" 
     project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/Prerequisite.java" binary="false">    
-    <position height="-1" width="-1" x="498" y="55"/>    
+    <position height="-1" width="-1" x="498" y="94"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -11,7 +11,7 @@
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.SkillPrerequisite" 
     project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/SkillPrerequisite.java" 
     binary="false">    
-    <position height="-1" width="-1" x="204" y="250"/>    
+    <position height="-1" width="-1" x="195" y="459"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -20,7 +20,7 @@
   <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.AbilityPrerequisite" 
     project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/AbilityPrerequisite.java" 
     binary="false">    
-    <position height="-1" width="-1" x="411" y="250"/>    
+    <position height="-1" width="-1" x="402" y="459"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -29,7 +29,7 @@
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.FeatPrerequisite" 
     project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/FeatPrerequisite.java" 
     binary="false">    
-    <position height="-1" width="-1" x="616" y="242"/>    
+    <position height="-1" width="-1" x="607" y="451"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -38,28 +38,82 @@
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.RacialTraitPrerequisite" 
     project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/RacialTraitPrerequisite.java" 
     binary="false">    
-    <position height="-1" width="-1" x="813" y="242"/>    
+    <position height="-1" width="-1" x="804" y="451"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <realization id="6">    
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.AndPrerequisite" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/AndPrerequisite.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="191" y="106"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.OrPrerequisite" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/OrPrerequisite.java" binary="false">    
+    <position height="-1" width="-1" x="787" y="96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.prerequisites.AlignmentPrerequisite" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/prerequisites/AlignmentPrerequisite.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="1002" y="454"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <realization id="9">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
-  <realization id="7">    
+  <realization id="10">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="11">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="12">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
-  <realization id="8">    
+  <realization id="13">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="14">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
-  <realization id="9">    
+  <realization id="15">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
+  <association id="16">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="17" name="prerequisites"/>      
+      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="20" name="prerequisites"/>      
+      <multiplicity id="21" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    

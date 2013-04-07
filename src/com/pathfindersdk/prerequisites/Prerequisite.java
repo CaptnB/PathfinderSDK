@@ -1,11 +1,10 @@
 package com.pathfindersdk.prerequisites;
 
 
-
 /**
- * This class is a generic prerequisite a character has to fill.
+ * This interface allows checking of prerequisite on a generic target.
  */
 public interface Prerequisite<T>
 {
-  public abstract boolean isFilled(T target);
+  public boolean isFilled(T target);
 }

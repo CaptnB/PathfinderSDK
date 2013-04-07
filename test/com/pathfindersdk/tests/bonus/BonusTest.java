@@ -1,4 +1,4 @@
-package com.pathfindersdktests.bonus;
+package com.pathfindersdk.tests.bonus;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
