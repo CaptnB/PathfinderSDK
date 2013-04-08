@@ -92,9 +92,8 @@ public abstract class Creature
     }
     
     initiative = new AbilityStat(getAbilityScore(AbilityType.DEX));
-    
     bab = new BaseAttackBonus();
-//    cmd = new Cmd(getAbilityScore(AbilityType.STR));
+    attack = new AbilityStat(getAbilityScore(AbilityType.STR));
   }
   
   public String getName()
