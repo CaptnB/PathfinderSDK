@@ -15,7 +15,7 @@ public class AcBonusTest
 {
 
   @Test
-  public void testApplyTo()
+  public void testApplyToAc()
   {
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
@@ -27,7 +27,7 @@ public class AcBonusTest
   }
 
   @Test
-  public void testRemoveFrom()
+  public void testRemoveFromAc()
   {
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
@@ -37,6 +37,60 @@ public class AcBonusTest
     bonus.removeFrom(character);
     
     assertEquals(10, character.getArmorClass().getScore());
+  }
+
+  @Test
+  public void testApplyToCmd1()
+  {
+    Character character = new Character();
+    character.setSize(new Size(SizeType.MEDIUM));
+    
+    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    bonus.applyTo(character);
+    
+    // ARMOR bonus does not add to CMD
+    assertEquals(10, character.getCmd().getScore());
+  }
+
+  @Test
+  public void testRemoveFromCmd1()
+  {
+    Character character = new Character();
+    character.setSize(new Size(SizeType.MEDIUM));
+    
+    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    bonus.applyTo(character);
+    bonus.removeFrom(character);
+    
+    // ARMOR bonus does not add to CMD
+    assertEquals(10, character.getCmd().getScore());
+  }
+
+  @Test
+  public void testApplyToCmd2()
+  {
+    Character character = new Character();
+    character.setSize(new Size(SizeType.MEDIUM));
+    
+    Bonus bonus = new AcBonus(2, BonusType.DODGE);
+    bonus.applyTo(character);
+    
+    // DODGE bonus add to CMD
+    assertEquals(12, character.getCmd().getScore());
+  }
+
+  @Test
+  public void testRemoveFromCmd2()
+  {
+    Character character = new Character();
+    character.setSize(new Size(SizeType.MEDIUM));
+    
+    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    bonus.applyTo(character);
+    bonus.removeFrom(character);
+    
+    // DODGE bonus add to CMD
+    assertEquals(10, character.getCmd().getScore());
   }
 
   @Test (expected = IllegalArgumentException.class)

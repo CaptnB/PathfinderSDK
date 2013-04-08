@@ -20,6 +20,8 @@ import com.pathfindersdk.enums.VisionType;
 import com.pathfindersdk.stats.AbilityScore;
 import com.pathfindersdk.stats.AbilityStat;
 import com.pathfindersdk.stats.ArmorClass;
+import com.pathfindersdk.stats.Cmb;
+import com.pathfindersdk.stats.Cmd;
 import com.pathfindersdk.stats.Size;
 import com.pathfindersdk.stats.Skill;
 import com.pathfindersdk.stats.Stat;
@@ -52,9 +54,10 @@ public abstract class Creature
   protected transient AlignmentType alignment;
   protected transient Stat armorClass;
   
+  protected transient BaseAttackBonus bab;
   protected transient AbilityStat attack;
-  protected transient AbilityStat cmb;
-  protected transient AbilityStat cmd;
+  protected transient Cmb cmb;
+  protected transient Cmd cmd;
 
   
   protected transient SortedMap<SaveType, AbilityStat> savingThrows = new TreeMap<SaveType, AbilityStat>();
@@ -90,10 +93,8 @@ public abstract class Creature
     
     initiative = new AbilityStat(getAbilityScore(AbilityType.DEX));
     
-    // TODO : revisit this...
-    attack = new AbilityStat(getAbilityScore(AbilityType.STR));
-    cmb = new AbilityStat(getAbilityScore(AbilityType.STR));
-    cmd = new AbilityStat(getAbilityScore(AbilityType.STR));
+    bab = new BaseAttackBonus();
+//    cmd = new Cmd(getAbilityScore(AbilityType.STR));
   }
   
   public String getName()
@@ -137,9 +138,17 @@ public abstract class Creature
     
     // Up to this point, AC could not be computed without the creature's size
     if(size != null)
-      armorClass = new ArmorClass((AbilityScore)getAbilityScore(AbilityType.DEX), size);
+    {
+      armorClass = new ArmorClass((AbilityScore)getAbilityScore(AbilityType.DEX), this.size);
+      cmb = new Cmb(getAbilityScore(AbilityType.STR), getAbilityScore(AbilityType.DEX), bab, this.size);
+      cmd = new Cmd(getAbilityScore(AbilityType.STR), getAbilityScore(AbilityType.DEX), bab, this.size);
+    }
     else
+    {
       armorClass = null;
+      cmb = null;
+      cmd = null;
+    }
   }
   
   public SortedSet<VisionType> getVisions()
@@ -253,17 +262,22 @@ public abstract class Creature
     return initiative;
   }
   
+  public BaseAttackBonus getBab()
+  {
+    return bab;
+  }
+  
   public AbilityStat getAttack()
   {
     return attack;
   }
   
-  public AbilityStat getCmb()
+  public Cmb getCmb()
   {
     return cmb;
   }
   
-  public AbilityStat getCmd()
+  public Cmd getCmd()
   {
     return cmd;
   }

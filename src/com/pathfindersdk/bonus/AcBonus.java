@@ -23,6 +23,18 @@ final public class AcBonus extends Bonus
       throw new IllegalArgumentException("target can't be null");
     
     applyToStat(target.getArmorClass());
+    
+    // Deflection, Dodge, Insight, Luck, Morale, Profane and Sacred bonuses to AC also apply to CMD
+    if(getType().equals(BonusType.DEFLECTION) ||
+       getType().equals(BonusType.DODGE)      ||
+       getType().equals(BonusType.INSIGHT)    ||
+       getType().equals(BonusType.LUCK)       ||
+       getType().equals(BonusType.MORALE)     ||
+       getType().equals(BonusType.PROFANE)    ||
+       getType().equals(BonusType.SACRED))
+    {
+      applyToStat(target.getCmd());
+    }
   }
 
   @Override
@@ -32,6 +44,7 @@ final public class AcBonus extends Bonus
       throw new IllegalArgumentException("target can't be null");
     
     removeFromStat(target.getArmorClass());
+    removeFromStat(target.getCmd());
   }
 
 }

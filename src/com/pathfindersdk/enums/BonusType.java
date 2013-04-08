@@ -15,6 +15,9 @@ public enum BonusType
   ARMOR ("Armor"),
   SHIELD ("Shield"),
   NATURAL_ARMOR ("Natural Armor"),
+  INSIGHT ("Insight"),
+  PROFANE ("Profane"),
+  SACRED ("Sacred"),
   UNTYPED ("");
   
   private final String name;

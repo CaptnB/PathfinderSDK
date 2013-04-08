@@ -8,6 +8,8 @@ import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.bonus.CmbBonus;
 import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.SizeType;
+import com.pathfindersdk.stats.Size;
 
 public class CmbBonusTest
 {
@@ -16,6 +18,7 @@ public class CmbBonusTest
   public void testApplyTo()
   {
     Character character = new Character();
+    character.setSize(new Size(SizeType.MEDIUM));
 
     Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.applyTo(character);
@@ -27,6 +30,7 @@ public class CmbBonusTest
   public void testRemoveFrom()
   {
     Character character = new Character();
+    character.setSize(new Size(SizeType.MEDIUM));
 
     Bonus bonus = new CmbBonus(2, BonusType.ARMOR);
     bonus.applyTo(character);

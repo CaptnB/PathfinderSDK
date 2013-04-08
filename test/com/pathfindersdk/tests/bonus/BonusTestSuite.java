@@ -5,10 +5,11 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ 
-  BonusTest.class, 
+@SuiteClasses({
+  AbilityBonusTest.class,
   AcBonusTest.class, 
   AttackBonusTest.class, 
+  BonusTest.class, 
   CmbBonusTest.class, 
   CmdBonusTest.class, 
   InitiativeBonusTest.class,
