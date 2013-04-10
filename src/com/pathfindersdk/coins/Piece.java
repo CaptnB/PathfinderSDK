@@ -1,5 +1,7 @@
 package com.pathfindersdk.coins;
 
+import com.pathfindersdk.utils.ArgChecker;
+
 public abstract class Piece
 {
   private int number;
@@ -16,8 +18,7 @@ public abstract class Piece
   
   public void setNumber(int number)
   {
-    if(number < 0)
-      throw new IllegalArgumentException("number can't be negative");
+    ArgChecker.checkIsPositive(number);
     
     this.number = number;
   }

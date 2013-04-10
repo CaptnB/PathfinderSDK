@@ -3,6 +3,8 @@ package com.pathfindersdk.coins;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.pathfindersdk.utils.ArgChecker;
+
 final public class Coins
 {
   private Piece cp = new CopperPiece(0);
@@ -10,7 +12,18 @@ final public class Coins
   private Piece gp = new GoldPiece(0);
   private Piece pp = new PlatinumPiece(0);
   
-  public Coins add(Piece piece)
+  public Coins(){}
+  
+  public Coins(Piece...pieces)
+  {
+    for(Piece piece : pieces)
+    {
+      ArgChecker.checkNotNull(piece);
+      add(piece);
+    }
+  }
+  
+  final public Coins add(Piece piece)
   {
     int totalValue = getValue() + piece.getValue();
     
