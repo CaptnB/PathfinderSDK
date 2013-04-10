@@ -1,6 +1,6 @@
 package com.pathfindersdk.stats;
 
-import java.util.List;
+import java.util.SortedSet;
 
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.enums.BonusTypeRegister;
@@ -31,7 +31,7 @@ public class ArmorClass extends Stat
     int touch = getBaseScore();
     
     // Touch AC ignores armor, shield and natural AC
-    List<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
+    SortedSet<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
     for(Bonus bonus : bonusSet)
     {
       if(!bonus.getType().equals(BonusTypeRegister.getInstance().get("Armor")) && 
@@ -63,7 +63,7 @@ public class ArmorClass extends Stat
     int flatFooted = getBaseScore();
     
     // Flat-footed AC does not include dex modifier and ignores dodge bonus
-    List<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
+    SortedSet<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
     for(Bonus bonus : bonusSet)
     {
       if(bonus.getType() != BonusTypeRegister.getInstance().get("Dodge"))

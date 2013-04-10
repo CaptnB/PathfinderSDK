@@ -8,7 +8,9 @@ import com.pathfindersdk.utils.ArgChecker;
 
 final public class Cmd extends Stat
 {
-  private Set<AbilityScore> abilities = new HashSet<AbilityScore>();   // A set because Monk can add Wisdom
+  private AbilityScore strenght;
+  private AbilityScore dexterity;
+  private Set<AbilityScore> otherAbilities = new HashSet<AbilityScore>();   // A Monk can add his Wisdom
   private BaseAttackBonus bab;
   private Size size;
 
@@ -21,20 +23,25 @@ final public class Cmd extends Stat
     ArgChecker.checkNotNull(bab);
     ArgChecker.checkNotNull(size);
 
-    abilities.add(strenght);
-    abilities.add(dexterity);
+    this.strenght = strenght;
+    this.dexterity = dexterity;
     this.bab = bab;
     this.size = size;
   }
 
   public void addAbility(AbilityScore ability)
   {
-    abilities.add(ability);
+    otherAbilities.add(ability);
   }
  
   public void removeAbility(AbilityScore ability)
   {
-    abilities.remove(ability);
+    otherAbilities.remove(ability);
+  }
+  
+  public int getFlatFooted()
+  {
+    return getScore() - dexterity.getModifier();
   }
  
   @Override
@@ -43,8 +50,10 @@ final public class Cmd extends Stat
     int score = super.getScore();
     
     score += bab.getBabs().get(0);
+    score += strenght.getModifier();
+    score += dexterity.getModifier();
     
-    for(AbilityScore ability : abilities)
+    for(AbilityScore ability : otherAbilities)
       score += ability.getModifier();
     
     score -= size.getModifier();
