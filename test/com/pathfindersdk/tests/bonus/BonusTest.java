@@ -75,6 +75,13 @@ public class BonusTest
     assertNull(bonus.getCircumstance());
   }
   
+  @Test (expected = IllegalArgumentException.class)
+  public void testGetCircumstanceEmpty()
+  {
+    Bonus bonus = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"), "");
+    assertNull(bonus.getCircumstance());
+  }
+
   @Test
   public void testToString()
   {

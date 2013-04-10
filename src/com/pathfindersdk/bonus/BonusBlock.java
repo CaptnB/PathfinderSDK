@@ -1,10 +1,7 @@
 package com.pathfindersdk.bonus;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
@@ -19,16 +16,16 @@ final public class BonusBlock
   private class BonusGroup
   {
     final private SortedSet<Bonus> baseBonuses = new TreeSet<Bonus>();      // Bonus are sorted in descending order, first bonus is biggest
-    final private Set<Bonus> circumstantialBonuses = new HashSet<Bonus>();  // No need to sort those
+    final private SortedSet<Bonus> circumstantialBonuses = new TreeSet<Bonus>();
     
     public SortedSet<Bonus> getBaseBonuses()
     {
       return Collections.unmodifiableSortedSet(baseBonuses);
     }
     
-    public Set<Bonus> getCircumstantialBonuses()
+    public SortedSet<Bonus> getCircumstantialBonuses()
     {
-      return Collections.unmodifiableSet(circumstantialBonuses);
+      return Collections.unmodifiableSortedSet(circumstantialBonuses);
     }
     
     public void addBonus(Bonus bonus)
@@ -82,9 +79,9 @@ final public class BonusBlock
     }
   }
   
-  public List<Bonus> getApplicableBaseBonus()
+  public SortedSet<Bonus> getApplicableBaseBonus()
   {
-    List<Bonus> bonusList = new ArrayList<Bonus>();   // No need to keep them sorted here, we just want the important ones
+    SortedSet<Bonus> bonusSet = new TreeSet<Bonus>();
     
     Set<BonusType> types = bonusGroups.keySet();
     for(BonusType type : types)
@@ -93,19 +90,19 @@ final public class BonusBlock
       
       // Untyped bonus stack
       if(type.equals(BonusTypeRegister.getInstance().get("Untyped")))
-        bonusList.addAll(group.getBaseBonuses());
+        bonusSet.addAll(group.getBaseBonuses());
       
       // Typed bonus only apply biggest (if any)
       else if(!group.getBaseBonuses().isEmpty())
-        bonusList.add(group.getBaseBonuses().first());
+        bonusSet.add(group.getBaseBonuses().first());
     }
     
-    return Collections.unmodifiableList(bonusList);
+    return Collections.unmodifiableSortedSet(bonusSet);
   }
   
-  public List<Bonus> getApplicableCircumstantialBonus()
+  public SortedSet<Bonus> getApplicableCircumstantialBonus()
   {
-    List<Bonus> bonusList = new ArrayList<Bonus>();
+    SortedSet<Bonus> bonusSet = new TreeSet<Bonus>();
     
     Set<BonusType> types = bonusGroups.keySet();
     for(BonusType type : types)
@@ -114,7 +111,7 @@ final public class BonusBlock
       
       // Untyped bonus stack
       if(type.equals(BonusTypeRegister.getInstance().get("Untyped")))
-        bonusList.addAll(group.getCircumstantialBonuses());
+        bonusSet.addAll(group.getCircumstantialBonuses());
 
       // Typed bonus don't stack but since they are circumstantial, we don't know which to apply or not
       else
@@ -128,15 +125,15 @@ final public class BonusBlock
             // If circumstantial bonus is bigger than base bonus, return the difference
             if(circBonus.getValue() > baseBonus.getValue())
             {
-              bonusList.add(circBonus.newBonus(baseBonus.getValue()));
+              bonusSet.add(circBonus.newBonus(baseBonus.getValue()));
             }
           }
         }
         else
-          bonusList.addAll(group.getCircumstantialBonuses());
+          bonusSet.addAll(group.getCircumstantialBonuses());
       }
     }
     
-    return Collections.unmodifiableList(bonusList);
+    return Collections.unmodifiableSortedSet(bonusSet);
   }
 }

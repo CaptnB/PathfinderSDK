@@ -1,170 +1,200 @@
 <class-diagram version="1.0.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.InitiativeBonus" 
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.AbilityBonus" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/bonus/AbilityBonus.java" binary="false">    
+    <position height="-1" width="-1" x="138" y="396"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.InitiativeBonus" 
     project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/bonus/InitiativeBonus.java" binary="false">    
-    <position height="-1" width="-1" x="169" y="444"/>    
+    <position height="-1" width="-1" x="401" y="388"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SaveBonus" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/bonus/SaveBonus.java" binary="false">    
-    <position height="-1" width="-1" x="1641" y="453"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SizeBonus" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/bonus/SizeBonus.java" binary="false">    
-    <position height="-1" width="-1" x="867" y="444"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.Bonus" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/bonus/Bonus.java" binary="false">    
-    <position height="-1" width="-1" x="1080" y="207"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="5" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SpeedBonus" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/bonus/SpeedBonus.java" binary="false">    
-    <position height="-1" width="-1" x="1124" y="453"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.stats.Stat.BonusGroup" 
-    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/stats/Stat.java" binary="false">    
-    <position height="-1" width="-1" x="499" y="124"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="7" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.stats.Stat" project="PathfinderSDK" 
-    file="/PathfinderSDK/src/com/pathfindersdk/stats/Stat.java" binary="false">    
-    <position height="-1" width="-1" x="145" y="137"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="8" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.AttackBonus" project="PathfinderSDK" 
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.AttackBonus" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/bonus/AttackBonus.java" binary="false">    
-    <position height="-1" width="-1" x="1385" y="444"/>    
+    <position height="-1" width="-1" x="637" y="388"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="9" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.AcBonus" project="PathfinderSDK" 
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.AcBonus" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/bonus/AcBonus.java" binary="false">    
-    <position height="-1" width="-1" x="397" y="444"/>    
+    <position height="-1" width="-1" x="862" y="388"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="10" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.CmbBonus" project="PathfinderSDK" 
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.BonusBlock" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/bonus/BonusBlock.java" binary="false">    
+    <position height="-1" width="-1" x="846" y="-174"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SaveBonus" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/bonus/SaveBonus.java" binary="false">    
+    <position height="-1" width="-1" x="1332" y="396"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.CmbBonus" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/bonus/CmbBonus.java" binary="false">    
-    <position height="-1" width="-1" x="1891" y="444"/>    
+    <position height="-1" width="-1" x="1081" y="388"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="11" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SkillBonus" project="PathfinderSDK" 
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SkillBonus" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/bonus/SkillBonus.java" binary="false">    
-    <position height="-1" width="-1" x="630" y="453"/>    
+    <position height="-1" width="-1" x="1819" y="396"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="12" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.CmdBonus" project="PathfinderSDK" 
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.CmdBonus" project="PathfinderSDK" 
     file="/PathfinderSDK/src/com/pathfindersdk/bonus/CmdBonus.java" binary="false">    
-    <position height="-1" width="-1" x="2114" y="444"/>    
+    <position height="-1" width="-1" x="1582" y="388"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <association id="13">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="14" name="circumstantialBonuses"/>      
-      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
+  <class id="10" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.BonusBlock.BonusGroup" 
+    project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/bonus/BonusBlock.java" binary="false">    
+    <position height="-1" width="-1" x="1187" y="-167"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="11" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SizeBonus" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/bonus/SizeBonus.java" binary="false">    
+    <position height="-1" width="-1" x="2056" y="388"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="12" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.Bonus" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/bonus/Bonus.java" binary="false">    
+    <position height="-1" width="-1" x="1201" y="134"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="13" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.bonus.SpeedBonus" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/bonus/SpeedBonus.java" binary="false">    
+    <position height="-1" width="-1" x="2313" y="396"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="14" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.stats.Stat" project="PathfinderSDK" 
+    file="/PathfinderSDK/src/com/pathfindersdk/stats/Stat.java" binary="false">    
+    <position height="-1" width="-1" x="553" y="-151"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <generalization id="15">    
+    <bendpoint x="2171" y="265"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
   <association id="16">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="17" name="bonusGroups"/>      
-      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="17" name="bonusBlock"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <generalization id="19">    
-    <bendpoint x="505" y="337"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="20">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="21">    
-    <bendpoint x="288" y="300"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
+  <association id="19">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="20" name="circumstantialBonuses"/>      
+      <multiplicity id="21" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
   <generalization id="22">    
-    <bendpoint x="736" y="347"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="4"/>  
+    <bendpoint x="260" y="282"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="23">    
-    <bendpoint x="1485" y="352"/>    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="24">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="25" name="baseBonuses"/>      
-      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
+  <association id="23">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="24" name="bonusGroups"/>      
+      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
+  <generalization id="26">    
+    <bendpoint x="721" y="290"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
   <generalization id="27">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
   <generalization id="28">    
-    <bendpoint x="1694" y="332"/>    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="4"/>  
+    <bendpoint x="1491" y="287"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <nesting id="29">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </nesting>  
+  <generalization id="29">    
+    <bendpoint x="1720" y="285"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
   <generalization id="30">    
-    <bendpoint x="1985" y="336"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="4"/>  
+    <bendpoint x="1972" y="283"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
+  <nesting id="31">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <association id="32">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="33" name="baseBonuses"/>      
+      <multiplicity id="34" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="35">    
+    <bendpoint x="940" y="284"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="37">    
+    <bendpoint x="492" y="288"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     visibility="true">    

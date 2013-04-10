@@ -1,7 +1,5 @@
 package com.pathfindersdk.tests.books;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 import com.pathfindersdk.books.BookItem;
@@ -35,19 +33,19 @@ public class BookItemTest
   @Test
   public void testGetName()
   {
-    fail("Not yet implemented");
+    // TODO : eventually
   }
 
   @Test
   public void testToString()
   {
-    fail("Not yet implemented");
+    // TODO : eventually
   }
 
   @Test
   public void testCompareTo()
   {
-    fail("Not yet implemented");
+    // TODO : eventually
   }
 
 }

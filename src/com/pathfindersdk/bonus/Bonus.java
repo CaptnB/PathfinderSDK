@@ -49,8 +49,38 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
   @Override
   public int compareTo(Bonus bonus)
   {
-    // Sort in descending order (highest bonus first so when bonuses don't stack, the first one is the one to consider)
-    return Integer.valueOf(bonus.getValue()).compareTo(Integer.valueOf(getValue()));
+    // First sort by BonusType
+    if(!getType().equals(bonus.getType()))
+      return getType().compareTo(bonus.getType());
+    
+    // If both are circumstantial
+    else if(isCircumstantial() && bonus.isCircumstantial())
+    {
+      // Highest first
+      if(!Integer.valueOf(getValue()).equals(Integer.valueOf(bonus.getValue())))
+        return Integer.valueOf(bonus.getValue()).compareTo(Integer.valueOf(getValue()));
+      
+      // If same type, same value then sort by circumstance
+      else
+        return getCircumstance().compareTo(bonus.getCircumstance());
+    }
+    
+    // Both are not circumstantial
+    else if(!isCircumstantial() && !bonus.isCircumstantial())
+    {
+      // Same type, sort by value
+      return Integer.valueOf(bonus.getValue()).compareTo(Integer.valueOf(getValue()));
+    }
+    
+    // One is circumstantial but not the other
+    else
+    {
+      // They will never be the same so return the non-cicrcumstantial first
+      if(isCircumstantial())
+        return -1;
+      else
+        return 1;
+    }
   }
 
   final protected void applyToStat(Stat stat)
@@ -75,7 +105,7 @@ public abstract class Bonus implements Comparable<Bonus>, Applicable<Creature>
     if(value >= 0)
       out += "+";
     
-    out += value + " " + type.toString();
+    out += value + type.toString();
     
     if(circumstance != null)
       out += " (" + circumstance + ")";

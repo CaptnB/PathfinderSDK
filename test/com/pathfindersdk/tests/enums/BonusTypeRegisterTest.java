@@ -33,7 +33,7 @@ public class BonusTypeRegisterTest
   {
     BonusTypeRegister.getInstance().register("New Type");
     
-    assertEquals("New Type", BonusTypeRegister.getInstance().get("New Type").toString());
+    assertEquals(" New Type", BonusTypeRegister.getInstance().get("New Type").toString());
   }
 
 }

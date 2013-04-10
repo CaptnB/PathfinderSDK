@@ -185,7 +185,7 @@ public class BonusBlockTest
     block.addBonus(bonus1);
     block.addBonus(bonus2);
 
-    Bonus bonus = block.getApplicableCircumstantialBonus().get(0);
+    Bonus bonus = block.getApplicableCircumstantialBonus().first();
     assertEquals("+1 Armor (when x happens)", bonus.toString());
   }
 }
