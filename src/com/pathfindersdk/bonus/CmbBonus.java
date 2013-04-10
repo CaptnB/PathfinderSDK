@@ -1,7 +1,8 @@
 package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.BonusTypeRegister.BonusType;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class CmbBonus extends Bonus
 {
@@ -19,8 +20,7 @@ final public class CmbBonus extends Bonus
   @Override
   public void applyTo(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     applyToStat(target.getCmb());
   }
@@ -28,10 +28,15 @@ final public class CmbBonus extends Bonus
   @Override
   public void removeFrom(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     removeFromStat(target.getCmb());
+  }
+
+  @Override
+  public Bonus newBonus(int offset)
+  {
+    return new CmbBonus(getValue() - offset, getType(), getCircumstance()); 
   }
 
 }

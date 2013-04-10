@@ -18,6 +18,7 @@ public abstract class BookBuilder
     SortedMap<BookSectionType, BookSection> sections = new TreeMap<BookSectionType, BookSection>();
    
     // Fill each section
+    registerBonusTypes();
     addRaces(sections);
     addAlternateRacialTraits(sections);
     addClasses(sections);
@@ -34,6 +35,8 @@ public abstract class BookBuilder
     // Return newly assembled book
     return new Book(title, sections);
   }
+  
+  protected abstract void registerBonusTypes();
   
   protected abstract void addRaces(SortedMap<BookSectionType, BookSection> sections);
   

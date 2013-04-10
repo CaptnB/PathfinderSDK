@@ -12,6 +12,19 @@ import com.pathfindersdk.coins.SilverPiece;
 
 public class CoinsTest
 {
+  @Test
+  public void testCoins()
+  {
+    Coins coins = new Coins();
+    assertEquals("0 cp", coins.toString());
+  }
+
+  @Test
+  public void testCoinsPieces()
+  {
+    Coins coins = new Coins(new CopperPiece(5), new GoldPiece(12), new CopperPiece(24));
+    assertEquals("1 pp, 2 gp, 2 sp, 9 cp", coins.toString());
+  }
 
   @Test
   public void testAdd5Copper()
@@ -97,13 +110,6 @@ public class CoinsTest
     coins.add(new GoldPiece(123));
     coins.add(new PlatinumPiece(123));    
     assertEquals("136 pp, 6 gp, 5 sp, 3 cp", coins.toString());
-  }
-
-  @Test
-  public void testCoinsEmpty()
-  {
-    Coins coins = new Coins();
-    assertEquals("0 cp", coins.toString());
   }
   
 }

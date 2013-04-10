@@ -2,7 +2,8 @@ package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.AbilityType;
-import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.BonusTypeRegister.BonusType;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class AbilityBonus extends Bonus
 {
@@ -17,8 +18,8 @@ final public class AbilityBonus extends Bonus
   {
     super(value, type, circumstance);
     
-    if(ability == null)
-      throw new IllegalArgumentException("ability can't be null!");
+    ArgChecker.checkNotNull(ability);
+    ArgChecker.checkIsNot(ability, AbilityType.ANY);
 
     this.ability = ability;
   }
@@ -26,8 +27,7 @@ final public class AbilityBonus extends Bonus
   @Override
   public void applyTo(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     applyToStat(target.getAbilityScore(ability));
   }
@@ -35,10 +35,15 @@ final public class AbilityBonus extends Bonus
   @Override
   public void removeFrom(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     removeFromStat(target.getAbilityScore(ability));
+  }
+
+  @Override
+  public Bonus newBonus(int offset)
+  {
+    return new AbilityBonus(getValue() - offset, getType(), ability, getCircumstance()); 
   }
 
 }

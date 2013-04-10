@@ -1,7 +1,9 @@
 package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.BonusTypeRegister;
+import com.pathfindersdk.enums.BonusTypeRegister.BonusType;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class AcBonus extends Bonus
 {
@@ -19,19 +21,14 @@ final public class AcBonus extends Bonus
   @Override
   public void applyTo(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     applyToStat(target.getArmorClass());
     
-    // Deflection, Dodge, Insight, Luck, Morale, Profane and Sacred bonuses to AC also apply to CMD
-    if(getType().equals(BonusType.DEFLECTION) ||
-       getType().equals(BonusType.DODGE)      ||
-       getType().equals(BonusType.INSIGHT)    ||
-       getType().equals(BonusType.LUCK)       ||
-       getType().equals(BonusType.MORALE)     ||
-       getType().equals(BonusType.PROFANE)    ||
-       getType().equals(BonusType.SACRED))
+    // Most AC bonus also apply to CMD
+    if(!getType().equals(BonusTypeRegister.getInstance().get("Armor"))  && 
+       !getType().equals(BonusTypeRegister.getInstance().get("Shield")) && 
+       !getType().equals(BonusTypeRegister.getInstance().get("Natural Armor")))
     {
       applyToStat(target.getCmd());
     }
@@ -40,11 +37,16 @@ final public class AcBonus extends Bonus
   @Override
   public void removeFrom(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     removeFromStat(target.getArmorClass());
     removeFromStat(target.getCmd());
+  }
+
+  @Override
+  public Bonus newBonus(int offset)
+  {
+    return new AcBonus(getValue() - offset, getType(), getCircumstance()); 
   }
 
 }

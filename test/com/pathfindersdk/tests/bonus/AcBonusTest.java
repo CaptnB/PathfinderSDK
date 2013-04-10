@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.pathfindersdk.bonus.AcBonus;
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Character;
-import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.BonusTypeRegister;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.stats.Size;
 
@@ -20,7 +20,7 @@ public class AcBonusTest
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
     
-    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
     bonus.applyTo(character);
     
     assertEquals(12, character.getArmorClass().getScore());
@@ -32,7 +32,7 @@ public class AcBonusTest
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
     
-    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
     bonus.applyTo(character);
     bonus.removeFrom(character);
     
@@ -45,7 +45,7 @@ public class AcBonusTest
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
     
-    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
     bonus.applyTo(character);
     
     // ARMOR bonus does not add to CMD
@@ -58,7 +58,7 @@ public class AcBonusTest
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
     
-    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
     bonus.applyTo(character);
     bonus.removeFrom(character);
     
@@ -72,7 +72,7 @@ public class AcBonusTest
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
     
-    Bonus bonus = new AcBonus(2, BonusType.DODGE);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Dodge"));
     bonus.applyTo(character);
     
     // DODGE bonus add to CMD
@@ -85,25 +85,34 @@ public class AcBonusTest
     Character character = new Character();
     character.setSize(new Size(SizeType.MEDIUM));
     
-    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
     bonus.applyTo(character);
     bonus.removeFrom(character);
     
     // DODGE bonus add to CMD
     assertEquals(10, character.getCmd().getScore());
   }
+  
+  @Test
+  public void testNewBonus()
+  {
+    Bonus bonus1 = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus2 = bonus1.newBonus(1);
+    
+    assertEquals("+1 Armor", bonus2.toString());
+  }
 
   @Test (expected = IllegalArgumentException.class)
   public void testApplyToNull()
   {
-    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
     bonus.applyTo(null);
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testRemoveFromNull()
   {
-    Bonus bonus = new AcBonus(2, BonusType.ARMOR);
+    Bonus bonus = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
     bonus.removeFrom(null);
   }
 

@@ -1,8 +1,9 @@
 package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.BonusTypeRegister.BonusType;
 import com.pathfindersdk.enums.SpeedType;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class SpeedBonus extends Bonus
 {
@@ -17,16 +18,15 @@ final public class SpeedBonus extends Bonus
   {
     super(value, type, circumstance);
     
-    if(speed == null)
-      throw new IllegalArgumentException("speed can't be null");
+    ArgChecker.checkNotNull(speed);
+
     this.speed = speed;
   }
 
   @Override
   public void applyTo(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
 
     applyToStat(target.getSpeed(speed));
   }
@@ -34,10 +34,15 @@ final public class SpeedBonus extends Bonus
   @Override
   public void removeFrom(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     removeFromStat(target.getSpeed(speed));
+  }
+
+  @Override
+  public Bonus newBonus(int offset)
+  {
+    return new SpeedBonus(getValue() - offset, getType(), speed, getCircumstance()); 
   }
 
 }

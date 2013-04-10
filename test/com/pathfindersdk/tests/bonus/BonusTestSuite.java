@@ -10,6 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
   AcBonusTest.class, 
   AttackBonusTest.class, 
   BonusTest.class, 
+  BonusBlockTest.class,
   CmbBonusTest.class, 
   CmdBonusTest.class, 
   InitiativeBonusTest.class,

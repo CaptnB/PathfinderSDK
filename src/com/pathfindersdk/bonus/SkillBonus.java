@@ -1,7 +1,8 @@
 package com.pathfindersdk.bonus;
 
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.BonusTypeRegister.BonusType;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class SkillBonus extends Bonus
 {
@@ -16,16 +17,16 @@ final public class SkillBonus extends Bonus
   {
     super(value, type, circumstance);
     
-    if(skillName == null)
-      throw new IllegalArgumentException("skillName can't be null!");
+    ArgChecker.checkNotNull(skillName);
+    ArgChecker.checkNotEmpty(skillName);
+
     this.skillName = skillName;
   }
 
   @Override
   public void applyTo(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     applyToStat(target.getSkill(skillName));
   }
@@ -33,10 +34,15 @@ final public class SkillBonus extends Bonus
   @Override
   public void removeFrom(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null");
+    ArgChecker.checkNotNull(target);
     
     removeFromStat(target.getSkill(skillName));
+  }
+
+  @Override
+  public Bonus newBonus(int offset)
+  {
+    return new SkillBonus(getValue() - offset, getType(), skillName, getCircumstance()); 
   }
 
 }
