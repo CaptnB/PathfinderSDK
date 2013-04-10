@@ -1,7 +1,6 @@
 package com.pathfindersdk.stats;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
 
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.bonus.BonusBlock;
@@ -43,7 +42,7 @@ public class Stat
   {
     int total = getBaseScore();
 
-    List<Bonus> bonusSet = bonusBlock.getApplicableBaseBonus();
+    SortedSet<Bonus> bonusSet = bonusBlock.getApplicableBaseBonus();
     for(Bonus bonus : bonusSet)
       total += bonus.getValue();
     
@@ -64,18 +63,24 @@ public class Stat
   @Override
   public String toString()
   {
-    String circumstantial = "";
-    List<Bonus> circList = new ArrayList<Bonus>(bonusBlock.getApplicableCircumstantialBonus()); 
-    if(!circList.isEmpty())
+    String out = "";
+    
+    // Sorted set to get them in alphabetical order
+    SortedSet<Bonus> circSet = bonusBlock.getApplicableCircumstantialBonus(); 
+    if(!circSet.isEmpty())
     {
-      circumstantial += " [" + circList.get(0);
+      out += " [";
       
-      for(int i = 1; i < circList.size(); i++)
-        circumstantial += ", " + circList.get(i);
+      for(Bonus bonus : circSet)
+      {
+        out += bonus.toString();
+        if(bonus != circSet.last())
+           out += ", ";
+      }
       
-      circumstantial += "]";
+      out += "]";
     }
 
-    return getScore() + circumstantial;
+    return getScore() + out;
   }
 }

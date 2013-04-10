@@ -42,7 +42,7 @@ final public class BonusTypeRegister
       if(type.equals("Untyped"))
         return "";
       else
-        return type;
+        return " " + type;
     }
   }
 
