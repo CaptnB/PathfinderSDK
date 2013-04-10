@@ -1,6 +1,7 @@
 package com.pathfindersdk.creatures;
 
 import com.pathfindersdk.books.items.MonsterItem;
+import com.pathfindersdk.utils.ArgChecker;
 
 
 
@@ -14,13 +15,10 @@ public class Monster extends Creature
 
   public Monster(MonsterItem monster)
   {
-    if(monster != null)
-    {
-      setName(monster.getName());
-      // set other Monster values with MonsterItem ones
-    }
-    else
-      throw new IllegalArgumentException("MonsterItem can't be null");
+    ArgChecker.checkNotNull(monster);
+
+    setName(monster.getName());
+    // set other Monster values with MonsterItem ones
   }
 
 

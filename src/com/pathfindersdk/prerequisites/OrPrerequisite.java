@@ -2,14 +2,15 @@ package com.pathfindersdk.prerequisites;
 
 import java.util.List;
 
+import com.pathfindersdk.utils.ArgChecker;
+
 final public class OrPrerequisite<T> implements Prerequisite<T>
 {
   final private List<Prerequisite<T>> prerequisites;
   
   public OrPrerequisite(List<Prerequisite<T>> prerequisites)
   {
-    if(prerequisites == null)
-      throw new IllegalArgumentException("prerequisites can't be null!");
+    ArgChecker.checkNotNull(prerequisites);
     
     this.prerequisites = prerequisites;
   }
@@ -17,8 +18,7 @@ final public class OrPrerequisite<T> implements Prerequisite<T>
   @Override
   public boolean isFilled(T target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null!");
+    ArgChecker.checkNotNull(target);
     
     // Just one prerequisite need to be true
     for(Prerequisite<T> prereq : prerequisites)

@@ -1,8 +1,8 @@
 package com.pathfindersdk.books.items;
 
 import java.util.Collections;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
@@ -10,6 +10,7 @@ import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.features.Race;
 import com.pathfindersdk.features.RacialTrait;
 import com.pathfindersdk.prerequisites.RacialTraitPrerequisite;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * Immutable class to wrap an alternated racial trait book entry.
@@ -17,29 +18,27 @@ import com.pathfindersdk.prerequisites.RacialTraitPrerequisite;
 final public class AlternateRacialTraitItem extends BookItem
 {
   final private String raceName;
-  final private SortedSet<String> replacedTraits;
+  final private Set<String> replacedTraits;
   final private RacialTrait newTrait;
-  final private transient SortedSet<RacialTraitPrerequisite> prerequisites;
+  final private transient Set<RacialTraitPrerequisite> prerequisites;
 
-  public AlternateRacialTraitItem(String name, String raceName, SortedSet<String> replacedTraits, RacialTrait newTrait)
+  public AlternateRacialTraitItem(String name, String raceName, Set<String> replacedTraits, RacialTrait newTrait)
   {
     super(name);
     
-    if(raceName == null)
-      throw new IllegalArgumentException("raceName can't bu null!");
+    ArgChecker.checkNotNull(raceName);
+    ArgChecker.checkNotEmpty(raceName);
     
-    if(replacedTraits == null)
-      throw new IllegalArgumentException("replacedTraits can't be null!");
+    ArgChecker.checkNotNull(replacedTraits);
     
-    if(newTrait == null)
-      throw new IllegalArgumentException("newTrait can't be null!");
+    ArgChecker.checkNotNull(newTrait);
     
     this.raceName = raceName;
     this.replacedTraits = replacedTraits;
     this.newTrait = newTrait;
     
     // Generate prerequisites based on traits that will be replaced
-    SortedSet<RacialTraitPrerequisite> prerequisites = new TreeSet<RacialTraitPrerequisite>();
+    Set<RacialTraitPrerequisite> prerequisites = new LinkedHashSet<RacialTraitPrerequisite>();
     for(String trait : replacedTraits)
       prerequisites.add(new RacialTraitPrerequisite(trait));
     this.prerequisites = prerequisites;
@@ -50,9 +49,9 @@ final public class AlternateRacialTraitItem extends BookItem
     return raceName;
   }
   
-  public SortedSet<String> getReplacedTraits()
+  public Set<String> getReplacedTraits()
   {
-    return Collections.unmodifiableSortedSet(replacedTraits);
+    return Collections.unmodifiableSet(replacedTraits);
   }
   
   public RacialTrait getNewTrait()

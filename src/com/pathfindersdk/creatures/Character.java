@@ -2,6 +2,7 @@ package com.pathfindersdk.creatures;
 
 import com.pathfindersdk.features.Description;
 import com.pathfindersdk.features.Race;
+import com.pathfindersdk.utils.ArgChecker;
 
 
 
@@ -20,20 +21,17 @@ public class Character extends Creature
 
   public void setDescription(Description description)
   {
-    if(description != null)
-    {
-      // Clean previous description
-      if(this.description != null)
-        this.description.removeFrom(this);
-      
-      // Apply new one
-      if(description != null)
-        description.applyTo(this);
+    ArgChecker.checkNotNull(description);
 
-      this.description = description;
-    }
-    else
-      throw new IllegalArgumentException("Description can't be null");
+    // Clean previous description
+    if(this.description != null)
+      this.description.removeFrom(this);
+    
+    // Apply new one
+    if(description != null)
+      description.applyTo(this);
+
+    this.description = description;
   }
 
   public Race getRace()
@@ -43,20 +41,17 @@ public class Character extends Creature
 
   public void setRace(Race race)
   {
+    ArgChecker.checkNotNull(race);
+    
+    // Clean current race
+    if(this.race != null)
+      this.race.removeFrom(this);
+    
+    // Apply new one
     if(race != null)
-    {
-      // Clean current race
-      if(this.race != null)
-        this.race.removeFrom(this);
-      
-      // Apply new one
-      if(race != null)
-        race.applyTo(this);
-      
-      this.race = race;
-    }
-    else
-      throw new IllegalArgumentException("Race can't be null");
+      race.applyTo(this);
+    
+    this.race = race;
   }
   
   @Override

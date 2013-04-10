@@ -3,6 +3,7 @@ package com.pathfindersdk.prerequisites;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.stats.AbilityScore;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class requires a character to have an ability score (AbilityStat) at a specific value or higher (ex: Dodge feat requires Dex 13).
@@ -14,8 +15,8 @@ final public class AbilityPrerequisite implements Prerequisite<Creature>
 
   public AbilityPrerequisite(int score, AbilityType ability)
   {
-    if(ability == null)
-      throw new IllegalArgumentException("ability can't be null!");
+    ArgChecker.checkNotNull(ability);
+    ArgChecker.checkIsNot(ability, AbilityType.ANY);
     
     this.score = score;
     this.ability = ability;
@@ -24,8 +25,7 @@ final public class AbilityPrerequisite implements Prerequisite<Creature>
   @Override
   public boolean isFilled(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null!");
+    ArgChecker.checkNotNull(target);
     
     AbilityScore abilityScore = target.getAbilityScore(ability);
 

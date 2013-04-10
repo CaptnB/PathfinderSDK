@@ -6,6 +6,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import com.pathfindersdk.enums.BookSectionType;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class Index
 {
@@ -27,8 +28,7 @@ final public class Index
   
   public BookSection getIndex(BookSectionType type)
   {
-    if(type == null)
-      throw new IllegalArgumentException("type can't be null!");
+    ArgChecker.checkNotNull(type);
       
     // Get existing section
     BookSection section = index.get(type);

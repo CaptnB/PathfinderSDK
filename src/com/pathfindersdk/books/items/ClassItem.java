@@ -10,6 +10,7 @@ import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.features.ClassLevel;
 import com.pathfindersdk.prerequisites.Prerequisite;
 import com.pathfindersdk.stats.Dice;
+import com.pathfindersdk.utils.ArgChecker;
 
 
 /**
@@ -27,17 +28,10 @@ final public class ClassItem extends BookItem
   {
     super(name);
     
-    if(prerequisites == null)
-      throw new IllegalArgumentException("prerequisites can't bu null");
-    
-    if(hitDice == null)
-      throw new IllegalArgumentException("hitDice can't bu null");
-    
-    if(classSkills == null)
-      throw new IllegalArgumentException("classSkills can't bu null");
-    
-    if(levels == null)
-      throw new IllegalArgumentException("levels can't bu null");
+    ArgChecker.checkNotNull(prerequisites);
+    ArgChecker.checkNotNull(hitDice);
+    ArgChecker.checkNotNull(classSkills);
+    ArgChecker.checkNotNull(levels);
     
     this.prerequisites = prerequisites;
     this.hitDice = hitDice;

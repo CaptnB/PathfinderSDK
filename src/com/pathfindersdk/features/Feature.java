@@ -7,6 +7,7 @@ import java.util.TreeSet;
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.prerequisites.Prerequisite;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * Template class that wraps a named feature giving out bonuses (with optional prerequisites).
@@ -26,14 +27,10 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
   
   public Feature(String name, SortedSet<Prerequisite<T>> prerequisites, SortedSet<Bonus> bonuses)
   {
-    if(name == null)
-      throw new IllegalArgumentException("name can't be null");
-    
-    if(prerequisites == null)
-      throw new IllegalArgumentException("prerequisites can't be null");
-    
-    if(bonuses == null)
-      throw new IllegalArgumentException("bonuses can't be null");
+    ArgChecker.checkNotNull(name);
+    ArgChecker.checkNotEmpty(name);
+    ArgChecker.checkNotNull(prerequisites);
+    ArgChecker.checkNotNull(bonuses);
     
     this.name = name;
     this.prerequisites = prerequisites;

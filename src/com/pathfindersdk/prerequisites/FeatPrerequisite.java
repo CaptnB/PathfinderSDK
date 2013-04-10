@@ -1,6 +1,7 @@
 package com.pathfindersdk.prerequisites;
 
 import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class requires a creature to have a specific feat (ex: Mobility requires Dodge).
@@ -11,8 +12,8 @@ final public class FeatPrerequisite implements Prerequisite<Creature>
   
   public FeatPrerequisite(String featName)
   {
-    if(featName == null)
-      throw new IllegalArgumentException("featName can't be null!");
+    ArgChecker.checkNotNull(featName);
+    ArgChecker.checkNotEmpty(featName);
     
     this.featName = featName;
   }
@@ -20,8 +21,7 @@ final public class FeatPrerequisite implements Prerequisite<Creature>
   @Override
   public boolean isFilled(Creature target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null!");
+    ArgChecker.checkNotNull(target);
     
     // Check if target has the feat
     return target.getFeat(featName) != null;

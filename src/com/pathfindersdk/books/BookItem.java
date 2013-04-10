@@ -1,5 +1,7 @@
 package com.pathfindersdk.books;
 
+import com.pathfindersdk.utils.ArgChecker;
+
 /**
  * Base class for every item found in a book. Make sure every derived class is immutable (final class, final private members and no setters) 
  * as it prevents unintended modifications of the book content and simplifies affectations (no clone())
@@ -10,8 +12,9 @@ public abstract class BookItem implements Comparable<BookItem>
   
   public BookItem(String name)
   {
-    if(name == null)
-      throw new IllegalArgumentException("name can't be null!");
+    ArgChecker.checkNotNull(name);
+    ArgChecker.checkNotEmpty(name);
+
     this.name = name;
   }
   

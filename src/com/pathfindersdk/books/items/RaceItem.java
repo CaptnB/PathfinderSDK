@@ -15,6 +15,7 @@ import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
 import com.pathfindersdk.features.AbilityIncrease;
 import com.pathfindersdk.features.RacialTrait;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * Immutable class to wrap a race book entry.
@@ -36,29 +37,14 @@ final public class RaceItem extends BookItem
   {
     super(name);
     
-    if(type == null)
-      throw new IllegalArgumentException("type can't be null!");
-    
-    if(racialModifiers == null)
-      throw new IllegalArgumentException("racialModifiers can't be null!");
-    
-    if(size == null)
-      throw new IllegalArgumentException("size can't be null!");
-    
-    if(speeds == null)
-      throw new IllegalArgumentException("speeds can't be null!");
-    
-    if(vision == null)
-      throw new IllegalArgumentException("vision can't be null!");
-    
-    if(racialTraits == null)
-      throw new IllegalArgumentException("racialTraits can't be null!");
-    
-    if(baseLanguages == null)
-      throw new IllegalArgumentException("baseLanguages can't be null!");
-    
-    if(optionalLanguages == null)
-      throw new IllegalArgumentException("optionalLanguages can't be null!");
+    ArgChecker.checkNotNull(type);
+    ArgChecker.checkNotNull(racialModifiers);
+    ArgChecker.checkNotNull(size);
+    ArgChecker.checkNotNull(speeds);
+    ArgChecker.checkNotNull(vision);
+    ArgChecker.checkNotNull(racialTraits);
+    ArgChecker.checkNotNull(baseLanguages);
+    ArgChecker.checkNotNull(optionalLanguages);
     
     this.type = type;
     this.racialModifiers = racialModifiers;

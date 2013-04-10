@@ -3,6 +3,7 @@ package com.pathfindersdk.stats;
 import com.pathfindersdk.creatures.BaseAttackBonus;
 import com.pathfindersdk.creatures.HitDice;
 import com.pathfindersdk.enums.SizeType;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class Cmb extends Stat implements Rollable
 {
@@ -18,14 +19,9 @@ final public class Cmb extends Stat implements Rollable
     
     setMainAbility(strenght);
     
-    if(dexterity == null)
-      throw new IllegalArgumentException("dexterity can't be null!");
-    
-    if(bab == null)
-      throw new IllegalArgumentException("bab can't be null!");
-    
-    if(size == null)
-      throw new IllegalArgumentException("size can't be null!");
+    ArgChecker.checkNotNull(dexterity);
+    ArgChecker.checkNotNull(bab);
+    ArgChecker.checkNotNull(size);
 
     this.dexterity = dexterity;
     this.bab = bab;
@@ -35,8 +31,7 @@ final public class Cmb extends Stat implements Rollable
   
   public void setMainAbility(AbilityScore mainAbility)
   {
-    if(mainAbility == null)
-      throw new IllegalArgumentException("mainAbility can't be null!");
+    ArgChecker.checkNotNull(mainAbility);
     
     this.mainAbility = mainAbility;
   }

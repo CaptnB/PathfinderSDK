@@ -6,6 +6,7 @@ import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.FeatType;
 import com.pathfindersdk.prerequisites.Prerequisite;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class represents feats. 
@@ -18,8 +19,8 @@ final public class Feat extends Feature<Creature>
   {
     super(name, prerequisites, bonuses);
     
-    if(type == null)
-      throw new IllegalArgumentException("type can't be null");
+    ArgChecker.checkNotNull(type);
+
     this.type = type;
   }
   

@@ -8,6 +8,7 @@ import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.BookSectionType;
+import com.pathfindersdk.utils.ArgChecker;
 
 
 /**
@@ -30,8 +31,7 @@ final public class SkillItem extends BookItem
   {
     super(name);
     
-    if(keyAbility == null)
-      throw new IllegalArgumentException("keyAbility can't be null");
+    ArgChecker.checkNotNull(keyAbility);
     
     this.keyAbility = keyAbility;
     this.untrained = untrained;

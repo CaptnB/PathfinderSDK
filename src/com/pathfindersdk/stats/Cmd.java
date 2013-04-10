@@ -1,13 +1,14 @@
 package com.pathfindersdk.stats;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.pathfindersdk.creatures.BaseAttackBonus;
+import com.pathfindersdk.utils.ArgChecker;
 
 final public class Cmd extends Stat
 {
-  private List<AbilityScore> abilities = new ArrayList<AbilityScore>();   // A list because Monk can add Wisdon too
+  private Set<AbilityScore> abilities = new HashSet<AbilityScore>();   // A set because Monk can add Wisdom
   private BaseAttackBonus bab;
   private Size size;
 
@@ -15,17 +16,10 @@ final public class Cmd extends Stat
   {
     super(10);
     
-    if(strenght == null)
-      throw new IllegalArgumentException("strenght can't be null!");
-    
-    if(dexterity == null)
-      throw new IllegalArgumentException("dexterity can't be null!");
-    
-    if(bab == null)
-      throw new IllegalArgumentException("bab can't be null!");
-    
-    if(size == null)
-      throw new IllegalArgumentException("size can't be null!");
+    ArgChecker.checkNotNull(strenght);
+    ArgChecker.checkNotNull(dexterity);
+    ArgChecker.checkNotNull(bab);
+    ArgChecker.checkNotNull(size);
 
     abilities.add(strenght);
     abilities.add(dexterity);
@@ -33,8 +27,16 @@ final public class Cmd extends Stat
     this.size = size;
   }
 
-  // TODO : add/remove ability
-  
+  public void addAbility(AbilityScore ability)
+  {
+    abilities.add(ability);
+  }
+ 
+  public void removeAbility(AbilityScore ability)
+  {
+    abilities.remove(ability);
+  }
+ 
   @Override
   public int getScore()
   {

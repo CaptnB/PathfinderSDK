@@ -9,10 +9,12 @@ import com.pathfindersdk.tests.books.BooksTestSuite;
 import com.pathfindersdk.tests.books.items.BookItemsTestSuite;
 import com.pathfindersdk.tests.coins.CoinsTestSuite;
 import com.pathfindersdk.tests.creatures.CreaturesTestSuite;
+import com.pathfindersdk.tests.enums.EnumsTestSuite;
 import com.pathfindersdk.tests.equipment.EquipmentTestSuite;
 import com.pathfindersdk.tests.features.FeaturesTestSuite;
 import com.pathfindersdk.tests.prerequisites.PrerequisitesTestSuite;
 import com.pathfindersdk.tests.stats.StatsTestSuite;
+import com.pathfindersdk.tests.utils.UtilsTestSuite;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
@@ -21,10 +23,12 @@ import com.pathfindersdk.tests.stats.StatsTestSuite;
   BookItemsTestSuite.class,
   CoinsTestSuite.class,
   CreaturesTestSuite.class,
+  EnumsTestSuite.class,
   EquipmentTestSuite.class,
   FeaturesTestSuite.class,
   PrerequisitesTestSuite.class,
-  StatsTestSuite.class
+  StatsTestSuite.class,
+  UtilsTestSuite.class
 })
 public class AllTestSuites
 {

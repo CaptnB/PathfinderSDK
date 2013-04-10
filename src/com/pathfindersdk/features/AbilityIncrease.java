@@ -3,6 +3,7 @@ package com.pathfindersdk.features;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.stats.AbilityScore;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  *  This immutable class represent an AbilityScore increase. While AbilityBonus only gives a temporary boost, AbilityIncrease is permanent 
@@ -15,8 +16,7 @@ final public class AbilityIncrease implements Applicable<Creature>
   
   public AbilityIncrease(int increment, AbilityType ability)
   {
-    if(ability == null)
-      throw new IllegalArgumentException("ability can't be null!");
+    ArgChecker.checkNotNull(ability);
     
     this.increment = increment;
     this.ability = ability;

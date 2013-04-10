@@ -3,6 +3,7 @@ package com.pathfindersdk.prerequisites;
 import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.features.Race;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class requires a race to have a specific racial trait.
@@ -13,8 +14,8 @@ final public class RacialTraitPrerequisite implements Prerequisite<Race>
   
   public RacialTraitPrerequisite(String traitName)
   {
-    if(traitName == null)
-      throw new IllegalArgumentException("traitName can't be null!");
+    ArgChecker.checkNotNull(traitName);
+    ArgChecker.checkNotEmpty(traitName);
     
     this.traitName = traitName;
   }
@@ -22,8 +23,7 @@ final public class RacialTraitPrerequisite implements Prerequisite<Race>
   @Override
   public boolean isFilled(Race target)
   {
-    if(target == null)
-      throw new IllegalArgumentException("target can't be null!");
+    ArgChecker.checkNotNull(target);
 
     for(Feature<Character> racialTrait : target.getRacialTraits())
     {

@@ -14,6 +14,7 @@ import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.Size;
 import com.pathfindersdk.stats.Stat;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class represents a character race with all player 
@@ -28,8 +29,7 @@ final public class Race implements Applicable<Character>
   
   public Race(RaceItem raceItem)
   {
-    if(raceItem == null)
-      throw new IllegalArgumentException("raceItem can't be null!");
+    ArgChecker.checkNotNull(raceItem);
     
     this.raceItem = raceItem;
     
@@ -53,8 +53,7 @@ final public class Race implements Applicable<Character>
   
   public void addAlternateRacialTrait(AlternateRacialTraitItem alternateTrait)
   {
-    if(alternateTrait == null)
-      throw new IllegalArgumentException("alternateTrait can't be null!");
+    ArgChecker.checkNotNull(alternateTrait);
 
     // Apply alternate trait
     if(alternateTrait.fillsPrerequisites(this))

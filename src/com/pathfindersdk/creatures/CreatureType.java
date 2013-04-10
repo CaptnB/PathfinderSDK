@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.enums.CreatureMainType;
 import com.pathfindersdk.enums.CreatureSubtype;
+import com.pathfindersdk.utils.ArgChecker;
 
 public class CreatureType
 {
@@ -32,8 +33,8 @@ public class CreatureType
 
   public void setType(CreatureMainType type)
   {
-    if(type == null)
-      throw new IllegalArgumentException("type can't be null!");
+    ArgChecker.checkNotNull(type);
+
     this.type = type;
   }
 
@@ -47,8 +48,7 @@ public class CreatureType
 
   public void addSubtype(CreatureSubtype subtype)
   {
-    if(subtype == null)
-      throw new IllegalArgumentException("subtype can't be null!");
+    ArgChecker.checkNotNull(subtype);
       
     if(subtypes == null)
       subtypes = new TreeSet<CreatureSubtype>();

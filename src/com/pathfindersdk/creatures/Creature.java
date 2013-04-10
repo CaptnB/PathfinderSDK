@@ -1,6 +1,8 @@
 package com.pathfindersdk.creatures;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeMap;
@@ -10,6 +12,7 @@ import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.books.Index;
 import com.pathfindersdk.books.items.FeatItem;
 import com.pathfindersdk.books.items.SkillItem;
+import com.pathfindersdk.creatures.blocks.SpeedBlock;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.BookSectionType;
@@ -25,6 +28,7 @@ import com.pathfindersdk.stats.Cmd;
 import com.pathfindersdk.stats.Size;
 import com.pathfindersdk.stats.Skill;
 import com.pathfindersdk.stats.Stat;
+import com.pathfindersdk.utils.ArgChecker;
 
 
 /**
@@ -33,13 +37,13 @@ import com.pathfindersdk.stats.Stat;
 public abstract class Creature
 {
   // Step 1 - Determine ability scores
-  protected SortedMap<AbilityType, AbilityScore> abilityScores = new TreeMap<AbilityType, AbilityScore>();
+  protected Map<AbilityType, AbilityScore> abilityScores = new HashMap<AbilityType, AbilityScore>();
   
   // Step 2 - Pick your race
   protected transient CreatureType type;
   protected transient Size size;
-  protected transient SortedSet<VisionType> visions = new TreeSet<VisionType>();
-  protected transient SortedMap<SpeedType, Stat> speeds = new TreeMap<SpeedType, Stat>();
+  protected transient SortedSet<VisionType> visions = new TreeSet<VisionType>();          // Sorted by ordinal, best vision type first
+  protected transient SpeedBlock speedBlock = new SpeedBlock();
   
   // Step 3 - Pick your class
   
@@ -166,40 +170,27 @@ public abstract class Creature
   {
     visions.add(vision);
   }
-
-  public SortedMap<SpeedType, Stat> getSpeeds()
-  {
-    if(speeds != null)
-      return Collections.unmodifiableSortedMap(speeds);
-    else
-      return null;
-  }
   
   public Stat getSpeed(SpeedType type)
   {
-    return speeds.get(type);
+    return speedBlock.getSpeed(type);
   }
 
   public void addSpeed(SpeedType type, Stat speed)
   {
-    if(type != null && speed != null)
-    {
-      speeds.put(type, speed);
-    }
+    speedBlock.addSpeed(type, speed);
   }
 
-  public void removeSpeed(SpeedType type)
+  public void removeSpeed(SpeedType type, Stat speed)
   {
-    speeds.remove(type);
+    speedBlock.removeSpeed(type, speed);
   }
 
   public AbilityScore getAbilityScore(AbilityType type)
   {
-    AbilityScore score = abilityScores.get(type);
-    if(score == null)
-      System.out.println("Ability Score is null!");
+    ArgChecker.checkIsNot(type, AbilityType.ANY);
     
-    return score; 
+    return abilityScores.get(type); 
   }
   
   public Stat getStrenght()
@@ -313,8 +304,7 @@ public abstract class Creature
   
   public void addLanguage(LanguageType language)
   {
-    if(language == null)
-      throw new IllegalArgumentException("language can't be null");
+    ArgChecker.checkNotNull(language);
     
     languages.add(language);
   }

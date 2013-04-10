@@ -5,6 +5,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import com.pathfindersdk.enums.BookSectionType;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class represents a book section (or chapter) that usually contains the same type of items.
@@ -13,12 +14,12 @@ import com.pathfindersdk.enums.BookSectionType;
 public class BookSection implements Comparable<BookSection>
 {
   protected BookSectionType type;
-  protected SortedSet<BookItem> items;
+  protected SortedSet<BookItem> items;    // Sorted by name
   
   public BookSection(BookSectionType type)
   {
-    if(type == null)
-      throw new IllegalArgumentException("type can't ne null!");
+    ArgChecker.checkNotNull(type);
+
     this.type = type;
   }
   
@@ -38,8 +39,7 @@ public class BookSection implements Comparable<BookSection>
   // Add item to section and also places it into main index corresponding section
   public void addItem(BookItem item)
   {
-    if(item == null)
-      throw new IllegalArgumentException("item can't be null!");
+    ArgChecker.checkNotNull(item);
 
     if(items == null)
       items = new TreeSet<BookItem>();

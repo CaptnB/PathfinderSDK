@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.SortedMap;
 
 import com.pathfindersdk.enums.BookSectionType;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * Immutable class that wraps everything a Pathfinder book may contain.
@@ -16,11 +17,9 @@ final public class Book
 
   public Book(String title, SortedMap<BookSectionType, BookSection> sections)
   {
-    if(title == null)
-      throw new IllegalArgumentException("title can't be null!");
-    
-    if(sections == null)
-      throw new IllegalArgumentException("sections can't be null");
+    ArgChecker.checkNotNull(title);
+    ArgChecker.checkNotEmpty(title);
+    ArgChecker.checkNotNull(sections);
     
     this.title = title;
     this.sections = sections;

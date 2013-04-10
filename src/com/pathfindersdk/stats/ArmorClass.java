@@ -1,15 +1,16 @@
 package com.pathfindersdk.stats;
 
-import java.util.SortedSet;
+import java.util.List;
 
 import com.pathfindersdk.bonus.Bonus;
-import com.pathfindersdk.enums.BonusType;
+import com.pathfindersdk.enums.BonusTypeRegister;
 
 
 public class ArmorClass extends Stat
 {
   protected AbilityScore dex;
   protected Size size;
+  // TODO : max dex from armor/shield
 //  protected int maxDex; this should be a reference to shield/armor.getMaxDex()
 
   public ArmorClass(AbilityScore dex, Size size)
@@ -30,12 +31,12 @@ public class ArmorClass extends Stat
     int touch = getBaseScore();
     
     // Touch AC ignores armor, shield and natural AC
-    SortedSet<Bonus> bonusSet = getAllBaseBonuses();
+    List<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
     for(Bonus bonus : bonusSet)
     {
-      if(bonus.getType() != BonusType.ARMOR && 
-         bonus.getType() != BonusType.SHIELD && 
-         bonus.getType() != BonusType.NATURAL_ARMOR)
+      if(!bonus.getType().equals(BonusTypeRegister.getInstance().get("Armor")) && 
+         !bonus.getType().equals(BonusTypeRegister.getInstance().get("Shield")) && 
+         !bonus.getType().equals(BonusTypeRegister.getInstance().get("Natural Armor")))
       {
         touch += bonus.getValue();
       }
@@ -62,10 +63,10 @@ public class ArmorClass extends Stat
     int flatFooted = getBaseScore();
     
     // Flat-footed AC does not include dex modifier and ignores dodge bonus
-    SortedSet<Bonus> bonusSet = getAllBaseBonuses();
+    List<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
     for(Bonus bonus : bonusSet)
     {
-      if(bonus.getType() != BonusType.DODGE)
+      if(bonus.getType() != BonusTypeRegister.getInstance().get("Dodge"))
       {
         flatFooted += bonus.getValue();
       }
