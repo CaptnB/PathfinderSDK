@@ -1,7 +1,7 @@
 package com.pathfindersdk.books.items;
 
 import java.util.Collections;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.pathfindersdk.books.BookItem;
@@ -22,25 +22,31 @@ final public class AlternateRacialTraitItem extends BookItem
   final private RacialTrait newTrait;
   final private transient Set<RacialTraitPrerequisite> prerequisites;
 
-  public AlternateRacialTraitItem(String name, String raceName, Set<String> replacedTraits, RacialTrait newTrait)
+  public AlternateRacialTraitItem(String name, String raceName, RacialTrait newTrait, String ... replacedTraits)
   {
     super(name);
     
     ArgChecker.checkNotNull(raceName);
     ArgChecker.checkNotEmpty(raceName);
-    
-    ArgChecker.checkNotNull(replacedTraits);
-    
     ArgChecker.checkNotNull(newTrait);
+    ArgChecker.checkNotNull(replacedTraits);
+
+    Set<String> replacedTraitsSet = new HashSet<String>();
+    Set<RacialTraitPrerequisite> prerequisites = new HashSet<RacialTraitPrerequisite>();
+    for(String trait : replacedTraits)
+    {
+      ArgChecker.checkNotNull(trait);
+      ArgChecker.checkNotEmpty(trait);
+      
+      replacedTraitsSet.add(trait);
+      
+      // The target race requires to have the trait before changing it
+      prerequisites.add(new RacialTraitPrerequisite(trait));
+    }
     
     this.raceName = raceName;
-    this.replacedTraits = replacedTraits;
+    this.replacedTraits = replacedTraitsSet;
     this.newTrait = newTrait;
-    
-    // Generate prerequisites based on traits that will be replaced
-    Set<RacialTraitPrerequisite> prerequisites = new LinkedHashSet<RacialTraitPrerequisite>();
-    for(String trait : replacedTraits)
-      prerequisites.add(new RacialTraitPrerequisite(trait));
     this.prerequisites = prerequisites;
   }
   
