@@ -6,6 +6,15 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
+  AbilityScoreTest.class,
+  AbilityStatTest.class,
+  ArmorClassTest.class,
+  CmbTest.class,
+  CmdTest.class,
+  DiceTest.class,
+  NullStatTest.class,
+  SizeTest.class,
+  SkillTest.class,
   StatTest.class
 })
 public class StatsTestSuite
