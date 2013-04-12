@@ -1,7 +1,7 @@
 package com.pathfindersdk.enums;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.pathfindersdk.utils.ArgChecker;
 
@@ -47,7 +47,7 @@ final public class BonusTypeRegister
   }
 
   private final static BonusTypeRegister instance = new BonusTypeRegister();
-  private final Set<BonusType> bonusTypes = new HashSet<BonusType>();
+  private final Map<String, BonusType> bonusTypes = new HashMap<String, BonusType>();
   
   private BonusTypeRegister()
   {
@@ -73,33 +73,29 @@ final public class BonusTypeRegister
     return instance;
   }
   
-  public void register(String newType)
+  public void register(String type)
   {
-    ArgChecker.checkNotNull(newType);
-    ArgChecker.checkNotEmpty(newType);
+    ArgChecker.checkNotNull(type);
+    ArgChecker.checkNotEmpty(type);
     
-    // Do not register the same type twice
-    for(BonusType bonusType : bonusTypes)
-    {
-      if(newType.equals(bonusType.getType()))
-        throw new IllegalArgumentException("Bonus type [" + newType + "] is already registered!");
-    }
-    
-    bonusTypes.add(new BonusType(newType));
+    // Check for duplicates
+    BonusType bonusType = bonusTypes.get(type);
+    if(bonusType == null)
+      bonusTypes.put(type, new BonusType(type));
+    else
+      throw new IllegalArgumentException("[" + type + "] is already a registered bonus type");
   }
   
   public BonusType get(String type)
   {
     ArgChecker.checkNotNull(type);
     ArgChecker.checkNotEmpty(type);
-    
-    for(BonusType bonusType : bonusTypes)
-    {
-      if(bonusType.getType().equals(type))
-        return bonusType;
-    }
-    
-    throw new IllegalArgumentException(type + " is not a registered bonus type");
+
+    BonusType bonusType = bonusTypes.get(type);
+    if(bonusType != null)
+      return bonusType;
+    else
+      throw new IllegalArgumentException("[" + type + "] is not a registered bonus type");
   }
   
 }
