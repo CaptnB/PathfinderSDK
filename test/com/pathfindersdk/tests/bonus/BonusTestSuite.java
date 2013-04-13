@@ -14,6 +14,7 @@ import org.junit.runners.Suite.SuiteClasses;
   CmbBonusTest.class, 
   CmdBonusTest.class, 
   InitiativeBonusTest.class,
+  NullBonusTest.class,
   SaveBonusTest.class, 
   SizeBonusTest.class, 
   SkillBonusTest.class, 

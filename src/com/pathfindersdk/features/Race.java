@@ -19,7 +19,7 @@ import com.pathfindersdk.utils.ArgChecker;
 /**
  * This class represents a character race with all player 
  */
-final public class Race implements Applicable<Character>
+final public class Race extends Feature<Character>
 {
   final private RaceItem raceItem;
   final private transient Size size;
@@ -30,7 +30,8 @@ final public class Race implements Applicable<Character>
   public Race(RaceItem raceItem)
   {
     ArgChecker.checkNotNull(raceItem);
-    
+   
+    this.name = raceItem.getName();
     this.raceItem = raceItem;
     
     // Derived values
@@ -51,12 +52,23 @@ final public class Race implements Applicable<Character>
     return Collections.unmodifiableSortedSet(racialTraits);
   }
   
+  public boolean hasRacialTrait(String traitName)
+  {
+    for(RacialTrait trait : racialTraits)
+    {
+      if(trait.toString().equals(traitName))
+        return true;
+    }
+    
+    return false;
+  }
+  
   public void addAlternateRacialTrait(AlternateRacialTraitItem alternateTrait)
   {
     ArgChecker.checkNotNull(alternateTrait);
 
     // Apply alternate trait
-    if(alternateTrait.fillsPrerequisites(this))
+    if(alternateTrait.isAvailable(this))
     {
       // First remove traits to be replaced
       for(String traitName : alternateTrait.getReplacedTraits())
@@ -117,4 +129,5 @@ final public class Race implements Applicable<Character>
     String out = "";
     return out;
   }
+
 }

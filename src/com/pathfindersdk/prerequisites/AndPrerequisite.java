@@ -1,18 +1,22 @@
 package com.pathfindersdk.prerequisites;
 
+import java.util.Arrays;
 import java.util.List;
 
+import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.utils.ArgChecker;
 
-final public class AndPrerequisite<T> implements Prerequisite<T>
+final public class AndPrerequisite<T extends Creature> implements Prerequisite<T>
 {
   final private List<Prerequisite<T>> prerequisites;
   
-  public AndPrerequisite(List<Prerequisite<T>> prerequisites)
+  public AndPrerequisite(Prerequisite<T> ... prerequisites)
   {
     ArgChecker.checkNotNull(prerequisites);
+    for(Prerequisite<T> prereq : prerequisites)
+      ArgChecker.checkNotNull(prereq);
     
-    this.prerequisites = prerequisites;
+    this.prerequisites = Arrays.asList(prerequisites);
   }
 
   @Override

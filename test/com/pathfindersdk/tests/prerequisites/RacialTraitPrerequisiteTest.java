@@ -10,8 +10,9 @@ import java.util.TreeSet;
 
 import org.junit.Test;
 
-import com.pathfindersdk.bonus.Bonus;
+import com.pathfindersdk.bonus.NullBonus;
 import com.pathfindersdk.books.items.RaceItem;
+import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.creatures.CreatureType;
 import com.pathfindersdk.enums.CreatureMainType;
 import com.pathfindersdk.enums.LanguageType;
@@ -36,40 +37,46 @@ public class RacialTraitPrerequisiteTest
   @Test (expected = IllegalArgumentException.class)
   public void testIsFilledNull()
   {
-    Prerequisite<Race> prereq = new RacialTraitPrerequisite("Test trait");
+    Prerequisite<Character> prereq = new RacialTraitPrerequisite("Test trait");
     prereq.isFilled(null);
   }
 
   @Test
+  @SuppressWarnings({"unchecked"})
   public void testIsFilledPass()
   {
     SortedSet<RacialTrait> racialTraits = new TreeSet<RacialTrait>();
-    RacialTrait trait = new RacialTrait("Test trait", new TreeSet<Bonus>());
+    RacialTrait trait = new RacialTrait("Test trait", new NullBonus());
     racialTraits.add(trait);
     
     RaceItem raceItem = new RaceItem("Test race", new CreatureType(CreatureMainType.ABERRATION), new ArrayList<AbilityIncrease>(), 
         SizeType.MEDIUM, new HashMap<SpeedType, Integer>(), VisionType.DARKVISION_120, racialTraits, new TreeSet<LanguageType>(), new TreeSet<LanguageType>());
-    Race race = new Race(raceItem);
+
+    Character character = new Character();
+    character.setRace(new Race(raceItem));
     
-    Prerequisite<Race> prereq = new RacialTraitPrerequisite("Test trait");
+    Prerequisite<Character> prereq = new RacialTraitPrerequisite("Test trait");
     
-    assertTrue(prereq.isFilled(race));
+    assertTrue(prereq.isFilled(character));
   }
 
   @Test
+  @SuppressWarnings({"unchecked"})
   public void testIsFilledFail()
   {
     SortedSet<RacialTrait> racialTraits = new TreeSet<RacialTrait>();
-    RacialTrait trait = new RacialTrait("Test trait", new TreeSet<Bonus>());
+    RacialTrait trait = new RacialTrait("Test trait", new NullBonus());
     racialTraits.add(trait);
     
     RaceItem raceItem = new RaceItem("Test race", new CreatureType(CreatureMainType.ABERRATION), new ArrayList<AbilityIncrease>(), 
         SizeType.MEDIUM, new HashMap<SpeedType, Integer>(), VisionType.DARKVISION_120, racialTraits, new TreeSet<LanguageType>(), new TreeSet<LanguageType>());
-    Race race = new Race(raceItem);
+
+    Character character = new Character();
+    character.setRace(new Race(raceItem));
     
-    Prerequisite<Race> prereq = new RacialTraitPrerequisite("Test trait 2");
+    Prerequisite<Character> prereq = new RacialTraitPrerequisite("Test trait 2");
     
-    assertFalse(prereq.isFilled(race));
+    assertFalse(prereq.isFilled(character));
   }
 
 }

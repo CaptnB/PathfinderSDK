@@ -133,32 +133,133 @@ public class BonusTest
     bonus.removeFrom(character);
   }
   
+  // Different types, sort alphabetically on type name
+  
   @Test
-  public void testComparToGreater()
+  public void testCompareToByTypeGreater()
   {
-    Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
-    Bonus bonus2 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Dodge"));
+    Bonus bonus2 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
     
-    // Descending order -> biggest returns "smaller"
-    assertEquals(-1, bonus1.compareTo(bonus2));
+    assertTrue(bonus1.compareTo(bonus2) > 0);
   }
   
   @Test
-  public void testComparToEqual()
+  public void testCompareToByTypeEqual()
   {
     Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
     Bonus bonus2 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
+    
     assertEquals(0, bonus1.compareTo(bonus2));
   }
   
   @Test
-  public void testComparToLesser()
+  public void testCompareToByTypeLower()
+  {
+    Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus2 = new BonusStub(2, BonusTypeRegister.getInstance().get("Dodge"));
+    
+    assertTrue(bonus1.compareTo(bonus2) < 0);
+  }
+  
+  // Same type, both circumstantial with different values, sort by value (descending order)
+  
+  @Test
+  public void testCompareToBothCircumstantialGreater()
+  {
+    Bonus bonus1 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance");
+    Bonus bonus2 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"), "circumstance");
+    
+    assertEquals(1, bonus1.compareTo(bonus2));
+  }
+  
+  @Test
+  public void testCompareBothCircumstantialLower()
+  {
+    Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"), "circumstance");
+    Bonus bonus2 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance");
+    
+    assertEquals(-1, bonus1.compareTo(bonus2));
+  }
+  
+  // Same type, both circumstantial, same values, sort alphabetically by circumstance
+  
+  @Test
+  public void testCompareToBothCircumstantialAndSameValueGreater()
+  {
+    Bonus bonus1 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance B");
+    Bonus bonus2 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance A");
+    
+    assertTrue(bonus1.compareTo(bonus2) > 0);
+  }
+  
+  @Test
+  public void testCompareToBothCircumstantialAndSameValueEqual()
+  {
+    Bonus bonus1 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance A");
+    Bonus bonus2 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance A");
+    
+    assertEquals(0, bonus1.compareTo(bonus2));
+  }
+  
+  @Test
+  public void testCompareBothCircumstantialAndSameValueLower()
+  {
+    Bonus bonus1 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance A");
+    Bonus bonus2 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"), "circumstance B");
+    
+    assertTrue(bonus1.compareTo(bonus2) < 0);
+  }
+  
+  // Same type, both base, sort by value (descending order)
+  
+  @Test
+  public void testCompareToBothBaseGreater()
   {
     Bonus bonus1 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"));
     Bonus bonus2 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
-
-    // Descending order -> smallest returns "bigger"
+    
     assertEquals(1, bonus1.compareTo(bonus2));
+  }
+  
+  @Test
+  public void testCompareToBothBaseEqual()
+  {
+    Bonus bonus1 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus2 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"));
+    
+    assertEquals(0, bonus1.compareTo(bonus2));
+  }
+  
+  @Test
+  public void testCompareBothBaseLower()
+  {
+    Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus2 = new BonusStub(1, BonusTypeRegister.getInstance().get("Armor"));
+    
+    assertEquals(-1, bonus1.compareTo(bonus2));
+  }
+  
+  // Same type, one base, one circumstantial, base comes first
+  
+  @Test
+  public void testCompareToBaseCircumstantial()
+  {
+    Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus2 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"), "circumstance");
+    
+    assertEquals(1, bonus1.compareTo(bonus2));
+  }
+
+  // Same type, one circumstantial, one base, base comes first
+  
+  @Test
+  public void testCompareToCircumstantialBase()
+  {
+    Bonus bonus1 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"), "circumstance");
+    Bonus bonus2 = new BonusStub(2, BonusTypeRegister.getInstance().get("Armor"));
+    
+    assertEquals(-1, bonus1.compareTo(bonus2));
   }
   
 }

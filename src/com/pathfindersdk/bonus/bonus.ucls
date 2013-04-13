@@ -183,15 +183,10 @@
     <display labels="false" multiplicity="false"/>  
   </association>  
   <generalization id="35">    
-    <bendpoint x="940" y="284"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <generalization id="36">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="37">    
+  <generalization id="36">    
     <bendpoint x="492" y="288"/>    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="12"/>  

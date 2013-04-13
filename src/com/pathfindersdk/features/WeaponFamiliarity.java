@@ -2,18 +2,17 @@ package com.pathfindersdk.features;
 
 import java.util.SortedSet;
 
-import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Character;
-import com.pathfindersdk.prerequisites.Prerequisite;
+import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.prerequisites.NullPrerequisite;
 
 public class WeaponFamiliarity extends Feature<Character>
 {
   protected SortedSet<WeaponProficiency> proficiencies;
 
-  public WeaponFamiliarity(String name,
-      SortedSet<Prerequisite<Character>> prerequisites, SortedSet<Bonus> bonuses)
+  public WeaponFamiliarity(String name, Applicable<Creature> ... applicables)
   {
-    super(name, prerequisites, bonuses);
+    super(name, new NullPrerequisite<Creature>(), applicables);
     // TODO Auto-generated constructor stub
   }
 

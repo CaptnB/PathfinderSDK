@@ -1,8 +1,5 @@
 package com.pathfindersdk.features;
 
-import java.util.SortedSet;
-
-import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.FeatType;
 import com.pathfindersdk.prerequisites.Prerequisite;
@@ -15,9 +12,9 @@ final public class Feat extends Feature<Creature>
 {
   final private FeatType type;
   
-  public Feat(String name, FeatType type, SortedSet<Prerequisite<Creature>> prerequisites, SortedSet<Bonus> bonuses)
+  public Feat(String name, FeatType type, Prerequisite<Creature> prerequisite, Applicable<Creature> ... applicables)
   {
-    super(name, prerequisites, bonuses);
+    super(name, prerequisite, applicables);
     
     ArgChecker.checkNotNull(type);
 

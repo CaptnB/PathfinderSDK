@@ -1,76 +1,53 @@
 package com.pathfindersdk.features;
 
-import java.util.Collections;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.prerequisites.NullPrerequisite;
 import com.pathfindersdk.prerequisites.Prerequisite;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * Template class that wraps a named feature giving out bonuses (with optional prerequisites).
- * Ex: Racial traits are Feature<Character> as they don't apply to Monster. Feats are Feature<Creature> as they can be given to Monster also,
- * Feats can also have prerequisites.
+ * Feature can apply to a generic Creature (like Feats) or a specific target extending Creature (Race for Character, MonsterTemplate for Monster.
  */
-public class Feature<T extends Creature> implements Applicable<T>, Comparable<Feature<T>>
+public abstract class Feature<T extends Creature> implements Applicable<T>, Comparable<Feature<T>>
 {
-  final private String name;
-  final private SortedSet<Prerequisite<T>> prerequisites;
-  final private SortedSet<Bonus> bonuses;
+  protected String name;
+  protected Prerequisite<Creature> prerequisite;
+  protected List<Applicable<Creature>> applicables;
   
-  public Feature(String name, SortedSet<Bonus> bonuses)
-  {
-    this(name, new TreeSet<Prerequisite<T>>(), bonuses);
-  }  
-  
-  public Feature(String name, SortedSet<Prerequisite<T>> prerequisites, SortedSet<Bonus> bonuses)
+  public Feature(String name, Prerequisite<Creature> prerequisite, Applicable<Creature> ... applicables)
   {
     ArgChecker.checkNotNull(name);
     ArgChecker.checkNotEmpty(name);
-    ArgChecker.checkNotNull(prerequisites);
-    ArgChecker.checkNotNull(bonuses);
+    ArgChecker.checkNotNull(prerequisite);
+    ArgChecker.checkNotNull(applicables);
+    for(Applicable<Creature> applicable : applicables)
+      ArgChecker.checkNotNull(applicable);
     
     this.name = name;
-    this.prerequisites = prerequisites;
-    this.bonuses = bonuses;
+    this.prerequisite = prerequisite;
+    this.applicables = Arrays.asList(applicables);
   }
   
-  public SortedSet<Prerequisite<T>> getPrerequisites()
+  protected Feature()
   {
-    return Collections.unmodifiableSortedSet(prerequisites);
-  }
-  
-  public SortedSet<Bonus> getBonuses()
-  {
-    return Collections.unmodifiableSortedSet(bonuses);
-  }
-  
-  protected boolean fillsPrerequisites(T target)
-  {
-    boolean filled = true;
-
-    for(Prerequisite<T> prereq : prerequisites)
-    {
-      if(!prereq.isFilled(target))
-      {
-        filled = false;
-        break;
-      }
-    }
-  
-    return filled;
+    this.name = "New feature";
+    this.prerequisite = new NullPrerequisite<Creature>();
+    this.applicables = new ArrayList<Applicable<Creature>>();
   }
   
   @Override
   public void applyTo(T target)
   {
-    if(fillsPrerequisites(target))
+    if(prerequisite.isFilled(target))
     {
-      for(Bonus bonus : bonuses)
+      for(Applicable<Creature> applicable : applicables)
       {
-        bonus.applyTo(target);
+        applicable.applyTo(target);
       }
     }
   }
@@ -78,9 +55,9 @@ public class Feature<T extends Creature> implements Applicable<T>, Comparable<Fe
   @Override
   public void removeFrom(T target)
   {
-    for(Bonus bonus : bonuses)
+    for(Applicable<Creature> applicable : applicables)
     {
-      bonus.removeFrom(target);
+      applicable.removeFrom(target);
     }
   }
 

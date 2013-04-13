@@ -1,14 +1,13 @@
 package com.pathfindersdk.prerequisites;
 
 import com.pathfindersdk.creatures.Character;
-import com.pathfindersdk.features.Feature;
-import com.pathfindersdk.features.Race;
+import com.pathfindersdk.features.RacialTrait;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class requires a race to have a specific racial trait.
  */
-final public class RacialTraitPrerequisite implements Prerequisite<Race>
+final public class RacialTraitPrerequisite implements Prerequisite<Character>
 {
   final private String traitName;
   
@@ -21,11 +20,12 @@ final public class RacialTraitPrerequisite implements Prerequisite<Race>
   }
   
   @Override
-  public boolean isFilled(Race target)
+  public boolean isFilled(Character target)
   {
     ArgChecker.checkNotNull(target);
+    ArgChecker.checkNotNull(target.getRace());
 
-    for(Feature<Character> racialTrait : target.getRacialTraits())
+    for(RacialTrait racialTrait : target.getRace().getRacialTraits())
     {
       if(racialTrait.toString().equals(traitName))
       {
