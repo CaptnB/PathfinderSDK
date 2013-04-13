@@ -6,7 +6,7 @@ import com.pathfindersdk.utils.ArgChecker;
  * Base class for every item found in a book. Make sure every derived class is immutable (final class, final private members and no setters) 
  * as it prevents unintended modifications of the book content and simplifies affectations (no clone())
  */
-public abstract class BookItem implements Comparable<BookItem>
+public abstract class BookItem extends BookComponent implements Comparable<BookItem>
 {
   final private String name;
   
@@ -23,12 +23,10 @@ public abstract class BookItem implements Comparable<BookItem>
     return name;
   }
   
-  public abstract void index();
-  
   @Override
   public String toString()
   {
-    return name;
+    return getSpacing() + name;
   }
   
   @Override
@@ -36,4 +34,5 @@ public abstract class BookItem implements Comparable<BookItem>
   {
     return toString().compareTo(item.toString());
   }
+
 }

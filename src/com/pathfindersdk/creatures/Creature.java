@@ -8,14 +8,11 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.books.items.FeatItem;
 import com.pathfindersdk.books.items.SkillItem;
 import com.pathfindersdk.creatures.blocks.SpeedBlock;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
-import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SaveType;
 import com.pathfindersdk.enums.SpeedType;
@@ -82,18 +79,18 @@ public abstract class Creature
     savingThrows.put(SaveType.REF,  new AbilityStat(getAbilityScore(AbilityType.DEX)));
     savingThrows.put(SaveType.WILL, new AbilityStat(getAbilityScore(AbilityType.WIS)));
     
-    Index index = Index.getInstance();
-    SortedSet<BookItem> items = index.getIndex(BookSectionType.SKILLS).getItems();
-    if(items != null)
-    {
-      for(BookItem item : items)
-      {
-        if(item instanceof SkillItem)
-        {
-          addSkill((SkillItem)item);
-        }
-      }
-    }
+//    Index index = Index.getInstance();
+//    SortedSet<BookItem> items = index.getIndex(BookSectionType.SKILLS).getItems();
+//    if(items != null)
+//    {
+//      for(BookItem item : items)
+//      {
+//        if(item instanceof SkillItem)
+//        {
+//          addSkill((SkillItem)item);
+//        }
+//      }
+//    }
     
     initiative = new AbilityStat(getAbilityScore(AbilityType.DEX));
     bab = new BaseAttackBonus();

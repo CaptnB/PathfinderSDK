@@ -1,18 +1,48 @@
 package com.pathfindersdk.books;
 
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
 
 final public class Index
 {
+  public class IndexSection
+  {
+    private Map<String, BookItem> itemMap = new HashMap<String, BookItem>();
+    
+    public void addItem(BookItem item)
+    {
+      ArgChecker.checkNotNull(item);
+      
+      itemMap.put(item.getName(), item);
+    }
+
+    public BookItem getItem(String name)
+    {
+      ArgChecker.checkNotNull(name);
+      
+      return itemMap.get(name);
+    }
+    
+    @Override
+    public String toString()
+    {
+      String out = "";
+      
+      Set<String> items = itemMap.keySet();
+      for(String item : items)
+        out += "  " + item;
+      
+      return out;
+    }
+  }
+  
   // Singleton
   private static Index instance = new Index();
-  private SortedMap<BookSectionType, BookSection> index = new TreeMap<BookSectionType, BookSection>();
+  private Map<BookSectionType, IndexSection> index = new HashMap<BookSectionType, IndexSection>();
     
   private Index() {}
 
@@ -20,23 +50,18 @@ final public class Index
   {
     return instance;
   }
-
-  public SortedMap<BookSectionType, BookSection> getFullIndex()
-  {
-    return Collections.unmodifiableSortedMap(index);
-  }
   
-  public BookSection getIndex(BookSectionType type)
+  public IndexSection getIndex(BookSectionType type)
   {
     ArgChecker.checkNotNull(type);
       
     // Get existing section
-    BookSection section = index.get(type);
+    IndexSection section = index.get(type);
 
     // If section has not been found, create and add it to index
     if(section == null)
     {
-      section = new BookSection(type);
+      section = new IndexSection();
       index.put(type, section);
     }
     
@@ -50,7 +75,10 @@ final public class Index
     
     Set<BookSectionType> keys = index.keySet();
     for(BookSectionType key: keys)
+    {
+      out += key.toString();
       out += index.get(key).toString();
+    }
     
     return out;
   }

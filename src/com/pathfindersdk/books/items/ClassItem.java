@@ -68,7 +68,7 @@ final public class ClassItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.CLASSES).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.CLASSES).addItem(this);
   }
 
   

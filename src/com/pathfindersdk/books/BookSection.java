@@ -1,8 +1,6 @@
 package com.pathfindersdk.books;
 
-import java.util.Collections;
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
@@ -11,16 +9,20 @@ import com.pathfindersdk.utils.ArgChecker;
  * This class represents a book section (or chapter) that usually contains the same type of items.
  * Ex: A section with type BookSectionType.RACES will contains RaceItems
  */
-public class BookSection implements Comparable<BookSection>
+final public class BookSection extends BookComponent implements Comparable<BookSection>
 {
-  protected BookSectionType type;
-  protected SortedSet<BookItem> items;    // Sorted by name
+  final private BookSectionType type;
+  final private SortedSet<BookComponent> components;
   
-  public BookSection(BookSectionType type)
+  public BookSection(BookSectionType type, SortedSet<BookComponent> components)
   {
     ArgChecker.checkNotNull(type);
+    ArgChecker.checkNotNull(components);
+    for(BookComponent component : components)
+      ArgChecker.checkNotNull(component);
 
     this.type = type;
+    this.components = components;
   }
   
   public BookSectionType getType()
@@ -28,55 +30,36 @@ public class BookSection implements Comparable<BookSection>
     return type;
   }
   
-  public SortedSet<BookItem> getItems()
+  public boolean isEmpty()
   {
-    if(items != null)
-      return Collections.unmodifiableSortedSet(items);
-    else
-      return null;
+    return components.isEmpty();
   }
+
   
-  // Add item to section and also places it into main index corresponding section
-  public void addItem(BookItem item)
+  @Override
+  public void index()
   {
-    ArgChecker.checkNotNull(item);
-
-    if(items == null)
-      items = new TreeSet<BookItem>();
+    for(BookComponent component : components)
+      component.index();
     
-    // Add to this section
-    items.add(item);
-    
-    // Add to index
-    item.index();
-  }
-
-  // 
-  public void addItemWithoutIndexing(BookItem item)
-  {
-    if(item != null)
-    {
-      if(items == null)
-        items = new TreeSet<BookItem>();
-      
-      // Add to section
-      items.add(item);
-    }
   }
 
   @Override
   public int compareTo(BookSection section)
   {
-    // Sort BookSection according to the BookSectionType enum
+    // Sort BookSection according to the BookSectionType enum ordinals
     return type.compareTo(section.getType());
   }
   
   @Override
   public String toString()
   {
-    String out = type.toString();
-    for(BookItem item : items)
-      out += "\n  " + item.toString();
+    String out = getSpacing() + type.toString();
+    
+    increaseLevel();
+    for(BookComponent component : components)
+      out += component.toString();
+    decreaseLevel();
     
     return out;
   }

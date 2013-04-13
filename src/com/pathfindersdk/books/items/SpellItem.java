@@ -19,7 +19,7 @@ final public class SpellItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.SPELLS).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.SPELLS).addItem(this);
   }
 
 }

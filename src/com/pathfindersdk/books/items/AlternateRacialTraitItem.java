@@ -69,7 +69,7 @@ final public class AlternateRacialTraitItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.ALTERNATE_RACIAL_TRAITS).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.ALTERNATE_RACIAL_TRAITS).addItem(this);
   }
 
 }

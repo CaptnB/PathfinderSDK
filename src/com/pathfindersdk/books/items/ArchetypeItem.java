@@ -19,7 +19,7 @@ final public class ArchetypeItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.ARCHETYPES).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.ARCHETYPES).addItem(this);
   }
 
 }

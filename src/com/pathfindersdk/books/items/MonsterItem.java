@@ -19,7 +19,7 @@ final public class MonsterItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.MONSTERS).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.MONSTERS).addItem(this);
   }
 
 }

@@ -99,7 +99,7 @@ final public class RaceItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.RACES).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.RACES).addItem(this);
   }
 
 }

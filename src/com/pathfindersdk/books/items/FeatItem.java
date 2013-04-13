@@ -19,7 +19,7 @@ final public class FeatItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.FEATS).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.FEATS).addItem(this);
   }
 
 }

@@ -19,7 +19,7 @@ final public class PrestigeClassItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.PRESTIGE_CLASSES).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.PRESTIGE_CLASSES).addItem(this);
   }
 
 }

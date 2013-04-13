@@ -1,10 +1,8 @@
 package com.pathfindersdk.books;
 
 import java.util.Collections;
-import java.util.Set;
-import java.util.SortedMap;
+import java.util.SortedSet;
 
-import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
@@ -13,21 +11,23 @@ import com.pathfindersdk.utils.ArgChecker;
 final public class Book
 {
   final private String title;
-  final private SortedMap<BookSectionType, BookSection> sections;
+  final private SortedSet<BookComponent> components;
 
-  public Book(String title, SortedMap<BookSectionType, BookSection> sections)
+  public Book(String title, SortedSet<BookComponent> components)
   {
     ArgChecker.checkNotNull(title);
     ArgChecker.checkNotEmpty(title);
-    ArgChecker.checkNotNull(sections);
+    ArgChecker.checkNotNull(components);
+    for(BookComponent component : components)
+      ArgChecker.checkNotNull(component);
     
     this.title = title;
-    this.sections = sections;
+    this.components = components;
   }
   
-  public SortedMap<BookSectionType, BookSection> getSections()
+  public SortedSet<BookComponent> getComponents()
   {
-    return Collections.unmodifiableSortedMap(sections);
+    return Collections.unmodifiableSortedSet(components);
   }
   
   @Override
@@ -35,9 +35,8 @@ final public class Book
   {
     String out = title + "\n\n";
     
-    Set<BookSectionType> keys = sections.keySet();
-    for(BookSectionType key : keys)
-      out += sections.get(key).toString();
+    for(BookComponent component : components)
+      out += component.toString();
     
     return out;
   }

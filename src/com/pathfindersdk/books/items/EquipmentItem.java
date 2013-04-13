@@ -19,7 +19,7 @@ final public class EquipmentItem extends BookItem
   @Override
   public void index()
   {
-    Index.getInstance().getIndex(BookSectionType.EQUIPMENT).addItemWithoutIndexing(this);
+    Index.getInstance().getIndex(BookSectionType.EQUIPMENT).addItem(this);
   }
 
 }
