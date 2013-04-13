@@ -2,6 +2,7 @@ package com.pathfindersdk.tests.utils;
 
 import org.junit.Test;
 
+import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.utils.ArgChecker;
 
 public class ArgCheckerTest
@@ -79,6 +80,12 @@ public class ArgCheckerTest
     ArgChecker.checkIsPositive(0.0);
   }
 
+  @Test
+  public void testCheckIsNotPass()
+  {
+    ArgChecker.checkIsNot(AbilityType.CHA, AbilityType.ANY);
+  }
+
   @Test (expected = IllegalArgumentException.class)
   public void testCheckNullFail()
   {
@@ -125,6 +132,12 @@ public class ArgCheckerTest
   public void testCheckPositiveDoubleFail()
   {
     ArgChecker.checkIsPositive(-5.0);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testCheckIsNotFail()
+  {
+    ArgChecker.checkIsNot(AbilityType.ANY, AbilityType.ANY);
   }
 
 }
