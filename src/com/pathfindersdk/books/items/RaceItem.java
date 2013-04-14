@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.SortedSet;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.creatures.CreatureType;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.enums.LanguageType;
@@ -22,7 +21,7 @@ import com.pathfindersdk.utils.ArgChecker;
  */
 final public class RaceItem extends BookItem
 {
-  final private CreatureType type;
+  final private CreatureType creatureType;
   final private List<AbilityIncrease> racialModifiers;
   final private SizeType size;
   final private Map<SpeedType, Integer> speeds;
@@ -32,12 +31,13 @@ final public class RaceItem extends BookItem
   final private SortedSet<LanguageType> baseLanguages;
   final private SortedSet<LanguageType> optionalLanguages;
     
-  public RaceItem(String name, CreatureType type, List<AbilityIncrease> racialModifiers, SizeType size, Map<SpeedType, Integer> speeds, 
-      VisionType vision, SortedSet<RacialTrait> racialTraits, SortedSet<LanguageType> baseLanguages, SortedSet<LanguageType> optionalLanguages)
+  public RaceItem(String name, CreatureType creatureType, List<AbilityIncrease> racialModifiers, SizeType size, 
+      Map<SpeedType, Integer> speeds, VisionType vision, SortedSet<RacialTrait> racialTraits, 
+      SortedSet<LanguageType> baseLanguages, SortedSet<LanguageType> optionalLanguages)
   {
-    super(name);
+    super(name, BookSectionType.RACES);
     
-    ArgChecker.checkNotNull(type);
+    ArgChecker.checkNotNull(creatureType);
     ArgChecker.checkNotNull(racialModifiers);
     ArgChecker.checkNotNull(size);
     ArgChecker.checkNotNull(speeds);
@@ -46,7 +46,7 @@ final public class RaceItem extends BookItem
     ArgChecker.checkNotNull(baseLanguages);
     ArgChecker.checkNotNull(optionalLanguages);
     
-    this.type = type;
+    this.creatureType = creatureType;
     this.racialModifiers = racialModifiers;
     this.size = size;
     this.speeds = speeds;
@@ -56,9 +56,9 @@ final public class RaceItem extends BookItem
     this.optionalLanguages = optionalLanguages;
   }
   
-  public CreatureType getType()
+  public CreatureType getCreatureType()
   {
-    return type;
+    return creatureType;
   }
   
   public List<AbilityIncrease> getRacialModifiers()
@@ -94,12 +94,6 @@ final public class RaceItem extends BookItem
   public SortedSet<LanguageType> getOptionalLanguages()
   {
     return Collections.unmodifiableSortedSet(optionalLanguages);
-  }
-
-  @Override
-  public void index()
-  {
-    Index.getInstance().getIndex(BookSectionType.RACES).addItem(this);
   }
 
 }

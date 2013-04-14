@@ -19,6 +19,13 @@ final public class Index
       
       itemMap.put(item.toString(), item);
     }
+    
+    public void removeItem(BookItem item)
+    {
+      ArgChecker.checkNotNull(item);
+      
+      itemMap.remove(item.toString());
+    }
 
     public BookItem getItem(String name)
     {
@@ -51,7 +58,7 @@ final public class Index
     return instance;
   }
   
-  public IndexSection getIndex(BookSectionType type)
+  public IndexSection getIndexSection(BookSectionType type)
   {
     ArgChecker.checkNotNull(type);
       
@@ -66,6 +73,23 @@ final public class Index
     }
     
     return section;
+  }
+  
+  public BookItem getItem(BookSectionType type, String name)
+  {
+    ArgChecker.checkNotNull(type);
+    ArgChecker.checkNotNull(name);
+    ArgChecker.checkNotEmpty(name);
+    
+    return getIndexSection(type).getItem(name);
+    
+  }
+  
+  public BookItem getItem(BookItem item)
+  {
+    ArgChecker.checkNotNull(item);
+    
+    return getItem(item.getType(), item.toString());
   }
 
   @Override

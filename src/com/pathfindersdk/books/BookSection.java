@@ -11,30 +11,24 @@ import com.pathfindersdk.utils.ArgChecker;
  */
 final public class BookSection extends BookComponent implements Comparable<BookSection>
 {
-  final private BookSectionType type;
   final private SortedSet<BookComponent> components;
   
   public BookSection(BookSectionType type, SortedSet<BookComponent> components)
   {
+    super(type);
+    
     ArgChecker.checkNotNull(type);
     ArgChecker.checkNotNull(components);
     for(BookComponent component : components)
       ArgChecker.checkNotNull(component);
 
-    this.type = type;
     this.components = components;
-  }
-  
-  public BookSectionType getType()
-  {
-    return type;
   }
   
   public boolean isEmpty()
   {
     return components.isEmpty();
   }
-
   
   @Override
   public void index()
@@ -57,13 +51,13 @@ final public class BookSection extends BookComponent implements Comparable<BookS
   public int compareTo(BookSection section)
   {
     // Sort BookSection according to the BookSectionType enum ordinals
-    return type.compareTo(section.getType());
+    return getType().compareTo(section.getType());
   }
   
   @Override
   public String toString()
   {
-    String out = getSpacing() + type.toString();
+    String out = getSpacing() + getType().toString();
     
     increaseLevel();
     for(BookComponent component : components)

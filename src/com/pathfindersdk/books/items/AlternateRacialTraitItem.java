@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.features.Race;
 import com.pathfindersdk.features.RacialTrait;
@@ -23,7 +22,7 @@ final public class AlternateRacialTraitItem extends BookItem
 
   public AlternateRacialTraitItem(String name, String raceName, RacialTrait newTrait, String ... replacedTraits)
   {
-    super(name);
+    super(name, BookSectionType.ALTERNATE_RACIAL_TRAITS);
     
     ArgChecker.checkNotNull(raceName);
     ArgChecker.checkNotEmpty(raceName);
@@ -64,12 +63,6 @@ final public class AlternateRacialTraitItem extends BookItem
     }
     
     return true;
-  }
-
-  @Override
-  public void index()
-  {
-    Index.getInstance().getIndex(BookSectionType.ALTERNATE_RACIAL_TRAITS).addItem(this);
   }
 
 }

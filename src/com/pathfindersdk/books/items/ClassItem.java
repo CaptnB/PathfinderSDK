@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.features.ClassLevel;
@@ -26,7 +25,7 @@ final public class ClassItem extends BookItem
   
   public ClassItem(String name, List<Prerequisite<Creature>> prerequisites, Dice hitDice, List<String> classSkills, int skillRanks, List<ClassLevel> levels)
   {
-    super(name);
+    super(name, BookSectionType.CLASSES);
     
     ArgChecker.checkNotNull(prerequisites);
     ArgChecker.checkNotNull(hitDice);
@@ -64,12 +63,5 @@ final public class ClassItem extends BookItem
   {
     return Collections.unmodifiableList(levels);
   }
-
-  @Override
-  public void index()
-  {
-    Index.getInstance().getIndex(BookSectionType.CLASSES).addItem(this);
-  }
-
   
 }

@@ -1,5 +1,6 @@
 package com.pathfindersdk.books;
 
+import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
@@ -10,12 +11,26 @@ public abstract class BookItem extends BookComponent implements Comparable<BookI
 {
   final private String name;
   
-  public BookItem(String name)
+  public BookItem(String name, BookSectionType type)
   {
+    super(type);
+
     ArgChecker.checkNotNull(name);
     ArgChecker.checkNotEmpty(name);
 
     this.name = name;
+  }
+  
+  @Override
+  public void index()
+  {
+    Index.getInstance().getIndexSection(getType()).addItem(this);
+  }
+  
+  @Override
+  public void unindex()
+  {
+    Index.getInstance().getIndexSection(getType()).removeItem(this);
   }
   
   @Override

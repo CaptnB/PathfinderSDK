@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
@@ -29,7 +28,7 @@ final public class SkillItem extends BookItem
   
   public SkillItem(String name, AbilityType keyAbility, boolean untrained, boolean armorCheckPenalty, List<String> extensions)
   {
-    super(name);
+    super(name, BookSectionType.SKILLS);
     
     ArgChecker.checkNotNull(keyAbility);
     
@@ -62,12 +61,6 @@ final public class SkillItem extends BookItem
   public boolean isExtensible()
   {
     return extensions.size() > 0;
-  }
-
-  @Override
-  public void index()
-  {
-    Index.getInstance().getIndex(BookSectionType.SKILLS).addItem(this);
   }
   
 }

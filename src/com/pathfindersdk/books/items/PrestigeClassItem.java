@@ -1,7 +1,6 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.BookSectionType;
 
 /**
@@ -12,14 +11,8 @@ final public class PrestigeClassItem extends BookItem
 
   public PrestigeClassItem(String name)
   {
-    super(name);
+    super(name, BookSectionType.PRESTIGE_CLASSES);
     // TODO Auto-generated constructor stub
-  }
-
-  @Override
-  public void index()
-  {
-    Index.getInstance().getIndex(BookSectionType.PRESTIGE_CLASSES).addItem(this);
   }
 
 }

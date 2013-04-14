@@ -1,7 +1,6 @@
 package com.pathfindersdk.books.items;
 
 import com.pathfindersdk.books.BookItem;
-import com.pathfindersdk.books.Index;
 import com.pathfindersdk.enums.BookSectionType;
 
 /**
@@ -12,14 +11,8 @@ final public class SpellItem extends BookItem
 
   public SpellItem(String name)
   {
-    super(name);
+    super(name, BookSectionType.SPELLS);
     // TODO Auto-generated constructor stub
-  }
-
-  @Override
-  public void index()
-  {
-    Index.getInstance().getIndex(BookSectionType.SPELLS).addItem(this);
   }
 
 }
