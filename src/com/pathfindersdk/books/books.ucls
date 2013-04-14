@@ -34,7 +34,7 @@
   </class>  
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="com.pathfindersdk.books.Index.IndexSection" 
     project="PathfinderSDK" file="/PathfinderSDK/src/com/pathfindersdk/books/Index.java" binary="false">    
-    <position height="-1" width="-1" x="126" y="124"/>    
+    <position height="-1" width="-1" x="130" y="158"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -69,6 +69,9 @@
     <end type="TARGET" refId="7"/>  
   </generalization>  
   <association id="12">    
+    <bendpoint x="249" y="46"/>    
+    <bendpoint x="285" y="36"/>    
+    <bendpoint x="290" y="-1"/>    
     <end type="SOURCE" refId="6" navigable="false">      
       <attribute id="13" name="instance"/>      
       <multiplicity id="14" minimum="0" maximum="1"/>    

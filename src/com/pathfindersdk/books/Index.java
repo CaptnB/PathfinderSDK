@@ -9,25 +9,25 @@ import com.pathfindersdk.utils.ArgChecker;
 
 final public class Index
 {
-  public class IndexSection
+  private class IndexSection
   {
     private Map<String, BookItem> itemMap = new HashMap<String, BookItem>();
     
-    public void addItem(BookItem item)
+    private void addItem(BookItem item)
     {
       ArgChecker.checkNotNull(item);
       
       itemMap.put(item.toString(), item);
     }
     
-    public void removeItem(BookItem item)
+    private void removeItem(BookItem item)
     {
       ArgChecker.checkNotNull(item);
       
       itemMap.remove(item.toString());
     }
 
-    public BookItem getItem(String name)
+    private BookItem getItem(String name)
     {
       ArgChecker.checkNotNull(name);
       
@@ -58,7 +58,7 @@ final public class Index
     return instance;
   }
   
-  public IndexSection getIndexSection(BookSectionType type)
+  private IndexSection getIndexSection(BookSectionType type)
   {
     ArgChecker.checkNotNull(type);
       
@@ -73,6 +73,20 @@ final public class Index
     }
     
     return section;
+  }
+  
+  public void indexItem(BookItem item)
+  {
+    ArgChecker.checkNotNull(item);
+    
+    getIndexSection(item.getType()).addItem(item);
+  }
+  
+  public void unindexItem(BookItem item)
+  {
+    ArgChecker.checkNotNull(item);
+    
+    getIndexSection(item.getType()).removeItem(item);
   }
   
   public BookItem getItem(BookSectionType type, String name)

@@ -24,13 +24,13 @@ public abstract class BookItem extends BookComponent implements Comparable<BookI
   @Override
   public void index()
   {
-    Index.getInstance().getIndexSection(getType()).addItem(this);
+    Index.getInstance().indexItem(this);
   }
   
   @Override
   public void unindex()
   {
-    Index.getInstance().getIndexSection(getType()).removeItem(this);
+    Index.getInstance().unindexItem(this);
   }
   
   @Override
