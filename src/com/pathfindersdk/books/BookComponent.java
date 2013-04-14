@@ -3,8 +3,9 @@ package com.pathfindersdk.books;
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
 
-public abstract class BookComponent
+public abstract class BookComponent implements Comparable<BookComponent>
 {
+  private static int level = 0;
   private final BookSectionType type;
   
   protected BookComponent(BookSectionType type)
@@ -19,7 +20,7 @@ public abstract class BookComponent
     return type;
   }
   
-  private static int level = 0;
+  public abstract String getName();
   
   public abstract void index();
   
@@ -45,4 +46,15 @@ public abstract class BookComponent
     return out;
   }
 
+  @Override
+  public int compareTo(BookComponent o)
+  {
+    // First sort by type
+    if(!getType().equals(o.getType()))
+      return getType().compareTo(o.getType());
+    
+    // Then by name
+    else
+      return getName().compareTo(o.getName());
+  }
 }

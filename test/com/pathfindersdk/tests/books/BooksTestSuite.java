@@ -6,7 +6,12 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-  BookItemTest.class
+  BookBuilderTest.class,
+  BookComponentTest.class,
+  BookItemTest.class,
+  BookSectionTest.class,
+  BookTest.class,
+  IndexTest.class
 })
 public class BooksTestSuite
 {

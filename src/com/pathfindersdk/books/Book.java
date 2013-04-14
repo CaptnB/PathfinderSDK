@@ -1,7 +1,9 @@
 package com.pathfindersdk.books;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.pathfindersdk.utils.ArgChecker;
 
@@ -13,7 +15,7 @@ final public class Book
   final private String title;
   final private SortedSet<BookComponent> components;
 
-  public Book(String title, SortedSet<BookComponent> components)
+  public Book(String title, List<BookComponent> components)
   {
     ArgChecker.checkNotNull(title);
     ArgChecker.checkNotEmpty(title);
@@ -22,14 +24,11 @@ final public class Book
       ArgChecker.checkNotNull(component);
     
     this.title = title;
-    this.components = components;
+    this.components = new TreeSet<BookComponent>(components);
     
-    indexAll();
-  }
-  
-  public void remove()
-  {
-    unindexAll();
+    // Update Index with new content
+    for(BookComponent component : components)
+      component.index();
   }
   
   public SortedSet<BookComponent> getComponents()
@@ -37,25 +36,16 @@ final public class Book
     return Collections.unmodifiableSortedSet(components);
   }
   
-  private void indexAll()
-  {
-    for(BookComponent component : components)
-      component.index();
-  }
-  
-  private void unindexAll()
-  {
-    for(BookComponent component : components)
-      component.unindex();
-  }
-  
   @Override
   public String toString()
   {
-    String out = title + "\n\n";
+    String out = title;
+    
+    if(!components.isEmpty())
+      out += "\n-----";
     
     for(BookComponent component : components)
-      out += component.toString();
+      out += "\n" + component.toString();
     
     return out;
   }

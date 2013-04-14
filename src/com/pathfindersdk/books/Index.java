@@ -1,8 +1,8 @@
 package com.pathfindersdk.books;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
@@ -11,20 +11,20 @@ final public class Index
 {
   private class IndexSection
   {
-    private Map<String, BookItem> itemMap = new HashMap<String, BookItem>();
+    private SortedMap<String, BookItem> itemMap = new TreeMap<String, BookItem>();
     
     private void addItem(BookItem item)
     {
       ArgChecker.checkNotNull(item);
       
-      itemMap.put(item.toString(), item);
+      itemMap.put(item.getName(), item);
     }
     
     private void removeItem(BookItem item)
     {
       ArgChecker.checkNotNull(item);
       
-      itemMap.remove(item.toString());
+      itemMap.remove(item.getName());
     }
 
     private BookItem getItem(String name)
@@ -34,6 +34,11 @@ final public class Index
       return itemMap.get(name);
     }
     
+    private boolean isEmpty()
+    {
+      return itemMap.isEmpty();
+    }
+    
     @Override
     public String toString()
     {
@@ -41,7 +46,7 @@ final public class Index
       
       Set<String> items = itemMap.keySet();
       for(String item : items)
-        out += "  " + item;
+        out += "\n  " + item;
       
       return out;
     }
@@ -49,7 +54,7 @@ final public class Index
   
   // Singleton
   private static Index instance = new Index();
-  private Map<BookSectionType, IndexSection> index = new HashMap<BookSectionType, IndexSection>();
+  private SortedMap<BookSectionType, IndexSection> index = new TreeMap<BookSectionType, IndexSection>();
     
   private Index() {}
 
@@ -86,7 +91,10 @@ final public class Index
   {
     ArgChecker.checkNotNull(item);
     
-    getIndexSection(item.getType()).removeItem(item);
+    IndexSection section = getIndexSection(item.getType());
+    section.removeItem(item);
+    if(section.isEmpty())
+      index.remove(item.getType());
   }
   
   public BookItem getItem(BookSectionType type, String name)
@@ -109,14 +117,11 @@ final public class Index
   @Override
   public String toString()
   {
-    String out = "Index\n-----\n";
+    String out = "Index\n-----";
     
     Set<BookSectionType> keys = index.keySet();
     for(BookSectionType key: keys)
-    {
-      out += key.toString();
-      out += index.get(key).toString();
-    }
+      out += "\n" + key.toString() + index.get(key).toString();
     
     return out;
   }

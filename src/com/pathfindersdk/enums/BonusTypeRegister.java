@@ -86,6 +86,13 @@ final public class BonusTypeRegister
       throw new IllegalArgumentException("[" + type + "] is already a registered bonus type");
   }
   
+  public void unregister(String type)
+  {
+    ArgChecker.checkNotNull(type);
+    
+    bonusTypes.remove(type);
+  }
+  
   public BonusType get(String type)
   {
     ArgChecker.checkNotNull(type);

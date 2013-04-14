@@ -276,7 +276,7 @@ public abstract class Creature
   
   public void addSkill(SkillItem item)
   {
-    skills.put(item.toString(), new Skill(item, getAbilityScore(item.getKeyAbility())));
+    skills.put(item.getName(), new Skill(item, getAbilityScore(item.getKeyAbility())));
   }
   
   public Stat getSkill(String skillName)
@@ -286,7 +286,7 @@ public abstract class Creature
   
   public void addFeat(FeatItem item)
   {
-    feats.put(item.toString(), item);
+    feats.put(item.getName(), item);
   }
   
   public FeatItem getFeat(String featName)

@@ -1,6 +1,8 @@
 package com.pathfindersdk.books;
 
+import java.util.List;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.pathfindersdk.enums.BookSectionType;
 import com.pathfindersdk.utils.ArgChecker;
@@ -9,20 +11,19 @@ import com.pathfindersdk.utils.ArgChecker;
  * This class represents a book section (or chapter) that usually contains the same type of items.
  * Ex: A section with type BookSectionType.RACES will contains RaceItems
  */
-final public class BookSection extends BookComponent implements Comparable<BookSection>
+final public class BookSection extends BookComponent
 {
   final private SortedSet<BookComponent> components;
   
-  public BookSection(BookSectionType type, SortedSet<BookComponent> components)
+  public BookSection(BookSectionType type, List<BookComponent> components)
   {
     super(type);
     
-    ArgChecker.checkNotNull(type);
     ArgChecker.checkNotNull(components);
-    for(BookComponent component : components)
-      ArgChecker.checkNotNull(component);
+    for(BookComponent comp : components)
+      ArgChecker.checkNotNull(comp);
 
-    this.components = components;
+    this.components = new TreeSet<BookComponent>(components);
   }
   
   public boolean isEmpty()
@@ -35,7 +36,6 @@ final public class BookSection extends BookComponent implements Comparable<BookS
   {
     for(BookComponent component : components)
       component.index();
-    
   }
 
   
@@ -46,22 +46,21 @@ final public class BookSection extends BookComponent implements Comparable<BookS
       component.unindex();
     
   }
-
-  @Override
-  public int compareTo(BookSection section)
-  {
-    // Sort BookSection according to the BookSectionType enum ordinals
-    return getType().compareTo(section.getType());
-  }
   
+  @Override
+  public String getName()
+  {
+    return getType().toString();
+  }
+
   @Override
   public String toString()
   {
-    String out = getSpacing() + getType().toString();
+    String out = getSpacing() + getName();
     
     increaseLevel();
     for(BookComponent component : components)
-      out += component.toString();
+      out += "\n" + component.toString();
     decreaseLevel();
     
     return out;

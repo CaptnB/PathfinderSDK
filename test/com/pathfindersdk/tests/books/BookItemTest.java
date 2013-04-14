@@ -1,27 +1,35 @@
 package com.pathfindersdk.tests.books;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+
 import org.junit.Test;
 
 import com.pathfindersdk.books.BookItem;
+import com.pathfindersdk.books.Index;
+import com.pathfindersdk.enums.BookSectionType;
 
 public class BookItemTest
 {
-  private static class BookItemStub extends BookItem
+  private class BookItemStub extends BookItem
   {
 
     public BookItemStub(String name)
     {
-      super(name);
-      // TODO Auto-generated constructor stub
+      super(name, BookSectionType.ARTIFACTS);
     }
     
     @Override
-    public void index()
+    public String toString()
     {
-      // Do nothing
+      increaseLevel();
+      String out = super.toString();
+      decreaseLevel();
+      
+      return out;
     }
 
-    
   }
 
   @Test (expected = IllegalArgumentException.class)
@@ -29,23 +37,42 @@ public class BookItemTest
   {
     new BookItemStub(null);
   }
-
+  
   @Test
   public void testGetName()
   {
-    // TODO : eventually
+    BookItem item = new BookItemStub("Book item");
+    assertEquals("Book item", item.getName());
   }
 
   @Test
   public void testToString()
   {
-    // TODO : eventually
+    BookItem item = new BookItemStub("Book item");
+    assertEquals("  Book item", item.toString());
   }
-
+  
   @Test
-  public void testCompareTo()
+  public void testIndex()
   {
-    // TODO : eventually
+    BookItem item1 = new BookItemStub("Item");
+    item1.index();
+    
+    BookItem item2 = Index.getInstance().getItem(BookSectionType.ARTIFACTS, "Item");
+    
+    assertSame(item1, item2);
+  }
+  
+  @Test
+  public void testUnindex()
+  {
+    BookItem item1 = new BookItemStub("Item");
+    item1.index();
+    item1.unindex();
+    
+    BookItem item2 = Index.getInstance().getItem(BookSectionType.ARTIFACTS, "Item");
+    
+    assertNull(item2);
   }
 
 }
