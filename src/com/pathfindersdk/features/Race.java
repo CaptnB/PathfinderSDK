@@ -31,7 +31,7 @@ final public class Race extends Feature<Character>
   {
     ArgChecker.checkNotNull(raceItem);
    
-    this.name = raceItem.getName();
+    this.name = raceItem.toString();
     this.raceItem = raceItem;
     
     // Derived values

@@ -44,6 +44,15 @@ final public class BookSection extends BookComponent implements Comparable<BookS
     
   }
 
+  
+  @Override
+  public void unindex()
+  {
+    for(BookComponent component : components)
+      component.unindex();
+    
+  }
+
   @Override
   public int compareTo(BookSection section)
   {

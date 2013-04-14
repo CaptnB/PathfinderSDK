@@ -6,6 +6,8 @@ public abstract class BookComponent
   
   public abstract void index();
   
+  public abstract void unindex();
+  
   final protected void increaseLevel()
   {
     level += 1;

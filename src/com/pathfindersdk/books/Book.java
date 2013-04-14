@@ -23,11 +23,30 @@ final public class Book
     
     this.title = title;
     this.components = components;
+    
+    indexAll();
+  }
+  
+  public void remove()
+  {
+    unindexAll();
   }
   
   public SortedSet<BookComponent> getComponents()
   {
     return Collections.unmodifiableSortedSet(components);
+  }
+  
+  private void indexAll()
+  {
+    for(BookComponent component : components)
+      component.index();
+  }
+  
+  private void unindexAll()
+  {
+    for(BookComponent component : components)
+      component.unindex();
   }
   
   @Override

@@ -17,7 +17,7 @@ public class Monster extends Creature
   {
     ArgChecker.checkNotNull(monster);
 
-    setName(monster.getName());
+    setName(monster.toString());
     // set other Monster values with MonsterItem ones
   }
 

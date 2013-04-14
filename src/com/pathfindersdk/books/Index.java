@@ -17,7 +17,7 @@ final public class Index
     {
       ArgChecker.checkNotNull(item);
       
-      itemMap.put(item.getName(), item);
+      itemMap.put(item.toString(), item);
     }
 
     public BookItem getItem(String name)
