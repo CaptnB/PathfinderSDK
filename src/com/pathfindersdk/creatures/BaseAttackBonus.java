@@ -14,23 +14,29 @@ final public class BaseAttackBonus
     babs.add(0);
   }
   
-  public void add(int increment)
+  public void increment(int increment)
   {
-    // Integer are immutable so put incremented values into a another list
-    List<Integer> newBabs = new ArrayList<Integer>();
-    for(Integer bab : babs)
+    if(increment != 0)
     {
-      if(bab + increment > 0)   // For negative increments
-        newBabs.add(bab + increment);
+      // Integer are immutable so just create another list
+      List<Integer> newBabs = new ArrayList<Integer>();
+      for(Integer bab : babs)
+      {
+        if(bab + increment > 0)   // For negative increments
+          newBabs.add(bab + increment);
+      }
+      
+      // Just make sure at least one value remains
+      if(newBabs.isEmpty())
+        babs.add(0);
+      
+      // Spawn additional bab for each multiple of 5 (6 -> 6/1, 11 -> 11/6/1). No more then 4 BAB
+      while(newBabs.get(newBabs.size() - 1) >= 6 && newBabs.size() < 4)
+        newBabs.add(newBabs.get(newBabs.size() - 1) - 5);
+      
+      // Discard the old list by assigning the new one
+      babs = newBabs;
     }
-    
-    // Spawn additional bab for each multiple of 5 (6 -> 6/1, 11 -> 11/6/1)
-    while(newBabs.get(newBabs.size() - 1) >= 6)
-    {
-      newBabs.add(newBabs.get(newBabs.size() - 1) - 5);
-    }
-    
-    babs = newBabs;
   }
   
   public List<Integer> getBabs()
