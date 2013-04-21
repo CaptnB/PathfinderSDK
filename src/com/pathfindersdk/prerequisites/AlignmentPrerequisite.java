@@ -4,7 +4,7 @@ import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.utils.ArgChecker;
 
-final public class AlignmentPrerequisite implements Prerequisite<Creature>
+final public class AlignmentPrerequisite implements Prerequisite
 {
   final private AlignmentType alignment;
   

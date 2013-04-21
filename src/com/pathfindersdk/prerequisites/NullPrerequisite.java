@@ -3,11 +3,11 @@ package com.pathfindersdk.prerequisites;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.utils.ArgChecker;
 
-public class NullPrerequisite<T extends Creature> implements Prerequisite<T>
+public class NullPrerequisite implements Prerequisite
 {
 
   @Override
-  public boolean isFilled(T target)
+  public boolean isFilled(Creature target)
   {
     ArgChecker.checkNotNull(target);
 

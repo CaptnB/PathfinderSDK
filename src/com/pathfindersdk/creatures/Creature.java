@@ -1,7 +1,9 @@
 package com.pathfindersdk.creatures;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -18,6 +20,7 @@ import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SaveType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
+import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.stats.AbilityScore;
 import com.pathfindersdk.stats.AbilityStat;
 import com.pathfindersdk.stats.ArmorClass;
@@ -68,6 +71,8 @@ public abstract class Creature
   protected transient AbilityStat initiative;
   
   protected transient SortedSet<LanguageType> languages = new TreeSet<LanguageType>();
+  
+  protected transient List<Feature> features = new ArrayList<Feature>();
   
   public Creature()
   {
@@ -314,4 +319,8 @@ public abstract class Creature
     return equipment;
   }
 
+  public List<Feature> getFeatures()
+  {
+    return Collections.unmodifiableList(features);
+  }
 }

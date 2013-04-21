@@ -13,19 +13,19 @@ import com.pathfindersdk.utils.ArgChecker;
  * Template class that wraps a named feature giving out bonuses (with optional prerequisites).
  * Feature can apply to a generic Creature (like Feats) or a specific target extending Creature (Race for Character, MonsterTemplate for Monster.
  */
-public abstract class Feature<T extends Creature> implements Applicable<T>, Comparable<Feature<T>>
+public abstract class Feature implements Applicable, Comparable<Feature>
 {
   protected String name;
-  protected Prerequisite<Creature> prerequisite;
-  protected List<Applicable<Creature>> applicables;
+  protected Prerequisite prerequisite;
+  protected List<Applicable> applicables;
   
-  public Feature(String name, Prerequisite<Creature> prerequisite, Applicable<Creature> ... applicables)
+  public Feature(String name, Prerequisite prerequisite, Applicable ... applicables)
   {
     ArgChecker.checkNotNull(name);
     ArgChecker.checkNotEmpty(name);
     ArgChecker.checkNotNull(prerequisite);
     ArgChecker.checkNotNull(applicables);
-    for(Applicable<Creature> applicable : applicables)
+    for(Applicable applicable : applicables)
       ArgChecker.checkNotNull(applicable);
     
     this.name = name;
@@ -36,16 +36,16 @@ public abstract class Feature<T extends Creature> implements Applicable<T>, Comp
   protected Feature()
   {
     this.name = "New feature";
-    this.prerequisite = new NullPrerequisite<Creature>();
-    this.applicables = new ArrayList<Applicable<Creature>>();
+    this.prerequisite = new NullPrerequisite();
+    this.applicables = new ArrayList<Applicable>();
   }
   
   @Override
-  public void applyTo(T target)
+  public void applyTo(Creature target)
   {
     if(prerequisite.isFilled(target))
     {
-      for(Applicable<Creature> applicable : applicables)
+      for(Applicable applicable : applicables)
       {
         applicable.applyTo(target);
       }
@@ -53,16 +53,16 @@ public abstract class Feature<T extends Creature> implements Applicable<T>, Comp
   }
   
   @Override
-  public void removeFrom(T target)
+  public void removeFrom(Creature target)
   {
-    for(Applicable<Creature> applicable : applicables)
+    for(Applicable applicable : applicables)
     {
       applicable.removeFrom(target);
     }
   }
 
   @Override
-  public int compareTo(Feature<T> feature)
+  public int compareTo(Feature feature)
   {
     return toString().compareTo(feature.toString());
   }

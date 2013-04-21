@@ -1,17 +1,17 @@
 package com.pathfindersdk.prerequisites;
 
-import com.pathfindersdk.creatures.Character;
-import com.pathfindersdk.features.RacialTrait;
+import com.pathfindersdk.creatures.Creature;
+import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class requires a race to have a specific racial trait.
  */
-final public class RacialTraitPrerequisite implements Prerequisite<Character>
+final public class FeaturePrerequisite implements Prerequisite
 {
   final private String traitName;
   
-  public RacialTraitPrerequisite(String traitName)
+  public FeaturePrerequisite(String traitName)
   {
     ArgChecker.checkNotNull(traitName);
     ArgChecker.checkNotEmpty(traitName);
@@ -20,14 +20,13 @@ final public class RacialTraitPrerequisite implements Prerequisite<Character>
   }
   
   @Override
-  public boolean isFilled(Character target)
+  public boolean isFilled(Creature target)
   {
     ArgChecker.checkNotNull(target);
-    ArgChecker.checkNotNull(target.getRace());
 
-    for(RacialTrait racialTrait : target.getRace().getRacialTraits())
+    for(Feature feature : target.getFeatures())
     {
-      if(racialTrait.toString().equals(traitName))
+      if(feature.toString().equals(traitName))
       {
         return true;
       }

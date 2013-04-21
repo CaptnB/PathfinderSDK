@@ -1,10 +1,9 @@
-package com.pathfindersdk.features;
+package com.pathfindersdk.creatures.blocks;
 
-import com.pathfindersdk.creatures.Character;
 import com.pathfindersdk.enums.AlignmentType;
 import com.pathfindersdk.enums.GenderType;
 
-public class Description implements Applicable<Character>
+public class Description
 {
   protected String name;
   protected String playerName;
@@ -137,20 +136,6 @@ public class Description implements Applicable<Character>
   public void setEyesColor(String eyesColor)
   {
     this.eyesColor = eyesColor;
-  }
-
-  @Override
-  public void applyTo(Character character)
-  {
-    character.setName(name);
-    character.setAlignment(alignment);
-  }
-
-  @Override
-  public void removeFrom(Character character)
-  {
-    character.setName(null);
-    character.setAlignment(null);
   }
 
 }

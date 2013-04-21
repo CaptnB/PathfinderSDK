@@ -13,7 +13,7 @@ import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
 import com.pathfindersdk.features.AbilityIncrease;
-import com.pathfindersdk.features.RacialTrait;
+import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
@@ -26,13 +26,13 @@ final public class RaceItem extends BookItem
   final private SizeType size;
   final private Map<SpeedType, Integer> speeds;
   final private VisionType vision;
-  final private SortedSet<RacialTrait> racialTraits;
+  final private SortedSet<Feature> racialTraits;
   // TODO: Check weapon proficiencies/familiarities
   final private SortedSet<LanguageType> baseLanguages;
   final private SortedSet<LanguageType> optionalLanguages;
     
   public RaceItem(String name, CreatureType creatureType, List<AbilityIncrease> racialModifiers, SizeType size, 
-      Map<SpeedType, Integer> speeds, VisionType vision, SortedSet<RacialTrait> racialTraits, 
+      Map<SpeedType, Integer> speeds, VisionType vision, SortedSet<Feature> racialTraits, 
       SortedSet<LanguageType> baseLanguages, SortedSet<LanguageType> optionalLanguages)
   {
     super(name, BookSectionType.RACES);
@@ -81,7 +81,7 @@ final public class RaceItem extends BookItem
     return vision;
   }
 
-  public SortedSet<RacialTrait> getRacialTraits()
+  public SortedSet<Feature> getRacialTraits()
   {
     return Collections.unmodifiableSortedSet(racialTraits);
   }

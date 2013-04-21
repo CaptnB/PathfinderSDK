@@ -1,6 +1,6 @@
 package com.pathfindersdk.creatures;
 
-import com.pathfindersdk.features.Description;
+import com.pathfindersdk.creatures.blocks.Description;
 import com.pathfindersdk.features.Race;
 import com.pathfindersdk.utils.ArgChecker;
 
@@ -23,14 +23,7 @@ public class Character extends Creature
   {
     ArgChecker.checkNotNull(description);
 
-    // Clean previous description
-    if(this.description != null)
-      this.description.removeFrom(this);
-    
-    // Apply new one
-    if(description != null)
-      description.applyTo(this);
-
+    // TODO : apply description values
     this.description = description;
   }
 
@@ -43,14 +36,7 @@ public class Character extends Creature
   {
     ArgChecker.checkNotNull(race);
     
-    // Clean current race
-    if(this.race != null)
-      this.race.removeFrom(this);
-    
-    // Apply new one
-    if(race != null)
-      race.applyTo(this);
-    
+    // TODO : Apply race features
     this.race = race;
   }
   

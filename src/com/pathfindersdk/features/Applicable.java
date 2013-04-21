@@ -6,8 +6,8 @@ import com.pathfindersdk.creatures.Creature;
 /**
  * Interface to apply/remove stuff from something else
  */
-public interface Applicable<T extends Creature>
+public interface Applicable
 {
-  public void applyTo(T target);
-  public void removeFrom(T target);
+  public void applyTo(Creature target);
+  public void removeFrom(Creature target);
 }

@@ -8,7 +8,7 @@ import com.pathfindersdk.utils.ArgChecker;
 /**
  * This class requires a character to have an ability score (AbilityStat) at a specific value or higher (ex: Dodge feat requires Dex 13).
  */
-final public class AbilityPrerequisite implements Prerequisite<Creature>
+final public class AbilityPrerequisite implements Prerequisite
 {
   final private int score;
   final private AbilityType ability;

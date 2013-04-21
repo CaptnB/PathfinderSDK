@@ -7,8 +7,8 @@ import java.util.Set;
 
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.enums.BookSectionType;
+import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.features.Race;
-import com.pathfindersdk.features.RacialTrait;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
@@ -18,9 +18,9 @@ final public class AlternateRacialTraitItem extends BookItem
 {
   final private String raceName;
   final private Set<String> replacedTraits;
-  final private RacialTrait newTrait;
+  final private Feature newTrait;
 
-  public AlternateRacialTraitItem(String name, String raceName, RacialTrait newTrait, String ... replacedTraits)
+  public AlternateRacialTraitItem(String name, String raceName, Feature newTrait, String ... replacedTraits)
   {
     super(name, BookSectionType.ALTERNATE_RACIAL_TRAITS);
     
@@ -49,7 +49,7 @@ final public class AlternateRacialTraitItem extends BookItem
     return Collections.unmodifiableSet(replacedTraits);
   }
   
-  public RacialTrait getNewTrait()
+  public Feature getNewTrait()
   {
     return newTrait;
   }

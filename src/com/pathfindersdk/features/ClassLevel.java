@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.creatures.Creature;
 
-public class ClassLevel implements Applicable<Creature>
+public class ClassLevel implements Applicable
 {
   protected int baseAttackBonus;
   protected int fortitude;

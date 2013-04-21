@@ -9,8 +9,6 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.books.items.AlternateRacialTraitItem;
 import com.pathfindersdk.books.items.RaceItem;
-import com.pathfindersdk.creatures.Character;
-import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.stats.Size;
 import com.pathfindersdk.stats.Stat;
@@ -19,12 +17,13 @@ import com.pathfindersdk.utils.ArgChecker;
 /**
  * This class represents a character race with all player 
  */
-final public class Race extends Feature<Character>
+final public class Race
 {
+  final private String name;
   final private RaceItem raceItem;
   final private transient Size size;
   final private transient Map<SpeedType, Stat> speeds;
-  private transient SortedSet<RacialTrait> racialTraits = new TreeSet<RacialTrait>();
+  private transient SortedSet<Feature> racialTraits = new TreeSet<Feature>();
   private SortedSet<AlternateRacialTraitItem> alternateTraits;
   
   public Race(RaceItem raceItem)
@@ -43,18 +42,18 @@ final public class Race extends Feature<Character>
       speeds.put(speedKey, new Stat(raceItem.getSpeeds().get(speedKey)));
     this.speeds = speeds;
     
-    for(RacialTrait trait : raceItem.getRacialTraits())
+    for(Feature trait : raceItem.getRacialTraits())
       racialTraits.add(trait);
   }
   
-  public SortedSet<RacialTrait> getRacialTraits()
+  public SortedSet<Feature> getRacialTraits()
   {
     return Collections.unmodifiableSortedSet(racialTraits);
   }
   
   public boolean hasRacialTrait(String traitName)
   {
-    for(RacialTrait trait : racialTraits)
+    for(Feature trait : racialTraits)
     {
       if(trait.toString().equals(traitName))
         return true;
@@ -73,7 +72,7 @@ final public class Race extends Feature<Character>
       // First remove traits to be replaced
       for(String traitName : alternateTrait.getReplacedTraits())
       {
-        for(Feature<Character> trait : racialTraits)
+        for(Feature trait : racialTraits)
         {
           if(trait.toString().equals(traitName))
           {
@@ -95,34 +94,7 @@ final public class Race extends Feature<Character>
     // TODO : revert to RaceItem traits
   }
   
-  @Override
-  public void applyTo(Character character)
-  {
-    for(AbilityIncrease racialModifier : raceItem.getRacialModifiers())
-      racialModifier.applyTo(character);
-    
-    character.setSize(size);
-    
-    Set<SpeedType> speedKeys = speeds.keySet();
-    for(SpeedType speedKey : speedKeys)
-      character.addSpeed(speedKey, speeds.get(speedKey));
-    
-    character.addVision(raceItem.getVision());
-    
-    for(Feature<Character> racialTrait : racialTraits)
-      racialTrait.applyTo(character);
-    
-    // TODO: Weapon familiarities
-    for(LanguageType language : raceItem.getBaseLanguages())
-      character.addLanguage(language);
-  }
-  
-  @Override
-  public void removeFrom(Character character)
-  {
-    // TODO : remove everything
-  }
-  
+ 
   @Override
   public String toString()
   {

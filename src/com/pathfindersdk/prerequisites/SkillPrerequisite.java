@@ -7,7 +7,7 @@ import com.pathfindersdk.utils.ArgChecker;
 /**
  * This class requires a creature to have a skill (SkillStat) at a specific rank or higher (ex: Mounted Combat requires Ride 1).
  */
-final public class SkillPrerequisite implements Prerequisite<Creature>
+final public class SkillPrerequisite implements Prerequisite
 {  
   final private int ranks;
   final private String skillName;

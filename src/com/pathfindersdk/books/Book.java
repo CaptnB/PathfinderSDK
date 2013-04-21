@@ -36,6 +36,11 @@ final public class Book
     return Collections.unmodifiableSortedSet(components);
   }
   
+  public String getTitle()
+  {
+    return title;
+  }
+  
   @Override
   public String toString()
   {

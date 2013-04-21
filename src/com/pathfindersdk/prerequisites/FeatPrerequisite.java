@@ -6,7 +6,7 @@ import com.pathfindersdk.utils.ArgChecker;
 /**
  * This class requires a creature to have a specific feat (ex: Mobility requires Dodge).
  */
-final public class FeatPrerequisite implements Prerequisite<Creature>
+final public class FeatPrerequisite implements Prerequisite
 {
   final private String featName;
   

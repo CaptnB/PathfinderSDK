@@ -9,7 +9,7 @@ import com.pathfindersdk.utils.ArgChecker;
  *  This immutable class represent an AbilityScore increase. While AbilityBonus only gives a temporary boost, AbilityIncrease is permanent 
  *  and counts toward bonus spells, feat prerequisites and the like. AbilityIncrease come from races, every 4th level, etc.
  */
-final public class AbilityIncrease implements Applicable<Creature>
+final public class AbilityIncrease implements Applicable
 {
   final private int increment;
   final private AbilityType ability;
