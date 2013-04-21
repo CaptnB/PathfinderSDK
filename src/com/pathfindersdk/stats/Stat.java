@@ -55,8 +55,7 @@ public class Stat
     bonusBlock.removeBonus(bonus);
   }
   
-  @Override
-  public String toString()
+  protected String getBonusString()
   {
     String out = "";
     
@@ -75,7 +74,13 @@ public class Stat
       
       out += "]";
     }
-
-    return getScore() + out;
+    
+    return out;
+  }
+  
+  @Override
+  public String toString()
+  {
+    return getScore() + getBonusString();
   }
 }

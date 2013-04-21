@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import com.pathfindersdk.enums.SpeedType;
-import com.pathfindersdk.stats.NullStat;
 import com.pathfindersdk.stats.Stat;
 import com.pathfindersdk.utils.ArgChecker;
 
@@ -18,13 +17,7 @@ final public class SpeedBlock
   // 
   private class SpeedGroup
   {
-    private Set<Stat> speeds = new HashSet<Stat>();
-    
-    public SpeedGroup()
-    {
-      // Initialize with a NullStat so there's always something to return that will always be 0 ft
-      speeds.add(new NullStat());
-    }
+    private Set<Stat> speeds = new HashSet<Stat>();   // Can't sort Stats, they can change value anytime
     
     public void addSpeed(Stat speed)
     {

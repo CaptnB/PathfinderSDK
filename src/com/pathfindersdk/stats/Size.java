@@ -5,12 +5,12 @@ import com.pathfindersdk.utils.ArgChecker;
 
 final public class Size extends Stat
 {
-  final private SizeType baseSize;
-  final private int numberOfLegs;
+  private SizeType baseSize;
+  private int numberOfLegs;
   
   public Size(SizeType baseSize)
   {
-    this(baseSize, 2);
+    this(baseSize, 2);    // Most creatures have 2 legs
   }
   
   public Size(SizeType baseSize, int numberOfLegs)
@@ -19,11 +19,8 @@ final public class Size extends Stat
     // baseScore shall then always remain at 0.
     super(0);
 
-    ArgChecker.checkNotNull(baseSize);
-    ArgChecker.checkIsPositive(numberOfLegs);
-    
-    this.baseSize = baseSize;
-    this.numberOfLegs = numberOfLegs;
+    setBaseSize(baseSize);
+    setNumberOfLegs(numberOfLegs);
   }
   
   public SizeType getBaseSize()
@@ -31,9 +28,23 @@ final public class Size extends Stat
     return baseSize;
   }
   
+  public void setBaseSize(SizeType baseSize)
+  {
+    ArgChecker.checkNotNull(baseSize);
+    
+    this.baseSize = baseSize;
+  }
+  
   public int getNumberOfLegs()
   {
     return numberOfLegs;
+  }
+  
+  public void setNumberOfLegs(int numberOfLegs)
+  {
+    ArgChecker.checkIsPositive(numberOfLegs);
+
+    this.numberOfLegs = numberOfLegs;
   }
   
   // To only consider bonuses, make sure baseScore always remains zero
@@ -161,11 +172,6 @@ final public class Size extends Stat
     // Otyugh is considered tall with 3 legs (don't recall any one-legged monster)
     // I'm assuming that everything without legs or more than 4 is long...
     return (numberOfLegs >= 1 && numberOfLegs < 4);
-  }
-  
-  public boolean isLong()
-  {
-    return !isTall();
   }
   
   public double getReach()

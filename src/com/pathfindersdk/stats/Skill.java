@@ -1,20 +1,38 @@
 package com.pathfindersdk.stats;
 
 import com.pathfindersdk.books.items.SkillItem;
+import com.pathfindersdk.utils.ArgChecker;
 
 /**
  * This class represents a character skill. 
  */
 public class Skill extends AbilityStat
 {
-  protected SkillItem skill;
-  protected boolean classSkill;
+  private String name;
+  private boolean usableUntrained;
+  private boolean armorCheckPenalty;
+  private boolean classSkill;
   
-  public Skill(SkillItem skill, AbilityScore ability)
+  public Skill(SkillItem skillItem, AbilityScore ability)
   {
     super(ability);
-    this.skill = skill;
-    this.classSkill = false;
+    
+    ArgChecker.checkNotNull(skillItem);
+    
+    this.name = skillItem.getName();
+    this.usableUntrained = skillItem.isUnTrained();
+    this.armorCheckPenalty = skillItem.isArmorCheckPenalty();
+    setClassSkill(false);
+  }
+  
+  public boolean isUsableUntrained()
+  {
+    return usableUntrained;
+  }
+  
+  public boolean isArmorCheckPenalty()
+  {
+    return armorCheckPenalty;
   }
   
   public boolean isClassSkill()
@@ -27,25 +45,25 @@ public class Skill extends AbilityStat
     this.classSkill = classSkill;
   }
   
-  public boolean hasClassSkillBonus()
+  public String getName()
   {
-    return isClassSkill() && getBaseScore() > 0;
+    return name;
   }
-  
+
   @Override
   public int getScore()
   {
     // Cannot use untrained
-    if(!skill.isUnTrained() && getBaseScore() == 0)
+    if(!isUsableUntrained() && getBaseScore() == 0)
       return 0;
     
     // Trained class-skill
     else if(isClassSkill() && getBaseScore() > 0)
-      return super.getScore() + ability.getModifier() + 3;
+      return super.getScore() + 3;
     
     // Everything else
     else
-      return super.getScore() + ability.getModifier();
+      return super.getScore();
   }
 
 }
