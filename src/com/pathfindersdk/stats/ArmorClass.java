@@ -1,104 +1,143 @@
 package com.pathfindersdk.stats;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.enums.BonusTypeRegister;
+import com.pathfindersdk.equipment.Armor;
+import com.pathfindersdk.equipment.Shield;
+import com.pathfindersdk.utils.ArgChecker;
 
 
-public class ArmorClass extends Stat
+final public class ArmorClass extends Stat
 {
-  protected AbilityScore dex;
-  protected Size size;
-  // TODO : max dex from armor/shield
-//  protected int maxDex; this should be a reference to shield/armor.getMaxDex()
+  private AbilityScore dex;
+  private List<AbilityScore> abilities; // Monk can add Wisdom
+  private Size size;
+  private Armor armor;
+  private Shield shield;
 
   public ArmorClass(AbilityScore dex, Size size)
   {
     // AC = 10 + Dex modifier + Size modifier + Misc bonus
     super(10);
+    
+    ArgChecker.checkNotNull(dex);
+    ArgChecker.checkNotNull(size);
+    
     this.dex = dex;
     this.size = size;
   }
-
-//  public void setMaxDex(int maxDex)
-//  {
-//    this.maxDex = maxDex;
-//  }
-
-  public int getTouch()
+  
+  public void addAbilityScore(AbilityScore score)
   {
-    int touch = getBaseScore();
+    ArgChecker.checkNotNull(score);
     
-    // Touch AC ignores armor, shield and natural AC
-    SortedSet<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
+    if(abilities == null)
+      abilities = new ArrayList<AbilityScore>();
+    abilities.add(score);
+  }
+  
+  public void removeAbilityScore(AbilityScore score)
+  {
+    if(abilities != null)
+    {
+      abilities.remove(score);
+      if(abilities.isEmpty())
+        abilities = null;
+    }
+  }
+  
+  public void setArmor(Armor armor)
+  {
+    if(this.armor != null)
+      removeBonus(this.armor.getArmorBonus());
+    
+    this.armor = armor;
+    
+    if(this.armor != null)
+      addBonus(this.armor.getArmorBonus());
+  }
+  
+  public void setShield(Shield shield)
+  {    
+    if(this.shield != null)
+      removeBonus(this.shield.getShieldBonus());
+    
+    this.shield = shield;
+    
+    if(this.shield != null)
+      addBonus(this.shield.getShieldBonus());
+  }
+  
+  private int getMaxDex()
+  {
+    int maxDex = dex.getModifier();
+    
+    if(armor != null)
+      maxDex = Math.min(armor.getMaxDex(), maxDex);
+    
+    if(shield != null && shield.getMaxDex() != null)    // Not all shields have a max dex defined
+      maxDex = Math.min(shield.getMaxDex(), maxDex);
+    
+    return maxDex;
+  }
+  
+  private int getAbilityModifiers()
+  {
+    int modifiers = 0;
+    
+    if(abilities != null)
+    {
+      for(AbilityScore ability : abilities)
+        modifiers += ability.getModifier();
+    }
+    
+    return modifiers;
+  }
+
+  public int getTouchScore()
+  {
+    // Touch AC ignores armor, shield and natural AC bonus
+    int touchBonus = 0;
+    SortedSet<Bonus> bonusSet = bonusBlock.getApplicableBaseBonus();
     for(Bonus bonus : bonusSet)
     {
       if(!bonus.getType().equals(BonusTypeRegister.getInstance().get("Armor")) && 
          !bonus.getType().equals(BonusTypeRegister.getInstance().get("Shield")) && 
          !bonus.getType().equals(BonusTypeRegister.getInstance().get("Natural Armor")))
       {
-        touch += bonus.getValue();
+        touchBonus += bonus.getValue();
       }
     }
     
-    // Add dex modifier (limited by armor max dex if any)
-    if(dex != null)
-    {
-//      if(maxDex > 0)
-//        touch += Math.min(dex.getModifier(), maxDex);
-//      else
-        touch += dex.getModifier();
-    }
- 
-    // Add size modifier
-    if(size != null)
-      touch += size.getModifier();
-    
-    return touch;
+    return getBaseScore() + touchBonus + getMaxDex() + getAbilityModifiers() + size.getModifier();
   }
   
-  public int getFlatFooted()
+  public int getFlatFootedScore()
   {
-    int flatFooted = getBaseScore();
-    
-    // Flat-footed AC does not include dex modifier and ignores dodge bonus
-    SortedSet<Bonus> bonusSet = getBonusBlock().getApplicableBaseBonus();
+    // Flat-footed AC ignores dodge bonus
+    int flatFootedBonus = 0;
+    SortedSet<Bonus> bonusSet = bonusBlock.getApplicableBaseBonus();
     for(Bonus bonus : bonusSet)
     {
       if(bonus.getType() != BonusTypeRegister.getInstance().get("Dodge"))
       {
-        flatFooted += bonus.getValue();
+        flatFootedBonus += bonus.getValue();
       }
     }
     
-    // Add size modifier
-    if(size != null)
-      flatFooted += size.getModifier();
-    
-    return flatFooted;
+    // Flat-footed AC also ignores dex modifier
+    return getBaseScore() + flatFootedBonus + getAbilityModifiers() + size.getModifier();
   }
   
   @Override
   public int getScore()
   {
-    // Add all bonuses
-    int ac = super.getScore();
-    
-    // Add dex modifier (limited by armor max dex if any)
-    if(dex != null)
-    {
-//      if(maxDex > 0)
-//        ac += Math.min(dex.getModifier(), maxDex);
-//      else
-        ac += dex.getModifier();
-    }
-    
-    // Add size modifier
-    if(size != null)
-      ac += size.getModifier();
-    
-    return ac;
+    // 10 + bonus + max dex + size modifier
+    return super.getScore() + getMaxDex() + getAbilityModifiers() + size.getModifier();
   }
 
 }

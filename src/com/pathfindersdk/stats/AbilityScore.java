@@ -4,7 +4,7 @@ package com.pathfindersdk.stats;
 /**
  * This class represents an ability score (ex: CHA 14 (+2)).
  */
-public class AbilityScore extends Stat implements Rollable
+final public class AbilityScore extends Stat implements Rollable
 {
   public AbilityScore()
   {

@@ -11,7 +11,7 @@ import com.pathfindersdk.bonus.BonusBlock;
 public class Stat
 {
   private int baseScore;
-  final private transient BonusBlock bonusBlock = new BonusBlock();
+  final protected transient BonusBlock bonusBlock = new BonusBlock();
   
   public Stat(int baseScore)
   {
@@ -33,11 +33,6 @@ public class Stat
     setBaseScore(baseScore + increment);
   }
 
-  protected BonusBlock getBonusBlock()
-  {
-    return bonusBlock;
-  }
-  
   public int getScore()
   {
     int total = getBaseScore();

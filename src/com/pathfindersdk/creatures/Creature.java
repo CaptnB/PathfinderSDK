@@ -10,6 +10,7 @@ import java.util.TreeSet;
 
 import com.pathfindersdk.books.items.FeatItem;
 import com.pathfindersdk.books.items.SkillItem;
+import com.pathfindersdk.creatures.blocks.EquipmentBlock;
 import com.pathfindersdk.creatures.blocks.SpeedBlock;
 import com.pathfindersdk.enums.AbilityType;
 import com.pathfindersdk.enums.AlignmentType;
@@ -53,12 +54,14 @@ public abstract class Creature
   // Step 6 - Finishing details
   protected String name;
   protected transient AlignmentType alignment;
-  protected transient Stat armorClass;
+  protected transient ArmorClass armorClass;
   
   protected transient BaseAttackBonus bab;
   protected transient AbilityStat attack;
   protected transient Cmb cmb;
   protected transient Cmd cmd;
+  
+  private transient EquipmentBlock equipment = new EquipmentBlock();
 
   
   protected transient SortedMap<SaveType, AbilityStat> savingThrows = new TreeMap<SaveType, AbilityStat>();
@@ -269,7 +272,7 @@ public abstract class Creature
     return cmd;
   }
   
-  public Stat getArmorClass()
+  public ArmorClass getArmorClass()
   {
     return armorClass;
   }
@@ -305,4 +308,10 @@ public abstract class Creature
     
     languages.add(language);
   }
+
+  public EquipmentBlock getEquipment()
+  {
+    return equipment;
+  }
+
 }

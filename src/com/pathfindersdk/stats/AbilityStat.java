@@ -1,13 +1,18 @@
 package com.pathfindersdk.stats;
 
+import com.pathfindersdk.utils.ArgChecker;
+
 
 public class AbilityStat extends Stat implements Rollable
 {
-  protected AbilityScore ability;
+  final protected AbilityScore ability;
 
   public AbilityStat(AbilityScore ability)
   {
     super(0);
+    
+    ArgChecker.checkNotNull(ability);
+    
     this.ability = ability;
   }
   
@@ -20,7 +25,7 @@ public class AbilityStat extends Stat implements Rollable
   @Override
   public int roll()
   {
-    return (new Dice(1, 20)).roll() + getScore() + ability.getModifier();
+    return (new Dice(1, 20)).roll() + getScore();
   }
 
 }

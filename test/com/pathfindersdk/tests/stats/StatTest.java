@@ -5,11 +5,19 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.pathfindersdk.bonus.AcBonus;
+import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.enums.BonusTypeRegister;
 import com.pathfindersdk.stats.Stat;
 
 public class StatTest
 {
+  private class StatStub extends Stat
+  {
+    public StatStub(int baseScore)
+    {
+      super(baseScore);
+    }
+  }
 
   @Test
   public void testGetBaseScore()
@@ -41,6 +49,33 @@ public class StatTest
     Stat stat = new Stat(5);
     stat.incrementBaseScore(5);
     assertEquals(10, stat.getBaseScore());
+  }
+  
+  @Test
+  public void testAddBonus()
+  {
+    Bonus bonus1 = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus2 = new AcBonus(2, BonusTypeRegister.getInstance().get("Dodge"), "when jumping");
+    
+    Stat stat = new StatStub(0);
+    stat.addBonus(bonus1);
+    stat.addBonus(bonus2);
+    
+    assertEquals("2 [+2 Dodge (when jumping)]", stat.toString());
+  }
+  
+  @Test
+  public void testRemoveBonus()
+  {
+    Bonus bonus1 = new AcBonus(2, BonusTypeRegister.getInstance().get("Armor"));
+    Bonus bonus2 = new AcBonus(2, BonusTypeRegister.getInstance().get("Dodge"), "when jumping");
+    
+    Stat stat = new StatStub(0);
+    stat.addBonus(bonus1);
+    stat.addBonus(bonus2);
+    stat.removeBonus(bonus1);
+    
+    assertEquals("0 [+2 Dodge (when jumping)]", stat.toString());
   }
 
   @Test (expected = IllegalArgumentException.class)

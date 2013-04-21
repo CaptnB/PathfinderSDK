@@ -1,17 +1,17 @@
 package com.pathfindersdk.stats;
 
 import com.pathfindersdk.creatures.BaseAttackBonus;
-import com.pathfindersdk.creatures.HitDice;
+import com.pathfindersdk.creatures.HitPoints;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.utils.ArgChecker;
 
 final public class Cmb extends Stat implements Rollable
 {
-  private AbilityScore mainAbility;   // Usually strenght, Agile Maneuvers feat changes this for dexterity
-  private AbilityScore dexterity;     // For tiny creatures or smaller, use dexterity
-  private BaseAttackBonus bab;
-  private Size size;
-  private HitDice hitDice;            // Defensive Combat Training feat uses total hit dice instead of BAB
+  private AbilityScore mainAbility;     // Usually strenght, Agile Maneuvers feat changes this for dexterity
+  final private AbilityScore dexterity; // For tiny creatures or smaller, use dexterity
+  final private BaseAttackBonus bab;
+  final private Size size;
+  private HitPoints hitDice;              // Defensive Combat Training feat uses total hit dice instead of BAB, otherwise useless
 
   public Cmb(AbilityScore strenght, AbilityScore dexterity, BaseAttackBonus bab, Size size)
   {
@@ -36,8 +36,9 @@ final public class Cmb extends Stat implements Rollable
     this.mainAbility = mainAbility;
   }
   
-  public void setHitDice(HitDice hitDice)
+  public void setHitDice(HitPoints hitDice)
   {
+    // Can be null
     this.hitDice = hitDice;
   }
   

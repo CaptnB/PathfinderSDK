@@ -12,8 +12,10 @@ public enum BodySlotType
   HEAD ("Head"),
   HEADBAND ("Headband"),
   NECK ("Neck"),
-  RING ("Ring"),
-  SHIELD ("Shield"),
+  RING_1 ("Ring 1"),
+  RING_2 ("Ring 2"),
+  PRIMARY_HAND ("Primary hand"),  // Weapon, Staff, ...
+  OFF_HAND ("Off-hand"),          // Two-handed weapon, off-hand weapon, shield, rod, wand, ...
   SHOULDERS ("Shoulders"),
   WRIST ("Wrist");
   

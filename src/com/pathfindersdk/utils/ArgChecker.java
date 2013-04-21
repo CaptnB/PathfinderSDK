@@ -27,6 +27,24 @@ final public class ArgChecker
       throw new IllegalArgumentException("Number must be positive!");
   }
   
+  static public void checkIsExclusivelyPositive(int number)
+  {
+    if(number <= 0)
+      throw new IllegalArgumentException("Number must be exclusively positive!");
+  }
+  
+  static public void checkIsNegative(int number)
+  {
+    if(number > 0)
+      throw new IllegalArgumentException("Number must be negative!");
+  }
+  
+  static public void checkIsExclusivelyNegative(int number)
+  {
+    if(number >= 0)
+      throw new IllegalArgumentException("Number must be exclusively negative!");
+  }
+  
   static public void checkInRange(double number, double min, double max)
   {
     if(number < min || number > max)
@@ -36,7 +54,13 @@ final public class ArgChecker
   static public void checkIsPositive(double number)
   {
     if(number < 0.0)
-      throw new IllegalArgumentException("Number must be positive!");
+      throw new IllegalArgumentException("Floating number must be positive!");
+  }
+  
+  static public void checkIsNegative(double number)
+  {
+    if(number > 0.0)
+      throw new IllegalArgumentException("Floating number must be negative!");
   }
   
   static public void checkIsNot(Object obj, Object isnot)

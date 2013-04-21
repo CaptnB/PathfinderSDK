@@ -49,6 +49,30 @@ public class ArgCheckerTest
   {
     ArgChecker.checkIsPositive(0);
   }
+  
+  @Test
+  public void testCheckExclusivelyPositivePass()
+  {
+    ArgChecker.checkIsExclusivelyPositive(1);
+  }
+  
+  @Test
+  public void testCheckNegativePass()
+  {
+    ArgChecker.checkIsNegative(-1);
+  }
+  
+  @Test
+  public void testCheckNegativeZeroPass()
+  {
+    ArgChecker.checkIsNegative(0);
+  }
+  
+  @Test
+  public void testCheckExclusivelyNegativePass()
+  {
+    ArgChecker.checkIsExclusivelyNegative(-1);
+  }
 
   @Test
   public void testCkeckRangeDoubleDoubleDoublePass()
@@ -78,6 +102,12 @@ public class ArgCheckerTest
   public void testCheckPositiveDoubleZeroPass()
   {
     ArgChecker.checkIsPositive(0.0);
+  }
+
+  @Test
+  public void testCheckNegativeDoublePass()
+  {
+    ArgChecker.checkIsNegative(-5.0);
   }
 
   @Test
@@ -117,6 +147,24 @@ public class ArgCheckerTest
   }
 
   @Test (expected = IllegalArgumentException.class)
+  public void testCheckExclusivelyPositiveIntFail()
+  {
+    ArgChecker.checkIsExclusivelyPositive(0);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testCheckNegativeIntFail()
+  {
+    ArgChecker.checkIsNegative(5);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testCheckExclusivelyNegativeIntFail()
+  {
+    ArgChecker.checkIsExclusivelyNegative(0);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
   public void testCkeckRangeDoubleDoubleDoubleLowerFail()
   {
     ArgChecker.checkInRange(-5.0, 0.0, 10.0);
@@ -132,6 +180,12 @@ public class ArgCheckerTest
   public void testCheckPositiveDoubleFail()
   {
     ArgChecker.checkIsPositive(-5.0);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testCheckNegativeDoubleFail()
+  {
+    ArgChecker.checkIsNegative(5.0);
   }
 
   @Test (expected = IllegalArgumentException.class)

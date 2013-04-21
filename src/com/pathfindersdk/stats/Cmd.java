@@ -8,11 +8,11 @@ import com.pathfindersdk.utils.ArgChecker;
 
 final public class Cmd extends Stat
 {
-  private AbilityScore strenght;
-  private AbilityScore dexterity;
-  private Set<AbilityScore> otherAbilities = new HashSet<AbilityScore>();   // A Monk can add his Wisdom
-  private BaseAttackBonus bab;
-  private Size size;
+  final private AbilityScore strenght;
+  final private AbilityScore dexterity;
+  final private Set<AbilityScore> otherAbilities = new HashSet<AbilityScore>();   // A Monk can add his Wisdom
+  final private BaseAttackBonus bab;
+  final private Size size;
 
   public Cmd(AbilityScore strenght, AbilityScore dexterity, BaseAttackBonus bab, Size size)
   {
@@ -31,6 +31,8 @@ final public class Cmd extends Stat
 
   public void addAbility(AbilityScore ability)
   {
+    ArgChecker.checkNotNull(ability);
+    
     otherAbilities.add(ability);
   }
  
@@ -39,7 +41,7 @@ final public class Cmd extends Stat
     otherAbilities.remove(ability);
   }
   
-  public int getFlatFooted()
+  public int getFlatFootedScore()
   {
     return getScore() - dexterity.getModifier();
   }
@@ -47,17 +49,10 @@ final public class Cmd extends Stat
   @Override
   public int getScore()
   {
-    int score = super.getScore();
-    
-    score += bab.getBabs().get(0);
-    score += strenght.getModifier();
-    score += dexterity.getModifier();
-    
+    int otherModifiers = 0;
     for(AbilityScore ability : otherAbilities)
-      score += ability.getModifier();
+      otherModifiers += ability.getModifier();
     
-    score -= size.getModifier();
-    
-    return score;
+    return super.getScore() + bab.getBabs().get(0) + strenght.getModifier() + dexterity.getModifier() + otherModifiers - size.getModifier();
   }
 }

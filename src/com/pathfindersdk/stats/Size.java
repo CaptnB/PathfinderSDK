@@ -1,40 +1,29 @@
 package com.pathfindersdk.stats;
 
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.enums.SizeType;
+import com.pathfindersdk.utils.ArgChecker;
 
-public class Size extends Stat
+final public class Size extends Stat
 {
-  protected SizeType baseSize;
-  protected int numberOfLegs;
-  protected SortedSet<Bonus> sizeBonuses = new TreeSet<Bonus>();
+  final private SizeType baseSize;
+  final private int numberOfLegs;
   
   public Size(SizeType baseSize)
   {
-    // The Stat score represents the size offset from baseSize (BaseSize.MEDIUM + 2 = BaseSize.HUGE).
-    // baseScore shall then always remain at 0.
-    super(0);
-    
-    setBaseSize(baseSize);
-    setNumberOfLegs(2); // Most creatures are biped
-    setSizeBonuses();
+    this(baseSize, 2);
   }
   
   public Size(SizeType baseSize, int numberOfLegs)
   {
+    // The Stat score represents the size offset from baseSize (BaseSize.MEDIUM + 2 = BaseSize.HUGE).
+    // baseScore shall then always remain at 0.
     super(0);
+
+    ArgChecker.checkNotNull(baseSize);
+    ArgChecker.checkIsPositive(numberOfLegs);
     
-    setBaseSize(baseSize);
-    setNumberOfLegs(numberOfLegs);
-    setSizeBonuses();
-  }
-  
-  public void setBaseSize(SizeType baseSize)
-  {
     this.baseSize = baseSize;
+    this.numberOfLegs = numberOfLegs;
   }
   
   public SizeType getBaseSize()
@@ -42,26 +31,9 @@ public class Size extends Stat
     return baseSize;
   }
   
-  public void setNumberOfLegs(int numberOfLegs)
-  {
-    // Creatures without legs (Ooze) or creatures with too many legs (Centipede), can't be tripped
-    // Use 0 in any case. 0 means "can't be tripped"
-    
-    if(numberOfLegs < 0)
-      this.numberOfLegs = 0;
-    else
-      this.numberOfLegs = numberOfLegs;
-      
-  }
-  
   public int getNumberOfLegs()
   {
     return numberOfLegs;
-  }
-
-  protected void setSizeBonuses()
-  {
-    
   }
   
   // To only consider bonuses, make sure baseScore always remains zero

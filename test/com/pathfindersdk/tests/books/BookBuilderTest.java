@@ -11,6 +11,7 @@ import com.pathfindersdk.books.BookBuilder;
 import com.pathfindersdk.books.BookComponent;
 import com.pathfindersdk.books.BookSection;
 import com.pathfindersdk.books.items.EquipmentItem;
+import com.pathfindersdk.coins.Coins;
 import com.pathfindersdk.enums.BookSectionType;
 
 public class BookBuilderTest
@@ -48,7 +49,7 @@ public class BookBuilderTest
     protected BookSection createEquipmentSection(BookSectionType type,
         List<BookComponent> components)
     {
-      components.add(new EquipmentItem("item"));
+      components.add(new EquipmentItem("item", new Coins()));
       return super.createEquipmentSection(type, components);
     }
 

@@ -5,7 +5,10 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ArgCheckerTest.class })
+@SuiteClasses({ 
+  ArgCheckerTest.class,
+  ValidationExceptionTest.class
+})
 public class UtilsTestSuite
 {
 

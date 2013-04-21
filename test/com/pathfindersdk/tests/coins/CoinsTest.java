@@ -18,6 +18,13 @@ public class CoinsTest
     Coins coins = new Coins();
     assertEquals("0 cp", coins.toString());
   }
+  
+  @Test
+  public void testCoinsInt()
+  {
+    Coins coins = new Coins(12345);
+    assertEquals("12 pp, 3 gp, 4 sp, 5 cp", coins.toString());
+  }
 
   @Test
   public void testCoinsPieces()

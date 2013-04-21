@@ -9,6 +9,7 @@ import com.pathfindersdk.tests.books.BooksTestSuite;
 import com.pathfindersdk.tests.books.items.BookItemsTestSuite;
 import com.pathfindersdk.tests.coins.CoinsTestSuite;
 import com.pathfindersdk.tests.creatures.CreaturesTestSuite;
+import com.pathfindersdk.tests.creatures.blocks.CreatureBlocksTestSuite;
 import com.pathfindersdk.tests.enums.EnumsTestSuite;
 import com.pathfindersdk.tests.equipment.EquipmentTestSuite;
 import com.pathfindersdk.tests.features.FeaturesTestSuite;
@@ -23,6 +24,7 @@ import com.pathfindersdk.tests.utils.UtilsTestSuite;
   BookItemsTestSuite.class,
   CoinsTestSuite.class,
   CreaturesTestSuite.class,
+  CreatureBlocksTestSuite.class,
   EnumsTestSuite.class,
   EquipmentTestSuite.class,
   FeaturesTestSuite.class,
