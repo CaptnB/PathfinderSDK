@@ -1,7 +1,7 @@
 package com.pathfindersdk.bonus;
 
+import com.pathfindersdk.applicables.Applicable;
 import com.pathfindersdk.enums.BonusTypeRegister.BonusType;
-import com.pathfindersdk.features.Applicable;
 import com.pathfindersdk.stats.Stat;
 import com.pathfindersdk.utils.ArgChecker;
 

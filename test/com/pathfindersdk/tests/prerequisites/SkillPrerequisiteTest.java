@@ -24,7 +24,7 @@ public class SkillPrerequisiteTest
   @Test (expected = IllegalArgumentException.class)
   public void testIsFilledNull()
   {
-    Prerequisite<Creature> prereq = new SkillPrerequisite(5, "Test skill");
+    Prerequisite prereq = new SkillPrerequisite(5, "Test skill");
     prereq.isFilled(null);
   }
 
@@ -36,7 +36,7 @@ public class SkillPrerequisiteTest
     creature.addSkill(skillItem);
     creature.getSkill("Test skill").setBaseScore(5);
     
-    Prerequisite<Creature> prereq = new SkillPrerequisite(5, "Test skill");
+    Prerequisite prereq = new SkillPrerequisite(5, "Test skill");
     
     assertTrue(prereq.isFilled(creature));
   }
@@ -49,7 +49,7 @@ public class SkillPrerequisiteTest
     creature.addSkill(skillItem);
     creature.getSkill("Test skill").setBaseScore(5);
     
-    Prerequisite<Creature> prereq = new SkillPrerequisite(6, "Test skill");
+    Prerequisite prereq = new SkillPrerequisite(6, "Test skill");
     
     assertFalse(prereq.isFilled(creature));
   }
@@ -62,7 +62,7 @@ public class SkillPrerequisiteTest
     creature.addSkill(skillItem);
     creature.getSkill("Test skill").setBaseScore(5);
     
-    Prerequisite<Creature> prereq = new SkillPrerequisite(6, "Test skill 2");
+    Prerequisite prereq = new SkillPrerequisite(6, "Test skill 2");
     
     assertFalse(prereq.isFilled(creature));
   }

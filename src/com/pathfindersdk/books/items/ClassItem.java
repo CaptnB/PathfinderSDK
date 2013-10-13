@@ -3,9 +3,9 @@ package com.pathfindersdk.books.items;
 import java.util.Collections;
 import java.util.List;
 
+import com.pathfindersdk.applicables.ClassLevel;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.enums.BookSectionType;
-import com.pathfindersdk.features.ClassLevel;
 import com.pathfindersdk.prerequisites.Prerequisite;
 import com.pathfindersdk.stats.Dice;
 import com.pathfindersdk.utils.ArgChecker;

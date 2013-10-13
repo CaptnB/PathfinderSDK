@@ -1,6 +1,5 @@
-package com.pathfindersdk.features;
+package com.pathfindersdk.applicables;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,11 +12,16 @@ import com.pathfindersdk.utils.ArgChecker;
  * Template class that wraps a named feature giving out bonuses (with optional prerequisites).
  * Feature can apply to a generic Creature (like Feats) or a specific target extending Creature (Race for Character, MonsterTemplate for Monster.
  */
-public abstract class Feature implements Applicable, Comparable<Feature>
+public class Feature implements Applicable, Comparable<Feature>
 {
-  protected String name;
-  protected Prerequisite prerequisite;
-  protected List<Applicable> applicables;
+  final private String name;
+  final private Prerequisite prerequisite;
+  final private List<Applicable> applicables;
+  
+  public Feature(String name, Applicable ... applicables)
+  {
+    this(name, new NullPrerequisite(), applicables);
+  }
   
   public Feature(String name, Prerequisite prerequisite, Applicable ... applicables)
   {
@@ -33,11 +37,9 @@ public abstract class Feature implements Applicable, Comparable<Feature>
     this.applicables = Arrays.asList(applicables);
   }
   
-  protected Feature()
+  public String getName()
   {
-    this.name = "New feature";
-    this.prerequisite = new NullPrerequisite();
-    this.applicables = new ArrayList<Applicable>();
+    return name;
   }
   
   @Override

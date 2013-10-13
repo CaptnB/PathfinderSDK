@@ -1,4 +1,4 @@
-package com.pathfindersdk.tests.features;
+package com.pathfindersdk.tests.applicables;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

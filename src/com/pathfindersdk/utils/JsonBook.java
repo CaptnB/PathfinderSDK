@@ -7,18 +7,18 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.pathfindersdk.applicables.Feature;
 import com.pathfindersdk.bonus.Bonus;
 import com.pathfindersdk.books.Book;
 import com.pathfindersdk.books.BookComponent;
 import com.pathfindersdk.coins.Piece;
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.equipment.Equipment;
-import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.prerequisites.Prerequisite;
 import com.pathfindersdk.stats.Stat;
 
 /**
- * This class reads/writes Book objetcs from/to a JSON file.
+ * This class reads/writes Book objects from/to a JSON file.
  */
 public class JsonBook
 {

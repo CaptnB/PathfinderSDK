@@ -11,22 +11,23 @@ public class ValidationExceptionTest
   @Test (expected = ValidationException.class)
   public void testValidationExceptionThrow() throws ValidationException
   {
-    throw new ValidationException("An exception");
+    throw new ValidationException();
   }
 
   @Test
   public void testAddMessage()
   {
-    ValidationException ve = new ValidationException("First exception message");
-    ve.addMessage("Second exception message");
+    ValidationException ve = new ValidationException();
+    ve.addMessage("Exception message");
     
-    assertEquals(2, ve.getMessages().size());
+    assertEquals(1, ve.getMessages().size());
   }
 
   @Test
   public void testGetMessages()
   {
-    ValidationException ve = new ValidationException("First exception message");
+    ValidationException ve = new ValidationException();
+    ve.addMessage("First exception message");
     ve.addMessage("Second exception message");
 
     String messages = "";

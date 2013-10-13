@@ -4,12 +4,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
+import com.pathfindersdk.applicables.Feature;
+import com.pathfindersdk.applicables.Race;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.enums.BookSectionType;
-import com.pathfindersdk.features.Feature;
-import com.pathfindersdk.features.Race;
 import com.pathfindersdk.utils.ArgChecker;
+import com.pathfindersdk.utils.ValidationException;
 
 /**
  * Immutable class to wrap an alternated racial trait book entry.
@@ -56,13 +59,66 @@ final public class AlternateRacialTraitItem extends BookItem
 
   public boolean isAvailable(Race race)
   {
-    for(String replacedTrait : replacedTraits)
+    ArgChecker.checkNotNull(race);
+    
+    if(race.getRacialTraits() != null)
     {
-      if(!race.hasRacialTrait(replacedTrait))
-        return false;
+      // Try to find all Race traits
+      for(String replacedTrait : replacedTraits)
+      {
+        boolean traitFound = false;
+        for(Feature trait : race.getRacialTraits())
+        {
+          if(replacedTrait.compareTo(trait.getName()) == 0)
+            traitFound = true;
+        }
+        
+        if(!traitFound)
+          return false;   // No need to check further, at least one trait not found
+      }
+    }
+    else
+      return false;       // Race doesn't have any traits
+    
+    return true;          // If everything has been found, then this alternate trait can be applied to Race
+  }
+  
+  public SortedSet<Feature> swapTraits(SortedSet<Feature> traits) throws ValidationException
+  {
+    ValidationException ve = new ValidationException();
+    SortedSet<Feature> newTraits = new TreeSet<Feature>();
+    
+    newTraits.add(newTrait);
+    
+    // First remove traits to be replaced
+    for(String traitName : replacedTraits)
+    {
+      boolean traitFound = false;
+      for(Feature trait : traits)
+      {
+        if(trait.toString().equals(traitName))
+        {
+          traits.remove(trait);
+          traitFound = true;
+          break;
+        }
+      }
+      if(!traitFound)
+      {
+        ve.addMessage("Could not find racial trait [" + traitName + "]");
+      }
     }
     
-    return true;
+    // If race is missing features to be replaced, something went wrong
+    if(!ve.getMessages().isEmpty())
+      throw ve;
+    
+    // Add remaining original traits and new one
+    for(Feature trait : traits)
+      newTraits.add(trait);
+    newTraits.add(newTrait);
+    
+    return newTraits;
   }
 
 }

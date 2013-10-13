@@ -9,11 +9,6 @@ public class ValidationException extends Exception
   private static final long serialVersionUID = -990120330872729192L;
   private List<String> messages = new ArrayList<String>();
   
-  public ValidationException(String message)
-  {
-    messages.add(message);
-  }
-  
   public void addMessage(String message)
   {
     messages.add(message);

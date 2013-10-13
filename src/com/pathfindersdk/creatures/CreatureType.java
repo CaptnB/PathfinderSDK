@@ -13,9 +13,17 @@ public class CreatureType
   protected CreatureMainType type;
   protected SortedSet<CreatureSubtype> subtypes;
   
-  public CreatureType(CreatureMainType type)
+  public CreatureType(CreatureMainType mainType, CreatureSubtype ... subtypes)
   {
-    setType(type);
+    setType(mainType);
+    
+    if(subtypes != null)
+    {
+      for(CreatureSubtype subtype : subtypes)
+      {
+        addSubtype(subtype);
+      }
+    }
   }
   
   // Copy constructor

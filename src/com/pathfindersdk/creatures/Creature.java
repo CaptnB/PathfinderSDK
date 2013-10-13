@@ -10,6 +10,7 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import com.pathfindersdk.applicables.Feature;
 import com.pathfindersdk.books.items.FeatItem;
 import com.pathfindersdk.books.items.SkillItem;
 import com.pathfindersdk.creatures.blocks.EquipmentBlock;
@@ -20,7 +21,6 @@ import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SaveType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
-import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.stats.AbilityScore;
 import com.pathfindersdk.stats.AbilityStat;
 import com.pathfindersdk.stats.ArmorClass;

@@ -10,6 +10,9 @@ import java.util.TreeSet;
 
 import org.junit.Test;
 
+import com.pathfindersdk.applicables.AbilityIncrease;
+import com.pathfindersdk.applicables.Feature;
+import com.pathfindersdk.applicables.Race;
 import com.pathfindersdk.bonus.NullBonus;
 import com.pathfindersdk.books.items.RaceItem;
 import com.pathfindersdk.creatures.Character;
@@ -19,62 +22,57 @@ import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
-import com.pathfindersdk.features.AbilityIncrease;
-import com.pathfindersdk.features.Race;
-import com.pathfindersdk.features.RacialTrait;
+import com.pathfindersdk.prerequisites.FeaturePrerequisite;
 import com.pathfindersdk.prerequisites.Prerequisite;
-import com.pathfindersdk.prerequisites.RacialTraitPrerequisite;
 
-public class RacialTraitPrerequisiteTest
+public class FeaturePrerequisiteTest
 {
 
   @Test (expected = IllegalArgumentException.class)
-  public void testRacialTraitPrerequisite()
+  public void testFeaturePrerequisite()
   {
-    new RacialTraitPrerequisite(null);
+    new FeaturePrerequisite(null);
   }
   
   @Test (expected = IllegalArgumentException.class)
   public void testIsFilledNull()
   {
-    Prerequisite<Character> prereq = new RacialTraitPrerequisite("Test trait");
+    Prerequisite prereq = new FeaturePrerequisite("Test trait");
     prereq.isFilled(null);
   }
 
   @Test
-  @SuppressWarnings({"unchecked"})
   public void testIsFilledPass()
   {
-    SortedSet<RacialTrait> racialTraits = new TreeSet<RacialTrait>();
-    RacialTrait trait = new RacialTrait("Test trait", new NullBonus());
-    racialTraits.add(trait);
+    SortedSet<Feature> features = new TreeSet<Feature>();
+    Feature trait = new Feature("Test trait", new NullBonus());
+    features.add(trait);
     
     RaceItem raceItem = new RaceItem("Test race", new CreatureType(CreatureMainType.ABERRATION), new ArrayList<AbilityIncrease>(), 
-        SizeType.MEDIUM, new HashMap<SpeedType, Integer>(), VisionType.DARKVISION_120, racialTraits, new TreeSet<LanguageType>(), new TreeSet<LanguageType>());
+        SizeType.MEDIUM, new HashMap<SpeedType, Integer>(), VisionType.DARKVISION_120, features, new TreeSet<LanguageType>(), new TreeSet<LanguageType>());
 
     Character character = new Character();
     character.setRace(new Race(raceItem));
     
-    Prerequisite<Character> prereq = new RacialTraitPrerequisite("Test trait");
+    Prerequisite prereq = new FeaturePrerequisite("Test trait");
     
     assertTrue(prereq.isFilled(character));
   }
 
   @Test
-  @SuppressWarnings({"unchecked"})
   public void testIsFilledFail()
   {
-    SortedSet<RacialTrait> racialTraits = new TreeSet<RacialTrait>();
-    RacialTrait trait = new RacialTrait("Test trait", new NullBonus());
-    racialTraits.add(trait);
+    SortedSet<Feature> features = new TreeSet<Feature>();
+    Feature feature = new Feature("Test trait", new NullBonus());
+    features.add(feature);
     
     RaceItem raceItem = new RaceItem("Test race", new CreatureType(CreatureMainType.ABERRATION), new ArrayList<AbilityIncrease>(), 
-        SizeType.MEDIUM, new HashMap<SpeedType, Integer>(), VisionType.DARKVISION_120, racialTraits, new TreeSet<LanguageType>(), new TreeSet<LanguageType>());
+        SizeType.MEDIUM, new HashMap<SpeedType, Integer>(), VisionType.DARKVISION_120, features, new TreeSet<LanguageType>(), new TreeSet<LanguageType>());
 
     Character character = new Character();
     character.setRace(new Race(raceItem));
     
-    Prerequisite<Character> prereq = new RacialTraitPrerequisite("Test trait 2");
+    Prerequisite prereq = new FeaturePrerequisite("Test trait 2");
     
     assertFalse(prereq.isFilled(character));
   }

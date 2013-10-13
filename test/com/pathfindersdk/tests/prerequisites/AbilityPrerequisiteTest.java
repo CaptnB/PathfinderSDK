@@ -23,7 +23,7 @@ public class AbilityPrerequisiteTest
   @Test (expected = IllegalArgumentException.class)
   public void testIsFilledNull()
   {
-    Prerequisite<Creature> prereq = new AbilityPrerequisite(10, AbilityType.CHA);
+    Prerequisite prereq = new AbilityPrerequisite(10, AbilityType.CHA);
     prereq.isFilled(null);
   }
 
@@ -31,7 +31,7 @@ public class AbilityPrerequisiteTest
   public void testIsFilledPass()
   {
     Creature creature = new Character();
-    Prerequisite<Creature> prereq = new AbilityPrerequisite(10, AbilityType.CHA);
+    Prerequisite prereq = new AbilityPrerequisite(10, AbilityType.CHA);
     
     assertTrue(prereq.isFilled(creature));
   }
@@ -40,7 +40,7 @@ public class AbilityPrerequisiteTest
   public void testIsFilledFail()
   {
     Creature creature = new Character();
-    Prerequisite<Creature> prereq = new AbilityPrerequisite(11, AbilityType.CHA);
+    Prerequisite prereq = new AbilityPrerequisite(11, AbilityType.CHA);
     
     assertFalse(prereq.isFilled(creature));
   }

@@ -1,4 +1,4 @@
-package com.pathfindersdk.tests.features;
+package com.pathfindersdk.tests.applicables;
 
 import static org.junit.Assert.*;
 

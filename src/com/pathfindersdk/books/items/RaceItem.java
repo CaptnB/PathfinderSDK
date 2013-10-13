@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 
+import com.pathfindersdk.applicables.AbilityIncrease;
+import com.pathfindersdk.applicables.Feature;
 import com.pathfindersdk.books.BookItem;
 import com.pathfindersdk.creatures.CreatureType;
 import com.pathfindersdk.enums.BookSectionType;
@@ -12,8 +14,6 @@ import com.pathfindersdk.enums.LanguageType;
 import com.pathfindersdk.enums.SizeType;
 import com.pathfindersdk.enums.SpeedType;
 import com.pathfindersdk.enums.VisionType;
-import com.pathfindersdk.features.AbilityIncrease;
-import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**

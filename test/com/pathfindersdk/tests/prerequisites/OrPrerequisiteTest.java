@@ -21,56 +21,52 @@ public class OrPrerequisiteTest
   @Test (expected = IllegalArgumentException.class)
   public void testOrPrerequisite()
   {
-    Prerequisite<Creature>[] prereqs = null;
-    new OrPrerequisite<Creature>(prereqs);
+    Prerequisite[] prereqs = null;
+    new OrPrerequisite(prereqs);
   }
 
   @Test (expected = IllegalArgumentException.class)
-  @SuppressWarnings ({"unchecked"})
   public void testIsFilledNull()
   {
-    Prerequisite<Creature> prereq = new OrPrerequisite<Creature>(new NullPrerequisite<Creature>());
+    Prerequisite prereq = new OrPrerequisite(new NullPrerequisite());
     prereq.isFilled(null);
   }
 
   @Test
-  @SuppressWarnings ({"unchecked"})
   public void testIsFilledPass1()
   {
     Creature creature = new Character();
     creature.setAlignment(AlignmentType.CHAOTIC_EVIL);
     
-    Prerequisite<Creature> subPrereq1 = new AbilityPrerequisite(11, AbilityType.CHA);
-    Prerequisite<Creature> subPrereq2 = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
-    Prerequisite<Creature> prereq = new OrPrerequisite<Creature>(subPrereq1, subPrereq2);
+    Prerequisite subPrereq1 = new AbilityPrerequisite(11, AbilityType.CHA);
+    Prerequisite subPrereq2 = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
+    Prerequisite prereq = new OrPrerequisite(subPrereq1, subPrereq2);
     
     assertTrue(prereq.isFilled(creature));
   }
 
   @Test
-  @SuppressWarnings ({"unchecked"})
   public void testIsFilledPass2()
   {
     Creature creature = new Character();
     creature.setAlignment(AlignmentType.CHAOTIC_EVIL);
     
-    Prerequisite<Creature> subPrereq1 = new AbilityPrerequisite(10, AbilityType.CHA);
-    Prerequisite<Creature> subPrereq2 = new AlignmentPrerequisite(AlignmentType.CHAOTIC_GOOD);
-    Prerequisite<Creature> prereq = new OrPrerequisite<Creature>(subPrereq1, subPrereq2);
+    Prerequisite subPrereq1 = new AbilityPrerequisite(10, AbilityType.CHA);
+    Prerequisite subPrereq2 = new AlignmentPrerequisite(AlignmentType.CHAOTIC_GOOD);
+    Prerequisite prereq = new OrPrerequisite(subPrereq1, subPrereq2);
     
     assertTrue(prereq.isFilled(creature));
   }
 
   @Test
-  @SuppressWarnings ({"unchecked"})
   public void testIsFilledFail()
   {
     Creature creature = new Character();
     creature.setAlignment(AlignmentType.CHAOTIC_EVIL);
     
-    Prerequisite<Creature> subPrereq1 = new AbilityPrerequisite(11, AbilityType.CHA);
-    Prerequisite<Creature> subPrereq2 = new AlignmentPrerequisite(AlignmentType.CHAOTIC_GOOD);
-    Prerequisite<Creature> prereq = new OrPrerequisite<Creature>(subPrereq1, subPrereq2);
+    Prerequisite subPrereq1 = new AbilityPrerequisite(11, AbilityType.CHA);
+    Prerequisite subPrereq2 = new AlignmentPrerequisite(AlignmentType.CHAOTIC_GOOD);
+    Prerequisite prereq = new OrPrerequisite(subPrereq1, subPrereq2);
     
     assertFalse(prereq.isFilled(creature));
   }

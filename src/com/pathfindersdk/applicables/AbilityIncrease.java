@@ -1,4 +1,4 @@
-package com.pathfindersdk.features;
+package com.pathfindersdk.applicables;
 
 import com.pathfindersdk.creatures.Creature;
 import com.pathfindersdk.enums.AbilityType;

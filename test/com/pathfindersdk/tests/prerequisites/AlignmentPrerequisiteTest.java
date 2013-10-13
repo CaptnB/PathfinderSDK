@@ -23,7 +23,7 @@ public class AlignmentPrerequisiteTest
   @Test (expected = IllegalArgumentException.class)
   public void testIsFilledNull()
   {
-    Prerequisite<Creature> prereq = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
+    Prerequisite prereq = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
     prereq.isFilled(null);
   }
 
@@ -32,7 +32,7 @@ public class AlignmentPrerequisiteTest
   {
     Creature creature = new Character();
     creature.setAlignment(AlignmentType.CHAOTIC_EVIL);
-    Prerequisite<Creature> prereq = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
+    Prerequisite prereq = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
     
     assertTrue(prereq.isFilled(creature));
   }
@@ -42,7 +42,7 @@ public class AlignmentPrerequisiteTest
   {
     Creature creature = new Character();
     creature.setAlignment(AlignmentType.CHAOTIC_GOOD);
-    Prerequisite<Creature> prereq = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
+    Prerequisite prereq = new AlignmentPrerequisite(AlignmentType.CHAOTIC_EVIL);
     
     assertFalse(prereq.isFilled(creature));
   }

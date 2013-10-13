@@ -1,7 +1,7 @@
 package com.pathfindersdk.creatures;
 
+import com.pathfindersdk.applicables.Race;
 import com.pathfindersdk.creatures.blocks.Description;
-import com.pathfindersdk.features.Race;
 import com.pathfindersdk.utils.ArgChecker;
 
 

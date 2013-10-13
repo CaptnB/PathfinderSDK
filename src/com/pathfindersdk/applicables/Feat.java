@@ -1,4 +1,4 @@
-package com.pathfindersdk.features;
+package com.pathfindersdk.applicables;
 
 import com.pathfindersdk.enums.FeatType;
 import com.pathfindersdk.prerequisites.Prerequisite;

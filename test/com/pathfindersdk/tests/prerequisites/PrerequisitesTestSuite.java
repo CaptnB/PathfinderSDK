@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
   AndPrerequisiteTest.class,
   FeatPrerequisiteTest.class,
   OrPrerequisiteTest.class,
-  RacialTraitPrerequisiteTest.class,
+  FeaturePrerequisiteTest.class,
   SkillPrerequisiteTest.class
 })
 public class PrerequisitesTestSuite

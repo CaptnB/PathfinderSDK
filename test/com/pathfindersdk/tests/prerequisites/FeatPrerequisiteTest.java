@@ -23,7 +23,7 @@ public class FeatPrerequisiteTest
   @Test (expected = IllegalArgumentException.class)
   public void testIsFilledNull()
   {
-    Prerequisite<Creature> prereq = new FeatPrerequisite("Test Feat");
+    Prerequisite prereq = new FeatPrerequisite("Test Feat");
     prereq.isFilled(null);
   }
 
@@ -34,7 +34,7 @@ public class FeatPrerequisiteTest
     FeatItem testFeat = new FeatItem("Test Feat");
     creature.addFeat(testFeat);
     
-    Prerequisite<Creature> prereq = new FeatPrerequisite("Test Feat");
+    Prerequisite prereq = new FeatPrerequisite("Test Feat");
     assertTrue(prereq.isFilled(creature));
   }
 
@@ -45,7 +45,7 @@ public class FeatPrerequisiteTest
     FeatItem testFeat = new FeatItem("Test Feat");
     creature.addFeat(testFeat);
     
-    Prerequisite<Creature> prereq = new FeatPrerequisite("Test Feat 2");
+    Prerequisite prereq = new FeatPrerequisite("Test Feat 2");
     assertFalse(prereq.isFilled(creature));
   }
 

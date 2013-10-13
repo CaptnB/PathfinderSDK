@@ -1,4 +1,4 @@
-package com.pathfindersdk.features;
+package com.pathfindersdk.applicables;
 
 public class WeaponProficiency
 {

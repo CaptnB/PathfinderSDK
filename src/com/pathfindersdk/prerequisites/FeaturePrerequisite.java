@@ -1,7 +1,7 @@
 package com.pathfindersdk.prerequisites;
 
+import com.pathfindersdk.applicables.Feature;
 import com.pathfindersdk.creatures.Creature;
-import com.pathfindersdk.features.Feature;
 import com.pathfindersdk.utils.ArgChecker;
 
 /**
