@@ -51,6 +51,7 @@ public class FeaturePrerequisiteTest
     RaceItem raceItem = new RaceItem("Test race", new CreatureType(CreatureMainType.ABERRATION), new ArrayList<AbilityIncrease>(), 
         SizeType.MEDIUM, new HashMap<SpeedType, Integer>(), VisionType.DARKVISION_120, features, new TreeSet<LanguageType>(), new TreeSet<LanguageType>());
 
+    .
     Character character = new Character();
     character.setRace(new Race(raceItem));
     
